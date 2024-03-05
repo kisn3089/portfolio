@@ -8,15 +8,6 @@ export const UploadBackground = styled.section`
   height: 100vh;
 `;
 
-export const UploadContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 800px;
-  height: 600px;
-  border: 1px solid #cd2640;
-  border-radius: 20px;
-`;
-
 export const UploadInput = styled.input`
   display: none;
 `;

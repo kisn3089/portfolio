@@ -1,19 +1,15 @@
-import React from "react";
-import {
-  UploadBackground,
-  UploadContainer,
-  UploadInput,
-  UploadLabel,
-} from "./UploadStyles";
-import { useVideo } from "@/hooks/useVideo";
+import React, { ChangeEvent } from "react";
+import { UploadBackground, UploadInput, UploadLabel } from "./UploadStyles";
 
-const Upload = () => {
-  const { videoInfo, getVideo } = useVideo();
-  console.log(videoInfo);
-
+const Upload = ({
+  videoInfo,
+  getVideo,
+}: {
+  videoInfo: string;
+  getVideo: (e: ChangeEvent<HTMLInputElement>) => void;
+}) => {
   return (
     <UploadBackground>
-      {/* <UploadContainer></UploadContainer> */}
       <>
         <UploadInput
           id="file"

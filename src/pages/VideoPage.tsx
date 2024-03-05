@@ -1,7 +1,8 @@
+import Upload from "@/components/video/upload/Upload";
 import React from "react";
 
 const VideoPage = () => {
-  return <div>VideoPage</div>;
+  return <Upload />;
 };
 
 export default VideoPage;

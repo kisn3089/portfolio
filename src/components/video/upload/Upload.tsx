@@ -1,13 +1,14 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { UploadBackground, UploadInput, UploadLabel } from "./UploadStyles";
 
 const Upload = ({
   videoInfo,
   getVideo,
 }: {
-  videoInfo: string;
+  videoInfo: { file: string; type: string };
   getVideo: (e: ChangeEvent<HTMLInputElement>) => void;
 }) => {
+  const [isMouseDown, setIsMouseDown] = useState(false);
   return (
     <UploadBackground>
       <>
@@ -17,7 +18,13 @@ const Upload = ({
           accept="video/mp4"
           onChange={getVideo}
         />
-        <UploadLabel htmlFor="file">Upload</UploadLabel>
+        <UploadLabel
+          $isMouseDown={isMouseDown}
+          htmlFor="file"
+          onMouseDown={() => setIsMouseDown(true)}
+          onMouseUp={() => setIsMouseDown(false)}>
+          Upload
+        </UploadLabel>
       </>
     </UploadBackground>
   );

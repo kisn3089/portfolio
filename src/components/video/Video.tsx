@@ -1,14 +1,16 @@
 import React from "react";
 import Upload from "./upload/Upload";
-import { useVideo } from "@/hooks/useVideo";
 import { Player } from "./player/Player";
+import { useVideo } from "@/hooks/useVideo";
 
 const Video = () => {
-  const { videoInfo, getVideo } = useVideo();
+  const { videoInfo, videoRef, getVideo } = useVideo();
   return (
     <>
-      {videoInfo === "" && <Upload videoInfo={videoInfo} getVideo={getVideo} />}
-      {videoInfo !== "" && <Player />}
+      {videoInfo.file === "" && (
+        <Upload videoInfo={videoInfo} getVideo={getVideo} />
+      )}
+      {videoInfo.file !== "" && <Player videoRef={videoRef} />}
     </>
   );
 };

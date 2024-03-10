@@ -1,5 +1,5 @@
 import React from "react";
-import { Video, VideoSize, VideoPlayer, VideoContainer } from "./PlayerStyles";
+import { VideoSize, VideoPlayer, VideoContainer } from "./PlayerStyles";
 
 export const Player = ({
   videoRef,
@@ -9,10 +9,7 @@ export const Player = ({
   return (
     <VideoContainer>
       <VideoSize data-vjs-player>
-        <VideoPlayer
-          ref={videoRef}
-          // style={{ borderRadius: "12px", overflow: "hidden" }}
-        />
+        <VideoPlayer ref={videoRef} />
       </VideoSize>
     </VideoContainer>
   );

@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import videojs from "video.js";
+import videojs, { VideoJsPlayer } from "video.js";
 import "videojs-markers";
 import "video.js/dist/video-js.css";
 import "videojs-hotkeys";
 import Player from "video.js/dist/types/player";
+import { markerCustomStyle } from "@/styles/VideoStyle";
+import { VideoJsMarkerPluginSettings } from "@/types/video.js.markers";
 
 export const useVideo = () => {
   const [videoInfo, setVideoInfo] = useState({ file: "", type: "" });
@@ -42,20 +44,16 @@ export const useVideo = () => {
 
       const player = videojs(videoElement, videoOptions);
       playerRef.current = player;
-      // console.log("player: ", playerRef.current);
-      // console.log("videoElement: ", videoElement);
-      // console.log("videoOptions: ", videoOptions);
+
+      // player.markers({
+      //   markerStyle: markerCustomStyle,
+      //   // onMarkerClick: function (marker) {},
+      //   // onMarkerReached: function (marker) {},
+      // });
 
       player.on("loadeddata", () => {
         console.log("loadeddata!!");
-        console.log("player: ", videoElement.style);
       });
-
-      // player.markers({
-      // markerStyle: markerCustomStyle,
-      // onMarkerClick: function (marker) {},
-      // onMarkerReached: function (marker) {},
-      // });
 
       videoElement.focus();
     } else {

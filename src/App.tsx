@@ -1,14 +1,20 @@
 import * as Page from "./pages";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Trans from "./components/Test/Trans";
 
 function App() {
+  // const location = useLocation();
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<h1>main</h1>} />
-        <Route path="video" element={<Page.VideoPage />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+      <Page.MainPage />
+      <Trans />
     </BrowserRouter>
   );
 }

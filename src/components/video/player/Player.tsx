@@ -1,11 +1,11 @@
 import React from "react";
 import { VideoSize, VideoPlayer, VideoContainer } from "./PlayerStyles";
 
-export const Player = ({
-  videoRef,
-}: {
+interface TPlayer {
   videoRef: React.RefObject<HTMLDivElement>;
-}) => {
+}
+
+export const Player = ({ videoRef }: TPlayer) => {
   return (
     <VideoContainer>
       <VideoSize data-vjs-player>

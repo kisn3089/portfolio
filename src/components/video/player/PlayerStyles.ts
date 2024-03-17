@@ -4,7 +4,7 @@ export const VideoContainer = styled.div`
   width: 100vw;
   display: flex;
   justify-content: center;
-  padding-top: 80px;
+  align-items: center;
 `;
 
 export const VideoSize = styled.div`

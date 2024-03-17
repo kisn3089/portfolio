@@ -124,9 +124,9 @@ export const useVideo = () => {
         markerStyle: markerCustomStyle,
       });
 
-      player.on("loadeddata", () => {
-        console.log("loadeddata!!");
-      });
+      // player.on("loadeddata", () => {
+      //   console.log("loadeddata!!");
+      // });
 
       videoElement.focus();
     } else {
@@ -179,15 +179,18 @@ export const useVideo = () => {
       }
     }
   };
+
   const prevMarker = () => {
     // @ts-ignore
     if (playerRef.current) playerRef.current.markers.prev();
   };
+
   const nextMarker = (e: MouseEvent) => {
     e.stopPropagation();
     // @ts-ignore
     if (playerRef.current) playerRef.current.markers.next();
   };
+
   const removeMarker = (e: MouseEvent) => {
     e.stopPropagation();
     // @ts-ignore

@@ -11,25 +11,27 @@ export const GlobalStyle = createGlobalStyle`
         color: #fff;
 
         .fade-enter {
-            opacity: 0;
-            transform: translateX(100%) rotateZ(45deg);
+          position: absolute;
+          opacity: 0;
+          transform: translateY(20%);
         }
-
+      
         .fade-enter-active {
           opacity: 1;
-          transform: translateX(-50%) rotateZ(0);
-          transition: all 1s ease-in;
+          transform: translateY(0);
+          transition: 0.8s cubic-bezier(.58,.34,.19,.86) 0.6s;
         }
-
+      
         .fade-exit {
+          position: absolute;
           opacity: 1;
-          transform: translateX(-50%) rotateZ(0);
+          transform: translateY(0);
         }
-
+      
         .fade-exit-active {
           opacity: 0;
-          transform: translateX(-100%) rotateZ(-45deg);
-          transition: all 1s ease-in;
+          transform: translateY(50%);
+          transition: 0.6s cubic-bezier(.63,.33,.17,.91);
         }
     }
 `;
@@ -38,7 +40,7 @@ export const Imgbox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1200px;
+  width: 100%;
   height: auto;
 
   img {

@@ -6,15 +6,13 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
-import Trans from "./components/Test/Trans";
+import TransPages from "./components/transPages/TransPages";
 
 function App() {
-  // const location = useLocation();
   return (
     <BrowserRouter>
       <Page.MainPage />
-      <Trans />
+      <TransPages />
     </BrowserRouter>
   );
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import Upload from "./upload/Upload";
 import { Player } from "./player/Player";
 import { useVideo } from "@/hooks/useVideo";

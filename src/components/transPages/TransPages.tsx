@@ -8,9 +8,7 @@ const TransPages = () => {
     <TransitionGroup>
       <CSSTransition key={location.pathname} classNames="fade" timeout={2000}>
         <Routes location={location}>
-          {/* <Route path="/" element={<Page.MainPage />} /> */}
-          <Route path="test1" element={<Page.Test1 />} />
-          <Route path="test2" element={<Page.Test2 />} />
+          <Route path="/" element={<Page.MainPage />} />
           <Route path="video" element={<Page.VideoPage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

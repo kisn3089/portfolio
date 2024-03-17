@@ -7,11 +7,12 @@ import {
   useLocation,
 } from "react-router-dom";
 import TransPages from "./components/transPages/TransPages";
+import Header from "./components/header/Header";
 
 function App() {
   return (
     <BrowserRouter>
-      <Page.MainPage />
+      <Header />
       <TransPages />
     </BrowserRouter>
   );

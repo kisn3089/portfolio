@@ -1,11 +1,20 @@
 import { useEffect, useRef, useState } from "react";
-import videojs, { VideoJsPlayer } from "video.js";
+import videojs from "video.js";
 import "videojs-markers";
 import "video.js/dist/video-js.css";
 import "videojs-hotkeys";
 import Player from "video.js/dist/types/player";
-import { markerCustomStyle } from "@/styles/VideoStyle";
-import { VideoJsMarkerPluginSettings } from "@/types/video.js.markers";
+import {
+  markerCustomStyle,
+  markerStyle,
+  nextBtnStyle,
+  prevBtnStyle,
+  resetMarkerStyle,
+} from "@/styles/VideoStyle";
+import Prev from "../assets/icons/prev.svg";
+import Next from "../assets/icons/next.svg";
+import Marker from "../assets/icons/marker.svg";
+import RemoveAllMarker from "../assets/icons/removeMarker.svg";
 
 export const useVideo = () => {
   const [videoInfo, setVideoInfo] = useState({ file: "", type: "" });
@@ -37,19 +46,83 @@ export const useVideo = () => {
   };
 
   useEffect(() => {
+    const videoElement = document.createElement("video-js");
     if (!playerRef.current) {
-      const videoElement = document.createElement("video-js");
       videoElement.classList.add("vjs-big-play-centered");
       if (videoRef.current) videoRef.current.appendChild(videoElement);
 
       const player = videojs(videoElement, videoOptions);
       playerRef.current = player;
 
-      // player.markers({
-      //   markerStyle: markerCustomStyle,
-      //   // onMarkerClick: function (marker) {},
-      //   // onMarkerReached: function (marker) {},
-      // });
+      // Volume 아래 마크 버튼
+      const markerBtn = document.createElement("div");
+      const icon = document.createElement("img");
+      icon.src = Marker;
+      markerBtn.className = "vjs-control vjs button";
+      markerBtn.style.cssText = markerStyle;
+      markerBtn.appendChild(icon);
+      markerBtn.addEventListener("click", startMarker);
+
+      const prevBtn = document.createElement("div");
+      const prevIcon = document.createElement("img");
+      prevIcon.src = Prev;
+      prevBtn.appendChild(prevIcon);
+      prevBtn.className = "vjs-control vjs button";
+      prevBtn.style.cssText = prevBtnStyle;
+      prevBtn.addEventListener("click", prevMarker);
+
+      // pip 아래 Next 버튼
+      const nextBtn = document.createElement("div");
+      const nextIcon = document.createElement("img");
+      nextIcon.src = Next;
+      nextBtn.appendChild(nextIcon);
+      nextBtn.className = "vjs-control vjs button";
+      nextBtn.style.cssText = nextBtnStyle;
+      nextBtn.addEventListener("click", nextMarker);
+
+      // fullscreen 아래 markers Reset 버튼
+      const resetMarkersBtn = document.createElement("img");
+      resetMarkersBtn.style.cssText = resetMarkerStyle;
+      resetMarkersBtn.src = RemoveAllMarker;
+      resetMarkersBtn.className = "vjs-control vjs button";
+      resetMarkersBtn.addEventListener("click", removeMarker);
+
+      // Marker
+      // @ts-ignore
+      player.controlBar.el().childNodes[3].appendChild(
+        markerBtn,
+        // @ts-ignore
+        player.controlBar.el().childNodes[3].childNodes[3]
+      );
+
+      // Prev
+      // @ts-ignore
+      player.controlBar.el().childNodes[12].appendChild(
+        prevBtn,
+        // @ts-ignore
+        player.controlBar.el().childNodes[12].childNodes[3]
+      );
+
+      // Next
+      // @ts-ignore
+      player.controlBar.el().childNodes[17].appendChild(
+        nextBtn,
+        // @ts-ignore
+        player.controlBar.el().childNodes[17].childNodes[2]
+      );
+
+      // Remove
+      // @ts-ignore
+      player.controlBar.el().childNodes[18].appendChild(
+        resetMarkersBtn,
+        // @ts-ignore
+        player.controlBar.el().childNodes[18].childNodes[2]
+      );
+
+      // @ts-ignore
+      player.markers({
+        markerStyle: markerCustomStyle,
+      });
 
       player.on("loadeddata", () => {
         console.log("loadeddata!!");
@@ -76,6 +149,49 @@ export const useVideo = () => {
 
       setVideoInfo({ file: url, type: files[0].type });
     }
+  };
+
+  const startMarker = () => {
+    if (playerRef.current) {
+      // @ts-ignore
+      const markers = playerRef.current.markers.getMarkers();
+      if (markers.length === 2) return;
+      if (
+        !markers.find((f: { time: number; text: string }) => f.text === "Start")
+      ) {
+        // @ts-ignore
+        playerRef.current.markers.add([
+          {
+            // @ts-ignore
+            time: parseInt(playerRef.current.currentTime()),
+            text: "Start",
+          },
+        ]);
+      } else {
+        // @ts-ignore
+        playerRef.current.markers.add([
+          {
+            // @ts-ignore
+            time: parseInt(playerRef.current.currentTime()),
+            text: "End",
+          },
+        ]);
+      }
+    }
+  };
+  const prevMarker = () => {
+    // @ts-ignore
+    if (playerRef.current) playerRef.current.markers.prev();
+  };
+  const nextMarker = (e: MouseEvent) => {
+    e.stopPropagation();
+    // @ts-ignore
+    if (playerRef.current) playerRef.current.markers.next();
+  };
+  const removeMarker = (e: MouseEvent) => {
+    e.stopPropagation();
+    // @ts-ignore
+    if (playerRef.current) playerRef.current.markers.removeAll();
   };
 
   return { videoInfo, videoRef, getVideo };

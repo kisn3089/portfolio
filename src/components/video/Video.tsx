@@ -7,9 +7,7 @@ const Video = () => {
   const { videoInfo, videoRef, getVideo } = useVideo();
   return (
     <>
-      {videoInfo.file === "" && (
-        <Upload videoInfo={videoInfo} getVideo={getVideo} />
-      )}
+      {videoInfo.file === "" && <Upload getVideo={getVideo} />}
       {videoInfo.file !== "" && <Player videoRef={videoRef} />}
     </>
   );

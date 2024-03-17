@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
         .fade-enter-active {
           opacity: 1;
           transform: translateY(0);
-          transition: 0.8s cubic-bezier(.58,.34,.19,.86) 0.6s;
+          transition: 0.6s cubic-bezier(.58,.34,.19,.86) 0.4s;
         }
       
         .fade-exit {
@@ -31,7 +31,7 @@ export const GlobalStyle = createGlobalStyle`
         .fade-exit-active {
           opacity: 0;
           transform: translateY(50%);
-          transition: 0.6s cubic-bezier(.63,.33,.17,.91);
+          transition: 0.4s cubic-bezier(.63,.33,.17,.91);
         }
     }
 `;

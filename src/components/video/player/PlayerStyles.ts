@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 export const VideoContainer = styled.div`
   width: 100vw;
-  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-top: 80px;
 `;
 
 export const VideoSize = styled.div`
@@ -55,11 +54,13 @@ export const VideoPlayer = styled.div`
     left: 25%;
   }
   /* 볼륨 버튼 Wrapper */
-  /* .vjs-volume-panel.vjs-control.vjs-volume-panel-horizontal {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  grid-template-rows: 50%;
-} */
+  .vjs-volume-panel.vjs-control.vjs-volume-panel-horizontal {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: 50%;
+  }
+  .vjs-volume-panel.vjs-volume-panel-horizontal:active {
+  }
   /* 볼륨 버튼 높이 조절 */
   .vjs-mute-control.vjs-control.vjs-button.vjs-vol-0 {
     transform: translate3d(0, 40%, 0);
@@ -79,6 +80,8 @@ export const VideoPlayer = styled.div`
   .vjs-time-control.vjs-time-divider {
     display: flex;
     align-items: center;
+    /* flex-direction: column;
+    justify-content: space-between; */
   }
   .vjs-playback-rate-value {
     position: relative !important;

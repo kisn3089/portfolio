@@ -1,27 +1,24 @@
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  Dot,
-  HeaderContainer,
-  Logo,
-  Menu,
-  MenuContainer,
-} from "./HeaderStyles";
+import { DivideHeader, HeaderContainer, Logo } from "./HeaderStyles";
+import ActiveMenu from "./activeMenu/ActiveMenu";
+import ActiveButton from "../activeButton/ActiveButton";
+import { useState } from "react";
 
 const Header = () => {
-  const isOpen = true;
+  const [isActive, setActive] = useState(false);
   return (
     <HeaderContainer>
       <Link to="/">
         <Logo>STEMS</Logo>
       </Link>
-      <MenuContainer>
-        <Menu>MENU</Menu>
-        <ArrowRight>
-          <Dot />
-          <Dot />
-        </ArrowRight>
-      </MenuContainer>
+      <DivideHeader>
+        <ActiveButton
+          content="MENU"
+          isActive={isActive}
+          activeClick={() => setActive((prev) => !prev)}
+        />
+        <ActiveMenu isActive={isActive} />
+      </DivideHeader>
     </HeaderContainer>
   );
 };

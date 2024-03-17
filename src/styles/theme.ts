@@ -10,6 +10,7 @@ const palette = {
   white: "#fff",
   black: "#191919",
   gray: "#292929",
+  //   gray200: "#292929",
 };
 
 const family = {

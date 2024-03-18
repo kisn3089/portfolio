@@ -26,10 +26,20 @@ export const ItemsTag = styled.span`
 `;
 
 export const ItemsTitle = styled.span`
+  position: relative;
   font-size: ${({ theme }) => theme.fontSize.extra};
   font-weight: ${({ theme }) => theme.fontWeight.extra};
   color: ${({ theme }) => theme.palette.gray100};
   transition: 0.3s cubic-bezier(0.63, 0.33, 0.17, 0.91);
+  overflow: hidden;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: -4%;
+    transform: translate3d(-50%, -50%, 0);
+    transition: 0.3s cubic-bezier(0.63, 0.33, 0.17, 0.91);
+  }
 `;
 
 export const ItemsContainer = styled.article`
@@ -48,6 +58,9 @@ export const ItemsContainer = styled.article`
 
     ${ItemsTitle} {
       padding-left: 40px;
+      svg {
+        left: 2.2%;
+      }
     }
   }
 `;

@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import { DivideHeader, HeaderContainer, Logo } from "./HeaderStyles";
 import ActiveMenu from "./activeMenu/ActiveMenu";
 import ActiveButton from "../activeButton/ActiveButton";
-import { useState } from "react";
 
-const Header = () => {
-  const [isActive, setActive] = useState(false);
+interface IHeader {
+  isActive: boolean;
+  toggleActive: (e: React.MouseEvent) => void;
+}
+
+const Header = ({ isActive, toggleActive }: IHeader) => {
   return (
     <HeaderContainer>
       <Link to="/">
@@ -15,7 +18,7 @@ const Header = () => {
         <ActiveButton
           content="MENU"
           isActive={isActive}
-          activeClick={() => setActive((prev) => !prev)}
+          activeClick={toggleActive}
         />
         <ActiveMenu isActive={isActive} />
       </DivideHeader>

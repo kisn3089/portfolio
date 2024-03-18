@@ -3,11 +3,19 @@ import { Player } from "./player/Player";
 import { useVideo } from "@/hooks/useVideo";
 
 const Video = () => {
-  const { videoInfo, videoRef, getVideo } = useVideo();
+  const { videoInfo, videoRef, isAllMarker, getVideo, sectionPlay } =
+    useVideo();
   return (
     <>
       {videoInfo.file === "" && <Upload getVideo={getVideo} />}
-      {videoInfo.file !== "" && <Player videoRef={videoRef} />}
+      {videoInfo.file !== "" && (
+        <Player
+          url={videoInfo.file}
+          videoRef={videoRef}
+          isAllMarker={isAllMarker}
+          sectionPlay={sectionPlay}
+        />
+      )}
     </>
   );
 };

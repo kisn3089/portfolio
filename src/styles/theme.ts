@@ -10,6 +10,9 @@ const palette = {
   white: "#fff",
   black: "#191919",
   gray: "#292929",
+  gray100: "#ddd",
+  disabledBackground: "#c8bfb6",
+  disabledColor: "#ece5d9",
   //   gray200: "#292929",
 };
 

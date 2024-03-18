@@ -1,19 +1,16 @@
-import * as Page from "./pages";
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import TransPages from "./components/transPages/TransPages";
 import Header from "./components/header/Header";
+import { useMain } from "./hooks/useMain";
 
 function App() {
+  const { isActive, toggleActive } = useMain();
   return (
     <BrowserRouter>
-      <Header />
-      <TransPages />
+      <div onClick={(e) => isActive && toggleActive(e)}>
+        <Header isActive={isActive} toggleActive={toggleActive} />
+        <TransPages />
+      </div>
     </BrowserRouter>
   );
 }

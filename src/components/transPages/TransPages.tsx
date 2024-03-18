@@ -9,7 +9,11 @@ const TransPages = () => {
       <CSSTransition key={location.pathname} classNames="fade" timeout={2000}>
         <Routes location={location}>
           <Route path="/" element={<Page.MainPage />} />
-          <Route path="video" element={<Page.VideoPage />} />
+          <Route path="me" element={<Page.AboutMePage />} />
+          <Route path="project" element={<Page.ProjectPage />}>
+            <Route path="video" element={<Page.VideoPage />} />
+            <Route path="api" element={<Page.ApiPage />} />
+          </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </CSSTransition>

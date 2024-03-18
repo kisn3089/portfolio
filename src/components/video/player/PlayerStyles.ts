@@ -2,14 +2,44 @@ import styled from "styled-components";
 
 export const VideoContainer = styled.div`
   width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 40px 0;
+  flex-direction: column;
 `;
 
 export const VideoSize = styled.div`
   width: 1200px;
   height: 675px;
+`;
+
+export const Group = styled.div`
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center;
+  align-items: center; */
+  gap: 0 30px;
+`;
+
+export const SectionPlayButton = styled.button`
+  padding: 16px 30px;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1.1px;
+  background-color: ${({ theme }) => theme.palette.white};
+  color: ${({ theme }) => theme.palette.black};
+  font-size: ${({ theme }) => theme.fontSize.mini};
+  transition: 0.4s ease-in-out;
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.palette.disabledBackground};
+    color: ${({ theme }) => theme.palette.disabledColor};
+    cursor: not-allowed;
+  }
 `;
 
 export const VideoPlayer = styled.div`
@@ -80,16 +110,9 @@ export const VideoPlayer = styled.div`
   .vjs-time-control.vjs-time-divider {
     display: flex;
     align-items: center;
-    /* flex-direction: column;
-    justify-content: space-between; */
   }
   .vjs-playback-rate-value {
     position: relative !important;
     height: 50% !important;
   }
-`;
-
-export const Video = styled.video`
-  width: 100%;
-  height: 100%;
 `;

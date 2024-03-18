@@ -10,19 +10,14 @@ const Upload = ({
   return (
     <UploadBackground>
       <>
-        <UploadInput
-          id="file"
-          type="file"
-          accept="video/mp4"
-          onChange={getVideo}
-        />
+        <UploadInput id="file" type="file" onChange={getVideo} />
         <UploadLabel
           $isMouseDown={isMouseDown}
           htmlFor="file"
           onMouseDown={() => setIsMouseDown(true)}
           onMouseLeave={() => setIsMouseDown(false)}
           onMouseUp={() => setIsMouseDown(false)}>
-          Upload
+          UPLOAD
         </UploadLabel>
       </>
     </UploadBackground>

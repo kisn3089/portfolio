@@ -4,17 +4,16 @@ import styled from "styled-components";
 export const LoaderContainer = styled.div`
   width: 100%;
   height: 200px;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   animation: ${FadeUp} 1s cubic-bezier(0.63, 0.33, 0.17, 0.91);
 `;
 
-export const Loader = styled.p`
+export const Loader = styled.span`
   position: absolute;
   top: 0;
-  left: 25%;
+  left: 0;
   font-size: 60px;
   white-space: nowrap;
   transition: 0.8s ease-in-out;
@@ -45,10 +44,8 @@ export const Loader = styled.p`
 `;
 
 /* loading background layout */
-export const LoaderSpace = styled.p`
-  position: absolute;
-  top: 0;
-  left: 25%;
+export const LoaderSpace = styled.span`
+  position: relative;
   font-size: 60px;
   width: fit-content;
   color: #222;

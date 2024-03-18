@@ -9,8 +9,10 @@ interface ILoaderByText {
 const LoaderByText = ({ progressRef, content }: ILoaderByText) => {
   return (
     <LoaderContainer>
-      <LoaderSpace>{content}</LoaderSpace>
-      <Loader ref={progressRef}>{content}</Loader>
+      <LoaderSpace>
+        <Loader ref={progressRef}>{content}</Loader>
+        {content}
+      </LoaderSpace>
     </LoaderContainer>
   );
 };

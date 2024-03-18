@@ -170,7 +170,7 @@ export const useVideo = () => {
     if (files && files[0]) {
       const videoType = files[0].name.split(".").at(-1);
       if (videoType && videoType.toLocaleLowerCase() !== "mp4") {
-        mxfToMp4(files[0], videoType);
+        ffmpegTransType(files[0], videoType);
       } else {
         const url = URL.createObjectURL(files[0]);
         setVideoInfo({ file: url, type: files[0].type });
@@ -178,7 +178,7 @@ export const useVideo = () => {
     }
   };
 
-  const mxfToMp4 = async (files: File, videoType: string) => {
+  const ffmpegTransType = async (files: File, videoType: string) => {
     setStepTransCode("wait");
     await ffmpeg.load();
     // mxf 확장자로 한정x

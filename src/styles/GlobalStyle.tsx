@@ -61,6 +61,7 @@ export const GlobalStyle = createGlobalStyle`
         }
 
         .fade-enter {
+          width: 100%;
           position: absolute;
           opacity: 0;
           transform: translateY(20%);
@@ -73,6 +74,7 @@ export const GlobalStyle = createGlobalStyle`
         }
       
         .fade-exit {
+          width: 100%;
           position: absolute;
           opacity: 1;
           transform: translateY(0);
@@ -80,7 +82,7 @@ export const GlobalStyle = createGlobalStyle`
       
         .fade-exit-active {
           opacity: 0;
-          transform: translateY(50%);
+          transform: translateY(20%);
           transition: 0.4s cubic-bezier(.63,.33,.17,.91);
         }
     }

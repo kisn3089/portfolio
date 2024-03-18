@@ -22,6 +22,7 @@
     "videojs-markers": "^1.0.1"
   },
   "devDependencies": {
+    "@svgr/rollup": "^8.1.0",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@types/react-transition-group": "^4.4.10",

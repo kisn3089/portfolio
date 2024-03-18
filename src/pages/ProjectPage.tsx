@@ -1,10 +1,10 @@
+import ProjectList from "@/components/project/projectlist/ProjectList";
 import React from "react";
-import { Outlet } from "react-router-dom";
 
 const ProjectPage = () => {
   return (
     <div>
-      <Outlet />
+      <ProjectList />
     </div>
   );
 };

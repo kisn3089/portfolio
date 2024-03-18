@@ -9,6 +9,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   padding: 0 120px;
   z-index: 11;
+  backdrop-filter: blur(20px);
 `;
 
 export const DivideHeader = styled.div`

@@ -1,25 +1,23 @@
 import styled from "styled-components";
 
 export const VideoContainer = styled.div`
+  padding: 200px 0;
   width: 100vw;
-  height: 100vh;
+  /* height: 100%; */
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 40px 0;
   flex-direction: column;
 `;
 
 export const VideoSize = styled.div`
-  width: 1200px;
-  height: 675px;
+  width: 80%;
+  height: 50%;
 `;
 
 export const Group = styled.div`
+  margin-top: 40px;
   display: flex;
   flex-direction: row;
-  /* justify-content: center;
-  align-items: center; */
   gap: 0 30px;
 `;
 

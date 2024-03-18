@@ -27,5 +27,5 @@ export const MenuItemContainer = styled.div`
   align-items: center;
   justify-content: center;
   font-size: ${({ theme }) => theme.fontSize.medium};
-  font-weight: ${({ theme }) => theme.weight.regular};
+  font-weight: ${({ theme }) => theme.fontWeight.regular};
 `;

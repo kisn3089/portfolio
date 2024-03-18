@@ -4,13 +4,13 @@ export const ArrowRight = styled.div`
   position: absolute;
   top: 50%;
   left: 100%;
-  color: ${({ theme }) => theme.palette.white};
-  transform: translate3d(0, -50%, 0);
-  transition: 0.4s cubic-bezier(0.63, 0.33, 0.17, 0.91);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3px 0;
+  color: ${({ theme }) => theme.palette.white};
+  transform: translate3d(0, -50%, 0);
+  transition: 0.4s cubic-bezier(0.63, 0.33, 0.17, 0.91);
 `;
 
 export const Dot = styled.div`
@@ -22,22 +22,25 @@ export const Dot = styled.div`
 
 export const Content = styled.div<{ $isActive: boolean }>`
   position: relative;
-  font-size: ${({ theme }) => theme.fontSize.medium};
-  font-weight: ${({ theme }) => theme.weight.bold};
-  color: ${({ theme }) => theme.palette.white};
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  font-size: ${({ theme }) => theme.fontSize.medium};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  color: ${({ theme }) => theme.palette.white};
   span {
     transition: 0.3s cubic-bezier(0.4, 0, 0.1, 1);
   }
+
+  /* active일때 position 첫번째 요소 static, 두번째 요소 absolute로 변경 (transform도 같이) */
   :nth-child(1) {
     position: ${({ $isActive }) => ($isActive ? "absolute" : "static")};
     transform: ${({ $isActive }) =>
       $isActive ? "translate3d(0, 100%, 0)" : "translate3d(0, 0, 0)"};
     pointer-events: ${({ $isActive }) => ($isActive ? "none" : "auto")};
   }
+
   :nth-child(2) {
     position: ${({ $isActive }) => ($isActive ? "static" : "absolute")};
     transform: ${({ $isActive }) =>
@@ -84,8 +87,8 @@ export const ActiveButtonContainer = styled.button<{
   }}
 
   &:hover {
-    background-color: ${({ theme }) => theme.palette.white};
     padding-right: 30px;
+    background-color: ${({ theme }) => theme.palette.white};
 
     ${Content} {
       color: ${({ theme }) => theme.palette.black};

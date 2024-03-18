@@ -17,7 +17,7 @@ export const DivideHeader = styled.div`
 
 export const Logo = styled.h1`
   font-size: ${({ theme }) => theme.fontSize.extra};
-  font-weight: ${({ theme }) => theme.weight.extra};
+  font-weight: ${({ theme }) => theme.fontWeight.extra};
   color: ${({ theme }) => theme.palette.white};
   letter-spacing: 1.2px;
   cursor: pointer;

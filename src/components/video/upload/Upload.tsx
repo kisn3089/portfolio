@@ -1,12 +1,7 @@
 import { ChangeEvent, RefObject } from "react";
-import {
-  Loader,
-  LoaderContainer,
-  LoaderSpace,
-  UploadBackground,
-  UploadInput,
-  UploadLabel,
-} from "./UploadStyles";
+import { UploadBackground, UploadInput, UploadLabel } from "./UploadStyles";
+import LoaderByText from "@/components/loaderByText/LoaderByText";
+import UploadInfo from "../uploadInfo/UploadInfo";
 
 const Upload = ({
   stepTransCode,
@@ -18,15 +13,13 @@ const Upload = ({
   getVideo: (e: ChangeEvent<HTMLInputElement>) => void;
 }) => {
   const wait = stepTransCode === "wait";
+  const loaderContent = "Loading To Convert MP4";
   return (
     <UploadBackground>
-      {wait && (
-        <LoaderContainer>
-          <div>
-            <LoaderSpace>Loading To Convert MP4</LoaderSpace>
-            <Loader ref={progressRef}>Loading To Convert MP4</Loader>
-          </div>
-        </LoaderContainer>
+      {wait ? (
+        <LoaderByText progressRef={progressRef} content={loaderContent} />
+      ) : (
+        <UploadInfo />
       )}
       <UploadInput id="file" type="file" onChange={getVideo} />
       <UploadLabel htmlFor="file" $disabled={wait}>

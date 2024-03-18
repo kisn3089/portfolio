@@ -29,7 +29,7 @@ export const SectionPlayButton = styled.button`
   outline: none;
   border: none;
   cursor: pointer;
-  letter-spacing: 1.1px;
+  letter-spacing: 1px;
   background-color: ${({ theme }) => theme.palette.white};
   color: ${({ theme }) => theme.palette.black};
   font-size: ${({ theme }) => theme.fontSize.mini};

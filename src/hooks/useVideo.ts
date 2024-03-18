@@ -29,13 +29,19 @@ export const useVideo = () => {
   const progressRef = useRef<HTMLParagraphElement>(null);
 
   const ffmpeg = createFFmpeg({
-    log: true,
+    // log: true,
     progress: ({ ratio }: { ratio: number }) => {
       if (progressRef.current) {
         progressRef.current.style.width = `${Number(ratio.toFixed(2)) * 100}%`;
       }
     },
   });
+
+  // useEffect(() => {
+  //   if (progressRef.current) {
+  //     progressRef.current.style.width = `30%`;
+  //   }
+  // }, []);
 
   const videoOptions = {
     playbackRates: [0.25, 0.5, 1, 1.5, 2, 4, 8],

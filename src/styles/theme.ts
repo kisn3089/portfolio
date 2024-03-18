@@ -1,5 +1,5 @@
 const fontSize = {
-  mini: "14px",
+  mini: "16px",
   small: "18px",
   medium: "20px",
   large: "30px",
@@ -21,7 +21,7 @@ const family = {
   loading: "Agbalumo",
 };
 
-const weight = {
+const fontWeight = {
   regular: 400,
   bold: 700,
   extra: 900,
@@ -31,5 +31,5 @@ export const theme = {
   fontSize,
   palette,
   family,
-  weight,
+  fontWeight,
 };

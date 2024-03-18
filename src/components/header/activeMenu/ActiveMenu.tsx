@@ -3,9 +3,9 @@ import ActiveButton from "@/components/activeButton/ActiveButton";
 import { useNavigate } from "react-router-dom";
 
 const menuItems = [
-  { content: "HOME", url: "/" },
-  { content: "ABOUT ME", url: "/" },
-  { content: "PROJECT", url: "/" },
+  { content: ["HOME", "HOME"], url: "/" },
+  { content: ["ABOUT ME", "ABOUT ME"], url: "/" },
+  { content: ["PROJECT", "PROJECT"], url: "/project/video" },
 ];
 
 const ActiveMenu = ({ isActive }: { isActive: boolean }) => {

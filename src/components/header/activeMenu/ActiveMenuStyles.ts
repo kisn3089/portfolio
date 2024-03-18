@@ -4,18 +4,20 @@ export const ActiveMenuContainer = styled.div<{ $isActive: boolean }>`
   position: absolute;
   width: 260px;
   height: 260px;
-  background-color: #292929;
-  color: #fff;
   border-radius: 14px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 14px 0;
+  will-change: transform;
+  z-index: 11;
   transition: 0.4s cubic-bezier(0.63, 0.33, 0.17, 0.91);
+  background-color: ${({ theme }) => theme.palette.black};
+  color: ${({ theme }) => theme.palette.white};
   opacity: ${({ $isActive }) => ($isActive ? "1" : "0")};
-  top: ${({ $isActive }) => ($isActive ? "160%" : "220%")};
-  right: ${({ $isActive }) => ($isActive ? "0%" : "-20%")};
-  z-index: ${({ $isActive }) => ($isActive ? "11" : "-1")};
+  transform: ${({ $isActive }) =>
+    $isActive ? "translate3d(-38%, 10%, 0)" : "translate3d(-12%, 32%, 0)"};
+  pointer-events: ${({ $isActive }) => ($isActive ? "auto" : "none")};
 `;
 
 export const MenuItemContainer = styled.div`

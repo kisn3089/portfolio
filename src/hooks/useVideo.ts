@@ -21,7 +21,7 @@ export const useVideo = () => {
   const [videoInfo, setVideoInfo] = useState({ file: "", type: "" });
   const [isAllMarker, setAllMarker] = useState(false);
   const [stepTransCode, setStepTransCode] = useState<null | "wait" | "ok">(
-    null
+    "wait"
   );
 
   const videoRef = useRef<HTMLDivElement>(null);
@@ -250,5 +250,12 @@ export const useVideo = () => {
     playerRef.current?.currentTime(findStartTime.time);
   };
 
-  return { videoInfo, videoRef, isAllMarker, getVideo, sectionPlay };
+  return {
+    videoInfo,
+    videoRef,
+    isAllMarker,
+    stepTransCode,
+    getVideo,
+    sectionPlay,
+  };
 };

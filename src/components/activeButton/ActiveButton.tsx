@@ -12,17 +12,21 @@ const ActiveButton = ({
   width,
   activeClick,
 }: {
-  content: string;
+  content: string[];
   isActive: boolean;
   width?: string;
   activeClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
+  const [current, after] = content;
   return (
     <ActiveButtonContainer
       $width={width}
       $isActive={isActive}
       onClick={activeClick}>
-      <Content>{content}</Content>
+      <Content $isActive={isActive}>
+        <span>{current}</span>
+        <span>{after}</span>
+      </Content>
       <ArrowRight>
         <Dot />
         <Dot />

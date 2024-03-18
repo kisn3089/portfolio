@@ -16,7 +16,7 @@ const Header = ({ isActive, toggleActive }: IHeader) => {
       </Link>
       <DivideHeader>
         <ActiveButton
-          content="MENU"
+          content={["MENU", "CLOSE"]}
           isActive={isActive}
           activeClick={toggleActive}
         />

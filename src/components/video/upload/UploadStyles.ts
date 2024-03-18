@@ -8,26 +8,51 @@ export const UploadBackground = styled.section`
   height: 100vh;
 `;
 
-export const UploadInput = styled.input`
-  display: none;
+export const Loader = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.extra};
+  font-weight: ${({ theme }) => theme.weight.extra};
+  color: #fff;
 `;
 
-export const UploadLabel = styled.label<{ $isMouseDown: boolean }>`
+export const UploadLabel = styled.label`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  width: ${({ $isMouseDown }) => ($isMouseDown ? "200px" : "220px")};
-  height: ${({ $isMouseDown }) => ($isMouseDown ? "40px" : "50px")};
-  background-color: #555;
-  color: #fff;
   letter-spacing: 1px;
   cursor: pointer;
-  box-shadow: 0 0 6px 1px #c0c2c8;
-  transition: 0.3s cubic-bezier(0.63, 0.08, 0.12, 0.99);
+  padding: 16px 60px;
+  background-color: ${({ theme }) => theme.palette.white};
+  color: ${({ theme }) => theme.palette.black};
+  font-weight: ${({ theme }) => theme.weight.bold};
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 20%;
+    left: 32%;
+    width: 0;
+    height: 2.4px;
+    background-color: ${({ theme }) => theme.palette.black};
+    transition: 0.4s cubic-bezier(0.63, 0.33, 0.17, 0.91);
+  }
 
   &:hover {
-    background-color: #628281;
-    box-shadow: 0 0 8px 4px #ddd;
+    &::before {
+      width: 36%;
+    }
+  }
+`;
+
+export const UploadInput = styled.input`
+  display: none;
+
+  ${UploadLabel} {
+    background-color: ${({ theme }) => theme.palette.disabledBackground};
+    color: ${({ theme }) => theme.palette.disabledColor};
+    cursor: not-allowed;
+  }
+  &:disabled {
   }
 `;

@@ -13,7 +13,6 @@ const palette = {
   gray100: "#ddd",
   disabledBackground: "#c8bfb6",
   disabledColor: "#ece5d9",
-  //   gray200: "#292929",
 };
 
 const family = {
@@ -24,6 +23,7 @@ const family = {
 const weight = {
   regular: 400,
   bold: 700,
+  extra: 900,
 };
 
 export const theme = {

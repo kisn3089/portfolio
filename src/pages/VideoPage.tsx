@@ -8,13 +8,18 @@ const VideoPage = () => {
     videoRef,
     isAllMarker,
     stepTransCode,
+    progressRef,
     getVideo,
     sectionPlay,
   } = useVideo();
   return (
     <>
       {videoInfo.file === "" && (
-        <Upload stepTransCode={stepTransCode} getVideo={getVideo} />
+        <Upload
+          stepTransCode={stepTransCode}
+          progressRef={progressRef}
+          getVideo={getVideo}
+        />
       )}
       {videoInfo.file !== "" && (
         <Player

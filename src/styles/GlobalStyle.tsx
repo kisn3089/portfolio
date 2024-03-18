@@ -4,8 +4,15 @@ import enRegular from "../assets/fonts/en/Nunito-Regular.ttf";
 import enBold from "../assets/fonts/en/Nunito-Bold.ttf";
 import koRegular from "../assets/fonts/ko/NanumSquareRoundR.ttf";
 import koBold from "../assets/fonts/ko/NanumSquareRoundB.ttf";
+import Loading from "../assets/fonts/en/Agbalumo-Regular.ttf";
 
 export const GlobalStyle = createGlobalStyle`
+    @font-face {
+      font-family: "Agbalumo";
+      src: local("Agbalumo-Regular"), url(${Loading}), format("ttf");
+      font-weight: 700;
+      font-display: swap;
+    }
     @font-face {
       font-family: "Nunito";
       src: local("Nunito-SemiBold"), url(${enSemiBold}), format("ttf");

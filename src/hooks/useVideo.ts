@@ -21,16 +21,20 @@ export const useVideo = () => {
   const [videoInfo, setVideoInfo] = useState({ file: "", type: "" });
   const [isAllMarker, setAllMarker] = useState(false);
   const [stepTransCode, setStepTransCode] = useState<null | "wait" | "ok">(
-    "wait"
+    null
   );
 
   const videoRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<Player | null>(null);
+  const progressRef = useRef<HTMLParagraphElement>(null);
 
   const ffmpeg = createFFmpeg({
     log: true,
-    progress: ({ ratio }: { ratio: number }) => console.log(ratio),
-    // (barRef.current.style.width = `${ratio.toFixed(2) * 100}%`),
+    progress: ({ ratio }: { ratio: number }) => {
+      if (progressRef.current) {
+        progressRef.current.style.width = `${Number(ratio.toFixed(2)) * 100}%`;
+      }
+    },
   });
 
   const videoOptions = {
@@ -169,11 +173,11 @@ export const useVideo = () => {
   };
 
   const mxfToMp4 = async (files: File, videoType: string) => {
+    setStepTransCode("wait");
     await ffmpeg.load();
     // mxf 확장자로 한정x
     // ffmpeg.FS("writeFile", `transmp4.mxf`, await fetchFile(files));
     ffmpeg.FS("writeFile", `transmp4.${videoType}`, await fetchFile(files));
-    setStepTransCode("wait");
     await ffmpeg.run(
       "-i",
       `transmp4.${videoType}`,
@@ -255,6 +259,7 @@ export const useVideo = () => {
     videoRef,
     isAllMarker,
     stepTransCode,
+    progressRef,
     getVideo,
     sectionPlay,
   };

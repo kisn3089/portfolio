@@ -18,6 +18,7 @@ const palette = {
 const family = {
   en: "Nunito",
   ko: "NanumSquareRound",
+  loading: "Agbalumo",
 };
 
 const weight = {

@@ -20,6 +20,7 @@ import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 export const useVideo = () => {
   const [videoInfo, setVideoInfo] = useState({ file: "", type: "" });
   const [isAllMarker, setAllMarker] = useState(false);
+  const [isSectionPlay, setSectionPlay] = useState(false);
   const [stepTransCode, setStepTransCode] = useState<null | "wait" | "ok">(
     null
   );
@@ -151,6 +152,20 @@ export const useVideo = () => {
       //   console.log("loadeddata!!");
       // });
 
+      player.on("play", () => {
+        // @ts-ignore
+        const markers = playerRef.current.markers.getMarkers();
+        if (
+          isSectionPlay &&
+          markers.find(
+            (marker: { key: string; text: string; time: number }) =>
+              marker.text === "End"
+          )
+        ) {
+          console.log("markers: ", isSectionPlay);
+        }
+      });
+
       videoElement.focus();
     } else {
       const player = playerRef.current;
@@ -170,7 +185,7 @@ export const useVideo = () => {
     if (files && files[0]) {
       const videoType = files[0].name.split(".").at(-1);
       if (videoType && videoType.toLocaleLowerCase() !== "mp4") {
-        ffmpegTransType(files[0], videoType);
+        ffmpegConvert(files[0], videoType);
       } else {
         const url = URL.createObjectURL(files[0]);
         setVideoInfo({ file: url, type: files[0].type });
@@ -178,7 +193,7 @@ export const useVideo = () => {
     }
   };
 
-  const ffmpegTransType = async (files: File, videoType: string) => {
+  const ffmpegConvert = async (files: File, videoType: string) => {
     setStepTransCode("wait");
     await ffmpeg.load();
     // mxf 확장자로 한정x
@@ -205,9 +220,12 @@ export const useVideo = () => {
 
   const startMarker = () => {
     if (playerRef.current) {
-      if (isAllMarker) return;
       // @ts-ignore
       const markers = playerRef.current.markers.getMarkers();
+
+      if (markers.find((f: { time: number; text: string }) => f.text === "End"))
+        return;
+
       if (
         !markers.find((f: { time: number; text: string }) => f.text === "Start")
       ) {
@@ -257,7 +275,9 @@ export const useVideo = () => {
     const findStartTime = markers.find(
       (f: { time: number; text: string }) => f.text === "Start"
     );
+    setSectionPlay(true);
     playerRef.current?.currentTime(findStartTime.time);
+    playerRef.current?.play();
   };
 
   return {

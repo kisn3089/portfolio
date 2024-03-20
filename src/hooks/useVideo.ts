@@ -39,7 +39,7 @@ export const useVideo = () => {
 
   // useEffect(() => {
   //   if (progressRef.current) {
-  //     progressRef.current.style.width = `30%`;
+  //     progressRef.current.style.width = `90%`;
   //   }
   // }, []);
 

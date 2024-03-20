@@ -1,5 +1,14 @@
 import { FadeUp } from "@/styles/Animation";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const gradientInfinty = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+`;
 
 export const LoaderContainer = styled.div`
   width: 100%;
@@ -25,21 +34,15 @@ export const Loader = styled.span`
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
+  background-size: 700% auto;
   background-image: linear-gradient(
-    to right top,
-    #d16ba5,
-    #c777b9,
-    #ba83ca,
-    #aa8fd8,
-    #9a9ae1,
-    #8aa7ec,
-    #79b3f4,
-    #69bff8,
-    #52cffe,
-    #41dfff,
-    #46eefa,
-    #5ffbf1
+    to right,
+    #d16ba5 20%,
+    #9a9ae1 30%,
+    #79b3f4 70%,
+    #5ffbf1 80%
   );
+  animation: ${gradientInfinty} 5s ease-in-out infinite alternate;
   /* --- */
 `;
 

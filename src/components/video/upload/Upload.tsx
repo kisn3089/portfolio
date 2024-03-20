@@ -21,7 +21,7 @@ const Upload = ({
       ) : (
         <UploadInfo />
       )}
-      <UploadInput id="file" type="file" onChange={getVideo} />
+      <UploadInput id="file" type="file" onChange={getVideo} disabled={wait} />
       <UploadLabel htmlFor="file" $disabled={wait}>
         UPLOAD
       </UploadLabel>

@@ -20,7 +20,6 @@ import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 export const useVideo = () => {
   const [videoInfo, setVideoInfo] = useState({ file: "", type: "" });
   const [isAllMarker, setAllMarker] = useState(false);
-  const [isSectionPlay, setSectionPlay] = useState(false);
   const [stepTransCode, setStepTransCode] = useState<null | "wait" | "ok">(
     null
   );
@@ -152,20 +151,6 @@ export const useVideo = () => {
       //   console.log("loadeddata!!");
       // });
 
-      player.on("play", () => {
-        // @ts-ignore
-        const markers = playerRef.current.markers.getMarkers();
-        if (
-          isSectionPlay &&
-          markers.find(
-            (marker: { key: string; text: string; time: number }) =>
-              marker.text === "End"
-          )
-        ) {
-          console.log("markers: ", isSectionPlay);
-        }
-      });
-
       videoElement.focus();
     } else {
       const player = playerRef.current;
@@ -271,13 +256,19 @@ export const useVideo = () => {
 
   const sectionPlay = () => {
     // @ts-ignore
-    const markers = playerRef.current.markers.getMarkers();
-    const findStartTime = markers.find(
-      (f: { time: number; text: string }) => f.text === "Start"
-    );
-    setSectionPlay(true);
-    playerRef.current?.currentTime(findStartTime.time);
+    const [start, end] = playerRef.current.markers.getMarkers();
+
+    playerRef.current?.currentTime(start.time);
     playerRef.current?.play();
+
+    const observeTime = () => {
+      const pauseCondition = playerRef.current?.currentTime() || 1000;
+      if (pauseCondition > end.time) {
+        playerRef.current?.pause();
+        playerRef.current?.off("timeupdate", observeTime);
+      }
+    };
+    playerRef.current?.on("timeupdate", observeTime);
   };
 
   return {

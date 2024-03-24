@@ -1,4 +1,3 @@
-import React from "react";
 import { Center, ProjectListContainer } from "./ProjectListStyles";
 import ProjectItems from "../projectItems/ProjectItems";
 
@@ -7,7 +6,7 @@ const projectList = [
     title: "Video Convert & Player",
     tag: "Video • FFMPEG • Convert • WASM",
     link: "/project/video",
-    img: "/human.jpg",
+    img: "/assets/img/human.jpg",
   },
 ];
 // 비디오, threejs, api & dashboard

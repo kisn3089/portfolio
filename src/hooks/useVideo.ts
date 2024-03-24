@@ -262,8 +262,8 @@ export const useVideo = () => {
     playerRef.current?.play();
 
     const observeTime = () => {
-      const pauseCondition = playerRef.current?.currentTime() || 1000;
-      if (pauseCondition > end.time) {
+      const pauseCondition = playerRef.current?.currentTime();
+      if (pauseCondition && pauseCondition >= end.time) {
         playerRef.current?.pause();
         playerRef.current?.off("timeupdate", observeTime);
       }

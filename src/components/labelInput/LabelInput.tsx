@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
-import { UploadInput, UploadLabel } from "./LabelInputStyles";
+import { UploadInput } from "./LabelInputStyles";
+import ChildButton from "../childButton/ChildButton";
 
 const LabelInput = ({
   content,
@@ -21,9 +22,9 @@ const LabelInput = ({
         disabled={isWait}
       />
       <a href={downUrl || ""} download>
-        <UploadLabel htmlFor={downUrl ? "" : "file"} $disabled={isWait}>
-          {content}
-        </UploadLabel>
+        <label htmlFor={downUrl ? "" : "file"}>
+          <ChildButton content={content} isDisabled={isWait} />
+        </label>
       </a>
     </>
   );

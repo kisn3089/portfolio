@@ -7,7 +7,6 @@ import {
 } from "./ProjectItemsStyles";
 import { Link } from "react-router-dom";
 import * as Svg from "../../icon/index";
-import { theme } from "@/styles/theme";
 
 interface IProjectItems {
   title: string;
@@ -26,12 +25,7 @@ const ProjectItems = ({ title, tag, img, link }: IProjectItems) => {
         <ItemsTag>{tag}</ItemsTag>
 
         <ItemsTitle>
-          <Svg.Arrow
-            width={24}
-            height={24}
-            fill={theme.palette.gray100}
-            stroke={theme.palette.gray100}
-          />
+          <Svg.Arrow />
           {title}
         </ItemsTitle>
       </ItemsContainer>

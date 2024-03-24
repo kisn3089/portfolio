@@ -3,9 +3,10 @@ import {
   VideoSize as Size,
   VideoPlayer,
   VideoContainer as Container,
-  SectionPlayButton,
   Group,
+  PlayerButton,
 } from "./PlayerStyles";
+import ChildButton from "@/components/childButton/ChildButton";
 
 interface TPlayer {
   url: string;
@@ -26,11 +27,11 @@ export const Player = ({
         <VideoPlayer ref={videoRef} />
       </Size>
       <Group>
-        <SectionPlayButton disabled={!isAllMarker} onClick={sectionPlay}>
-          SECTION PLAY
-        </SectionPlayButton>
+        <PlayerButton onClick={sectionPlay} disabled={!isAllMarker}>
+          <ChildButton content={"SECTION PLAY"} isDisabled={!isAllMarker} />
+        </PlayerButton>
         <a href={url} download>
-          <SectionPlayButton disabled={!url}>DOWNLOAD</SectionPlayButton>
+          <ChildButton content={"DOWNLOAD"} isDisabled={!url} />
         </a>
       </Group>
     </Container>

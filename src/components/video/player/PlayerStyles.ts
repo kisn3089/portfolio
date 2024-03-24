@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const VideoContainer = styled.div`
   padding: 200px 0;
   width: 100vw;
-  /* height: 100%; */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -21,23 +20,10 @@ export const Group = styled.div`
   gap: 0 30px;
 `;
 
-export const SectionPlayButton = styled.button`
-  padding: 16px 30px;
-  border-radius: 8px;
-  outline: none;
+export const PlayerButton = styled.button`
   border: none;
-  cursor: pointer;
-  letter-spacing: 1px;
-  background-color: ${({ theme }) => theme.palette.white};
-  color: ${({ theme }) => theme.palette.black};
-  font-size: ${({ theme }) => theme.fontSize.mini};
-  transition: 0.4s ease-in-out;
-
-  &:disabled {
-    background-color: ${({ theme }) => theme.palette.disabledBackground};
-    color: ${({ theme }) => theme.palette.disabledColor};
-    cursor: not-allowed;
-  }
+  padding: 0;
+  background-color: transparent;
 `;
 
 export const VideoPlayer = styled.div`

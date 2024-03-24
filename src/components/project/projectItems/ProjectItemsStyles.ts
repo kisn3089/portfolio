@@ -13,7 +13,7 @@ export const ItemsImgContainer = styled.div`
 export const ItemsImg = styled.img`
   width: 100%;
   height: 100%;
-  transition: 0.3s cubic-bezier(0.63, 0.33, 0.17, 0.91);
+  transition: ${({ theme }) => `0.3s ${theme.ts.moreFast}`};
   object-fit: cover;
   will-change: transform;
 `;
@@ -21,8 +21,8 @@ export const ItemsImg = styled.img`
 export const ItemsTag = styled.span`
   font-size: ${({ theme }) => theme.fontSize.medium};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
-  color: ${({ theme }) => theme.palette.gray100};
-  transition: 0.3s cubic-bezier(0.63, 0.33, 0.17, 0.91);
+  color: ${({ theme }) => theme.palette.gray200};
+  transition: ${({ theme }) => `0.3s ${theme.ts.moreFast}`};
 `;
 
 export const ItemsTitle = styled.span`
@@ -30,7 +30,7 @@ export const ItemsTitle = styled.span`
   font-size: ${({ theme }) => theme.fontSize.extra};
   font-weight: ${({ theme }) => theme.fontWeight.extra};
   color: ${({ theme }) => theme.palette.gray100};
-  transition: 0.3s cubic-bezier(0.63, 0.33, 0.17, 0.91);
+  transition: ${({ theme }) => `0.3s ${theme.ts.moreFast}`};
   overflow: hidden;
 
   svg {
@@ -38,7 +38,11 @@ export const ItemsTitle = styled.span`
     top: 50%;
     left: -4%;
     transform: translate3d(-50%, -50%, 0);
-    transition: 0.3s cubic-bezier(0.63, 0.33, 0.17, 0.91);
+    transition: ${({ theme }) => `0.3s ${theme.ts.moreFast}`};
+    width: 24px;
+    height: 24px;
+    fill: ${({ theme }) => theme.palette.gray200};
+    stroke: ${({ theme }) => theme.palette.gray200};
   }
 `;
 
@@ -54,6 +58,7 @@ export const ItemsContainer = styled.article`
   &:hover {
     ${ItemsImg} {
       transform: scale(1.2);
+      filter: grayscale(0.5);
     }
 
     ${ItemsTitle} {

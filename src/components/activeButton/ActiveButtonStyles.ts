@@ -10,7 +10,7 @@ export const ArrowRight = styled.div`
   gap: 3px 0;
   color: ${({ theme }) => theme.palette.white};
   transform: translate3d(0, -50%, 0);
-  transition: 0.4s cubic-bezier(0.63, 0.33, 0.17, 0.91);
+  transition: ${({ theme }) => `0.4s ${theme.ts.moreFast}`};
 `;
 
 export const Dot = styled.div`
@@ -30,7 +30,7 @@ export const Content = styled.div<{ $isActive: boolean }>`
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   color: ${({ theme }) => theme.palette.white};
   span {
-    transition: 0.3s cubic-bezier(0.4, 0, 0.1, 1);
+    transition: ${({ theme }) => `0.3s ${theme.ts.smooth}`};
   }
 
   /* active일때 position 첫번째 요소 static, 두번째 요소 absolute로 변경 (transform도 같이) */
@@ -63,7 +63,7 @@ export const ActiveButtonContainer = styled.button<{
   border: none;
   cursor: pointer;
   overflow: hidden;
-  transition: 0.4s cubic-bezier(0.63, 0.33, 0.17, 0.91);
+  transition: ${({ theme }) => `0.4s ${theme.ts.moreFast}`};
   width: ${({ $width }) => $width || "160px"};
   background-color: ${({ theme, $isActive }) =>
     $isActive ? theme.palette.white : theme.palette.gray};

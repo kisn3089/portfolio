@@ -10,7 +10,6 @@ export const UploadLabel = styled.label<{ $disabled: boolean }>`
   white-space: nowrap;
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
   padding: 16px 60px;
-  margin-top: 60px;
   background-color: ${({ theme, $disabled }) =>
     $disabled ? theme.palette.disabledBackground : theme.palette.white};
   color: ${({ theme, $disabled }) =>

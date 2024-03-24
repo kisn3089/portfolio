@@ -68,101 +68,53 @@ export const useVideo = () => {
   };
 
   useEffect(() => {
-    const videoElement = document.createElement("video-js");
-    if (!playerRef.current) {
-      videoElement.classList.add("vjs-big-play-centered");
-      if (videoRef.current) videoRef.current.appendChild(videoElement);
-      videoRef.current?.setAttribute("playsInline", "true");
+    if (videoInfo.file) {
+      const videoElement = document.createElement("video-js");
 
-      const player = videojs(videoElement, videoOptions);
-      playerRef.current = player;
+      if (!playerRef.current) {
+        videoElement.classList.add("vjs-big-play-centered");
+        if (videoRef.current) videoRef.current.appendChild(videoElement);
+        videoRef.current?.setAttribute("playsInline", "true");
 
-      // Volume 아래 마크 버튼
-      const markerBtn = document.createElement("div");
-      const icon = document.createElement("img");
-      icon.src = Marker;
-      markerBtn.className = "vjs-control vjs button";
-      markerBtn.style.cssText = markerStyle;
-      markerBtn.appendChild(icon);
-      markerBtn.addEventListener("click", startMarker);
+        const player = videojs(videoElement, videoOptions);
+        playerRef.current = player;
 
-      const prevBtn = document.createElement("div");
-      const prevIcon = document.createElement("img");
-      prevIcon.src = Prev;
-      prevBtn.appendChild(prevIcon);
-      prevBtn.className = "vjs-control vjs button";
-      prevBtn.style.cssText = prevBtnStyle;
-      prevBtn.addEventListener("click", prevMarker);
+        const controls = document.querySelector(".vjs-control-bar");
 
-      // pip 아래 Next 버튼
-      const nextBtn = document.createElement("div");
-      const nextIcon = document.createElement("img");
-      nextIcon.src = Next;
-      nextBtn.appendChild(nextIcon);
-      nextBtn.className = "vjs-control vjs button";
-      nextBtn.style.cssText = nextBtnStyle;
-      nextBtn.addEventListener("click", nextMarker);
+        addControlEls.forEach((el) => {
+          const div = document.createElement("div");
+          const img = document.createElement("img");
+          img.src = el.src;
+          div.className = "vjs-control vjs button";
+          div.style.cssText = el.style;
+          div.appendChild(img);
+          div.addEventListener("click", el.clickHandler);
 
-      // fullscreen 아래 markers Reset 버튼
-      const resetMarkersBtn = document.createElement("img");
-      resetMarkersBtn.style.cssText = resetMarkerStyle;
-      resetMarkersBtn.src = RemoveAllMarker;
-      resetMarkersBtn.className = "vjs-control vjs button";
-      resetMarkersBtn.addEventListener("click", removeMarker);
+          controls?.childNodes[el.node].appendChild(div);
+        });
 
-      // Marker
-      // @ts-ignore
-      player.controlBar.el().childNodes[3].appendChild(
-        markerBtn,
         // @ts-ignore
-        player.controlBar.el().childNodes[3].childNodes[3]
-      );
+        player.markers({
+          markerStyle: markerCustomStyle,
+        });
 
-      // Prev
-      // @ts-ignore
-      player.controlBar.el().childNodes[12].appendChild(
-        prevBtn,
-        // @ts-ignore
-        player.controlBar.el().childNodes[12].childNodes[3]
-      );
+        // player.on("loadeddata", () => {
+        //   console.log("loadeddata!!");
+        // });
 
-      // Next
-      // @ts-ignore
-      player.controlBar.el().childNodes[17].appendChild(
-        nextBtn,
-        // @ts-ignore
-        player.controlBar.el().childNodes[17].childNodes[2]
-      );
-
-      // Remove
-      // @ts-ignore
-      player.controlBar.el().childNodes[18].appendChild(
-        resetMarkersBtn,
-        // @ts-ignore
-        player.controlBar.el().childNodes[18].childNodes[2]
-      );
-
-      // @ts-ignore
-      player.markers({
-        markerStyle: markerCustomStyle,
-      });
-
-      // player.on("loadeddata", () => {
-      //   console.log("loadeddata!!");
-      // });
-
-      videoElement.focus();
-    } else {
-      const player = playerRef.current;
-      player.autoplay(videoOptions.autoplay);
-      player.src(videoOptions.sources);
-    }
-    return () => {
-      if (playerRef.current) {
-        playerRef.current.dispose();
-        playerRef.current = null;
+        videoElement.focus();
+      } else {
+        const player = playerRef.current;
+        player.autoplay(videoOptions.autoplay);
+        player.src(videoOptions.sources);
       }
-    };
+      return () => {
+        if (playerRef.current) {
+          playerRef.current.dispose();
+          playerRef.current = null;
+        }
+      };
+    }
   }, [playerRef, videoInfo]);
 
   const getVideo = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -270,6 +222,33 @@ export const useVideo = () => {
     };
     playerRef.current?.on("timeupdate", observeTime);
   };
+
+  const addControlEls = [
+    {
+      src: Marker,
+      node: 3,
+      style: markerStyle,
+      clickHandler: startMarker,
+    },
+    {
+      src: Prev,
+      node: 12,
+      style: prevBtnStyle,
+      clickHandler: prevMarker,
+    },
+    {
+      src: Next,
+      node: 17,
+      style: nextBtnStyle,
+      clickHandler: nextMarker,
+    },
+    {
+      src: RemoveAllMarker,
+      node: 18,
+      style: resetMarkerStyle,
+      clickHandler: removeMarker,
+    },
+  ];
 
   return {
     videoInfo,

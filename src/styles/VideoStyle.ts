@@ -17,6 +17,7 @@ export const markerStyle = `color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    user-selection: none;
 `;
 
 export const prevBtnStyle = `color: #fff;
@@ -28,6 +29,7 @@ export const prevBtnStyle = `color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    user-selection: none;
 `;
 
 export const nextBtnStyle = `color: #fff;
@@ -42,6 +44,7 @@ export const nextBtnStyle = `color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    user-selection: none;
 `;
 
 export const resetMarkerStyle = `color: #fff;
@@ -56,4 +59,5 @@ export const resetMarkerStyle = `color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    user-selection: none;
 `;

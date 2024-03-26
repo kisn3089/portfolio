@@ -8,6 +8,12 @@ const projectList = [
     link: "/project/video",
     img: "/assets/img/human.jpg",
   },
+  {
+    title: "Parallel API & Data Visualization",
+    tag: "useQurey • Api • Chart",
+    link: "/project/api",
+    img: "/assets/img/human.jpg",
+  },
 ];
 // 비디오, threejs, api & dashboard
 const ProjectList = () => {

@@ -13,5 +13,13 @@ export default defineConfig({
       "Cross-Origin-Embedder-Policy": "require-corp",
       "Cross-Origin-Opener-Policy": "same-origin",
     },
+    proxy: {
+      "/api": {
+        target:
+          "https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
   },
 });

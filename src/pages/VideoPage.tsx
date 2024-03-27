@@ -1,5 +1,5 @@
-import { Player } from "@/components/video/player/Player";
-import Upload from "@/components/video/upload/Upload";
+import { Player } from "@/components/organism/video/player/Player";
+import Upload from "@/components/organism/video/upload/Upload";
 import { useVideo } from "@/hooks/useVideo";
 
 const VideoPage = () => {

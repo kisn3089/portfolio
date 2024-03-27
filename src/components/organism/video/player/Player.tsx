@@ -6,7 +6,7 @@ import {
   Group,
   PlayerButton,
 } from "./PlayerStyles";
-import ChildButton from "@/components/childButton/ChildButton";
+import ChildButton from "@/components/molecule/childButton/ChildButton";
 
 interface TPlayer {
   url: string;

@@ -10,3 +10,14 @@ export const FadeUp = keyframes`
         transform: translate3d(0, 0, 0);
     }
 `;
+
+export const ScaleUp = keyframes`
+    0% {
+        scale: 0.7;
+        opacity: 0;
+    }
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+`;

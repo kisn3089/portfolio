@@ -8,7 +8,8 @@ export const StyleInput = styled.input<{ $width?: string; $height?: string }>`
   background-color: transparent;
   color: ${({ theme }) => theme.palette.gray100};
   outline: none;
-  padding: 0 12px;
-  font-size: ${({ theme }) => theme.fontSize.small};
+  padding: 0 16px;
+  font-size: ${({ theme }) => theme.fontSize.mini};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+  letter-spacing: 0.5px;
 `;

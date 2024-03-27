@@ -1,10 +1,9 @@
-import styled from "styled-components";
+import { ScaleUp } from "@/styles/Animation";
+import styled, { css } from "styled-components";
 
 export const StockSection = styled.section`
   width: 100%;
   padding: 0 100px;
-  /* background-color: skyblue;
-  height: 700px; */
 `;
 
 export const StockHeaderStyle = styled.header`
@@ -18,9 +17,23 @@ export const StockHeaderStyle = styled.header`
 `;
 
 export const SearchContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
   svg {
-    fill: #ddd;
-    width: 40px;
-    height: 40px;
+    position: absolute;
+    fill: ${({ theme }) => theme.palette.gray100};
+    cursor: pointer;
+    animation: ${({ theme }) =>
+      css`
+        ${ScaleUp} 0.3s ${theme.ts.smooth}
+      `};
+  }
+  .close {
+    right: 5%;
+  }
+
+  .search {
+    right: 6%;
   }
 `;

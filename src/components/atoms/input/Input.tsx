@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleInput } from "./InputStyles";
 
-const Input = () => {
-  return <StyleInput />;
+const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => {
+  return <StyleInput {...props} />;
 };
 
 export default Input;

@@ -10,12 +10,34 @@ const StockHeader = () => {
     setSearchValue(value);
   };
 
+  const searchEnter = (e: React.KeyboardEvent) => {
+    if (!searchValue) return;
+    if (e.key === "Enter") {
+      console.log(searchValue.trim());
+    }
+  };
+
+  const closeClick = () => {
+    setSearchValue("");
+  };
+
   return (
     <StockHeaderStyle>
       <SearchContainer>
-        <Input type="text" value={searchValue} onChange={changeSearch} />
+        <Input
+          type="text"
+          value={searchValue}
+          onChange={changeSearch}
+          onKeyUp={searchEnter}
+          autoFocus
+        />
         {searchValue ? (
-          <Svg.Close width={32} height={32} className="close" />
+          <Svg.Close
+            width={32}
+            height={32}
+            className="close"
+            onClick={closeClick}
+          />
         ) : (
           <Svg.Search width={26} height={26} className="search" />
         )}

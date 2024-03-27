@@ -12,4 +12,9 @@ export const StyleInput = styled.input<{ $width?: string; $height?: string }>`
   font-size: ${({ theme }) => theme.fontSize.mini};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   letter-spacing: 0.5px;
+  transition: ${({ theme }) => `0.2s ${theme.ts.moreFast}`};
+
+  &:focus {
+    border: ${({ theme }) => `1px solid ${theme.palette.blue100}`};
+  }
 `;

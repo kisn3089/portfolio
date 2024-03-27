@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const VideoContainer = styled.div`
-  padding: 200px 0;
+  padding: 100px 0;
   width: 100vw;
   display: flex;
   align-items: center;

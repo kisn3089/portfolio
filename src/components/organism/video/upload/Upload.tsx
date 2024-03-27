@@ -1,7 +1,7 @@
 import { ChangeEvent, RefObject } from "react";
-import LoaderByText from "@/components/loaderByText/LoaderByText";
+import LoaderByText from "@/components/molecule/loaderByText/LoaderByText";
 import UploadInfo from "../uploadInfo/UploadInfo";
-import LabelInput from "@/components/labelInput/LabelInput";
+import LabelInput from "@/components/atoms/labelInput/LabelInput";
 import { GroupRow, UploadBackground } from "./UploadStyles";
 
 interface TUpload {

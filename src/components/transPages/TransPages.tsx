@@ -12,7 +12,7 @@ const TransPages = () => {
           <Route path="me" element={<Page.AboutMePage />} />
           <Route path="project" element={<Page.ProjectPage />} />
           <Route path="project/video" element={<Page.VideoPage />} />
-          <Route path="project/api" element={<Page.ApiPage />} />
+          <Route path="project/api" element={<Page.StockPage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </CSSTransition>

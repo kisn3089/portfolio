@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Center = styled.section`
   width: 100%;
-  padding: 200px 80px;
+  padding: 60px 80px;
   display: flex;
   justify-content: center;
 `;

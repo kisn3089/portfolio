@@ -2,14 +2,12 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  height: 120px;
-  position: fixed;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 120px;
+  padding: 0 100px;
   z-index: 11;
-  backdrop-filter: blur(20px);
 `;
 
 export const DivideHeader = styled.div`

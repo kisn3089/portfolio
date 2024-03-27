@@ -1,5 +1,5 @@
 import { ActiveMenuContainer, MenuItemContainer } from "./ActiveMenuStyles";
-import ActiveButton from "@/components/activeButton/ActiveButton";
+import ActiveButton from "@/components/molecule/activeButton/ActiveButton";
 import { useNavigate } from "react-router-dom";
 
 const menuItems = [

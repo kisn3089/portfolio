@@ -1,7 +1,8 @@
 import React from "react";
+import { StockDetailContainer } from "./StockDetailStyle";
 
 const StockDetail = () => {
-  return <div>StockDetail</div>;
+  return <StockDetailContainer>StockDetail</StockDetailContainer>;
 };
 
 export default StockDetail;

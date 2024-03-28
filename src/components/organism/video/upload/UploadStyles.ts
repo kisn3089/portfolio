@@ -6,8 +6,8 @@ export const UploadBackground = styled.section`
   align-items: center;
   flex-direction: column;
   gap: 100px 0px;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: calc(100vh - 100px);
 `;
 
 export const GroupRow = styled.div`

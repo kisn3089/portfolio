@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const VideoContainer = styled.div`
   padding: 100px 0;
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;

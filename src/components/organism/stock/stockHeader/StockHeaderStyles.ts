@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 export const StockSection = styled.section`
   width: 100%;
-  padding: 0 100px;
+  padding: 0 60px;
 `;
 
 export const StockHeaderStyle = styled.header`

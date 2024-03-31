@@ -14,7 +14,9 @@ const palette = {
   gray200: "#A6A6A6",
   disabledBackground: "#c8bfb6",
   disabledColor: "#ece5d9",
+  blue: "#2686d3",
   blue100: "#0080da",
+  red: "#cf5b5d",
 };
 
 const family = {

@@ -8,7 +8,7 @@ export const useGetStock = (search: string) => {
 
   return useQuery<any[], AxiosError>({
     queryKey: ["stockList"],
-    queryFn: async () => await getStock(search),
+    queryFn: async () => await getStock(search.toLocaleUpperCase()),
     enabled: false,
   });
 };

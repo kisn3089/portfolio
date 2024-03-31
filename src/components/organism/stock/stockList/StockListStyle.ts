@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const StockListContainer = styled.div`
+  position: relative;
   width: 100%;
-  border: 1px solid #292929;
+  border: ${({ theme }) => `1px solid ${theme.palette.gray}`};
   padding: 8px 8px;
   display: flex;
   flex-direction: column;
@@ -11,10 +12,10 @@ export const StockListContainer = styled.div`
 
 export const StockItem = styled.div`
   width: 100%;
-  height: 60px;
+  height: 54px;
   border-radius: 8px;
   padding: 0 12px;
-  background-color: #292929;
+  background-color: ${({ theme }) => theme.palette.gray};
   cursor: pointer;
   /* background-color: #ecc8c8; */
   // #d1e2ee
@@ -27,8 +28,45 @@ export const PriceInfo = styled.div<{ $flag: string }>`
   display: flex;
   width: 30%;
   flex-direction: column;
-  color: ${({ $flag }) =>
-    $flag === "up" ? "#cf5b5d" : $flag === "down" ? "#2686d3" : "#ddd"};
+  color: ${({ $flag, theme }) =>
+    $flag === "up"
+      ? theme.palette.red
+      : $flag === "down"
+      ? theme.palette.blue
+      : theme.palette.gray100};
   /* color: #cf5b5d; */
   // #2686d3
+`;
+
+export const Loading = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const BottomLayout = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  left: 0;
+  bottom: 2%;
+  display: flex;
+  flex-direction: row;
+  gap: 0 10px;
+  padding: 0 12px;
+`;
+
+export const PagenationButton = styled.button`
+  width: 50%;
+  height: 100%;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.palette.white};
+  color: ${({ theme }) => theme.palette.black};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
 `;

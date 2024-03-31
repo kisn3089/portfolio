@@ -15,6 +15,7 @@ export const StockItem = styled.div`
   border-radius: 8px;
   padding: 0 12px;
   background-color: #292929;
+  cursor: pointer;
   /* background-color: #ecc8c8; */
   // #d1e2ee
   display: flex;

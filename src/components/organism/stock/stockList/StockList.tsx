@@ -1,5 +1,8 @@
 import React from "react";
 import { PriceInfo, StockItem, StockListContainer } from "./StockListStyle";
+import { useQuery } from "@tanstack/react-query";
+import { AxiosError } from "axios";
+import { getStock } from "@/lib/api/getStock";
 
 const data = [
   {
@@ -19,29 +22,23 @@ const data = [
   },
 ];
 const StockList = () => {
+  const { data: getStockList, isLoading } = useQuery<any[], AxiosError>({
+    queryKey: ["stockList"],
+  });
+  console.log("getStockList: ", getStockList);
+
   return (
     <StockListContainer>
-      <StockItem>
-        삼성전자
-        <PriceInfo $flag="up">
-          <span>5.63</span>
-          <span>76900</span>
-        </PriceInfo>
-      </StockItem>
-      <StockItem>
-        SK하이닉스
-        <PriceInfo $flag="down">
-          <span>2.6</span>
-          <span>181200</span>
-        </PriceInfo>
-      </StockItem>
-      <StockItem>
-        포스코홀딩스
-        <PriceInfo $flag="">
-          <span>-.28</span>
-          <span>428000</span>
-        </PriceInfo>
-      </StockItem>
+      {isLoading && <div>Loading...</div>}
+      {/* {getStockList?.map((stock, i) => (
+        <StockItem key={i} onClick={() => console.log(stock)}>
+          {stock.name}
+          <PriceInfo $flag={Number(stock.daysRange) > 0 ? "up" : "down"}>
+            <span>{Number(stock.fltRt)}%</span>
+            <span>{stock.closePrice.toLocaleString("ko-KR")}</span>
+          </PriceInfo>
+        </StockItem>
+      ))} */}
     </StockListContainer>
   );
 };

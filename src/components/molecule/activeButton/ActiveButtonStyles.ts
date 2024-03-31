@@ -61,7 +61,7 @@ export const ActiveButtonContainer = styled.button<{
   border-radius: 12px;
   outline: none;
   border: none;
-  cursor: ${({ $isActive }) => ($isActive ? "pointer" : "default")};
+  cursor: pointer;
   overflow: hidden;
   transition: ${({ theme }) => `0.4s ${theme.ts.moreFast}`};
   width: ${({ $width }) => $width || "160px"};

@@ -2,24 +2,10 @@ import React, { useState } from "react";
 import { SearchContainer, StockHeaderStyle } from "./StockHeaderStyles";
 import Input from "@/components/atoms/input/Input";
 import * as Svg from "../../../atoms/icon/index";
+import useSearch from "@/hooks/useSearch";
 
 const StockHeader = () => {
-  const [searchValue, setSearchValue] = useState("");
-  const changeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setSearchValue(value);
-  };
-
-  const searchEnter = (e: React.KeyboardEvent) => {
-    if (!searchValue) return;
-    if (e.key === "Enter") {
-      console.log(searchValue.trim());
-    }
-  };
-
-  const closeClick = () => {
-    setSearchValue("");
-  };
+  const { searchValue, changeSearch, searchEnter, closeClick } = useSearch();
 
   return (
     <StockHeaderStyle>
@@ -28,7 +14,7 @@ const StockHeader = () => {
           type="text"
           value={searchValue}
           onChange={changeSearch}
-          onKeyUp={searchEnter}
+          onKeyDown={searchEnter}
           autoFocus
         />
         {searchValue ? (

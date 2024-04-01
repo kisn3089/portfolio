@@ -1,4 +1,4 @@
-import { FadeUp } from "@/styles/Animation";
+import { FadeDown } from "@/styles/Animation";
 import styled, { keyframes } from "styled-components";
 
 const gradientInfinty = keyframes`
@@ -16,7 +16,7 @@ export const LoaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: ${FadeUp} 1s cubic-bezier(0.63, 0.33, 0.17, 0.91);
+  animation: ${FadeDown} 1s cubic-bezier(0.63, 0.33, 0.17, 0.91);
 `;
 
 export const Loader = styled.span`

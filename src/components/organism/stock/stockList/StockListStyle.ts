@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import { AppearUp, FadeDown, FadeUp } from "@/styles/Animation";
+import styled, { css } from "styled-components";
 
 export const StockListContainer = styled.div`
   position: relative;
@@ -38,12 +39,21 @@ export const PriceInfo = styled.div<{ $flag: string }>`
   // #2686d3
 `;
 
-export const Loading = styled.div`
+export const Loading = styled.div<{ $isLoading: boolean }>`
+  position: absolute;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: ${({ $isLoading }) => !$isLoading && "none"};
+  animation: ${({ theme, $isLoading }) =>
+    css`
+      ${$isLoading ? AppearUp : FadeDown} ${$isLoading
+        ? "0.6s"
+        : "0.4s"} ${theme.ts.moreFast}
+    `};
+  animation-fill-mode: forwards;
 `;
 
 export const BottomLayout = styled.div`

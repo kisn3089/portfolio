@@ -4,8 +4,15 @@ import Input from "@/components/atoms/input/Input";
 import * as Svg from "../../../atoms/icon/index";
 import useSearch from "@/hooks/useSearch";
 
-const StockHeader = () => {
-  const { searchValue, changeSearch, searchEnter, closeClick } = useSearch();
+interface IStockHeader {
+  searchValue: string;
+  changeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  searchEnter: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  closeClick: (e: React.MouseEvent) => void;
+}
+
+const StockHeader = (props: IStockHeader) => {
+  const { searchValue, changeSearch, searchEnter, closeClick } = props;
 
   return (
     <StockHeaderStyle>

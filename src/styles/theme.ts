@@ -1,4 +1,5 @@
 const fontSize = {
+  extraMini: "14px",
   mini: "16px",
   small: "18px",
   medium: "20px",

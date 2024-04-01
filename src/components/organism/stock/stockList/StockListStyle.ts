@@ -1,4 +1,10 @@
-import { AppearUp, FadeDown, FadeUp } from "@/styles/Animation";
+import {
+  AppearRight,
+  AppearUp,
+  FadeDown,
+  FadeRight,
+  FadeUp,
+} from "@/styles/Animation";
 import styled, { css } from "styled-components";
 
 export const StockListContainer = styled.div`
@@ -6,14 +12,11 @@ export const StockListContainer = styled.div`
   width: 100%;
   border: ${({ theme }) => `1px solid ${theme.palette.gray}`};
   padding: 8px 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px 0;
 `;
 
 export const StockItem = styled.div`
   width: 100%;
-  height: 54px;
+  height: 50px;
   border-radius: 8px;
   padding: 0 12px;
   background-color: ${({ theme }) => theme.palette.gray};
@@ -23,12 +26,17 @@ export const StockItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: ${({ theme }) => theme.fontSize.extraMini};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  font-family: ${({ theme }) => theme.family.ko};
 `;
 
 export const PriceInfo = styled.div<{ $flag: string }>`
   display: flex;
   width: 30%;
   flex-direction: column;
+  font-size: ${({ theme }) => theme.fontSize.extraMini};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
   color: ${({ $flag, theme }) =>
     $flag === "up"
       ? theme.palette.red
@@ -41,11 +49,13 @@ export const PriceInfo = styled.div<{ $flag: string }>`
 
 export const Loading = styled.div<{ $isLoading: boolean }>`
   position: absolute;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 3;
   pointer-events: ${({ $isLoading }) => !$isLoading && "none"};
   animation: ${({ theme, $isLoading }) =>
     css`
@@ -54,6 +64,12 @@ export const Loading = styled.div<{ $isLoading: boolean }>`
         : "0.4s"} ${theme.ts.moreFast}
     `};
   animation-fill-mode: forwards;
+  will-change: transform opacity;
+  svg {
+    fill: ${({ theme }) => theme.palette.white};
+    width: 48px;
+    height: 48px;
+  }
 `;
 
 export const BottomLayout = styled.div`
@@ -79,4 +95,22 @@ export const PagenationButton = styled.button`
   align-items: center;
   cursor: pointer;
   border: none;
+  font-size: ${({ theme }) => theme.fontSize.extraMini};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  font-family: ${({ theme }) => theme.family.ko};
+`;
+
+export const SlideRight = styled.div<{ $isLoading: boolean }>`
+  display: flex;
+  flex-direction: column;
+  gap: 6px 0;
+  animation: ${({ theme, $isLoading }) =>
+    css`
+      ${$isLoading ? FadeRight : AppearRight} ${$isLoading
+        ? "0.4s"
+        : "0.6s"} ${theme.ts.moreFast}
+    `};
+  animation-fill-mode: forwards;
+  will-change: transform opacity;
+  z-index: 4;
 `;

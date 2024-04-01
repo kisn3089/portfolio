@@ -9,7 +9,13 @@ const useSearch = () => {
     setSearchValue(value);
   };
 
-  const { refetch } = useGetStock(searchValue);
+  const page = { no: 1 };
+  const plusClick = () => {
+    // page.no + 1;
+    // console.log("page.no: ", page.no);
+  };
+
+  const { refetch } = useGetStock(searchValue, page.no);
 
   const searchEnter = async (e: React.KeyboardEvent) => {
     if (!searchValue || e.nativeEvent.isComposing) return;
@@ -22,7 +28,7 @@ const useSearch = () => {
   const closeClick = () => {
     setSearchValue("");
   };
-  return { searchValue, changeSearch, searchEnter, closeClick };
+  return { searchValue, changeSearch, searchEnter, closeClick, plusClick };
 };
 
 export default useSearch;

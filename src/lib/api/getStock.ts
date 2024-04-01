@@ -1,6 +1,6 @@
 import { axiosRequest } from "../util/coreAxios";
 
-export const getStock = async (search: string) => {
+export const getStock = async (search: string, pageNo?: number) => {
   console.log("axios: ", search);
 
   // const year = new Date().getFullYear();
@@ -10,7 +10,7 @@ export const getStock = async (search: string) => {
     params: {
       serviceKey: import.meta.env.VITE_SERVICE_KEY,
       numOfRows: 10,
-      pageNo: 1,
+      pageNo: pageNo || 1,
       resultType: "json",
       likeItmsNm: search,
       // beginBasDt: new Date(year, month, date - 7),

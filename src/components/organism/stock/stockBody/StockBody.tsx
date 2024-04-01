@@ -4,12 +4,16 @@ import StockList from "../stockList/StockList";
 import StockDetail from "../stockDetail/StockDetail";
 import StockChart from "../stockChart/StockChart";
 
-const StockBody = () => {
+interface IStockBody {
+  plusClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const StockBody = ({ plusClick }: IStockBody) => {
   return (
     <StockBodyContainer>
       <StockChart />
       <StockDetail />
-      <StockList />
+      <StockList plusClick={plusClick} />
     </StockBodyContainer>
   );
 };

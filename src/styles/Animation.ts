@@ -21,3 +21,25 @@ export const ScaleUp = keyframes`
         opacity: 1;
     }
 `;
+
+export const AppearUp = keyframes`
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 10%, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+`;
+
+export const FadeDown = keyframes`
+    0% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(0, 10%, 0);
+    }
+`;

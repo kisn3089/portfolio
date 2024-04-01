@@ -16,5 +16,7 @@ export const getStock = async (search: string) => {
       // beginBasDt: new Date(year, month, date - 7),
     },
   });
+  console.log("response: ", response);
+
   return response.data.response.body.items.item;
 };

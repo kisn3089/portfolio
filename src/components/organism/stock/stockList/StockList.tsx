@@ -21,7 +21,7 @@ const StockList = ({ plusClick }: IStockList) => {
     queryKey: ["stockList"],
     enabled: false,
   });
-  console.log("getStockList: ", getStockList, isFetching);
+  // console.log("getStockList: ", getStockList, isFetching);
 
   return (
     <StockListContainer>
@@ -40,8 +40,8 @@ const StockList = ({ plusClick }: IStockList) => {
         ))}
       </SlideRight>
       <BottomLayout>
-        <PagenationButton>이전</PagenationButton>
-        <PagenationButton onClick={plusClick}>다음</PagenationButton>
+        <PagenationButton>PREV</PagenationButton>
+        <PagenationButton onClick={plusClick}>NEXT</PagenationButton>
       </BottomLayout>
     </StockListContainer>
   );

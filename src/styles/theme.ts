@@ -52,24 +52,26 @@ const ts = {
 export const animation = {
   fadeIn: ({
     name,
-    beginTransform,
-    endTransform,
+    beginTransform = "translate3d(0, 0, 0)",
+    endTransform = "translate3d(0, 0, 0)",
     duration,
+    transtion,
     delay,
     direction,
+    opacity,
   }: BaseAniType) => css`
     @keyframes fade${name} {
       0% {
-        opacity: 0;
+        opacity: ${opacity};
         transform: ${beginTransform};
       }
       100% {
-        opacity: 1;
+        opacity: ${opacity === 1 ? 0 : 1};
         transform: ${endTransform};
       }
     }
-    animation: ${"fade" + name} ${duration} ${delay} iteration-count direction
-      ${direction};
+    animation: ${"fade" + name} ${duration} ${transtion} ${delay} ${direction};
+    will-change: transform opacity;
   `,
 };
 

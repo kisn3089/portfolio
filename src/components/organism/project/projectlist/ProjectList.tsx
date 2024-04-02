@@ -6,7 +6,7 @@ const projectList = [
     title: "Video Convert & Player",
     tag: "Video • FFMPEG • Convert • WASM",
     link: "/project/video",
-    img: "/assets/img/human.jpg",
+    img: "/assets/img/pj_video.webp",
   },
   {
     title: "Parallel API & Data Visualization",

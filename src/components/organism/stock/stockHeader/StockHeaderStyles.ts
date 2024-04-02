@@ -1,5 +1,4 @@
-import { ScaleUp } from "@/styles/Animation";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const StockSection = styled.section`
   width: 100%;
@@ -24,10 +23,14 @@ export const SearchContainer = styled.div`
     position: absolute;
     fill: ${({ theme }) => theme.palette.gray100};
     cursor: pointer;
-    animation: ${({ theme }) =>
-      css`
-        ${ScaleUp} 0.3s ${theme.ts.smooth}
-      `};
+    ${({ theme }) =>
+      theme.animation.fadeIn({
+        name: "scaleUp",
+        duration: "0.3s",
+        transtion: theme.ts.smooth,
+        beginAgrs: "scale: 0.7",
+        endAgrs: "scale: 1",
+      })}
   }
   .close {
     right: 5%;

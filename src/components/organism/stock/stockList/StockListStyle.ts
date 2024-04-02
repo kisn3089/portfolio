@@ -1,11 +1,4 @@
-import {
-  AppearRight,
-  AppearUp,
-  FadeDown,
-  FadeRight,
-  FadeUp,
-} from "@/styles/Animation";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const StockListContainer = styled.div`
   position: relative;
@@ -53,6 +46,7 @@ export const Loading = styled.div<{ $isLoading: boolean }>`
   align-items: center;
   z-index: 3;
   pointer-events: ${({ $isLoading }) => !$isLoading && "none"};
+  will-change: transform opacity;
   ${({ theme, $isLoading }) =>
     theme.animation.fadeIn({
       name: $isLoading ? "show" : "hide",
@@ -102,6 +96,7 @@ export const SlideRight = styled.div<{ $isLoading: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 6px 0;
+  will-change: transform opacity;
   ${({ theme, $isLoading }) =>
     theme.animation.fadeIn({
       name: $isLoading ? "rightHide" : "rightShow",

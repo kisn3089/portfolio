@@ -1,14 +1,4 @@
-import { FadeDown } from "@/styles/Animation";
-import styled, { keyframes } from "styled-components";
-
-const gradientInfinty = keyframes`
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-`;
+import styled from "styled-components";
 
 export const LoaderContainer = styled.div`
   width: 100%;
@@ -16,7 +6,13 @@ export const LoaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: ${FadeDown} 1s cubic-bezier(0.63, 0.33, 0.17, 0.91);
+  ${({ theme }) =>
+    theme.animation.fadeIn({
+      name: "loading",
+      duration: "1s",
+      transtion: theme.ts.moreFast,
+      beginTransform: "translate3d(0, -20%, 0)",
+    })}
 `;
 
 export const Loader = styled.span`
@@ -28,7 +24,7 @@ export const Loader = styled.span`
   transition: 0.8s ease-in-out;
   font-size: 60px;
   font-weight: ${({ theme }) => theme.fontWeight.extra};
-  font-family: ${({ theme }) => theme.family.loading};
+  font-family: ${({ theme }) => theme.fontFamily.loading};
   width: 0;
   /* color 투명하게 하고 background-image로 설정한 색을 text color로 변경하는 핵심 로직 */
   color: transparent;
@@ -42,8 +38,16 @@ export const Loader = styled.span`
     #79b3f4 70%,
     #5ffbf1 80%
   );
-  animation: ${gradientInfinty} 5s ease-in-out infinite alternate;
-  /* --- */
+  ${({ theme }) =>
+    theme.animation.fadeIn({
+      name: "gradient",
+      duration: "5s",
+      transtion: "linear",
+      beginAgrs: "background-position: 0% 50%",
+      endAgrs: "background-position: 100% 50%",
+      count: "infinite",
+      direction: "alternate",
+    })}/* --- */
 `;
 
 /* loading background layout */
@@ -54,5 +58,5 @@ export const LoaderSpace = styled.span`
   color: #222;
   white-space: nowrap;
   font-weight: ${({ theme }) => theme.fontWeight.extra};
-  font-family: ${({ theme }) => theme.family.loading};
+  font-family: ${({ theme }) => theme.fontFamily.loading};
 `;

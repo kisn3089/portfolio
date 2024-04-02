@@ -21,14 +21,12 @@ export const StockItem = styled.div`
   padding: 0 12px;
   background-color: ${({ theme }) => theme.palette.gray};
   cursor: pointer;
-  /* background-color: #ecc8c8; */
-  // #d1e2ee
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: ${({ theme }) => theme.fontSize.extraMini};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  font-family: ${({ theme }) => theme.family.ko};
+  font-family: ${({ theme }) => theme.fontFamily.ko};
 `;
 
 export const PriceInfo = styled.div<{ $flag: string }>`
@@ -43,8 +41,6 @@ export const PriceInfo = styled.div<{ $flag: string }>`
       : $flag === "down"
       ? theme.palette.blue
       : theme.palette.gray100};
-  /* color: #cf5b5d; */
-  // #2686d3
 `;
 
 export const Loading = styled.div<{ $isLoading: boolean }>`
@@ -95,15 +91,16 @@ export const PagenationButton = styled.button`
   align-items: center;
   cursor: pointer;
   border: none;
+  letter-spacing: 1px;
   font-size: ${({ theme }) => theme.fontSize.extraMini};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  font-family: ${({ theme }) => theme.family.ko};
 `;
 
 export const SlideRight = styled.div<{ $isLoading: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 6px 0;
+  opacity: 0;
   animation: ${({ theme, $isLoading }) =>
     css`
       ${$isLoading ? FadeRight : AppearRight} ${$isLoading
@@ -111,6 +108,7 @@ export const SlideRight = styled.div<{ $isLoading: boolean }>`
         : "0.6s"} ${theme.ts.moreFast}
     `};
   animation-fill-mode: forwards;
+  animation-delay: ${({ $isLoading }) => ($isLoading ? "0s" : "0.1s")};
   will-change: transform opacity;
   z-index: 4;
 `;

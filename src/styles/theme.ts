@@ -1,3 +1,15 @@
+import { BaseAniType } from "@/types/animation.type";
+import { DefaultTheme, RuleSet, css } from "styled-components";
+
+export type PaletteTypes = typeof palette;
+export type FontSizeTypes = typeof fontSize;
+export type FontFamilyTypes = typeof fontFamily;
+export type FontWeightTypes = typeof fontWeight;
+export type TransitionTypes = typeof ts;
+export type AnimationTypes = {
+  fadeIn: (props: BaseAniType) => RuleSet<object>;
+};
+
 const fontSize = {
   extraMini: "14px",
   mini: "16px",
@@ -20,7 +32,7 @@ const palette = {
   red: "#cf5b5d",
 };
 
-const family = {
+const fontFamily = {
   en: "Nunito",
   ko: "NanumSquareRound",
   loading: "Agbalumo",
@@ -37,10 +49,35 @@ const ts = {
   smooth: "cubic-bezier(0.4, 0, 0.1, 1)",
 };
 
-export const theme = {
+export const animation = {
+  fadeIn: ({
+    name,
+    beginTransform,
+    endTransform,
+    duration,
+    delay,
+    direction,
+  }: BaseAniType) => css`
+    @keyframes fade${name} {
+      0% {
+        opacity: 0;
+        transform: ${beginTransform};
+      }
+      100% {
+        opacity: 1;
+        transform: ${endTransform};
+      }
+    }
+    animation: ${"fade" + name} ${duration} ${delay} iteration-count direction
+      ${direction};
+  `,
+};
+
+export const theme: DefaultTheme = {
   fontSize,
   palette,
-  family,
+  fontFamily,
   fontWeight,
   ts,
+  animation,
 };

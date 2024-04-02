@@ -59,19 +59,24 @@ export const animation = {
     delay,
     direction,
     opacity,
+    beginAgrs,
+    endAgrs,
+    count = 1,
   }: BaseAniType) => css`
     @keyframes fade${name} {
       0% {
         opacity: ${opacity};
         transform: ${beginTransform};
+        ${beginAgrs}
       }
       100% {
         opacity: ${opacity === 1 ? 0 : 1};
         transform: ${endTransform};
+        ${endAgrs}
       }
     }
-    animation: ${"fade" + name} ${duration} ${transtion} ${delay} ${direction};
-    will-change: transform opacity;
+    animation: ${"fade" + name} ${duration} ${transtion} ${delay} ${count}
+      ${direction};
   `,
 };
 

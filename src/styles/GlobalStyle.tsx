@@ -55,6 +55,7 @@ export const GlobalStyle = createGlobalStyle`
         background-color: #111;
         color: #fff;
         vertical-align: bottom;
+        overflow-x: hidden;
 
         a {
           text-decoration: none;

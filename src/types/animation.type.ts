@@ -5,9 +5,12 @@ export interface BaseAniType extends OptionAniType {
 }
 
 interface OptionAniType {
-  delay?: string;
   beginTransform?: string;
-  direction?: "normal" | "forwards";
   endTransform?: string;
+  beginAgrs?: string;
+  endAgrs?: string;
+  direction?: "normal" | "forwards" | "alternate";
   opacity?: 0 | 1;
+  delay?: string;
+  count?: number | "infinite";
 }

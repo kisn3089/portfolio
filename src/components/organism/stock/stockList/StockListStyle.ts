@@ -102,15 +102,16 @@ export const SlideRight = styled.div<{ $isLoading: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 6px 0;
-  opacity: 0;
-  animation: ${({ theme, $isLoading }) =>
-    css`
-      ${$isLoading ? FadeRight : AppearRight} ${$isLoading
-        ? "0.4s"
-        : "0.6s"} ${theme.ts.moreFast}
-    `};
-  animation-fill-mode: forwards;
-  animation-delay: ${({ $isLoading }) => ($isLoading ? "0s" : "0.1s")};
-  will-change: transform opacity;
+  ${({ theme, $isLoading }) =>
+    theme.animation.fadeIn({
+      name: $isLoading ? "rightHide" : "rightShow",
+      duration: $isLoading ? "0.4s" : "0.6s",
+      beginTransform: $isLoading ? undefined : "translate3d(14%, 0, 0)",
+      endTransform: $isLoading ? "translate3d(14%, 0, 0)" : undefined,
+      opacity: $isLoading ? 1 : 0,
+      direction: "forwards",
+      transtion: theme.ts.moreFast,
+      delay: $isLoading ? "0.1s" : "0s",
+    })};
   z-index: 4;
 `;

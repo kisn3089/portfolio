@@ -20,8 +20,8 @@ const useSearch = () => {
   const searchEnter = async (e: React.KeyboardEvent) => {
     if (!searchValue || e.nativeEvent.isComposing) return;
     if (e.key === "Enter") {
-      await refetch();
       setSearchValue("");
+      await refetch();
     }
   };
 

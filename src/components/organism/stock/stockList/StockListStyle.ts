@@ -53,14 +53,16 @@ export const Loading = styled.div<{ $isLoading: boolean }>`
   align-items: center;
   z-index: 3;
   pointer-events: ${({ $isLoading }) => !$isLoading && "none"};
-  animation: ${({ theme, $isLoading }) =>
-    css`
-      ${$isLoading ? AppearUp : FadeDown} ${$isLoading
-        ? "0.6s"
-        : "0.4s"} ${theme.ts.moreFast}
-    `};
-  animation-fill-mode: forwards;
-  will-change: transform opacity;
+  ${({ theme, $isLoading }) =>
+    theme.animation.fadeIn({
+      name: $isLoading ? "show" : "hide",
+      beginTransform: $isLoading ? "translate3d(0, 10%, 0)" : undefined,
+      endTransform: $isLoading ? undefined : "translate3d(0, 6%, 0)",
+      opacity: $isLoading ? 0 : 1,
+      duration: $isLoading ? "0.6s" : "0.4s",
+      transtion: theme.ts.moreFast,
+      direction: "forwards",
+    })};
   svg {
     fill: ${({ theme }) => theme.palette.white};
     width: 48px;

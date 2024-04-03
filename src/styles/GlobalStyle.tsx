@@ -52,8 +52,8 @@ export const GlobalStyle = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
-        background-color: #111;
-        color: #fff;
+        background-color: ${({ theme }) => theme.palette.black};
+        color: ${({ theme }) => theme.palette.white};
         vertical-align: bottom;
         overflow-x: hidden;
 

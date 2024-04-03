@@ -3,6 +3,12 @@ import ProjectItems from "../projectItems/ProjectItems";
 
 const projectList = [
   {
+    title: "WebGPU & Three.js",
+    tag: "Canvas • Drei&Fiber • Animation",
+    link: "/project/three",
+    img: "/assets/img/human.jpg",
+  },
+  {
     title: "Video Convert & Player",
     tag: "Video • FFMPEG • Convert • WASM",
     link: "/project/video",
@@ -11,7 +17,7 @@ const projectList = [
   {
     title: "Parallel API & Data Visualization",
     tag: "useQurey • Api • Chart",
-    link: "/project/api",
+    link: "/project/stock",
     img: "/assets/img/human.jpg",
   },
 ];

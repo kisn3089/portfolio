@@ -1,4 +1,3 @@
-import React from "react";
 import { LoadingContainer } from "./LoadingStyles";
 import * as Svg from "../../atoms/icon/index";
 

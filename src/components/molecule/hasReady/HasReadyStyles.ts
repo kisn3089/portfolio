@@ -19,6 +19,6 @@ export const HasReadyContainer = styled.div`
 
 export const ReadyInfo = styled.span`
   color: ${({ theme }) => theme.palette.white};
-  font-size: ${({ theme }) => theme.fontSize.medium};
+  font-size: ${({ theme }) => theme.fontSize.small};
   font-family: ${({ theme }) => theme.fontFamily.ko};
 `;

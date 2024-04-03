@@ -1,15 +1,10 @@
-import {
-  BottomLayout,
-  PagenationButton,
-  PriceInfo,
-  SlideRight,
-  StockItem,
-  StockListContainer,
-} from "./StockListStyle";
+import { StockListContainer } from "./StockListStyle";
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { FETCHSTOCKLIST } from "@/lib/util/constanse";
 import Loading from "@/components/molecule/loading/Loading";
+import StockListBody from "./stockListBody/StockListBody";
+import StockListFooter from "./stockListFooter/StockListFooter";
 
 interface IStockList {
   plusClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -26,23 +21,8 @@ const StockList = ({ plusClick }: IStockList) => {
   return (
     <StockListContainer>
       <Loading isLoading={isFetching} />
-      <SlideRight $isLoading={isFetching}>
-        {getStockList?.map((stock, i) => (
-          <StockItem key={i} onClick={() => console.log(stock)}>
-            {stock.itmsNm}
-            <PriceInfo $flag={Number(stock.fltRt) > 0 ? "up" : "down"}>
-              <span>{Number(stock.fltRt)}%</span>
-              <span>{Number(stock.clpr).toLocaleString("ko-KR")}</span>
-            </PriceInfo>
-          </StockItem>
-        ))}
-      </SlideRight>
-      <BottomLayout>
-        <PagenationButton disabled>PREV</PagenationButton>
-        <PagenationButton disabled onClick={plusClick}>
-          NEXT
-        </PagenationButton>
-      </BottomLayout>
+      <StockListBody isLoading={isFetching} getStockList={getStockList} />
+      <StockListFooter plusClick={plusClick} />
     </StockListContainer>
   );
 };

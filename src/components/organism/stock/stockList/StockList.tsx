@@ -1,6 +1,5 @@
 import {
   BottomLayout,
-  Loading,
   PagenationButton,
   PriceInfo,
   SlideRight,
@@ -9,8 +8,8 @@ import {
 } from "./StockListStyle";
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import * as Svg from "../../../atoms/icon/index";
 import { FETCHSTOCKLIST } from "@/lib/util/constanse";
+import Loading from "@/components/molecule/loading/Loading";
 
 interface IStockList {
   plusClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -26,9 +25,7 @@ const StockList = ({ plusClick }: IStockList) => {
 
   return (
     <StockListContainer>
-      <Loading $isLoading={isFetching}>
-        <Svg.Spinner />
-      </Loading>
+      <Loading isLoading={isFetching} />
       <SlideRight $isLoading={isFetching}>
         {getStockList?.map((stock, i) => (
           <StockItem key={i} onClick={() => console.log(stock)}>

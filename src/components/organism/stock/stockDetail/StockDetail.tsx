@@ -1,8 +1,12 @@
-import React from "react";
 import { StockDetailContainer } from "./StockDetailStyle";
+import ReadyGroup from "@/components/molecule/hasReady/readyGroup/ReadyGroup";
 
 const StockDetail = () => {
-  return <StockDetailContainer>StockDetail</StockDetailContainer>;
+  return (
+    <StockDetailContainer>
+      <ReadyGroup />
+    </StockDetailContainer>
+  );
 };
 
 export default StockDetail;

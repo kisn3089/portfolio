@@ -39,14 +39,14 @@ export const Content = styled.div<{ $isActive: boolean }>`
     position: ${({ $isActive }) => ($isActive ? "absolute" : "static")};
     transform: ${({ $isActive }) =>
       $isActive ? "translate3d(0, 100%, 0)" : "translate3d(0, 0, 0)"};
-    pointer-events: ${({ $isActive }) => ($isActive ? "none" : "auto")};
+    pointer-events: ${({ $isActive }) => ($isActive ? "none" : "default")};
   }
 
   :nth-child(2) {
     position: ${({ $isActive }) => ($isActive ? "static" : "absolute")};
     transform: ${({ $isActive }) =>
       $isActive ? "translate3d(0, 0, 0)" : "translate3d(0, -100%, 0)"};
-    pointer-events: ${({ $isActive }) => ($isActive ? "auto" : "none")};
+    pointer-events: ${({ $isActive }) => ($isActive ? "default" : "none")};
   }
 `;
 

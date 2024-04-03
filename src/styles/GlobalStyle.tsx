@@ -52,7 +52,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
-        background-color: ${({ theme }) => theme.palette.black};
+        background-color: #111;
         color: ${({ theme }) => theme.palette.white};
         vertical-align: bottom;
         overflow-x: hidden;

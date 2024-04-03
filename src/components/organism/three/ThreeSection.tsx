@@ -1,8 +1,12 @@
 import React from "react";
-import { ThreeLayout } from "./ThreeLayoutStyles";
+import {
+  RowLayout,
+  SphereLayout,
+  ThreeLayout,
+  VisionLayout,
+} from "./ThreeLayoutStyles";
 import CanvasCore from "@/components/molecule/canvasCore/CanvasCore";
 import SphereModel from "./sphereModel/SphereModel";
-import { SphereLayout } from "@/components/molecule/canvasCore/CanvasCoreStyles";
 
 const ThreeSection = () => {
   return (
@@ -12,6 +16,18 @@ const ThreeSection = () => {
           <SphereModel />
         </CanvasCore>
       </SphereLayout>
+      <RowLayout>
+        <VisionLayout>
+          {/* <CanvasCore>
+            <SphereModel />
+          </CanvasCore> */}
+        </VisionLayout>
+        <VisionLayout>
+          {/* <CanvasCore>
+            <SphereModel />
+          </CanvasCore> */}
+        </VisionLayout>
+      </RowLayout>
     </ThreeLayout>
   );
 };

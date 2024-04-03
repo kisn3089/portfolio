@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
-import TransPages from "./components/transPages/TransPages";
-import Header from "./components/header/Header";
+import TransPages from "./pages/TransPages";
+import Header from "./components/organism/header/Header";
 import { useMain } from "./hooks/useMain";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 

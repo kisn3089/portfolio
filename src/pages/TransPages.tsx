@@ -1,4 +1,4 @@
-import * as Page from "../../pages/index";
+import * as Page from "./index";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 

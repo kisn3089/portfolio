@@ -17,6 +17,7 @@ export const ChildButtonContainer = styled.div<{ $disabled: boolean }>`
   border-radius: 8px;
   letter-spacing: 1px;
   white-space: nowrap;
+  user-select: none;
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
   padding: 16px 60px;
   background-color: ${({ theme, $disabled }) =>

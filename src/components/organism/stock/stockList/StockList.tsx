@@ -10,6 +10,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import * as Svg from "../../../atoms/icon/index";
+import { FETCHSTOCKLIST } from "@/lib/util/constanse";
 
 interface IStockList {
   plusClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -18,7 +19,7 @@ interface IStockList {
 const StockList = ({ plusClick }: IStockList) => {
   // 상세 정보에 보여줄 데이터 픽스시 any 해결하기
   const { data: getStockList, isFetching } = useQuery<any[], AxiosError>({
-    queryKey: ["stockList"],
+    queryKey: [FETCHSTOCKLIST],
     enabled: false,
   });
   // console.log("getStockList: ", getStockList, isFetching);
@@ -40,8 +41,10 @@ const StockList = ({ plusClick }: IStockList) => {
         ))}
       </SlideRight>
       <BottomLayout>
-        <PagenationButton>PREV</PagenationButton>
-        <PagenationButton onClick={plusClick}>NEXT</PagenationButton>
+        <PagenationButton disabled>PREV</PagenationButton>
+        <PagenationButton disabled onClick={plusClick}>
+          NEXT
+        </PagenationButton>
       </BottomLayout>
     </StockListContainer>
   );

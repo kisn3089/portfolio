@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { SearchContainer, StockHeaderStyle } from "./StockHeaderStyles";
 import Input from "@/components/atoms/input/Input";
 import * as Svg from "../../../atoms/icon/index";
-import useSearch from "@/hooks/useSearch";
 
 interface IStockHeader {
   searchValue: string;
@@ -20,6 +19,7 @@ const StockHeader = (props: IStockHeader) => {
         <Input
           type="text"
           value={searchValue}
+          placeholder="주식을 검색해 보세요."
           onChange={changeSearch}
           onKeyDown={searchEnter}
           autoFocus

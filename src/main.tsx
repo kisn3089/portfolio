@@ -6,8 +6,8 @@ import { theme } from "./styles/theme.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
-    <GlobalStyle />
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <App />
     </ThemeProvider>
   </>

@@ -17,4 +17,10 @@ export const StyleInput = styled.input<{ $width?: string; $height?: string }>`
   &:focus {
     border: ${({ theme }) => `1px solid ${theme.palette.blue100}`};
   }
+
+  &::placeholder {
+    font-size: ${({ theme }) => theme.fontSize.extraMini};
+    font-family: ${({ theme }) => theme.fontFamily.ko};
+    padding: 0 6px;
+  }
 `;

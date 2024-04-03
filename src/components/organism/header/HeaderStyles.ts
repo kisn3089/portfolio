@@ -20,4 +20,5 @@ export const Logo = styled.h1`
   color: ${({ theme }) => theme.palette.white};
   letter-spacing: 1.2px;
   cursor: pointer;
+  user-select: none;
 `;

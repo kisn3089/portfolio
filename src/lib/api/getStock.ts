@@ -1,7 +1,7 @@
 import { axiosRequest } from "../util/coreAxios";
 
 export const getStock = async (search: string, pageNo?: number) => {
-  console.log("axios: ", search);
+  // console.log("axios: ", search);
 
   // const year = new Date().getFullYear();
   // const month = new Date().getMonth() + 1;
@@ -16,7 +16,7 @@ export const getStock = async (search: string, pageNo?: number) => {
       // beginBasDt: new Date(year, month, date - 7),
     },
   });
-  console.log("response: ", response);
+  // console.log("response: ", response);
 
   return response.data.response.body.items.item;
 };

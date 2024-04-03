@@ -31,6 +31,7 @@ export const Content = styled.div<{ $isActive: boolean }>`
   color: ${({ theme }) => theme.palette.white};
   span {
     transition: ${({ theme }) => `0.3s ${theme.ts.smooth}`};
+    user-select: none;
   }
 
   /* active일때 position 첫번째 요소 static, 두번째 요소 absolute로 변경 (transform도 같이) */

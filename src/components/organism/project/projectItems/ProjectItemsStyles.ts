@@ -54,6 +54,7 @@ export const ItemsContainer = styled.article`
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     ${ItemsImg} {

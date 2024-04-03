@@ -90,6 +90,12 @@ export const PagenationButton = styled.button`
   letter-spacing: 1px;
   font-size: ${({ theme }) => theme.fontSize.extraMini};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.palette.disabledBackground};
+    color: ${({ theme }) => theme.palette.disabledColor};
+    cursor: not-allowed;
+  }
 `;
 
 export const SlideRight = styled.div<{ $isLoading: boolean }>`

@@ -6,6 +6,7 @@ export type FontSizeTypes = typeof fontSize;
 export type FontFamilyTypes = typeof fontFamily;
 export type FontWeightTypes = typeof fontWeight;
 export type TransitionTypes = typeof ts;
+export type DeviceSizeTypes = typeof deviceSize;
 export type AnimationTypes = {
   fadeIn: (props: BaseAniType) => RuleSet<object>;
 };
@@ -17,6 +18,12 @@ const fontSize = {
   medium: "20px",
   large: "30px",
   extra: "36px",
+};
+
+const deviceSize = {
+  desktop: "1200px",
+  tablet: "768px",
+  mobile: "576px",
 };
 
 const palette = {
@@ -87,4 +94,5 @@ export const theme: DefaultTheme = {
   fontWeight,
   ts,
   animation,
+  deviceSize,
 };

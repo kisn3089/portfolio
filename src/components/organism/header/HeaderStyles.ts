@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
@@ -8,6 +9,10 @@ export const HeaderContainer = styled.header`
   align-items: center;
   padding: 0 60px;
   z-index: 11;
+
+  @media screen and (max-width: ${theme.deviceSize.tablet}) {
+    padding: 0 40px;
+  }
 `;
 
 export const DivideHeader = styled.div`

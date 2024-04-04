@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const ArrowRight = styled.div`
   position: absolute;
   top: 50%;
-  left: 100%;
+  left: 101%;
   display: flex;
   flex-direction: column;
   align-items: center;

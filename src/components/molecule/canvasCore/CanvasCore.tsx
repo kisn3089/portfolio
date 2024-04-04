@@ -1,6 +1,6 @@
 import React from "react";
 import { CanvasCoreContainer } from "./CanvasCoreStyles";
-import { Canvas, Props } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload } from "@react-three/drei";
 import { theme } from "@/styles/theme";
 
@@ -8,9 +8,6 @@ interface CanvasCoreProps {
   children: React.ReactNode;
   orbitProps?: { [index: string]: number | boolean };
   bgColor?: string;
-  // orbitProps: React.ForwardRefExoticComponent<
-  //   Props & React.RefAttributes<HTMLCanvasElement>
-  // >;
 }
 
 const CanvasCore = ({

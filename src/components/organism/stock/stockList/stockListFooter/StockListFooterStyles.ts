@@ -21,7 +21,6 @@ export const PagingButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   border: none;
   letter-spacing: 1px;
   font-size: ${({ theme }) => theme.fontSize.extraMini};

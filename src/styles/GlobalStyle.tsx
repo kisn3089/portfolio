@@ -57,6 +57,11 @@ export const GlobalStyle = createGlobalStyle`
         vertical-align: bottom;
         overflow-x: hidden;
 
+        button {
+          border: none;
+          cursor: pointer;
+        }
+
         a {
           text-decoration: none;
         }

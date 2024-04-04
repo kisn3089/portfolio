@@ -14,14 +14,19 @@ const ModelCore = ({
   source,
   sacle,
   hasAnimation = false,
-  currentAction = 4,
+  currentAction,
 }: ModelProps) => {
   const modelRef = useRef<Group>(null);
   const model = useGLTF(`/model/${source}/scene.gltf`);
   const { actions, names } = useAnimations(model.animations, modelRef);
 
   useEffect(() => {
-    if (hasAnimation) actions[names[currentAction]]?.reset().fadeIn(0.5).play();
+    if (hasAnimation && currentAction) {
+      actions[names[currentAction]]?.reset().fadeIn(0.5).play();
+      return () => {
+        actions[names[currentAction]]?.fadeOut(0.5);
+      };
+    }
   }, [currentAction]);
 
   useFrame(() => {

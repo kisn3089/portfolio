@@ -38,7 +38,7 @@ const actionTypes = [
 ];
 
 const ThreeSection = () => {
-  const [currentAction, setCurrentAction] = useState(0);
+  const [currentAction, setCurrentAction] = useState(4);
 
   const changeAction = (e: React.MouseEvent<HTMLButtonElement>) =>
     setCurrentAction(+e.currentTarget.id);
@@ -62,7 +62,7 @@ const ThreeSection = () => {
           </ChangeActionLayout>
         </Suspense>
       </SphereLayout>
-      {/* <ColLayout>
+      <ColLayout>
         <AppleLayout>
           <CanvasCore orbitProps={appleProps}>
             <ModelCore source="vision" sacle={18} />
@@ -73,7 +73,7 @@ const ThreeSection = () => {
             <ModelCore source="watch" sacle={40} />
           </CanvasCore>
         </AppleLayout>
-      </ColLayout> */}
+      </ColLayout>
     </ThreeLayout>
   );
 };

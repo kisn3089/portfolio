@@ -6,18 +6,24 @@ import { theme } from "@/styles/theme";
 
 interface CanvasCoreProps {
   children: React.ReactNode;
-  // props: React.ForwardRefExoticComponent<
+  orbitProps?: { [index: string]: number | boolean };
+  bgColor?: string;
+  // orbitProps: React.ForwardRefExoticComponent<
   //   Props & React.RefAttributes<HTMLCanvasElement>
   // >;
 }
 
-const CanvasCore = ({ children }: CanvasCoreProps) => {
+const CanvasCore = ({
+  children,
+  orbitProps,
+  bgColor = theme.palette.black,
+}: CanvasCoreProps) => {
   return (
     <CanvasCoreContainer>
       <Canvas
         shadows
         camera={{ position: [0, 3, 7], fov: 75, far: 1000, near: 1 }}>
-        <color attach="background" args={[theme.palette.black]} />
+        <color attach="background" args={[bgColor]} />
         <directionalLight
           castShadow
           intensity={6}
@@ -25,15 +31,9 @@ const CanvasCore = ({ children }: CanvasCoreProps) => {
           position={[0, 2, 0]}
         />
         {children}
-        <OrbitControls
-          maxDistance={10}
-          minDistance={4}
-          maxPolarAngle={Math.PI / 2.1}
-          minPolarAngle={Math.PI / 5}
-        />
+        <OrbitControls {...orbitProps} />
         <Preload all />
       </Canvas>
-      {/* <Canvas {...props}>{children}</Canvas> */}
     </CanvasCoreContainer>
   );
 };

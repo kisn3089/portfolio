@@ -6,6 +6,7 @@ import {
   FontWeightTypes,
   TransitionTypes,
   AnimationTypes,
+  DeviceSizeTypes,
 } from "./theme";
 
 declare module "styled-components" {
@@ -16,5 +17,6 @@ declare module "styled-components" {
     fontWeight: FontWeightTypes;
     ts: TransitionTypes;
     animation: AnimationTypes;
+    deviceSize: DeviceSizeTypes;
   }
 }

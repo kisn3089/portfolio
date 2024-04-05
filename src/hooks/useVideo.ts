@@ -108,13 +108,13 @@ export const useVideo = () => {
         player.autoplay(videoOptions.autoplay);
         player.src(videoOptions.sources);
       }
-      return () => {
-        if (playerRef.current) {
-          playerRef.current.dispose();
-          playerRef.current = null;
-        }
-      };
     }
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.dispose();
+        playerRef.current = null;
+      }
+    };
   }, [playerRef, videoInfo]);
 
   const getVideo = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -30,4 +30,8 @@ export const Logo = styled.h1`
   letter-spacing: 1.2px;
   cursor: pointer;
   user-select: none;
+
+  @media screen and (max-width: ${theme.deviceSize.tablet}) {
+    font-size: ${({ theme }) => theme.fontSize.large};
+  }
 `;

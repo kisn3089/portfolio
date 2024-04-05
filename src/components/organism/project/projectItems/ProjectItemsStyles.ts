@@ -9,11 +9,18 @@ export const ItemsImgContainer = styled.div`
   align-items: center;
   overflow: hidden;
   height: 400px;
-  min-height: 400px;
   background-color: ${({ theme }) => theme.palette.darkBlack};
 
   @media screen and (max-width: ${theme.deviceSize.desktop}) {
-    height: auto;
+    max-height: 620px;
+  }
+
+  @media screen and (max-width: ${theme.deviceSize.tablet}) {
+    max-height: 360px;
+  }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    max-height: 200px;
   }
 `;
 
@@ -23,6 +30,8 @@ export const ItemsImg = styled.img`
   transition: ${({ theme }) => `0.3s ${theme.ts.moreFast}`};
   object-fit: cover;
   will-change: transform;
+  /* border-radius: 12px;
+  border: ${({ theme }) => `1px solid ${theme.palette.gray}`}; */
 `;
 
 export const ItemsTag = styled.span`
@@ -30,6 +39,10 @@ export const ItemsTag = styled.span`
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   color: ${({ theme }) => theme.palette.gray200};
   transition: ${({ theme }) => `0.3s ${theme.ts.moreFast}`};
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    font-size: ${({ theme }) => theme.fontSize.small};
+  }
 `;
 
 export const ItemsTitle = styled.span`
@@ -55,6 +68,14 @@ export const ItemsTitle = styled.span`
   @media screen and (max-width: ${theme.deviceSize.tablet}) {
     font-size: ${({ theme }) => theme.fontSize.large};
   }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    font-size: ${({ theme }) => theme.fontSize.medium};
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
 `;
 
 export const ItemsContainer = styled.article`
@@ -79,7 +100,7 @@ export const ItemsContainer = styled.article`
     }
 
     ${ItemsTitle} {
-      padding-left: 40px;
+      padding-left: 6%;
       svg {
         left: 2.2%;
       }

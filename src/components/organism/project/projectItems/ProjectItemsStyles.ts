@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const ItemsImgContainer = styled.div`
@@ -8,6 +9,12 @@ export const ItemsImgContainer = styled.div`
   align-items: center;
   overflow: hidden;
   height: 400px;
+  min-height: 400px;
+  background-color: ${({ theme }) => theme.palette.darkBlack};
+
+  @media screen and (max-width: ${theme.deviceSize.desktop}) {
+    height: auto;
+  }
 `;
 
 export const ItemsImg = styled.img`
@@ -44,6 +51,10 @@ export const ItemsTitle = styled.span`
     fill: ${({ theme }) => theme.palette.gray200};
     stroke: ${({ theme }) => theme.palette.gray200};
   }
+
+  @media screen and (max-width: ${theme.deviceSize.tablet}) {
+    font-size: ${({ theme }) => theme.fontSize.large};
+  }
 `;
 
 export const ItemsContainer = styled.article`
@@ -55,6 +66,11 @@ export const ItemsContainer = styled.article`
   justify-content: space-between;
   cursor: pointer;
   user-select: none;
+
+  @media screen and (max-width: ${theme.deviceSize.desktop}) {
+    height: auto;
+    gap: 8px;
+  }
 
   &:hover {
     ${ItemsImg} {

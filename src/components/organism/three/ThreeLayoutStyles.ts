@@ -58,3 +58,15 @@ export const AppleLayout = styled.div`
     padding: 0;
   }
 `;
+
+export const ModelLoadContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+
+  span {
+    font-size: 36px;
+  }
+`;

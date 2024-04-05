@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const UploadBackground = styled.section`
@@ -13,5 +14,10 @@ export const UploadBackground = styled.section`
 export const GroupRow = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 0 30px;
+  gap: 30px;
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `;

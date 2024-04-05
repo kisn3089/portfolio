@@ -1,4 +1,3 @@
-import React from "react";
 import HasReady from "../HasReady";
 import { ReadyInfo } from "../HasReadyStyles";
 import * as Svg from "../../../atoms/icon/index";

@@ -1,4 +1,4 @@
-import React, { RefObject } from "react";
+import { RefObject } from "react";
 import { Loader, LoaderContainer, LoaderSpace } from "./LoaderByTextStyles";
 
 interface ILoaderByText {

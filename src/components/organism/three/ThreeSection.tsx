@@ -1,14 +1,13 @@
-import React, { Suspense, useState } from "react";
+import React, { useState } from "react";
 import {
   ColLayout,
   SphereLayout,
   ThreeLayout,
   AppleLayout,
-  ChangeActionLayout,
-  ActionButtonItems,
 } from "./ThreeLayoutStyles";
 import CanvasCore from "@/components/molecule/canvasCore/CanvasCore";
 import ModelCore from "./modelCore/ModelCore";
+import ActionButton from "./actionButton/ActionButton";
 
 const sphereProps = {
   maxDistance: 10,
@@ -45,24 +44,20 @@ const ThreeSection = () => {
   return (
     <ThreeLayout>
       <SphereLayout>
-        <Suspense fallback={<h1>Loading...</h1>}>
-          <CanvasCore orbitProps={sphereProps}>
-            <ModelCore
-              source="sphere"
-              currentAction={currentAction}
-              hasAnimation
-            />
-          </CanvasCore>
-          <ChangeActionLayout>
-            {actionTypes.map((actionItem, i) => (
-              <ActionButtonItems key={i} id={String(i)} onClick={changeAction}>
-                {actionItem}
-              </ActionButtonItems>
-            ))}
-          </ChangeActionLayout>
-        </Suspense>
+        <CanvasCore orbitProps={sphereProps}>
+          <ModelCore
+            source="sphere"
+            currentAction={currentAction}
+            hasAnimation
+          />
+        </CanvasCore>
+        <ActionButton
+          actionTypes={actionTypes}
+          currentAction={currentAction}
+          changeAction={changeAction}
+        />
       </SphereLayout>
-      <ColLayout>
+      {/* <ColLayout>
         <AppleLayout>
           <CanvasCore orbitProps={appleProps}>
             <ModelCore source="vision" sacle={18} />
@@ -73,7 +68,7 @@ const ThreeSection = () => {
             <ModelCore source="watch" sacle={40} />
           </CanvasCore>
         </AppleLayout>
-      </ColLayout>
+      </ColLayout> */}
     </ThreeLayout>
   );
 };

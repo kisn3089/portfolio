@@ -60,6 +60,8 @@ export const GlobalStyle = createGlobalStyle`
         button {
           border: none;
           cursor: pointer;
+          text-transform: uppercase;
+          user-select: none;
 
           &:disabled {
             cursor: not-allowed;

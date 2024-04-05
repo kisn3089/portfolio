@@ -4,10 +4,13 @@ import {
   SphereLayout,
   ThreeLayout,
   AppleLayout,
+  AppleColorWrapper,
 } from "./ThreeLayoutStyles";
 import CanvasCore from "@/components/molecule/canvasCore/CanvasCore";
 import ModelCore from "./modelCore/ModelCore";
 import ActionButton from "./actionButton/ActionButton";
+import { theme } from "@/styles/theme";
+import { SPHERE, VISION, WATCH } from "@/lib/util/constanse";
 
 const sphereProps = {
   maxDistance: 10,
@@ -36,11 +39,33 @@ const actionTypes = [
   "Jump",
 ];
 
+export const colorTypes: Record<string, string> = {
+  [theme.palette.black]: theme.palette.white,
+  [theme.palette.white]: theme.palette.black,
+};
+
 const ThreeSection = () => {
   const [currentAction, setCurrentAction] = useState(4);
   const [isLoaded, setLoaded] = useState(false);
+  const [canvasColor, setCanvasColor] = useState({
+    vision: theme.palette.white,
+    watch: theme.palette.white,
+  });
 
   const loadedCallback = () => setLoaded(true);
+  const changeColor = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const { id: type } = e.currentTarget;
+
+    const currentColor: Record<string, string> = {
+      vision: canvasColor.vision,
+      watch: canvasColor.watch,
+    };
+
+    setCanvasColor((prev) => ({
+      ...prev,
+      [type]: colorTypes[currentColor[type]],
+    }));
+  };
 
   const changeAction = (e: React.MouseEvent<HTMLButtonElement>) =>
     setCurrentAction(+e.currentTarget.id);
@@ -49,7 +74,7 @@ const ThreeSection = () => {
       <SphereLayout>
         <CanvasCore orbitProps={sphereProps} loadedCallback={loadedCallback}>
           <ModelCore
-            source="sphere"
+            source={SPHERE}
             currentAction={currentAction}
             hasAnimation
           />
@@ -62,18 +87,30 @@ const ThreeSection = () => {
           />
         )}
       </SphereLayout>
-      {/* <ColLayout>
+      <ColLayout>
         <AppleLayout>
-          <CanvasCore orbitProps={appleProps}>
-            <ModelCore source="vision" sacle={18} />
+          <CanvasCore orbitProps={appleProps} bgColor={canvasColor.vision}>
+            <ModelCore source={VISION} sacle={18} />
           </CanvasCore>
+          <AppleColorWrapper
+            id={VISION}
+            $canvasColor={canvasColor.vision}
+            onClick={changeColor}>
+            Color
+          </AppleColorWrapper>
         </AppleLayout>
         <AppleLayout>
-          <CanvasCore orbitProps={appleProps}>
-            <ModelCore source="watch" sacle={40} />
+          <CanvasCore orbitProps={appleProps} bgColor={canvasColor.watch}>
+            <ModelCore source={WATCH} sacle={40} />
           </CanvasCore>
+          <AppleColorWrapper
+            id={WATCH}
+            $canvasColor={canvasColor.watch}
+            onClick={changeColor}>
+            Color
+          </AppleColorWrapper>
         </AppleLayout>
-      </ColLayout> */}
+      </ColLayout>
     </ThreeLayout>
   );
 };

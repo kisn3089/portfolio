@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { CanvasCoreContainer } from "./CanvasCoreStyles";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload } from "@react-three/drei";
+import { Html, OrbitControls, Preload, useProgress } from "@react-three/drei";
 import { theme } from "@/styles/theme";
 
 interface CanvasCoreProps {
@@ -9,6 +9,16 @@ interface CanvasCoreProps {
   orbitProps?: { [index: string]: number | boolean };
   bgColor?: string;
 }
+
+const Loading = () => {
+  const { progress, active } = useProgress();
+
+  return (
+    <Html>
+      <h1>Loading...{progress.toFixed(0)}</h1>
+    </Html>
+  );
+};
 
 const CanvasCore = ({
   children,
@@ -27,7 +37,7 @@ const CanvasCore = ({
           color="#fff"
           position={[0, 2, 0]}
         />
-        {children}
+        <Suspense fallback={<Loading />}>{children}</Suspense>
         <OrbitControls {...orbitProps} />
         <Preload all />
       </Canvas>

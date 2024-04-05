@@ -19,6 +19,12 @@ export const ChangeActionLayout = styled.div`
     grid-template-columns: repeat(4, 110px);
     height: 90px;
   }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    grid-template-columns: repeat(3, 95px);
+    height: 120px;
+    gap: 2%;
+  }
 `;
 
 export const ActionButtonItems = styled.button`
@@ -50,5 +56,9 @@ export const ActionButtonItems = styled.button`
 
   @media screen and (max-width: ${theme.deviceSize.desktop}) {
     padding: 0 10px;
+  }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    font-size: ${({ theme }) => theme.fontSize.mobileSmall};
   }
 `;

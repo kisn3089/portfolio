@@ -6,7 +6,7 @@ import {
   ItemsTitle,
 } from "./ProjectItemsStyles";
 import { Link } from "react-router-dom";
-import * as Svg from "../../../atoms/icon/index";
+import * as Svg from "@/components/atoms/icon/index";
 
 interface IProjectItems {
   title: string;

@@ -50,6 +50,7 @@ export const ColLayout = styled.div`
 `;
 
 export const AppleLayout = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 30px 0;
@@ -59,14 +60,32 @@ export const AppleLayout = styled.div`
   }
 `;
 
-export const ModelLoadContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
+export const ModelLoadContainer = styled.span<{ $bgColor: string }>`
+  font-size: 56px;
+  letter-spacing: 1.2px;
+  color: ${({ $bgColor }) => $bgColor};
+`;
 
-  span {
-    font-size: 36px;
+export const AppleColorWrapper = styled.button<{ $canvasColor: string }>`
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  padding: 10px 32px;
+  border-radius: 8px;
+  transform: translate3d(-50%, -50%, 0);
+  font-size: ${({ theme }) => theme.fontSize.extraMini};
+  font-weight: ${({ theme }) => theme.fontWeight.regular};
+  background-color: ${({ theme, $canvasColor }) =>
+    $canvasColor === theme.palette.black
+      ? theme.palette.white
+      : theme.palette.gray};
+  color: ${({ theme, $canvasColor }) =>
+    $canvasColor === theme.palette.black
+      ? theme.palette.black
+      : theme.palette.white};
+  transition: ${({ theme }) => `0.4s ${theme.ts.smooth}`};
+
+  @media screen and (max-width: ${theme.deviceSize.desktop}) {
+    bottom: -2%;
   }
 `;

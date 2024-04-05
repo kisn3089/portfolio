@@ -25,7 +25,7 @@ export const ActionButtonItems = styled.button`
   height: 40px;
   border-radius: 8px;
   padding: 0 20px;
-  font-size: ${({ theme }) => theme.fontSize.mini};
+  font-size: ${({ theme }) => theme.fontSize.extraMini};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   background-color: ${({ theme }) => theme.palette.white};
   color: ${({ theme }) => theme.palette.black};
@@ -45,5 +45,9 @@ export const ActionButtonItems = styled.button`
   &:disabled {
     background-color: ${({ theme }) => theme.palette.disabledBackground};
     color: ${({ theme }) => theme.palette.disabledColor};
+  }
+
+  @media screen and (max-width: ${theme.deviceSize.desktop}) {
+    padding: 0 10px;
   }
 `;

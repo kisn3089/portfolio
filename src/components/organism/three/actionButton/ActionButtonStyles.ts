@@ -39,6 +39,7 @@ export const ActionButtonItems = styled.button`
       beginTransform: "translate3d(0, 70%, 0)",
       endTransform: "translate3d(0, 0, 0)",
       opacity: 0,
+      delay: "1.2s",
       direction: "forwards",
     })}
 

@@ -1,6 +1,6 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Group } from "three";
 
 interface ModelProps {
@@ -18,6 +18,7 @@ const ModelCore = ({
 }: ModelProps) => {
   const modelRef = useRef<Group>(null);
   const model = useGLTF(`/model/${source}/scene.gltf`);
+
   const { actions, names } = useAnimations(model.animations, modelRef);
 
   useEffect(() => {

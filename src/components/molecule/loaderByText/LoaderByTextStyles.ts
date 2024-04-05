@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const LoaderContainer = styled.div`
@@ -47,7 +48,15 @@ export const Loader = styled.span`
       endAgrs: "background-position: 100% 50%",
       count: "infinite",
       direction: "alternate",
-    })}/* --- */
+    })} /* --- */
+
+    @media screen and (max-width: ${theme.deviceSize.tablet}) {
+    font-size: 40px;
+  }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    font-size: 30px;
+  }
 `;
 
 /* loading background layout */
@@ -59,4 +68,12 @@ export const LoaderSpace = styled.span`
   white-space: nowrap;
   font-weight: ${({ theme }) => theme.fontWeight.extra};
   font-family: ${({ theme }) => theme.fontFamily.loading};
+
+  @media screen and (max-width: ${theme.deviceSize.tablet}) {
+    font-size: 40px;
+  }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    font-size: 30px;
+  }
 `;

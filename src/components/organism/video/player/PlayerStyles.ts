@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const VideoContainer = styled.div`
@@ -9,15 +10,24 @@ export const VideoContainer = styled.div`
 `;
 
 export const VideoSize = styled.div`
-  width: 80%;
+  width: 90%;
   height: 50%;
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    width: 100%;
+  }
 `;
 
 export const Group = styled.div`
   margin-top: 40px;
   display: flex;
   flex-direction: row;
-  gap: 0 30px;
+  gap: 30px;
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 
 export const PlayerButton = styled.button`

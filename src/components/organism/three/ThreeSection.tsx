@@ -38,24 +38,29 @@ const actionTypes = [
 
 const ThreeSection = () => {
   const [currentAction, setCurrentAction] = useState(4);
+  const [isLoaded, setLoaded] = useState(false);
+
+  const loadedCallback = () => setLoaded(true);
 
   const changeAction = (e: React.MouseEvent<HTMLButtonElement>) =>
     setCurrentAction(+e.currentTarget.id);
   return (
     <ThreeLayout>
       <SphereLayout>
-        <CanvasCore orbitProps={sphereProps}>
+        <CanvasCore orbitProps={sphereProps} loadedCallback={loadedCallback}>
           <ModelCore
             source="sphere"
             currentAction={currentAction}
             hasAnimation
           />
         </CanvasCore>
-        <ActionButton
-          actionTypes={actionTypes}
-          currentAction={currentAction}
-          changeAction={changeAction}
-        />
+        {isLoaded && (
+          <ActionButton
+            actionTypes={actionTypes}
+            currentAction={currentAction}
+            changeAction={changeAction}
+          />
+        )}
       </SphereLayout>
       {/* <ColLayout>
         <AppleLayout>

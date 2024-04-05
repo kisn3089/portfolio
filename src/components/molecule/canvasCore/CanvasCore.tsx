@@ -3,19 +3,25 @@ import { CanvasCoreContainer } from "./CanvasCoreStyles";
 import { Canvas } from "@react-three/fiber";
 import { Html, OrbitControls, Preload, useProgress } from "@react-three/drei";
 import { theme } from "@/styles/theme";
+import { ModelLoadContainer } from "@/components/organism/three/ThreeLayoutStyles";
 
 interface CanvasCoreProps {
   children: React.ReactNode;
   orbitProps?: { [index: string]: number | boolean };
   bgColor?: string;
+  loadedCallback(): void;
 }
 
-const Loading = () => {
-  const { progress, active } = useProgress();
+const ModelLoading = ({ loadedCallback }: { loadedCallback: () => void }) => {
+  const { progress } = useProgress();
+  if (progress === 100) loadedCallback();
 
   return (
-    <Html>
-      <h1>Loading...{progress.toFixed(0)}</h1>
+    <Html center>
+      <ModelLoadContainer>
+        <span>{`${progress.toFixed(0)}%`}</span>
+        <span>Loading...</span>
+      </ModelLoadContainer>
     </Html>
   );
 };
@@ -24,6 +30,7 @@ const CanvasCore = ({
   children,
   orbitProps,
   bgColor = theme.palette.black,
+  loadedCallback,
 }: CanvasCoreProps) => {
   return (
     <CanvasCoreContainer>
@@ -37,7 +44,9 @@ const CanvasCore = ({
           color="#fff"
           position={[0, 2, 0]}
         />
-        <Suspense fallback={<Loading />}>{children}</Suspense>
+        <Suspense fallback={<ModelLoading loadedCallback={loadedCallback} />}>
+          {children}
+        </Suspense>
         <OrbitControls {...orbitProps} />
         <Preload all />
       </Canvas>

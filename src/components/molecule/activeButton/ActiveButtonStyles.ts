@@ -66,7 +66,7 @@ export const ActiveButtonContainer = styled.button<{
   width: ${({ $width }) => $width || "160px"};
   background-color: ${({ theme, $isActive }) =>
     $isActive ? theme.palette.white : theme.palette.gray};
-  padding-right: ${({ $isActive }) => ($isActive ? "30px" : "0px")};
+  padding: ${({ $isActive }) => ($isActive ? "0 30px 0 0" : "0")};
 
   ${({ $isActive }) => {
     if ($isActive) {

@@ -12,6 +12,7 @@ export type AnimationTypes = {
 };
 
 const fontSize = {
+  mobileSmall: "12px",
   extraMini: "14px",
   mini: "16px",
   small: "18px",

@@ -7,6 +7,6 @@ export const SphereLayout = styled.div`
   height: 700px;
 
   @media screen and (max-width: ${theme.deviceSize.mobile}) {
-    height: 500px;
+    height: 550px;
   }
 `;

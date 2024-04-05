@@ -6,7 +6,7 @@ const projectList = [
     title: "WebGPU & Three.js",
     tag: "Canvas • Drei&Fiber • Animation",
     link: "/project/three",
-    img: "/assets/img/human.jpg",
+    img: "/assets/img/model.webp",
   },
   {
     title: "Video Convert & Player",

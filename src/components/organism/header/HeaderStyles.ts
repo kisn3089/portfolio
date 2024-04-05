@@ -13,6 +13,10 @@ export const HeaderContainer = styled.header`
   @media screen and (max-width: ${theme.deviceSize.tablet}) {
     padding: 0 40px;
   }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    padding: 0 20px;
+  }
 `;
 
 export const DivideHeader = styled.div`

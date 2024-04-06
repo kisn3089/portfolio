@@ -1,5 +1,7 @@
+import MainLayout from "@/components/organism/main/mainLayout/MainLayout";
+
 const MainPage = () => {
-  return <div style={{ height: "100vh" }}></div>;
+  return <MainLayout></MainLayout>;
 };
 
 export default MainPage;

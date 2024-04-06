@@ -49,6 +49,10 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Nunito";
     }
 
+    html {
+      overflow-x: hidden;
+    }
+
     body {
         padding: 0;
         margin: 0;

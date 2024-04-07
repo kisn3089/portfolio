@@ -7,7 +7,7 @@ const VideoPage = () => {
     videoInfo,
     videoRef,
     isAllMarker,
-    stepTransCode,
+    convertStep,
     progressRef,
     getVideo,
     sectionPlay,
@@ -16,7 +16,7 @@ const VideoPage = () => {
     <>
       {videoInfo.file === "" && (
         <Upload
-          stepTransCode={stepTransCode}
+          convertStep={convertStep}
           progressRef={progressRef}
           getVideo={getVideo}
         />

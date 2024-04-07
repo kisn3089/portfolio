@@ -11,37 +11,31 @@ export const GlobalStyle = createGlobalStyle`
       font-family: "Agbalumo";
       src: local("Agbalumo-Regular"), url(${Loading}), format("ttf");
       font-weight: 700;
-      font-display: swap;
     }
     @font-face {
       font-family: "Nunito";
       src: local("Nunito-SemiBold"), url(${enSemiBold}), format("ttf");
       font-weight: 700;
-      font-display: swap;
     }
     @font-face {
       font-family: "Nunito";
       src: local("Nunito-Regular"), url(${enRegular}), format("ttf");
       font-weight: 400;
-      font-display: swap;
     }
     @font-face {
       font-family: "Nunito";
       src: local("Nunito-Bold"), url(${enBold}), format("ttf");
       font-weight: 900;
-      font-display: swap;
     }
     @font-face {
       font-family: "NanumSquareRound";
       src: local("NanumSquareRound-Regular"), url(${koRegular}), format("ttf");
       font-weight: 400;
-      font-display: swap;
     }
     @font-face {
       font-family: "NanumSquareRound";
       src: local("NanumSquareRound-Bold"), url(${koBold}), format("ttf");
       font-weight: 700;
-      font-display: swap;
     }
 
     * {

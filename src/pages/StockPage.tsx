@@ -4,8 +4,14 @@ import { StockSection } from "@/components/organism/stock/stockHeader/StockHeade
 import useSearch from "@/hooks/useSearch";
 
 const StockPage = () => {
-  const { searchValue, changeSearch, searchEnter, closeClick, plusClick } =
-    useSearch();
+  const {
+    searchValue,
+    pagenation,
+    changeSearch,
+    searchEnter,
+    closeClick,
+    plusClick,
+  } = useSearch();
   return (
     <StockSection>
       <StockHeader
@@ -14,7 +20,7 @@ const StockPage = () => {
         searchEnter={searchEnter}
         closeClick={closeClick}
       />
-      <StockBody plusClick={plusClick} />
+      <StockBody pagenation={pagenation} plusClick={plusClick} />
     </StockSection>
   );
 };

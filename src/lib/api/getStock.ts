@@ -1,3 +1,4 @@
+import { STOCKLIST_BASE_URL } from "../util/constanse";
 import { axiosRequest } from "../util/coreAxios";
 
 export const getStock = async (search: string, pageNo?: number) => {
@@ -6,7 +7,7 @@ export const getStock = async (search: string, pageNo?: number) => {
   // const year = new Date().getFullYear();
   // const month = new Date().getMonth() + 1;
   // const date = new Date().getDate();
-  const response = await axiosRequest.get("", {
+  const response = await axiosRequest.get(STOCKLIST_BASE_URL, {
     params: {
       serviceKey: import.meta.env.VITE_SERVICE_KEY,
       numOfRows: 10,

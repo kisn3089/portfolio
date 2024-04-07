@@ -8,10 +8,8 @@ interface StockListFooterProps {
 const StockListFooter = ({ plusClick }: StockListFooterProps) => {
   return (
     <FooterLayout>
-      <PagingButton disabled>PREV</PagingButton>
-      <PagingButton disabled onClick={plusClick}>
-        NEXT
-      </PagingButton>
+      <PagingButton>PREV</PagingButton>
+      <PagingButton onClick={plusClick}>NEXT</PagingButton>
     </FooterLayout>
   );
 };

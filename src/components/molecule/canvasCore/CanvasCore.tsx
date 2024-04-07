@@ -7,28 +7,43 @@ import ModelLoading from "@/components/organism/three/modelLoading/ModelLoading"
 
 interface CanvasCoreProps {
   children: React.ReactNode;
+  noLoading?: boolean;
+  cameraPosition?: number[];
   orbitProps?: { [index: string]: number | boolean };
   bgColor?: string;
+  hasRadius?: boolean;
   loadedCallback?: () => void;
 }
 
 const CanvasCore = ({
   children,
   orbitProps,
+  noLoading,
+  cameraPosition = [0, 3, 7],
   bgColor = theme.palette.black,
+  hasRadius,
   loadedCallback,
 }: CanvasCoreProps) => {
+  const [cameraX, cameraY, cameraZ] = cameraPosition;
+
   return (
-    <CanvasCoreContainer>
+    <CanvasCoreContainer $hasRadius={hasRadius}>
       <Canvas
         shadows
-        camera={{ position: [0, 3, 7], fov: 75, far: 1000, near: 1 }}>
+        camera={{
+          position: [cameraX, cameraY, cameraZ],
+          fov: 75,
+          far: 1000,
+          near: 1,
+        }}>
         <color attach="background" args={[bgColor]} />
         <DirectionLight />
         <PointLight />
         <Suspense
           fallback={
-            <ModelLoading bgColor={bgColor} loadedCallback={loadedCallback} />
+            !noLoading && (
+              <ModelLoading bgColor={bgColor} loadedCallback={loadedCallback} />
+            )
           }>
           {children}
         </Suspense>

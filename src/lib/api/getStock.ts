@@ -1,12 +1,8 @@
+import { adjustDate } from "../util/adjustDate";
 import { STOCKLIST_BASE_URL } from "../util/constanse";
 import { axiosRequest } from "../util/coreAxios";
 
 export const getStock = async (search: string, pageNo?: number) => {
-  // console.log("axios: ", search);
-
-  // const year = new Date().getFullYear();
-  // const month = new Date().getMonth() + 1;
-  // const date = new Date().getDate();
   const response = await axiosRequest.get(STOCKLIST_BASE_URL, {
     params: {
       serviceKey: import.meta.env.VITE_SERVICE_KEY,
@@ -14,7 +10,7 @@ export const getStock = async (search: string, pageNo?: number) => {
       pageNo: pageNo || 1,
       resultType: "json",
       likeItmsNm: search,
-      // beginBasDt: new Date(year, month, date - 7),
+      basDt: adjustDate(),
     },
   });
   // console.log("response: ", response);

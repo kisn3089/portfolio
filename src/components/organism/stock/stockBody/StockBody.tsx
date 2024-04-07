@@ -6,12 +6,14 @@ import StockChart from "../stockChart/StockChart";
 
 interface StockBodyProps extends StockListProps {}
 
-const StockBody = ({ pagenation, plusClick }: StockBodyProps) => {
+const StockBody = ({ pagenation, footerClick }: StockBodyProps) => {
+  console.log(pagenation);
+
   return (
     <StockBodyContainer>
       <StockChart />
       <StockDetail />
-      <StockList pagenation={pagenation} plusClick={plusClick} />
+      <StockList pagenation={pagenation} footerClick={footerClick} />
     </StockBodyContainer>
   );
 };

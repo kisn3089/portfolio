@@ -4,12 +4,12 @@ import ChildButton from "../../molecule/childButton/ChildButton";
 
 const LabelInput = ({
   content,
-  isWait = false,
+  disabled = false,
   downUrl,
   getVideo,
 }: {
   content: string;
-  isWait?: boolean;
+  disabled?: boolean;
   downUrl?: string;
   getVideo?: (e: ChangeEvent<HTMLInputElement>) => void;
 }) => {
@@ -19,11 +19,11 @@ const LabelInput = ({
         id="file"
         type="file"
         onChange={getVideo}
-        disabled={isWait}
+        disabled={disabled}
       />
       <a href={downUrl || ""} download>
         <label htmlFor={downUrl ? "" : "file"}>
-          <ChildButton content={content} isDisabled={isWait} />
+          <ChildButton content={content} isDisabled={disabled} />
         </label>
       </a>
     </>

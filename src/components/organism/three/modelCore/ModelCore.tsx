@@ -30,7 +30,7 @@ const ModelCore = ({
     }
   }, [currentAction]);
 
-  useFrame(() => {
+  useFrame((state, delta) => {
     if (!hasAnimation && modelRef.current) modelRef.current.rotation.y += 0.003;
   });
 

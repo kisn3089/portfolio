@@ -34,6 +34,7 @@ const palette = {
   gray: "#292929",
   gray100: "#ddd",
   gray200: "#A6A6A6",
+  gray300: "#696969",
   disabledBackground: "#c8bfb6",
   disabledColor: "#ece5d9",
   blue: "#2686d3",

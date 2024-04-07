@@ -12,7 +12,10 @@ const SphereModel = () => {
 
   return (
     <SphereLayout>
-      <CanvasCore orbitProps={sphereProps} loadedCallback={loadedCallback}>
+      <CanvasCore
+        orbitProps={sphereProps}
+        loadedCallback={loadedCallback}
+        hasRadius>
         <ModelCore source={SPHERE} currentAction={currentAction} hasAnimation />
       </CanvasCore>
       {isLoaded && (

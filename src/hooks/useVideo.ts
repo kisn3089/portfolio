@@ -17,6 +17,7 @@ import Marker from "../assets/icons/marker.svg";
 import RemoveAllMarker from "../assets/icons/removeMarker.svg";
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 import { ConverStepType } from "@/types/convertStep.type";
+import { checkMobile } from "@/lib/util/checkMobile";
 
 export const useVideo = () => {
   const [videoInfo, setVideoInfo] = useState({ file: "", type: "" });
@@ -70,6 +71,12 @@ export const useVideo = () => {
   };
 
   useEffect(() => {
+    if (checkMobile) {
+      setConvertStep({
+        step: "mobile",
+        msg: "모바일에서는 지원하지 않는 기능입니다. \n PC로 시도해주세요.",
+      });
+    }
     if (videoInfo.file) {
       const videoElement = document.createElement("video-js");
 
@@ -158,7 +165,6 @@ export const useVideo = () => {
       setVideoInfo({ file: url, type: "video/mp4" });
     } catch (err) {
       if (err instanceof Error) {
-        console.log(err);
         setConvertStep({ step: "error", msg: err.message });
       }
     }

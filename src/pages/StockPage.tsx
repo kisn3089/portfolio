@@ -10,7 +10,7 @@ const StockPage = () => {
     changeSearch,
     searchEnter,
     closeClick,
-    plusClick,
+    footerClick,
   } = useSearch();
   return (
     <StockSection>
@@ -20,7 +20,7 @@ const StockPage = () => {
         searchEnter={searchEnter}
         closeClick={closeClick}
       />
-      <StockBody pagenation={pagenation} plusClick={plusClick} />
+      <StockBody pagenation={pagenation} footerClick={footerClick} />
     </StockSection>
   );
 };

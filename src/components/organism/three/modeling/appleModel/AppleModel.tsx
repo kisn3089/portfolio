@@ -11,7 +11,10 @@ const AppleModel = () => {
   return (
     <ColLayout>
       <AppleLayout>
-        <CanvasCore orbitProps={appleProps} bgColor={canvasColor.vision}>
+        <CanvasCore
+          orbitProps={appleProps}
+          bgColor={canvasColor.vision}
+          hasRadius>
           <Float floatIntensity={3} speed={2}>
             <ModelCore source={VISION} sacle={18} />
           </Float>
@@ -24,7 +27,10 @@ const AppleModel = () => {
         </AppleColorWrapper>
       </AppleLayout>
       <AppleLayout>
-        <CanvasCore orbitProps={appleProps} bgColor={canvasColor.watch}>
+        <CanvasCore
+          orbitProps={appleProps}
+          bgColor={canvasColor.watch}
+          hasRadius>
           <Float floatIntensity={3} speed={2}>
             <ModelCore source={WATCH} sacle={40} />
           </Float>

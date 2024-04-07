@@ -8,14 +8,18 @@ const adjusting: Record<number, number> = {
   6: 2,
 };
 
-export const adjustDate = () => {
+export const adjustDate = (isUnder?: boolean) => {
   const isHoliday = new Date().getDay();
+  const checkIsUnder = isUnder
+    ? adjusting[isHoliday] + 1
+    : adjusting[isHoliday];
 
   const adjustedDate = new Date(
     new Date().getFullYear(),
     new Date().getMonth(),
-    new Date().getDate() - adjusting[isHoliday]
+    new Date().getDate() - checkIsUnder
   );
+
   const [yy, mm, dd] = [
     adjustedDate.getFullYear(),
     adjustedDate.getMonth() + 1,
@@ -24,5 +28,6 @@ export const adjustDate = () => {
 
   const addZero = (num: number) => (String(num).length !== 2 ? `0${num}` : num);
   const basDt = `${yy}${addZero(mm)}${addZero(dd)}`;
+
   return basDt;
 };

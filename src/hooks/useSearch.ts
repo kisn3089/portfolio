@@ -4,7 +4,10 @@ import { useGetStock } from "./useGetStock";
 const useSearch = () => {
   const [searchValue, setSearchValue] = useState("");
   const [pagenation, setPagenation] = useState(1);
-  const { refetch } = useGetStock(searchValue, pagenation);
+  const { refetch: fetchList } = useGetStock({
+    search: searchValue,
+    pageNo: pagenation,
+  }).getList;
 
   const changeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -20,7 +23,7 @@ const useSearch = () => {
   const searchEnter = async (e: React.KeyboardEvent) => {
     if (!searchValue || e.nativeEvent.isComposing) return;
     if (e.key === "Enter") {
-      if (pagenation === 1) await refetch();
+      if (pagenation === 1) await fetchList();
     }
   };
 
@@ -34,7 +37,7 @@ const useSearch = () => {
     changeSearch,
     searchEnter,
     closeClick,
-    footerClick: footerClick,
+    footerClick,
   };
 };
 

@@ -7,7 +7,7 @@ interface ShowErrorProps {
   errorContent: ConverStepType;
 }
 
-const ShowError = ({ children, errorContent }: ShowErrorProps) => {
+const ShowError = ({ errorContent }: ShowErrorProps) => {
   if (errorContent.step === "error")
     return (
       <ErrorLayout>

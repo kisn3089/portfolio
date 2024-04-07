@@ -5,6 +5,7 @@ import LabelInput from "@/components/atoms/labelInput/LabelInput";
 import { GroupRow, UploadBackground } from "./UploadStyles";
 import { ConverStepType } from "@/types/convertStep.type";
 import ShowError from "@/components/molecule/showError/ShowError";
+import CheckCondition from "@/lib/util/CheckCondition";
 
 interface TUpload {
   convertStep: ConverStepType;
@@ -18,13 +19,12 @@ const Upload = ({ convertStep, progressRef, getVideo }: TUpload) => {
   const loaderContent = "Loading To Convert MP4";
   return (
     <UploadBackground>
-      {wait ? (
+      <CheckCondition falseCondition={wait}>
         <LoaderByText progressRef={progressRef} content={loaderContent} />
-      ) : (
         <ShowError errorContent={convertStep}>
           <UploadInfo />
         </ShowError>
-      )}
+      </CheckCondition>
       <GroupRow>
         <LabelInput
           content="UPLOAD"

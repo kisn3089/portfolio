@@ -1,6 +1,7 @@
 import { Player } from "@/components/organism/video/player/Player";
 import Upload from "@/components/organism/video/upload/Upload";
 import { useVideo } from "@/hooks/useVideo";
+import CheckCondition from "@/lib/util/CheckCondition";
 
 const VideoPage = () => {
   const {
@@ -14,21 +15,19 @@ const VideoPage = () => {
   } = useVideo();
   return (
     <>
-      {videoInfo.file === "" && (
+      <CheckCondition falseCondition={videoInfo.file == ""}>
         <Upload
           convertStep={convertStep}
           progressRef={progressRef}
           getVideo={getVideo}
         />
-      )}
-      {videoInfo.file !== "" && (
         <Player
           url={videoInfo.file}
           videoRef={videoRef}
           isAllMarker={isAllMarker}
           sectionPlay={sectionPlay}
         />
-      )}
+      </CheckCondition>
     </>
   );
 };

@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const StyleInput = styled.input<{ $width?: string; $height?: string }>`
   width: ${({ $width }) => $width || "220px"};
   height: ${({ $height }) => $height || "50px"};
-  border: 1px solid #292929;
-  border-radius: 12px;
+  border: ${({ theme }) => ` 1px solid ${theme.palette.gray}`};
+  border-radius: 8px;
   background-color: transparent;
   color: ${({ theme }) => theme.palette.gray100};
   outline: none;

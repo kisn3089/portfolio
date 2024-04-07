@@ -14,21 +14,29 @@ interface TUpload {
 
 const Upload = ({ convertStep, progressRef, getVideo }: TUpload) => {
   const wait = convertStep.step === "wait";
+  const isMobile = convertStep.step === "mobile";
   const loaderContent = "Loading To Convert MP4";
   return (
     <UploadBackground>
       {wait ? (
         <LoaderByText progressRef={progressRef} content={loaderContent} />
       ) : (
-        <UploadInfo />
+        <ShowError errorContent={convertStep}>
+          <UploadInfo />
+        </ShowError>
       )}
-      <ShowError errorContent={convertStep}></ShowError>
       <GroupRow>
-        <LabelInput content="UPLOAD" isWait={wait} getVideo={getVideo} />
         <LabelInput
-          content="SAMPLE VIDEO"
-          downUrl={"/assets/video/sample.mov"}
+          content="UPLOAD"
+          disabled={wait || isMobile}
+          getVideo={getVideo}
         />
+        {!isMobile && (
+          <LabelInput
+            content="SAMPLE VIDEO"
+            downUrl={"/assets/video/sample.mov"}
+          />
+        )}
       </GroupRow>
     </UploadBackground>
   );

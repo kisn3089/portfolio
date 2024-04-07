@@ -7,14 +7,14 @@ interface ShowErrorProps {
   errorContent: ConverStepType;
 }
 
-const ShowError = ({ errorContent }: ShowErrorProps) => {
-  if (errorContent.step === "error")
+const ShowError = ({ children, errorContent }: ShowErrorProps) => {
+  if (errorContent.step === "error" || errorContent.step === "mobile")
     return (
       <ErrorLayout>
         <ErrorConent>{errorContent.msg}</ErrorConent>
       </ErrorLayout>
     );
-  // return <>{children}</>;
+  return <>{children}</>;
 };
 
 export default ShowError;

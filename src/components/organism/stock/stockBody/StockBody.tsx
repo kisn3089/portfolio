@@ -7,8 +7,6 @@ import StockChart from "../stockChart/StockChart";
 interface StockBodyProps extends StockListProps {}
 
 const StockBody = ({ pagenation, footerClick }: StockBodyProps) => {
-  console.log(pagenation);
-
   return (
     <StockBodyContainer>
       <StockChart />

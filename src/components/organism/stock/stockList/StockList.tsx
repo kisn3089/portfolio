@@ -24,7 +24,7 @@ const StockList = ({ pagenation, footerClick }: StockListProps) => {
     }
     return acc;
   }, []);
-  console.log("filteredDupli: ", filteredDupli);
+  // console.log("filteredDupli: ", filteredDupli, isFetching);
 
   return (
     <StockListContainer>

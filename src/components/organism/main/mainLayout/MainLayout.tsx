@@ -1,50 +1,70 @@
 import React from "react";
 import { MainLayoutStyle } from "./MainLayoutStyles";
-import { MeshReflectorMaterial } from "@react-three/drei";
 import CanvasCore from "@/components/molecule/canvasCore/CanvasCore";
-import FadingModel from "../fadingModel/FadingModel";
+import FadingModel from "../../three/fadingModel/FadingModel";
 import { theme } from "@/styles/theme";
 import CameraMouse from "@/components/molecule/canvasCore/cameraMouse/CameraMouse";
 import CameraLookAt from "@/components/molecule/canvasCore/cameraLookAt/CameraLookAt";
+import PlaneModel from "../../three/modeling/planeModel/PlaneModel";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { KernelSize } from "postprocessing";
+
+const fadingElement = [
+  {
+    originImage: "/assets/img/human.jpg",
+    replaceImage: "/assets/img/flower.webp",
+    effectImage: "/assets/img/effect_draft.jpg",
+    positionX: "2",
+    positionY: "2",
+    rotationY: "-0.2",
+  },
+  {
+    originImage: "/assets/img/space.webp",
+    replaceImage: "/assets/img/flower.webp",
+    effectImage: "/assets/img/effect_diamond.jpg",
+    positionX: "-2",
+    positionY: "2",
+    rotationY: "0.2",
+  },
+];
 
 const MainLayout = () => {
   return (
     <MainLayoutStyle>
       <CanvasCore
         noLoading
-        cameraPosition={[0, 0, 20]}
+        cameraPosition={[0, 100, 20]}
         orbitProps={{ enableZoom: false }}
         bgColor={theme.palette.darkBlack}>
         <CameraLookAt>
-          <FadingModel
-            originImage="/assets/img/space.webp"
-            replaceImage="/assets/img/flower.webp"
-            effectImage="/assets/img/effect_draft.jpg"
-            positionX="2"
-            positionY="1"
-            rotationY="-0.2"
-          />
-          <FadingModel
-            originImage="/assets/img/space.webp"
-            replaceImage="/assets/img/flower.webp"
-            effectImage="/assets/img/effect_diamond.jpg"
-            positionX="-2"
-            positionY="1"
-            rotationY="0.2"
-          />
-          <mesh rotation-x={30} position={[0, -1.4, 0]}>
-            <planeGeometry
-              args={[20, 20]}
-              //  rotation-x={Math.PI / 2}
+          {fadingElement.map((ele, i) => (
+            <FadingModel
+              key={i}
+              originImage={ele.originImage}
+              replaceImage={ele.replaceImage}
+              effectImage={ele.effectImage}
+              positionX={ele.positionX}
+              positionY={ele.positionY}
+              rotationY={ele.rotationY}
             />
-            <MeshReflectorMaterial
-              color={theme.palette.gray300}
-              resolution={1024}
-              mirror={0.95}
+          ))}
+          <EffectComposer multisampling={8}>
+            <Bloom
+              kernelSize={5}
+              luminanceThreshold={0.4}
+              luminanceSmoothing={0.3}
+              intensity={0.8}
             />
-          </mesh>
+            <Bloom
+              kernelSize={KernelSize.HUGE}
+              luminanceThreshold={0.4}
+              luminanceSmoothing={0.3}
+              intensity={0.8}
+            />
+          </EffectComposer>
+          <PlaneModel />
         </CameraLookAt>
-        <fog attach="fog" args={["#a79", 0, 12]} />
+        <fog attach="fog" args={[theme.palette.darkBlack, 2, 12]} />
         <CameraMouse />
       </CanvasCore>
     </MainLayoutStyle>

@@ -6,6 +6,7 @@ import { SPHERE } from "@/lib/util/constanse";
 import { sphereProps } from "@/lib/util/model/orbitOption";
 import { actionTypes } from "@/lib/util/model/actionTypes";
 import useModel from "@/hooks/useModel";
+import PostProsessing from "@/components/molecule/canvasCore/postProsessing/PostProsessing";
 
 const SphereModel = () => {
   const { currentAction, isLoaded, loadedCallback, changeAction } = useModel();
@@ -17,6 +18,7 @@ const SphereModel = () => {
         loadedCallback={loadedCallback}
         hasRadius>
         <ModelCore source={SPHERE} currentAction={currentAction} hasAnimation />
+        <PostProsessing />
       </CanvasCore>
       {isLoaded && (
         <ActionButton

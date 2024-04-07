@@ -16,13 +16,15 @@ import Next from "../assets/icons/next.svg";
 import Marker from "../assets/icons/marker.svg";
 import RemoveAllMarker from "../assets/icons/removeMarker.svg";
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
+import { ConverStepType } from "@/types/convertStep.type";
 
 export const useVideo = () => {
   const [videoInfo, setVideoInfo] = useState({ file: "", type: "" });
   const [isAllMarker, setAllMarker] = useState(false);
-  const [stepTransCode, setStepTransCode] = useState<null | "wait" | "ok">(
-    null
-  );
+  const [convertStep, setConvertStep] = useState<ConverStepType>({
+    step: null,
+    msg: "",
+  });
 
   const videoRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<Player | null>(null);
@@ -131,28 +133,35 @@ export const useVideo = () => {
   };
 
   const ffmpegConvert = async (files: File, videoType: string) => {
-    setStepTransCode("wait");
-    await ffmpeg.load();
-    // mxf 확장자로 한정x
-    // ffmpeg.FS("writeFile", `transmp4.mxf`, await fetchFile(files));
-    ffmpeg.FS("writeFile", `transmp4.${videoType}`, await fetchFile(files));
-    await ffmpeg.run(
-      "-i",
-      `transmp4.${videoType}`,
-      "-c:v",
-      "libx264",
-      "-preset",
-      "ultrafast",
-      "-qp",
-      "0",
-      "transmp4.mp4"
-    );
-    const data = ffmpeg.FS("readFile", "transmp4.mp4");
-    const url = URL.createObjectURL(
-      new Blob([data.buffer], { type: "video/mp4" })
-    );
-    setStepTransCode("ok");
-    setVideoInfo({ file: url, type: "video/mp4" });
+    try {
+      setConvertStep({ step: "wait", msg: "" });
+      await ffmpeg.load();
+      // mxf 확장자로 한정x
+      // ffmpeg.FS("writeFile", `transmp4.mxf`, await fetchFile(files));
+      ffmpeg.FS("writeFile", `transmp4.${videoType}`, await fetchFile(files));
+      await ffmpeg.run(
+        "-i",
+        `transmp4.${videoType}`,
+        "-c:v",
+        "libx264",
+        "-preset",
+        "ultrafast",
+        "-qp",
+        "0",
+        "transmp4.mp4"
+      );
+      const data = ffmpeg.FS("readFile", "transmp4.mp4");
+      const url = URL.createObjectURL(
+        new Blob([data.buffer], { type: "video/mp4" })
+      );
+      setConvertStep({ step: "ok", msg: "" });
+      setVideoInfo({ file: url, type: "video/mp4" });
+    } catch (err) {
+      if (err instanceof Error) {
+        console.log(err);
+        setConvertStep({ step: "error", msg: err.message });
+      }
+    }
   };
 
   const startMarker = () => {
@@ -254,7 +263,7 @@ export const useVideo = () => {
     videoInfo,
     videoRef,
     isAllMarker,
-    stepTransCode,
+    convertStep,
     progressRef,
     getVideo,
     sectionPlay,

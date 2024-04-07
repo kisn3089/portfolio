@@ -12,7 +12,6 @@ export const StockHeaderStyle = styled.header`
   display: flex;
   justify-content: end;
   align-items: center;
-  border: 1px solid #292929;
 `;
 
 export const SearchContainer = styled.div`

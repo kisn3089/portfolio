@@ -4,7 +4,7 @@ export const LoadingContainer = styled.div<{ $isLoading: boolean }>`
   position: absolute;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;

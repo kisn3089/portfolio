@@ -33,6 +33,17 @@ export const StockItem = styled.div`
   font-family: ${({ theme }) => theme.fontFamily.ko};
 `;
 
+export const StockItemInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const StockCode = styled.span`
+  color: ${({ theme }) => theme.palette.gray200};
+  font-size: ${({ theme }) => theme.fontSize.mobileSmall};
+  font-weight: ${({ theme }) => theme.fontWeight.regular};
+`;
+
 export const PriceInfo = styled.div<{ $flag: string }>`
   display: flex;
   width: 30%;

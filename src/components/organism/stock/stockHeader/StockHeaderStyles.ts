@@ -1,8 +1,9 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const StockSection = styled.section`
   width: 100%;
-  padding: 0 60px;
+  padding: 0 60px 60px 60px;
 `;
 
 export const StockHeaderStyle = styled.header`
@@ -12,6 +13,10 @@ export const StockHeaderStyle = styled.header`
   display: flex;
   justify-content: end;
   align-items: center;
+
+  @media screen and (max-width: ${theme.deviceSize.tablet}) {
+    margin-top: 0;
+  }
 `;
 
 export const SearchContainer = styled.div`

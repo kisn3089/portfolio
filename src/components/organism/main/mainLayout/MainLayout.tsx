@@ -8,11 +8,12 @@ import CameraLookAt from "@/components/molecule/canvasCore/cameraLookAt/CameraLo
 import PlaneModel from "../../three/modeling/planeModel/PlaneModel";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { KernelSize } from "postprocessing";
+import { Float } from "@react-three/drei";
 
 const fadingElement = [
   {
     originImage: "/assets/img/human.jpg",
-    replaceImage: "/assets/img/flower.webp",
+    replaceImage: "/assets/img/surf.webp",
     effectImage: "/assets/img/effect_draft.jpg",
     positionX: "2",
     positionY: "2",
@@ -38,15 +39,16 @@ const MainLayout = () => {
         bgColor={theme.palette.darkBlack}>
         <CameraLookAt>
           {fadingElement.map((ele, i) => (
-            <FadingModel
-              key={i}
-              originImage={ele.originImage}
-              replaceImage={ele.replaceImage}
-              effectImage={ele.effectImage}
-              positionX={ele.positionX}
-              positionY={ele.positionY}
-              rotationY={ele.rotationY}
-            />
+            <Float floatIntensity={0.3} speed={0.8} key={i}>
+              <FadingModel
+                originImage={ele.originImage}
+                replaceImage={ele.replaceImage}
+                effectImage={ele.effectImage}
+                positionX={ele.positionX}
+                positionY={ele.positionY}
+                rotationY={ele.rotationY}
+              />
+            </Float>
           ))}
           <EffectComposer multisampling={8}>
             <Bloom

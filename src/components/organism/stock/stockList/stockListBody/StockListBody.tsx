@@ -1,4 +1,10 @@
-import { PriceInfo, SlideRight, StockItem } from "./StockListBodyStyles";
+import {
+  PriceInfo,
+  SlideRight,
+  StockCode,
+  StockItem,
+  StockItemInfo,
+} from "./StockListBodyStyles";
 
 interface StockBodyProps {
   isLoading: boolean;
@@ -15,7 +21,11 @@ const StockBody = ({
     <SlideRight $isLoading={isLoading}>
       {getStockList?.map((stock, i) => (
         <StockItem key={i} onClick={() => fetchDetail(stock)}>
-          {stock.itmsNm}
+          <StockItemInfo>
+            <span>{stock.itmsNm}</span>
+            <StockCode>{stock.srtnCd}</StockCode>
+          </StockItemInfo>
+
           <PriceInfo $flag={Number(stock.fltRt) > 0 ? "up" : "down"}>
             <span>{Number(stock.fltRt)}%</span>
             <span>{Number(stock.clpr).toLocaleString("ko-KR")}</span>

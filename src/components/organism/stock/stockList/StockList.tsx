@@ -5,7 +5,7 @@ import { FETCHSTOCKLIST } from "@/lib/util/constanse";
 import Loading from "@/components/molecule/loading/Loading";
 import StockListBody, { StockBodyProps } from "./stockListBody/StockListBody";
 import StockListFooter from "./stockListFooter/StockListFooter";
-import useDate from "@/hooks/useDate";
+import { useGetStockList } from "@/hooks/useGetStockList";
 
 export interface StockListProps extends Omit<StockBodyProps, "isLoading"> {
   fetchSearchValue: string;
@@ -22,12 +22,12 @@ const StockList = ({
   clickChangeDate,
 }: StockListProps) => {
   // 상세 정보에 보여줄 데이터 픽스시 any 해결하기
-  const { data: getStockList, isFetching } = useQuery<any[], AxiosError>({
-    queryKey: [FETCHSTOCKLIST, fetchSearchValue, pagenation, currentDate],
+  const { data: getStockList, isFetching } = useGetStockList({
+    search: fetchSearchValue,
+    pageNo: pagenation,
+    standardData: currentDate,
     enabled: !!fetchSearchValue,
   });
-
-  // console.log("getStockList: ", getStockList);
 
   return (
     <StockListContainer>

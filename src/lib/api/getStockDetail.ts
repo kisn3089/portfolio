@@ -16,7 +16,7 @@ export const getStockDetail = async (code: string, standardData: Date) => {
         .onlyNumber,
     },
   });
-  //   console.log("detail res: ", response.data.response.body.items.item);
+  console.log("detail res: ", response.data.response.body.items.item);
 
   return response.data.response.body.items.item;
 };

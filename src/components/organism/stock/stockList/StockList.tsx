@@ -1,7 +1,4 @@
 import { StockListContainer } from "./StockListStyle";
-import { useQuery } from "@tanstack/react-query";
-import { AxiosError } from "axios";
-import { FETCHSTOCKLIST } from "@/lib/util/constanse";
 import Loading from "@/components/molecule/loading/Loading";
 import StockListBody, { StockBodyProps } from "./stockListBody/StockListBody";
 import StockListFooter from "./stockListFooter/StockListFooter";

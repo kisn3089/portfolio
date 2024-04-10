@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetStock } from "./useGetStock";
+import { useGetStockList } from "./useGetStockList";
 
 export const useStockDetail = () => {
   const [detailCode, setDetailCode] = useState("");

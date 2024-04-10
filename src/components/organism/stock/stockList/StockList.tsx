@@ -5,6 +5,7 @@ import { FETCHSTOCKLIST } from "@/lib/util/constanse";
 import Loading from "@/components/molecule/loading/Loading";
 import StockListBody, { StockBodyProps } from "./stockListBody/StockListBody";
 import StockListFooter from "./stockListFooter/StockListFooter";
+import useDate from "@/hooks/useDate";
 
 export interface StockListProps extends Omit<StockBodyProps, "isLoading"> {
   fetchSearchValue: string;

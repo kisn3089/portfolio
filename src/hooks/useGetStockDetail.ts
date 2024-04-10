@@ -1,5 +1,6 @@
 import { getStockDetail } from "@/lib/api/getStockDetail";
 import { FETCHSTOCKDETAIL } from "@/lib/util/constanse";
+import { StockDataTypes } from "@/types/stockData.type";
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
@@ -14,7 +15,7 @@ export const useGetStockDetail = ({
   standardData,
   enabled,
 }: useGetStockDetailProps) => {
-  return useQuery<any[], AxiosError>({
+  return useQuery<StockDataTypes[], AxiosError>({
     queryKey: [FETCHSTOCKDETAIL, code, standardData],
     queryFn: () => getStockDetail(code, standardData),
     enabled: enabled,

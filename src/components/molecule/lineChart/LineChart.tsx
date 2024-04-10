@@ -4,47 +4,52 @@ import { ResponsiveLine } from "@nivo/line";
 import { theme } from "@/styles/theme";
 import { formatToLabel } from "@/lib/util/adjustDate";
 
-const sample = [
+const defaultData = [
   {
     id: "stock",
     data: [
       {
         x: "20240403",
-        y: 88301,
+        y: "88301",
       },
       {
         x: "20240404",
-        y: 87231,
+        y: "87231",
       },
       {
         x: "20240405",
-        y: 81231,
+        y: "81231",
       },
       {
         x: "20240406",
-        y: 82231,
+        y: "82231",
       },
       {
         x: "20240407",
-        y: 79231,
+        y: "79231",
       },
       {
         x: "20240408",
-        y: 85231,
+        y: "85231",
       },
       {
         x: "20240409",
-        y: 86231,
+        y: "86231",
       },
     ],
   },
 ];
 
-const LineChart = () => {
+interface LineChartProps {
+  chartData: { id: string; data: { x: string; y: string }[] }[];
+  range: { min: number; max: number };
+}
+
+const LineChart = ({ chartData, range }: LineChartProps) => {
   return (
     <ChartLayout>
       <ResponsiveLine
-        data={sample}
+        data={chartData || defaultData}
         colors={[theme.palette.blue]}
         animate={true}
         curve="cardinal"
@@ -52,8 +57,8 @@ const LineChart = () => {
         xScale={{ type: "point" }}
         yScale={{
           type: "linear",
-          min: 80000 - 10000,
-          max: 80000 + 10000,
+          min: range.min + range.min / 5,
+          max: range.max - range.max / 8,
         }}
         yFormat=">-.2f"
         axisTop={null}
@@ -77,7 +82,7 @@ const LineChart = () => {
         }}
         gridYValues={4}
         theme={{
-          text: { fill: theme.palette.gray200 },
+          text: { fill: theme.palette.white, fontSize: "12px" },
           grid: {
             line: {
               stroke: theme.palette.gray200,
@@ -103,6 +108,9 @@ const LineChart = () => {
         fill={[{ match: { id: "stock" }, id: "gradientC" }]}
         pointSize={6}
         pointColor={theme.palette.white}
+        enablePointLabel
+        pointLabel={(point) => Number(point.y).toLocaleString("ko-KR")}
+        pointLabelYOffset={-20}
       />
     </ChartLayout>
   );

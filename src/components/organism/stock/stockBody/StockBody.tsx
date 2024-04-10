@@ -8,9 +8,11 @@ import { useStockDetail } from "@/hooks/useStockDetail";
 interface StockBodyProps extends Omit<StockListProps, "fetchDetail"> {}
 
 const StockBody = ({
+  currentDate,
   searchValue,
   pagenation,
   footerClick,
+  clickChangeDate,
 }: StockBodyProps) => {
   const { detailCode, fetchDetail } = useStockDetail();
   return (
@@ -18,10 +20,12 @@ const StockBody = ({
       <StockChart detailCode={detailCode} />
       <StockDetail detailCode={detailCode} />
       <StockList
+        currentDate={currentDate}
         searchValue={searchValue}
         pagenation={pagenation}
         footerClick={footerClick}
         fetchDetail={fetchDetail}
+        clickChangeDate={clickChangeDate}
       />
     </StockBodyContainer>
   );

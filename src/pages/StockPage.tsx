@@ -5,12 +5,14 @@ import useSearch from "@/hooks/useSearch";
 
 const StockPage = () => {
   const {
+    currentDate,
     searchValue,
     pagenation,
     changeSearch,
     searchEnter,
     closeClick,
     footerClick,
+    clickChangeDate,
   } = useSearch();
   return (
     <StockSection>
@@ -21,9 +23,11 @@ const StockPage = () => {
         closeClick={closeClick}
       />
       <StockBody
+        currentDate={currentDate}
         searchValue={searchValue}
         pagenation={pagenation}
         footerClick={footerClick}
+        clickChangeDate={clickChangeDate}
       />
     </StockSection>
   );

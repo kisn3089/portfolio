@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const HasReadyContainer = styled.div`
@@ -12,13 +13,13 @@ export const HasReadyContainer = styled.div`
   svg {
     width: 40px;
     height: 60px;
-    fill: ${({ theme }) => theme.palette.red};
-    stroke: ${({ theme }) => theme.palette.red};
+    fill: ${theme.palette.red};
+    stroke: ${theme.palette.red};
   }
 `;
 
 export const ReadyInfo = styled.span`
-  color: ${({ theme }) => theme.palette.white};
-  font-size: ${({ theme }) => theme.fontSize.small};
-  font-family: ${({ theme }) => theme.fontFamily.ko};
+  color: ${theme.palette.white};
+  font-size: ${theme.fontSize.small};
+  font-family: ${theme.fontFamily.ko};
 `;

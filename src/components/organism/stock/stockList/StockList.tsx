@@ -26,6 +26,8 @@ const StockList = ({
     enabled: !!fetchSearchValue,
   });
 
+  // console.log("List: ", getStockList);
+
   return (
     <StockListContainer>
       <Loading isLoading={isFetching} />

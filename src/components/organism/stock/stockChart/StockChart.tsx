@@ -1,19 +1,25 @@
-import { StockChartContainer } from "./StockChartStyle";
+import { NoChartData, StockChartContainer } from "./StockChartStyle";
 import Loading from "@/components/molecule/loading/Loading";
 import { useGetStockDetail } from "@/hooks/useGetStockDetail";
 import { SlideRight } from "../stockList/stockListBody/StockListBodyStyles";
 import LineChart from "@/components/molecule/lineChart/LineChart";
+import { adjustDate } from "@/lib/util/adjustDate";
 
 interface StockChartProps {
-  detailCode: string;
+  detailStock: string;
   currentDate: Date;
 }
 
-const StockChart = ({ detailCode, currentDate }: StockChartProps) => {
+const StockChart = ({ detailStock, currentDate }: StockChartProps) => {
+  console.log(
+    "detailStock",
+    adjustDate({ standardDate: currentDate }).onlyNumber
+  );
+
   const { data: getStockDetail, isFetching } = useGetStockDetail({
-    code: detailCode,
+    code: detailStock,
     standardData: currentDate,
-    enabled: !!detailCode,
+    enabled: !!detailStock,
   });
 
   console.log("getStockDetail: ", getStockDetail, isFetching);
@@ -24,22 +30,22 @@ const StockChart = ({ detailCode, currentDate }: StockChartProps) => {
         y: chartItem.clpr,
       }))
       .reverse() || [];
+
   const onlyValue = stockData.map((item) => Number(item.y));
   const min = Math.min(...onlyValue);
   const max = Math.max(...onlyValue);
   const chartData = [{ id: "stock", data: stockData }];
-  console.log("stockData: ", stockData);
-  console.log("chartData: ", chartData);
 
   return (
     <StockChartContainer>
       <Loading isLoading={isFetching} />
       <SlideRight $isLoading={isFetching}>
         <h1>최근 1주일 주가</h1>
+        {/* 데이터 호출 안했을 경우 보여줄 UI */}
         {stockData[1] ? (
           <LineChart chartData={chartData} range={{ min: min, max: max }} />
         ) : (
-          <div></div>
+          <NoChartData>데이터가 없습니다.</NoChartData>
         )}
       </SlideRight>
     </StockChartContainer>

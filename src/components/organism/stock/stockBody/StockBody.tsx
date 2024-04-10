@@ -14,11 +14,11 @@ const StockBody = ({
   footerClick,
   clickChangeDate,
 }: StockBodyProps) => {
-  const { detailCode, fetchDetail } = useStockDetail();
+  const { detailStock, fetchDetail } = useStockDetail();
   return (
     <StockBodyContainer>
-      <StockChart detailCode={detailCode} currentDate={currentDate} />
-      <StockDetail detailCode={detailCode} />
+      <StockChart detailStock={detailStock} currentDate={currentDate} />
+      <StockDetail detailStock={detailStock} />
       <StockList
         currentDate={currentDate}
         pagenation={pagenation}

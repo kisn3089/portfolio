@@ -36,14 +36,28 @@ export const adjustDate = ({ isDetail, standardDate }: AdjustDateProps) => {
 
   // format 202448 -> 20240408
   const addZero = (num: number) => (String(num).length !== 2 ? `0${num}` : num);
+
   const onlyNumberWithZero = `${yy}${addZero(mm)}${addZero(dd)}`;
   const betweenDot = `${yy}.${addZero(mm)}.${addZero(dd)}`;
 
-  return { onlyNumber: onlyNumberWithZero, betweenDot: betweenDot };
+  return {
+    onlyNumber: onlyNumberWithZero,
+    betweenDot: betweenDot,
+  };
 };
 
-// 20240410 -> 4 / 10
+// toLabel = 20240410 -> 4 / 10
+// toDate = 20240410 -> 2024-04-10
+// toDate = 20240410 -> 2024-04-10
 export const formatToLabel = (date: string | number) => {
-  const [mm, dd] = [String(date).slice(4, 6), String(date).slice(6, 8)];
-  return `${parseInt(mm)} / ${parseInt(dd)}`;
+  const [yy, mm, dd] = [
+    String(date).slice(0, 4),
+    String(date).slice(4, 6),
+    String(date).slice(6, 8),
+  ];
+  return {
+    toLabel: `${parseInt(mm)} / ${parseInt(dd)}`,
+    toDate: `${yy}-${mm}-${dd}`,
+    removeDot: String(date).replaceAll(".", ""),
+  };
 };

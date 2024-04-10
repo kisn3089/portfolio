@@ -8,12 +8,13 @@ import {
   StockItemInfo,
 } from "./StockListBodyStyles";
 import * as Svg from "@/components/atoms/icon/index";
+import { StockDataTypes } from "@/types/stockData.type";
 
 export interface StockBodyProps {
   currentDate: Date;
   isLoading: boolean;
-  getStockList?: any[];
-  fetchDetail: (stock: any) => void;
+  getStockList?: StockDataTypes[];
+  fetchDetail: (stock: StockDataTypes) => void;
   clickChangeDate: (e: React.MouseEvent) => void;
 }
 

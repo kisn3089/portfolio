@@ -43,7 +43,7 @@ export const adjustDate = ({ isDetail, standardDate }: AdjustDateProps) => {
 };
 
 // 20240410 -> 4 / 10
-export const formatToLabel = (date: string) => {
-  const [mm, dd] = [date.slice(4, 6), date.slice(6, 8)];
+export const formatToLabel = (date: string | number) => {
+  const [mm, dd] = [String(date).slice(4, 6), String(date).slice(6, 8)];
   return `${parseInt(mm)} / ${parseInt(dd)}`;
 };

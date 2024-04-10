@@ -20,7 +20,7 @@ interface AdjustDateProps {
 
 export const adjustDate = ({ isDetail, standardDate }: AdjustDateProps) => {
   const day = new Date().getDay();
-  const checkIsUnder = isDetail ? adjusting[day] + 1 : adjusting[day];
+  const checkIsUnder = isDetail ? adjusting[day] - 1 : adjusting[day];
 
   const adjustedDate = new Date(
     standardDate.getFullYear(),

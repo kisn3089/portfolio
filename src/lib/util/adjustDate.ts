@@ -1,23 +1,31 @@
+// 최근 장마감일로부터 하루전 데이터가 가장 최신으로 불러온다. 토요일일 경우 목요일 데이터가 최신
+// 24시가 넘어 새벽에 호출시에는 하루전 데이터가 없는거로 나오기 때문에 -2를 해줘야 한다.
+
+// 일요일이면 수요일 데이터를 가져오기 위한 튜닝
+// 0 -> 일요일
 const adjusting: Record<number, number> = {
   0: 3,
   1: 4,
-  2: 1,
-  3: 1,
-  4: 1,
-  5: 1,
+  2: 2,
+  3: 2,
+  4: 2,
+  5: 2,
   6: 2,
 };
 
-export const adjustDate = (isUnder?: boolean) => {
-  const isHoliday = new Date().getDay();
-  const checkIsUnder = isUnder
-    ? adjusting[isHoliday] + 1
-    : adjusting[isHoliday];
+interface AdjustDateProps {
+  isDetail?: boolean;
+  standardDate: Date;
+}
+
+export const adjustDate = ({ isDetail, standardDate }: AdjustDateProps) => {
+  const day = new Date().getDay();
+  const checkIsUnder = isDetail ? adjusting[day] + 1 : adjusting[day];
 
   const adjustedDate = new Date(
-    new Date().getFullYear(),
-    new Date().getMonth(),
-    new Date().getDate() - checkIsUnder
+    standardDate.getFullYear(),
+    standardDate.getMonth(),
+    standardDate.getDate() - checkIsUnder
   );
 
   const [yy, mm, dd] = [
@@ -26,8 +34,10 @@ export const adjustDate = (isUnder?: boolean) => {
     adjustedDate.getDate(),
   ];
 
+  // format 202448 -> 20240408
   const addZero = (num: number) => (String(num).length !== 2 ? `0${num}` : num);
-  const basDt = `${yy}${addZero(mm)}${addZero(dd)}`;
+  const onlyNumberWithZero = `${yy}${addZero(mm)}${addZero(dd)}`;
+  const betweenDot = `${yy}.${addZero(mm)}.${addZero(dd)}`;
 
-  return basDt;
+  return { onlyNumber: onlyNumberWithZero, betweenDot: betweenDot };
 };

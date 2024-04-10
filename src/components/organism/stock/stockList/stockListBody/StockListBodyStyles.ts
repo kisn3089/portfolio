@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const SlideRight = styled.div<{ $isLoading: boolean }>`
@@ -23,14 +24,14 @@ export const StockItem = styled.div`
   height: 50px;
   border-radius: 8px;
   padding: 0 12px;
-  background-color: ${({ theme }) => theme.palette.gray};
+  background-color: ${theme.palette.gray};
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: ${({ theme }) => theme.fontSize.extraMini};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
-  font-family: ${({ theme }) => theme.fontFamily.ko};
+  font-size: ${theme.fontSize.extraMini};
+  font-weight: ${theme.fontWeight.bold};
+  font-family: ${theme.fontFamily.ko};
 `;
 
 export const StockItemInfo = styled.div`
@@ -39,17 +40,17 @@ export const StockItemInfo = styled.div`
 `;
 
 export const StockCode = styled.span`
-  color: ${({ theme }) => theme.palette.gray200};
-  font-size: ${({ theme }) => theme.fontSize.mobileSmall};
-  font-weight: ${({ theme }) => theme.fontWeight.regular};
+  color: ${theme.palette.gray200};
+  font-size: ${theme.fontSize.mobileSmall};
+  font-weight: ${theme.fontWeight.regular};
 `;
 
 export const PriceInfo = styled.div<{ $flag: string }>`
   display: flex;
   width: 30%;
   flex-direction: column;
-  font-size: ${({ theme }) => theme.fontSize.extraMini};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  font-size: ${theme.fontSize.extraMini};
+  font-weight: ${theme.fontWeight.bold};
   color: ${({ $flag, theme }) =>
     $flag === "up"
       ? theme.palette.red

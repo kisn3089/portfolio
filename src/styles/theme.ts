@@ -41,6 +41,7 @@ const palette = {
   blue: "#2686d3",
   blue100: "#0080da",
   red: "#cf5b5d",
+  // #595959
 };
 
 const fontFamily = {

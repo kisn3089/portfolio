@@ -1,26 +1,27 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const StyleInput = styled.input<{ $width?: string; $height?: string }>`
   width: ${({ $width }) => $width || "220px"};
   height: ${({ $height }) => $height || "50px"};
-  border: ${({ theme }) => ` 1px solid ${theme.palette.gray}`};
+  border: 1px solid ${theme.palette.gray50};
   border-radius: 8px;
   background-color: transparent;
-  color: ${({ theme }) => theme.palette.gray100};
+  color: ${theme.palette.gray100};
   outline: none;
   padding: 0 16px;
-  font-size: ${({ theme }) => theme.fontSize.mini};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  font-size: ${theme.fontSize.mini};
+  font-weight: ${theme.fontWeight.bold};
   letter-spacing: 0.5px;
-  transition: ${({ theme }) => `0.2s ${theme.ts.moreFast}`};
+  transition: ${`0.2s ${theme.ts.moreFast}`};
 
   &:focus {
-    border: ${({ theme }) => `1px solid ${theme.palette.blue100}`};
+    border: ${`1px solid ${theme.palette.blue100}`};
   }
 
   &::placeholder {
-    font-size: ${({ theme }) => theme.fontSize.extraMini};
-    font-family: ${({ theme }) => theme.fontFamily.ko};
+    font-size: ${theme.fontSize.extraMini};
+    font-family: ${theme.fontFamily.ko};
     padding: 0 6px;
   }
 `;

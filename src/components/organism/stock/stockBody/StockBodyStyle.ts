@@ -6,7 +6,7 @@ export const StockBodyContainer = styled.div`
   height: 700px;
   display: grid;
   grid-template-columns: 1fr 250px 250px;
-  border: ${({ theme }) => `1px solid ${theme.palette.gray}`};
+  border: 1px solid ${theme.palette.gray50};
   border-radius: 8px;
 
   @media screen and (max-width: ${theme.deviceSize.desktop}) {

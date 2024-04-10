@@ -5,7 +5,7 @@ export const StockListContainer = styled.div`
   position: relative;
   width: 100%;
   padding: 8px 8px;
-  border-left: 1px solid ${theme.palette.gray};
+  border-left: 1px solid ${theme.palette.gray50};
 `;
 
 export const StandardDateContainer = styled.div<{ $hasValue: boolean }>`

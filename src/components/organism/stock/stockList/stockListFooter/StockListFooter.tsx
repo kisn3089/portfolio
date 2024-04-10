@@ -14,7 +14,7 @@ const StockListFooter = ({
 }: StockListFooterProps) => {
   return (
     <FooterLayout>
-      <PagingButton id="-" onClick={footerClick} disabled={pagenation === 1}>
+      <PagingButton id="-" onClick={footerClick} disabled={pagenation <= 1}>
         PREV
       </PagingButton>
       <PagingButton

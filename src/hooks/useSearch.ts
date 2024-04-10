@@ -4,12 +4,14 @@ import { calcById } from "@/lib/util/calcById";
 
 const useSearch = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [fetchSearchValue, setFetchSearchValue] = useState("");
   const [pagenation, setPagenation] = useState(1);
   const [currentDate, setCurrentDate] = useState(new Date());
-  const { refetch: fetchList } = useGetStock({
-    search: searchValue,
+  useGetStock({
+    search: fetchSearchValue,
     pageNo: pagenation,
     standardData: currentDate,
+    enabled: !!fetchSearchValue,
   }).getList;
 
   const changeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +27,8 @@ const useSearch = () => {
   const searchEnter = async (e: React.KeyboardEvent) => {
     if (!searchValue || e.nativeEvent.isComposing) return;
     if (e.key === "Enter") {
-      if (pagenation === 1) await fetchList();
+      setPagenation(1);
+      setFetchSearchValue(searchValue);
     }
   };
 
@@ -42,6 +45,7 @@ const useSearch = () => {
 
   return {
     currentDate,
+    fetchSearchValue,
     searchValue,
     pagenation,
     changeSearch,

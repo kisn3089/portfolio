@@ -9,25 +9,28 @@ interface useGetStockProps {
   pageNo?: number;
   code?: string;
   standardData: Date;
+  enabled: boolean;
 }
+// 옵셔널 타입의 혼재가 있으므로 list와 detail hooks을 나눌것
 
 export const useGetStock = ({
   search = "",
   pageNo = 1,
   code = "",
   standardData = new Date(),
+  enabled,
 }: useGetStockProps) => {
   const getList = useQuery<any[], AxiosError>({
-    queryKey: [FETCHSTOCKLIST, pageNo],
+    queryKey: [FETCHSTOCKLIST, search, pageNo, standardData],
     queryFn: () =>
       getStockList(search.trim().toLocaleUpperCase(), standardData, pageNo),
-    enabled: pageNo !== 1,
+    enabled: enabled,
   });
 
   const getDetail = useQuery<any[], AxiosError>({
     queryKey: [FETCHSTOCKDETAIL, code],
     queryFn: () => getStockDetail(code, standardData),
-    enabled: code !== "" || standardData !== new Date(),
+    enabled: !!code,
   });
 
   return { getList, getDetail };

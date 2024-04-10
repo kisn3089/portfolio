@@ -4,6 +4,8 @@ import styled from "styled-components";
 export const SlideRight = styled.div<{ $isLoading: boolean }>`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  height: 100%;
   gap: 6px 0;
   will-change: transform opacity;
   ${({ theme, $isLoading }) =>

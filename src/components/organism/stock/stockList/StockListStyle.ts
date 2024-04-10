@@ -16,6 +16,7 @@ export const StandardDateContainer = styled.div<{ $hasValue: boolean }>`
   align-items: center;
   padding: 0 20px;
   user-select: none;
+  margin-bottom: 8px;
 
   svg {
     width: 34px;

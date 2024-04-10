@@ -2,7 +2,7 @@ import { adjustDate } from "../util/adjustDate";
 import { STOCKLIST_BASE_URL } from "../util/constanse";
 import { axiosRequest } from "../util/coreAxios";
 
-export const getStockDetail = async (code: string) => {
+export const getStockDetail = async (code: string, standardData: Date) => {
   console.log("fetch: ", code);
 
   const response = await axiosRequest.get(STOCKLIST_BASE_URL, {
@@ -12,7 +12,8 @@ export const getStockDetail = async (code: string) => {
       pageNo: 1,
       resultType: "json",
       likeIsinCd: code,
-      endBasDt: adjustDate(true),
+      endBasDt: adjustDate({ isDetail: true, standardDate: standardData })
+        .onlyNumber,
     },
   });
   //   console.log("detail res: ", response.data.response.body.items.item);

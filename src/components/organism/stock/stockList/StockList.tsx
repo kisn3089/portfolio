@@ -3,21 +3,21 @@ import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { FETCHSTOCKLIST } from "@/lib/util/constanse";
 import Loading from "@/components/molecule/loading/Loading";
-import StockListBody from "./stockListBody/StockListBody";
+import StockListBody, { StockBodyProps } from "./stockListBody/StockListBody";
 import StockListFooter from "./stockListFooter/StockListFooter";
 
-export interface StockListProps {
-  searchValue: string;
+export interface StockListProps extends Omit<StockBodyProps, "isLoading"> {
   pagenation: number;
   footerClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  fetchDetail: (stock: any) => void;
 }
 
 const StockList = ({
+  currentDate,
   searchValue,
   pagenation,
   footerClick,
   fetchDetail,
+  clickChangeDate,
 }: StockListProps) => {
   // 상세 정보에 보여줄 데이터 픽스시 any 해결하기
   const { data: getStockList, isFetching } = useQuery<any[], AxiosError>({
@@ -31,10 +31,12 @@ const StockList = ({
     <StockListContainer>
       <Loading isLoading={isFetching} />
       <StockListBody
+        currentDate={currentDate}
         searchValue={searchValue}
         isLoading={isFetching}
         getStockList={getStockList}
         fetchDetail={fetchDetail}
+        clickChangeDate={clickChangeDate}
       />
       <StockListFooter
         dataLength={getStockList?.length}

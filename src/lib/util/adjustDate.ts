@@ -41,3 +41,9 @@ export const adjustDate = ({ isDetail, standardDate }: AdjustDateProps) => {
 
   return { onlyNumber: onlyNumberWithZero, betweenDot: betweenDot };
 };
+
+// 20240410 -> 4 / 10
+export const formatToLabel = (date: string) => {
+  const [mm, dd] = [date.slice(4, 6), date.slice(6, 8)];
+  return `${parseInt(mm)} / ${parseInt(dd)}`;
+};

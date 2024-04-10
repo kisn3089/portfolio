@@ -5,7 +5,10 @@ const useDate = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const clickChangeDate = (e: React.MouseEvent) => {
     const { id } = e.currentTarget;
-    const newDate = currentDate.setDate(currentDate.getDate() + calcById(id));
+
+    const newDate = new Date(currentDate).setDate(
+      new Date(currentDate).getDate() + calcById(id)
+    );
 
     setCurrentDate(new Date(newDate));
   };

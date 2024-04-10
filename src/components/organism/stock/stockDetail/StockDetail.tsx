@@ -1,11 +1,12 @@
+import { StockDetailTypes } from "@/types/stockDetail.type";
 import { StockDetailContainer } from "./StockDetailStyle";
 import ReadyGroup from "@/components/molecule/hasReady/readyGroup/ReadyGroup";
 
 interface StockDetailProps {
-  detailCode: string;
+  detailStock: StockDetailTypes;
 }
 
-const StockDetail = ({ detailCode }: StockDetailProps) => {
+const StockDetail = ({ detailStock }: StockDetailProps) => {
   // console.log("detailCode: ", detailCode);
 
   return (

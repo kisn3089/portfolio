@@ -3,7 +3,6 @@ import Loading from "@/components/molecule/loading/Loading";
 import { useGetStockDetail } from "@/hooks/useGetStockDetail";
 import { SlideRight } from "../stockList/stockListBody/StockListBodyStyles";
 import LineChart from "@/components/molecule/lineChart/LineChart";
-import { adjustDate } from "@/lib/util/adjustDate";
 
 interface StockChartProps {
   detailStock: string;
@@ -11,11 +10,6 @@ interface StockChartProps {
 }
 
 const StockChart = ({ detailStock, currentDate }: StockChartProps) => {
-  console.log(
-    "detailStock",
-    adjustDate({ standardDate: currentDate }).onlyNumber
-  );
-
   const { data: getStockDetail, isFetching } = useGetStockDetail({
     code: detailStock,
     standardData: currentDate,

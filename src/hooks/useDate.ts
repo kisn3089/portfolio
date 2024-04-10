@@ -6,9 +6,7 @@ const useDate = () => {
   const clickChangeDate = (e: React.MouseEvent) => {
     const { id } = e.currentTarget;
 
-    const newDate = new Date(currentDate).setDate(
-      new Date(currentDate).getDate() + calcById(id)
-    );
+    const newDate = currentDate.setDate(currentDate.getDate() + calcById(id));
 
     setCurrentDate(new Date(newDate));
   };

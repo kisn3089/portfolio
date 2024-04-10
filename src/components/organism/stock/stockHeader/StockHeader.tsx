@@ -2,21 +2,14 @@ import React from "react";
 import { SearchContainer, StockHeaderStyle } from "./StockHeaderStyles";
 import Input from "@/components/atoms/input/Input";
 import * as Svg from "../../../atoms/icon/index";
+import useSearch from "@/hooks/useSearch";
 
 interface StockHeaderProps {
-  searchValue: string;
-  changeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  searchEnter: (
-    e: React.KeyboardEvent,
-    callback: (searchValue: string) => void
-  ) => void;
   callback: (searchValue: string) => void;
-  closeClick: (e: React.MouseEvent) => void;
 }
 
-const StockHeader = (props: StockHeaderProps) => {
-  const { searchValue, changeSearch, searchEnter, closeClick, callback } =
-    props;
+const StockHeader = ({ callback }: StockHeaderProps) => {
+  const { searchValue, changeSearch, closeClick, searchEnter } = useSearch();
 
   return (
     <StockHeaderStyle>

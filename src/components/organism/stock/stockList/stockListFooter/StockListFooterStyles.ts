@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const FooterLayout = styled.div`
@@ -16,18 +17,18 @@ export const PagingButton = styled.button`
   width: 50%;
   height: 100%;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.palette.white};
-  color: ${({ theme }) => theme.palette.black};
+  background-color: ${theme.palette.white};
+  color: ${theme.palette.black};
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
   letter-spacing: 1px;
-  font-size: ${({ theme }) => theme.fontSize.extraMini};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  font-size: ${theme.fontSize.extraMini};
+  font-weight: ${theme.fontWeight.bold};
 
   &:disabled {
-    background-color: ${({ theme }) => theme.palette.disabledBackground};
-    color: ${({ theme }) => theme.palette.disabledColor};
+    background-color: ${theme.palette.disabledBackground};
+    color: ${theme.palette.disabledColor};
   }
 `;

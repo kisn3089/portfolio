@@ -7,7 +7,6 @@ const CameraLookAt = ({ children }: { children: React.ReactNode }) => {
   const ref = useRef<Group>(null);
   let zByDeviceSize = 8;
   if (window.innerWidth <= 576) zByDeviceSize = 11;
-  else if (window.innerWidth >= 1200) zByDeviceSize = 7;
 
   useFrame((state, delta) => {
     if (ref.current) {

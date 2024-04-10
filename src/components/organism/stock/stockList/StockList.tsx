@@ -7,12 +7,14 @@ import StockListBody from "./stockListBody/StockListBody";
 import StockListFooter from "./stockListFooter/StockListFooter";
 
 export interface StockListProps {
+  searchValue: string;
   pagenation: number;
   footerClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   fetchDetail: (stock: any) => void;
 }
 
 const StockList = ({
+  searchValue,
   pagenation,
   footerClick,
   fetchDetail,
@@ -29,6 +31,7 @@ const StockList = ({
     <StockListContainer>
       <Loading isLoading={isFetching} />
       <StockListBody
+        searchValue={searchValue}
         isLoading={isFetching}
         getStockList={getStockList}
         fetchDetail={fetchDetail}

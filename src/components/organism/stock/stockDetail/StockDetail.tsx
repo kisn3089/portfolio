@@ -6,7 +6,7 @@ interface StockDetailProps {
 }
 
 const StockDetail = ({ detailCode }: StockDetailProps) => {
-  console.log("detailCode: ", detailCode);
+  // console.log("detailCode: ", detailCode);
 
   return (
     <StockDetailContainer>

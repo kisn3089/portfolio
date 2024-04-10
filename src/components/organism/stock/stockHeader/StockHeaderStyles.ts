@@ -25,7 +25,7 @@ export const SearchContainer = styled.div`
   align-items: center;
   svg {
     position: absolute;
-    fill: ${({ theme }) => theme.palette.gray100};
+    fill: ${theme.palette.gray100};
     cursor: pointer;
     ${({ theme }) =>
       theme.animation.fadeIn({

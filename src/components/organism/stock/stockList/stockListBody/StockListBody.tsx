@@ -28,7 +28,7 @@ const StockBody = ({
 }: StockBodyProps) => {
   return (
     <>
-      <StandardDateContainer $hasValue={searchValue === ""}>
+      <StandardDateContainer $hasValue={!getStockList}>
         <Svg.ArrowLeft id="-" onClick={clickChangeDate} />
         <StandardDate>
           {adjustDate({ standardDate: currentDate }).betweenDot}

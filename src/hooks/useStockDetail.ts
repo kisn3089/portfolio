@@ -1,17 +1,12 @@
-import React, { useState } from "react";
-import { useGetStockList } from "./useGetStockList";
+import { useState } from "react";
+import { StockDataTypes } from "@/types/stockData.type";
 
 export const useStockDetail = () => {
-  const [detailCode, setDetailCode] = useState("");
-  // const { refetch } = useGetStock({
-  //   code: detailCode,
-  //   standardData: new Date(),
-  // }).getDetail;
+  const [detailStock, setDetailStock] = useState("");
 
-  const fetchDetail = async (stock: any) => {
-    const code = stock.srtnCd;
-    setDetailCode(code);
-    // await fetchDetails();
+  const fetchDetail = async (stock: StockDataTypes) => {
+    setDetailStock(stock.srtnCd);
   };
-  return { detailCode, fetchDetail };
+
+  return { detailStock, fetchDetail };
 };

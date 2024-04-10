@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const StockBodyContainer = styled.div`
   width: 100%;
-  height: 640px;
+  height: 700px;
   display: grid;
   grid-template-columns: 1fr 250px 250px;
   border: ${({ theme }) => `1px solid ${theme.palette.gray}`};

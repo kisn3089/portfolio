@@ -7,13 +7,18 @@ import { useStockDetail } from "@/hooks/useStockDetail";
 
 interface StockBodyProps extends Omit<StockListProps, "fetchDetail"> {}
 
-const StockBody = ({ pagenation, footerClick }: StockBodyProps) => {
+const StockBody = ({
+  searchValue,
+  pagenation,
+  footerClick,
+}: StockBodyProps) => {
   const { detailCode, fetchDetail } = useStockDetail();
   return (
     <StockBodyContainer>
       <StockChart detailCode={detailCode} />
       <StockDetail detailCode={detailCode} />
       <StockList
+        searchValue={searchValue}
         pagenation={pagenation}
         footerClick={footerClick}
         fetchDetail={fetchDetail}

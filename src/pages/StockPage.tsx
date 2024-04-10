@@ -20,7 +20,11 @@ const StockPage = () => {
         searchEnter={searchEnter}
         closeClick={closeClick}
       />
-      <StockBody pagenation={pagenation} footerClick={footerClick} />
+      <StockBody
+        searchValue={searchValue}
+        pagenation={pagenation}
+        footerClick={footerClick}
+      />
     </StockSection>
   );
 };

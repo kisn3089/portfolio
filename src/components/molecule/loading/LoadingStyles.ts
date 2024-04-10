@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const LoadingContainer = styled.div<{ $isLoading: boolean }>`
@@ -22,7 +23,7 @@ export const LoadingContainer = styled.div<{ $isLoading: boolean }>`
       direction: "forwards",
     })};
   svg {
-    fill: ${({ theme }) => theme.palette.white};
+    fill: ${theme.palette.white};
     width: 48px;
     height: 48px;
   }

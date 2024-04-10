@@ -7,6 +7,7 @@ import StockListBody, { StockBodyProps } from "./stockListBody/StockListBody";
 import StockListFooter from "./stockListFooter/StockListFooter";
 
 export interface StockListProps extends Omit<StockBodyProps, "isLoading"> {
+  fetchSearchValue: string;
   pagenation: number;
   footerClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
@@ -15,17 +16,18 @@ const StockList = ({
   currentDate,
   searchValue,
   pagenation,
+  fetchSearchValue,
   footerClick,
   fetchDetail,
   clickChangeDate,
 }: StockListProps) => {
   // 상세 정보에 보여줄 데이터 픽스시 any 해결하기
   const { data: getStockList, isFetching } = useQuery<any[], AxiosError>({
-    queryKey: [FETCHSTOCKLIST, pagenation],
-    enabled: pagenation !== 1,
+    queryKey: [FETCHSTOCKLIST, fetchSearchValue, pagenation, currentDate],
+    enabled: !!fetchSearchValue,
   });
 
-  // console.log("getStockList: ", getStockList, isFetching);
+  // console.log("getStockList: ", getStockList);
 
   return (
     <StockListContainer>

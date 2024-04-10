@@ -22,7 +22,6 @@ const StockHeader = (props: StockHeaderProps) => {
           placeholder="주식을 검색해 보세요."
           onChange={changeSearch}
           onKeyDown={searchEnter}
-          autoFocus
         />
         {searchValue ? (
           <Svg.Close

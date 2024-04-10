@@ -14,7 +14,7 @@ const StockChart = ({ detailCode }: StockChartProps) => {
     enabled: detailCode !== "",
   });
 
-  console.log("getStockDetail: ", getStockDetail, isFetching);
+  // console.log("getStockDetail: ", getStockDetail, isFetching);
   return (
     <StockChartContainer>{!isFetching && <ReadyGroup />}</StockChartContainer>
   );

@@ -17,7 +17,7 @@ const StockBody = ({
   const { detailCode, fetchDetail } = useStockDetail();
   return (
     <StockBodyContainer>
-      <StockChart detailCode={detailCode} />
+      <StockChart detailCode={detailCode} currentDate={currentDate} />
       <StockDetail detailCode={detailCode} />
       <StockList
         currentDate={currentDate}

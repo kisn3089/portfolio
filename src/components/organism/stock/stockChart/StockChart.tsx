@@ -1,22 +1,24 @@
-import { useQuery } from "@tanstack/react-query";
 import { StockChartContainer } from "./StockChartStyle";
-import ReadyGroup from "@/components/molecule/hasReady/readyGroup/ReadyGroup";
-import { AxiosError } from "axios";
-import { FETCHSTOCKDETAIL } from "@/lib/util/constanse";
+import Loading from "@/components/molecule/loading/Loading";
+import { useGetStockDetail } from "@/hooks/useGetStockDetail";
 
 interface StockChartProps {
   detailCode: string;
+  currentDate: Date;
 }
 
-const StockChart = ({ detailCode }: StockChartProps) => {
-  const { data: getStockDetail, isFetching } = useQuery<any[], AxiosError>({
-    queryKey: [FETCHSTOCKDETAIL, detailCode],
-    enabled: detailCode !== "",
+const StockChart = ({ detailCode, currentDate }: StockChartProps) => {
+  const { data: getStockDetail, isFetching } = useGetStockDetail({
+    code: detailCode,
+    standardData: currentDate,
+    enabled: !!detailCode,
   });
 
-  // console.log("getStockDetail: ", getStockDetail, isFetching);
+  console.log("getStockDetail: ", getStockDetail, isFetching);
   return (
-    <StockChartContainer>{!isFetching && <ReadyGroup />}</StockChartContainer>
+    <StockChartContainer>
+      <Loading isLoading={isFetching} />
+    </StockChartContainer>
   );
 };
 

@@ -25,12 +25,15 @@ const StockBody = ({
   fetchDetail,
   clickChangeDate,
 }: StockBodyProps) => {
+  console.log("currentDateList: ", currentDate);
+
   return (
     <>
       <StandardDateContainer $hasValue={!getStockList}>
         <Svg.ArrowLeft id="-" onClick={clickChangeDate} />
         <StandardDate>
           {adjustDate({ standardDate: currentDate }).betweenDot}
+          {/* {adjustDate({ standardDate: currentDate }).betweenDot} */}
         </StandardDate>
         <Svg.ArrowRight id="+" onClick={clickChangeDate} />
       </StandardDateContainer>

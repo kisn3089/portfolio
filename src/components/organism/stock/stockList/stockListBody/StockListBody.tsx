@@ -1,3 +1,4 @@
+import { adjustDate } from "@/lib/util/adjustDate";
 import { StandardDate, StandardDateContainer } from "../StockListStyle";
 import {
   PriceInfo,
@@ -8,40 +9,48 @@ import {
 } from "./StockListBodyStyles";
 import * as Svg from "@/components/atoms/icon/index";
 
-interface StockBodyProps {
+export interface StockBodyProps {
+  currentDate: Date;
   searchValue: string;
   isLoading: boolean;
   getStockList?: any[];
   fetchDetail: (stock: any) => void;
+  clickChangeDate: (e: React.MouseEvent) => void;
 }
 
 const StockBody = ({
+  currentDate,
   searchValue,
   isLoading,
   getStockList,
   fetchDetail,
+  clickChangeDate,
 }: StockBodyProps) => {
   return (
-    <SlideRight $isLoading={isLoading}>
+    <>
       <StandardDateContainer $hasValue={searchValue === ""}>
-        <Svg.ArrowLeft onClick={() => console.log("123")} />
-        <StandardDate>24.04.10</StandardDate>
-        <Svg.ArrowRight />
+        <Svg.ArrowLeft id="-" onClick={clickChangeDate} />
+        <StandardDate>
+          {adjustDate({ standardDate: currentDate }).betweenDot}
+        </StandardDate>
+        <Svg.ArrowRight id="+" onClick={clickChangeDate} />
       </StandardDateContainer>
-      {getStockList?.map((stock, i) => (
-        <StockItem key={i} onClick={() => fetchDetail(stock)}>
-          <StockItemInfo>
-            <span>{stock.itmsNm}</span>
-            <StockCode>{stock.srtnCd}</StockCode>
-          </StockItemInfo>
+      <SlideRight $isLoading={isLoading}>
+        {getStockList?.map((stock, i) => (
+          <StockItem key={i} onClick={() => fetchDetail(stock)}>
+            <StockItemInfo>
+              <span>{stock.itmsNm}</span>
+              <StockCode>{stock.srtnCd}</StockCode>
+            </StockItemInfo>
 
-          <PriceInfo $flag={Number(stock.fltRt) > 0 ? "up" : "down"}>
-            <span>{Number(stock.fltRt)}%</span>
-            <span>{Number(stock.clpr).toLocaleString("ko-KR")}</span>
-          </PriceInfo>
-        </StockItem>
-      ))}
-    </SlideRight>
+            <PriceInfo $flag={Number(stock.fltRt) > 0 ? "up" : "down"}>
+              <span>{Number(stock.fltRt)}%</span>
+              <span>{Number(stock.clpr).toLocaleString("ko-KR")}</span>
+            </PriceInfo>
+          </StockItem>
+        ))}
+      </SlideRight>
+    </>
   );
 };
 

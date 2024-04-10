@@ -33,6 +33,7 @@ const palette = {
   darkBlack: "#111",
   black: "#191919",
   gray: "#292929",
+  gray50: "#595959",
   gray100: "#ddd",
   gray200: "#A6A6A6",
   gray300: "#696969",
@@ -41,7 +42,6 @@ const palette = {
   blue: "#2686d3",
   blue100: "#0080da",
   red: "#cf5b5d",
-  // #595959
 };
 
 const fontFamily = {

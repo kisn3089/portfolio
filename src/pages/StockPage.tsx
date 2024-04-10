@@ -6,6 +6,7 @@ import useSearch from "@/hooks/useSearch";
 const StockPage = () => {
   const {
     currentDate,
+    fetchSearchValue,
     searchValue,
     pagenation,
     changeSearch,
@@ -26,6 +27,7 @@ const StockPage = () => {
         currentDate={currentDate}
         searchValue={searchValue}
         pagenation={pagenation}
+        fetchSearchValue={fetchSearchValue}
         footerClick={footerClick}
         clickChangeDate={clickChangeDate}
       />

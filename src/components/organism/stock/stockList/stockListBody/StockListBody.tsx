@@ -11,7 +11,6 @@ import * as Svg from "@/components/atoms/icon/index";
 
 export interface StockBodyProps {
   currentDate: Date;
-  searchValue: string;
   isLoading: boolean;
   getStockList?: any[];
   fetchDetail: (stock: any) => void;
@@ -20,7 +19,6 @@ export interface StockBodyProps {
 
 const StockBody = ({
   currentDate,
-  searchValue,
   isLoading,
   getStockList,
   fetchDetail,

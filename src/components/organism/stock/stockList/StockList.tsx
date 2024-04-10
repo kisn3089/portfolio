@@ -14,7 +14,6 @@ export interface StockListProps extends Omit<StockBodyProps, "isLoading"> {
 
 const StockList = ({
   currentDate,
-  searchValue,
   pagenation,
   fetchSearchValue,
   footerClick,
@@ -34,7 +33,6 @@ const StockList = ({
       <Loading isLoading={isFetching} />
       <StockListBody
         currentDate={currentDate}
-        searchValue={searchValue}
         isLoading={isFetching}
         getStockList={getStockList}
         fetchDetail={fetchDetail}

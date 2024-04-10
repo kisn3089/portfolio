@@ -6,12 +6,17 @@ import * as Svg from "../../../atoms/icon/index";
 interface StockHeaderProps {
   searchValue: string;
   changeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  searchEnter: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  searchEnter: (
+    e: React.KeyboardEvent,
+    callback: (searchValue: string) => void
+  ) => void;
+  callback: (searchValue: string) => void;
   closeClick: (e: React.MouseEvent) => void;
 }
 
 const StockHeader = (props: StockHeaderProps) => {
-  const { searchValue, changeSearch, searchEnter, closeClick } = props;
+  const { searchValue, changeSearch, searchEnter, closeClick, callback } =
+    props;
 
   return (
     <StockHeaderStyle>
@@ -21,7 +26,9 @@ const StockHeader = (props: StockHeaderProps) => {
           value={searchValue}
           placeholder="주식을 검색해 보세요."
           onChange={changeSearch}
-          onKeyDown={searchEnter}
+          onKeyDown={(e: React.KeyboardEvent) =>
+            searchEnter(e, () => callback(searchValue))
+          }
         />
         {searchValue ? (
           <Svg.Close

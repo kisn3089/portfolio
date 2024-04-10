@@ -1,34 +1,20 @@
 import React, { useState } from "react";
-import { useGetStock } from "./useGetStock";
-import { calcById } from "@/lib/util/calcById";
 
 const useSearch = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [fetchSearchValue, setFetchSearchValue] = useState("");
-  const [pagenation, setPagenation] = useState(1);
-  const [currentDate, setCurrentDate] = useState(new Date());
-  useGetStock({
-    search: fetchSearchValue,
-    pageNo: pagenation,
-    standardData: currentDate,
-    enabled: !!fetchSearchValue,
-  }).getList;
 
   const changeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setSearchValue(value);
   };
 
-  const footerClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    const { id } = e.currentTarget;
-    setPagenation((prev) => prev + calcById(id));
-  };
-
-  const searchEnter = async (e: React.KeyboardEvent) => {
+  const searchEnter = (
+    e: React.KeyboardEvent,
+    callback: (searchValue: string) => void
+  ) => {
     if (!searchValue || e.nativeEvent.isComposing) return;
     if (e.key === "Enter") {
-      setPagenation(1);
-      setFetchSearchValue(searchValue);
+      callback(searchValue);
     }
   };
 
@@ -36,24 +22,7 @@ const useSearch = () => {
     setSearchValue("");
   };
 
-  const clickChangeDate = (e: React.MouseEvent) => {
-    const { id } = e.currentTarget;
-    const newDate = currentDate.setDate(currentDate.getDate() + calcById(id));
-
-    setCurrentDate(new Date(newDate));
-  };
-
-  return {
-    currentDate,
-    fetchSearchValue,
-    searchValue,
-    pagenation,
-    changeSearch,
-    searchEnter,
-    closeClick,
-    footerClick,
-    clickChangeDate,
-  };
+  return { searchValue, changeSearch, searchEnter, closeClick };
 };
 
 export default useSearch;

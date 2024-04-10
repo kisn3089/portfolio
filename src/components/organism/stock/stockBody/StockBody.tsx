@@ -9,7 +9,6 @@ interface StockBodyProps extends Omit<StockListProps, "fetchDetail"> {}
 
 const StockBody = ({
   currentDate,
-  searchValue,
   pagenation,
   fetchSearchValue,
   footerClick,
@@ -22,7 +21,6 @@ const StockBody = ({
       <StockDetail detailCode={detailCode} />
       <StockList
         currentDate={currentDate}
-        searchValue={searchValue}
         pagenation={pagenation}
         fetchSearchValue={fetchSearchValue}
         footerClick={footerClick}

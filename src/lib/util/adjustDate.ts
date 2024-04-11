@@ -13,8 +13,7 @@ export const adjusting: Record<number, number> = {
   6: 2,
 };
 
-// 주말일 일요일일 경우엔 -2, 토요일 경우에는 -1
-
+// 주말을 피해 그 다음 평일을 찾는 시그니처
 export const aviodHoliday: Record<string, Record<number, number>> = {
   "-": {
     0: 2,
@@ -34,6 +33,16 @@ export const aviodHoliday: Record<string, Record<number, number>> = {
     5: 0,
     6: 2,
   },
+};
+
+export const convertDay: Record<number, string> = {
+  0: "일",
+  1: "월",
+  2: "화",
+  3: "수",
+  4: "목",
+  5: "금",
+  6: "토",
 };
 
 interface AdjustDateProps {

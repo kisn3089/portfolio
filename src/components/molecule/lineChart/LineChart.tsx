@@ -37,7 +37,7 @@ const LineChart = ({ chartData, range }: LineChartProps) => {
         }}
         axisLeft={{
           tickSize: 0,
-          tickPadding: 13,
+          tickPadding: 30,
           tickValues: 6,
           legendOffset: -55,
           legendPosition: "middle",

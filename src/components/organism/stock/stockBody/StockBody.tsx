@@ -11,6 +11,7 @@ const StockBody = ({
   currentDate,
   pagenation,
   fetchSearchValue,
+  isInit,
   footerClick,
   clickChangeDate,
 }: StockBodyProps) => {
@@ -23,6 +24,7 @@ const StockBody = ({
         currentDate={currentDate}
         pagenation={pagenation}
         fetchSearchValue={fetchSearchValue}
+        isInit={isInit}
         footerClick={footerClick}
         fetchDetail={fetchDetail}
         clickChangeDate={clickChangeDate}

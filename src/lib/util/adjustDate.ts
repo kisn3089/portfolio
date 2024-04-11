@@ -13,14 +13,27 @@ export const adjusting: Record<number, number> = {
   6: 2,
 };
 
-export const aviodHoliday: Record<number, number> = {
-  0: 2,
-  1: 0,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 0,
-  6: 1,
+// 주말일 일요일일 경우엔 -2, 토요일 경우에는 -1
+
+export const aviodHoliday: Record<string, Record<number, number>> = {
+  "-": {
+    0: 2,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 1,
+  },
+  "+": {
+    0: 1,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 2,
+  },
 };
 
 interface AdjustDateProps {
@@ -44,21 +57,38 @@ export const adjustDate = ({ isDetail, standardDate }: AdjustDateProps) => {
     adjustedDate.getDate(),
   ];
 
+  const originDate = new Date(
+    standardDate.getFullYear(),
+    standardDate.getMonth(),
+    standardDate.getDate() + (isDetail ? 1 : 0)
+  );
+
+  const [originY, originM, originD] = [
+    originDate.getFullYear(),
+    originDate.getMonth() + 1,
+    originDate.getDate(),
+  ];
+
   // format 202448 -> 20240408
   const addZero = (num: number) => (String(num).length !== 2 ? `0${num}` : num);
 
   const onlyNumberWithZero = `${yy}${addZero(mm)}${addZero(dd)}`;
+  const originOnlyNumber = `${originY}${addZero(originM)}${addZero(originD)}`;
   const betweenDot = `${yy}.${addZero(mm)}.${addZero(dd)}`;
+  const originDot = `${originY}.${addZero(originM)}.${addZero(originD)}`;
 
   return {
     onlyNumber: onlyNumberWithZero,
     betweenDot: betweenDot,
+    dateFormat: adjustedDate,
+    originDot: originDot,
+    originOnlyNumber: originOnlyNumber,
   };
 };
 
 // toLabel = 20240410 -> 4 / 10
 // toDate = 20240410 -> 2024-04-10
-// toDate = 20240410 -> 2024-04-10
+// removeDot = 20240410 -> 20240410
 export const formatToLabel = (date: string | number) => {
   const [yy, mm, dd] = [
     String(date).slice(0, 4),

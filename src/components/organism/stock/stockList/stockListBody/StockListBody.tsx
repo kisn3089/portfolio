@@ -30,7 +30,8 @@ const StockBody = ({
       <StandardDateContainer $hasValue={!getStockList}>
         <Svg.ArrowLeft id="-" onClick={clickChangeDate} />
         <StandardDate>
-          {adjustDate({ standardDate: currentDate }).betweenDot}
+          {adjustDate({ standardDate: currentDate }).originDot}
+          {/* {adjustDate({ standardDate: currentDate }).betweenDot} */}
         </StandardDate>
         <Svg.ArrowRight id="+" onClick={clickChangeDate} />
       </StandardDateContainer>

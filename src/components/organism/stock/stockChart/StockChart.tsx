@@ -3,17 +3,19 @@ import Loading from "@/components/molecule/loading/Loading";
 import { useGetStockDetail } from "@/hooks/useGetStockDetail";
 import { SlideRight } from "../stockList/stockListBody/StockListBodyStyles";
 import LineChart from "@/components/molecule/lineChart/LineChart";
+import { StockDataTypes } from "@/types/stockData.type";
+import CheckCondition from "@/lib/util/CheckCondition";
 
 interface StockChartProps {
-  detailStock: string;
+  detailStock?: StockDataTypes;
   currentDate: Date;
 }
 
 const StockChart = ({ detailStock, currentDate }: StockChartProps) => {
   const { data: getStockDetail, isFetching } = useGetStockDetail({
-    code: detailStock,
+    code: detailStock?.srtnCd || "",
     standardData: currentDate,
-    enabled: !!detailStock,
+    enabled: !!detailStock?.srtnCd,
   });
 
   console.log("getStockDetail: ", getStockDetail, isFetching);
@@ -34,13 +36,11 @@ const StockChart = ({ detailStock, currentDate }: StockChartProps) => {
     <StockChartContainer>
       <Loading isLoading={isFetching} />
       <SlideRight $isLoading={isFetching}>
-        <h1>최근 1주일 주가</h1>
-        {/* 데이터 호출 안했을 경우 보여줄 UI */}
-        {stockData[1] ? (
+        <h1>최근 1주일 주식가격</h1>
+        <CheckCondition falseCondition={!!stockData[1]}>
           <LineChart chartData={chartData} range={{ min: min, max: max }} />
-        ) : (
-          <NoChartData>데이터가 없습니다.</NoChartData>
-        )}
+          <NoChartData>제공되는 데이터가 없습니다.</NoChartData>
+        </CheckCondition>
       </SlideRight>
     </StockChartContainer>
   );

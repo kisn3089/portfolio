@@ -3,7 +3,7 @@
 
 // 일요일이면 수요일 데이터를 가져오기 위한 튜닝
 // 0 -> 일요일
-const adjusting: Record<number, number> = {
+export const adjusting: Record<number, number> = {
   0: 3,
   1: 4,
   2: 2,
@@ -11,6 +11,16 @@ const adjusting: Record<number, number> = {
   4: 2,
   5: 2,
   6: 2,
+};
+
+export const aviodHoliday: Record<number, number> = {
+  0: 2,
+  1: 0,
+  2: 0,
+  3: 0,
+  4: 0,
+  5: 0,
+  6: 1,
 };
 
 interface AdjustDateProps {

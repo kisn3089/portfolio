@@ -10,12 +10,12 @@ const PostProsessing = () => {
         luminanceSmoothing={0.3}
         intensity={0.8}
       />
-      <Bloom
+      {/* <Bloom
         kernelSize={KernelSize.HUGE}
         luminanceThreshold={0.4}
         luminanceSmoothing={0.3}
         intensity={0.8}
-      />
+      /> */}
     </EffectComposer>
   );
 };

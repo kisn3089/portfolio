@@ -15,7 +15,6 @@ export const getStockList = async (
       resultType: "json",
       likeItmsNm: search,
       basDt: adjustDate({ standardDate: standardData }).originOnlyNumber,
-      // basDt: adjustDate({ standardDate: standardData }).onlyNumber,
     },
   });
   // console.log("response: ", response);

@@ -8,6 +8,7 @@ const StockPage = () => {
     currentDate,
     fetchSearchValue,
     pagenation,
+    isInit,
     footerClick,
     clickChangeDate,
     enterCallback,
@@ -19,6 +20,7 @@ const StockPage = () => {
         currentDate={currentDate}
         pagenation={pagenation}
         fetchSearchValue={fetchSearchValue}
+        isInit={isInit}
         footerClick={footerClick}
         clickChangeDate={clickChangeDate}
       />

@@ -1,4 +1,4 @@
-import { adjustDate } from "@/lib/util/adjustDate";
+import { adjustDate, convertDay } from "@/lib/util/adjustDate";
 import { StandardDate, StandardDateContainer } from "../StockListStyle";
 import {
   PriceInfo,
@@ -30,8 +30,9 @@ const StockBody = ({
       <StandardDateContainer $hasValue={!getStockList}>
         <Svg.ArrowLeft id="-" onClick={clickChangeDate} />
         <StandardDate>
-          {adjustDate({ standardDate: currentDate }).originDot}
-          {/* {adjustDate({ standardDate: currentDate }).betweenDot} */}
+          {`${adjustDate({ standardDate: currentDate }).originDot} ${
+            convertDay[currentDate.getDay()]
+          }`}
         </StandardDate>
         <Svg.ArrowRight id="+" onClick={clickChangeDate} />
       </StandardDateContainer>

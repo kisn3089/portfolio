@@ -1,30 +1,27 @@
-import { adjusting, aviodHoliday } from "@/lib/util/adjustDate";
-import { calcById } from "@/lib/util/calcById";
+import { adjustDate, aviodHoliday } from "@/lib/util/adjustDate";
+import { calcById, calcByParmas } from "@/lib/util/calcById";
 import React, { useState } from "react";
 
 const useDate = () => {
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(
+    adjustDate({ standardDate: new Date() }).dateFormat
+  );
 
   const clickChangeDate = (e: React.MouseEvent) => {
     const { id } = e.currentTarget;
-    // 현재 일자를 요일로 변경
-    const currentDay = Math.floor((currentDate.getDate() + calcById(id)) % 7);
-    // 호출 가능한 요일로 변경
-    const adjustDate = adjusting[currentDay];
-    // console.log(currentDay);
-    // console.log(currentDay - adjustDate);
+    // 현재 일자 + 왼쪽 화살표 클리기 -1, 오른쪽 화살표시 +1 (+1 | -1)일
+    const currentDay = currentDate.getDate() + calcById(id);
 
-    console.log(currentDay);
-    console.log(adjustDate);
-    console.log(aviodHoliday[currentDay - adjustDate]);
-    const newDate = currentDate.setDate(
-      currentDate.getDate() +
-        calcById(id) -
-        aviodHoliday[currentDay - adjustDate]
-    );
-    console.log(new Date(newDate).getDay());
+    // (+1 | -1)일 더한값을 Date로 타입변환
+    const newDate = new Date(currentDate.setDate(currentDay));
 
-    setCurrentDate(new Date(newDate));
+    // (+1 | -1)일 더한값이 주말일 경우, 주말을 피해 그 다음 날자로 값을 구함
+    const calcHoliday =
+      newDate.getDate() + calcByParmas(id, aviodHoliday[id][newDate.getDay()]);
+
+    const resultDate = newDate.setDate(calcHoliday);
+
+    setCurrentDate(new Date(resultDate));
   };
 
   return { currentDate, clickChangeDate };

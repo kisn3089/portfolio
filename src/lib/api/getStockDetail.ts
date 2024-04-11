@@ -11,7 +11,7 @@ export const getStockDetail = async (code: string, standardData: Date) => {
       resultType: "json",
       likeIsinCd: code,
       endBasDt: adjustDate({ isDetail: true, standardDate: standardData })
-        .onlyNumber,
+        .originOnlyNumber,
     },
   });
   return response.data.response.body.items.item;

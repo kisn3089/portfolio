@@ -5,13 +5,14 @@ export const LoadingContainer = styled.div<{ $isLoading: boolean }>`
   position: absolute;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 3;
+  z-index: 4;
   pointer-events: ${({ $isLoading }) => !$isLoading && "none"};
   will-change: transform opacity;
+  background-color: ${theme.palette.darkBlack};
   ${({ theme, $isLoading }) =>
     theme.animation.fadeIn({
       name: $isLoading ? "show" : "hide",

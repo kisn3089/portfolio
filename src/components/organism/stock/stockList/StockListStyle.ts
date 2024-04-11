@@ -34,7 +34,7 @@ export const StandardDateContainer = styled.div<{ $hasValue: boolean }>`
 `;
 
 export const StandardDate = styled.span`
-  font-size: ${theme.fontSize.small};
+  font-size: ${theme.fontSize.mini};
   letter-spacing: 1.1px;
 
   @media screen and (max-width: ${theme.deviceSize.desktop}) {

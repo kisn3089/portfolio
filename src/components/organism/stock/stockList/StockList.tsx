@@ -26,7 +26,7 @@ const StockList = ({
     enabled: !!fetchSearchValue,
   });
 
-  // console.log("List: ", getStockList);
+  console.log("List: ", getStockList);
 
   return (
     <StockListContainer>

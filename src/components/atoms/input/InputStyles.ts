@@ -25,6 +25,10 @@ export const StyleInput = styled.input<{ $width?: string; $height?: string }>`
     padding: 0 6px;
   }
 
+  @media screen and (max-width: ${theme.deviceSize.tablet}) {
+    width: 230px;
+  }
+
   @media screen and (max-width: ${theme.deviceSize.mobile}) {
     width: 100%;
   }

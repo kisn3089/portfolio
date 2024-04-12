@@ -10,6 +10,7 @@ export const StockSection = styled.section`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
 
   @media screen and (max-width: ${theme.deviceSize.tablet}) {
     padding: 0 40px 40px 40px;

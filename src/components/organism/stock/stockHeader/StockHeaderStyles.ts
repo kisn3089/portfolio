@@ -10,6 +10,14 @@ export const StockSection = styled.section`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  @media screen and (max-width: ${theme.deviceSize.tablet}) {
+    padding: 0 40px 40px 40px;
+  }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    padding: 0 20px 20px 20px;
+  }
 `;
 
 export const StockHeaderStyle = styled.header`
@@ -22,6 +30,10 @@ export const StockHeaderStyle = styled.header`
 
   @media screen and (max-width: ${theme.deviceSize.tablet}) {
     margin-top: 0;
+  }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    justify-content: center;
   }
 `;
 
@@ -48,5 +60,9 @@ export const SearchContainer = styled.div`
 
   .search {
     right: 6%;
+  }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    width: 100%;
   }
 `;

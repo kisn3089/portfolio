@@ -19,12 +19,16 @@ export const SlideRight = styled.div<{ $isLoading: boolean }>`
       transtion: theme.ts.moreFast,
     })};
   z-index: 4;
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    padding: 0 10px;
+  }
 `;
 
 export const StockItem = styled.div`
   width: 100%;
   height: 50px;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0 12px;
   background-color: ${theme.palette.gray};
   cursor: pointer;

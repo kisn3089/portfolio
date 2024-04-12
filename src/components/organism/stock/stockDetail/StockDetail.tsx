@@ -10,19 +10,17 @@ export interface StockDetailProps {
 }
 
 const StockDetail = ({ detailStock }: StockDetailProps) => {
-  // console.log("detailStock: ", detailStock);
-
   return (
     <StockDetailContainer>
-      {/* <CheckCondition falseCondition={!detailStock}>
+      <CheckCondition falseCondition={!detailStock}>
         <BeforeFetch
           content="주식 및 배당 정보입니다."
           svg={<Svg.StockList />}
-        /> */}
-      <BaseInfoLayout>
-        <BaseInfo detailStock={detailStock} />
-      </BaseInfoLayout>
-      {/* </CheckCondition> */}
+        />
+        <BaseInfoLayout>
+          <BaseInfo detailStock={detailStock} />
+        </BaseInfoLayout>
+      </CheckCondition>
     </StockDetailContainer>
   );
 };

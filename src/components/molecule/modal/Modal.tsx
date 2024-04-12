@@ -12,6 +12,7 @@ import BaseInfo from "@/components/organism/stock/stockDetail/baseInfo/BaseInfo"
 import { StockDataTypes } from "@/types/stockData.type";
 import * as Svg from "@/components/atoms/icon/index";
 import StockChart from "@/components/organism/stock/stockChart/StockChart";
+import { theme } from "@/styles/theme";
 
 interface ModalProps {
   showModal: boolean;
@@ -33,7 +34,11 @@ const Modal = ({
       </ModalHeader>
       <Center>
         <ChartContainer>
-          <StockChart detailStock={detailStock} currentDate={currentDate} />
+          <StockChart
+            detailStock={detailStock}
+            currentDate={currentDate}
+            bgColor={theme.palette.black}
+          />
         </ChartContainer>
         <CheckCondition falseCondition={!detailStock}>
           <BeforeFetch
@@ -45,8 +50,6 @@ const Modal = ({
           </BaseInfoLayout>
         </CheckCondition>
       </Center>
-      {/* <Center> */}
-      {/* </Center> */}
     </ModalLayout>
   );
 };

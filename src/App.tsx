@@ -3,6 +3,7 @@ import TransPages from "./pages/TransPages";
 import Header from "./components/organism/header/Header";
 import { useMain } from "./hooks/useMain";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "./styles/fonts.css";
 
 function App() {
   const { isActive, toggleActive } = useMain();

@@ -1,4 +1,3 @@
-import { StockListContainer } from "./StockListStyle";
 import Loading from "@/components/molecule/loading/Loading";
 import StockListBody, { StockBodyProps } from "./stockListBody/StockListBody";
 import StockListFooter from "./stockListFooter/StockListFooter";
@@ -6,12 +5,16 @@ import { useGetStockList } from "@/hooks/useGetStockList";
 import CheckCondition from "@/lib/util/CheckCondition";
 import NoData from "@/components/molecule/noData/NoData";
 import BeforeFetch from "@/components/molecule/beforeFetch/BeforeFetch";
+import { StockListContainer } from "./stockListBody/dateHeader/DateHeaderStyles";
+import DateHeader from "./stockListBody/dateHeader/DateHeader";
 
 export interface StockListProps extends Omit<StockBodyProps, "isLoading"> {
+  currentDate: Date;
   fetchSearchValue: string;
   pagenation: number;
   isInit: boolean;
   footerClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  clickChangeDate: (e: React.MouseEvent) => void;
 }
 
 const StockList = ({
@@ -23,7 +26,6 @@ const StockList = ({
   fetchDetail,
   clickChangeDate,
 }: StockListProps) => {
-  // 상세 정보에 보여줄 데이터 픽스시 any 해결하기
   const { data: getStockList = [], isFetching } = useGetStockList({
     search: fetchSearchValue,
     pageNo: pagenation,
@@ -37,20 +39,22 @@ const StockList = ({
   return (
     <StockListContainer>
       <Loading isLoading={isFetching} />
-      {isInit ? (
-        <BeforeFetch />
-      ) : (
+      <DateHeader
+        currentDate={currentDate}
+        getStockList={getStockList}
+        clickChangeDate={clickChangeDate}
+      />
+      <CheckCondition falseCondition={isInit}>
+        <BeforeFetch content="주식을 검색해보세요." />
         <CheckCondition falseCondition={!getStockList[1]}>
           <NoData content="제공된 데이터가 없습니다." />
           <StockListBody
-            currentDate={currentDate}
             isLoading={isFetching}
             getStockList={getStockList}
             fetchDetail={fetchDetail}
-            clickChangeDate={clickChangeDate}
           />
         </CheckCondition>
-      )}
+      </CheckCondition>
       <StockListFooter
         dataLength={getStockList?.length}
         pagenation={pagenation}

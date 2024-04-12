@@ -3,9 +3,10 @@ import styled from "styled-components";
 
 export const LoadingContainer = styled.div<{ $isLoading: boolean }>`
   position: absolute;
+  top: 28%;
   left: 0;
   width: 100%;
-  height: 90%;
+  height: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,6 +24,7 @@ export const LoadingContainer = styled.div<{ $isLoading: boolean }>`
       transtion: theme.ts.moreFast,
       direction: "forwards",
     })};
+
   svg {
     fill: ${theme.palette.white};
     width: 48px;

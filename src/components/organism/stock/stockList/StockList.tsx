@@ -7,6 +7,7 @@ import NoData from "@/components/molecule/noData/NoData";
 import BeforeFetch from "@/components/molecule/beforeFetch/BeforeFetch";
 import { StockListContainer } from "./stockListBody/dateHeader/DateHeaderStyles";
 import DateHeader from "./stockListBody/dateHeader/DateHeader";
+import * as Svg from "@/components/atoms/icon/index";
 
 export interface StockListProps extends Omit<StockBodyProps, "isLoading"> {
   currentDate: Date;
@@ -45,7 +46,7 @@ const StockList = ({
         clickChangeDate={clickChangeDate}
       />
       <CheckCondition falseCondition={isInit}>
-        <BeforeFetch content="주식을 검색해보세요." />
+        <BeforeFetch content="주식을 검색해보세요." svg={<Svg.StockList />} />
         <CheckCondition falseCondition={!getStockList[1]}>
           <NoData content="제공된 데이터가 없습니다." />
           <StockListBody

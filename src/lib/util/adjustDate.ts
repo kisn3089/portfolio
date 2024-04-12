@@ -98,6 +98,7 @@ export const adjustDate = ({ isDetail, standardDate }: AdjustDateProps) => {
 // toLabel = 20240410 -> 4 / 10
 // toDate = 20240410 -> 2024-04-10
 // removeDot = 20240410 -> 20240410
+// convertDot = 20240410 -> 2024.04.10
 export const formatToLabel = (date: string | number) => {
   const [yy, mm, dd] = [
     String(date).slice(0, 4),
@@ -108,5 +109,6 @@ export const formatToLabel = (date: string | number) => {
     toLabel: `${parseInt(mm)} / ${parseInt(dd)}`,
     toDate: `${yy}-${mm}-${dd}`,
     removeDot: String(date).replaceAll(".", ""),
+    convertDot: `${yy}.${mm}.${dd}`,
   };
 };

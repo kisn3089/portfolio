@@ -1,11 +1,15 @@
 import React from "react";
 import { BeforeFetchLayout, InfoText } from "./BeforeFetchStyles";
-import * as Svg from "@/components/atoms/icon/index";
 
-const BeforeFetch = ({ content }: { content: string }) => {
+interface BeforeFetchProps {
+  svg: React.ReactNode;
+  content: string;
+}
+
+const BeforeFetch = ({ content, svg }: BeforeFetchProps) => {
   return (
     <BeforeFetchLayout>
-      <Svg.StockIcon />
+      {svg}
       <InfoText>{content}</InfoText>
     </BeforeFetchLayout>
   );

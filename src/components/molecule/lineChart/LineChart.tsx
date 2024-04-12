@@ -4,6 +4,7 @@ import { ResponsiveLine } from "@nivo/line";
 import { theme } from "@/styles/theme";
 import { formatToLabel } from "@/lib/util/adjustDate";
 import { defaultData } from "@/types/stockData.type";
+import { pxToVw } from "@/lib/util/responsiveSize";
 interface LineChartProps {
   chartData: { id: string; data: { x: string; y: string }[] }[];
   range: { min: number; max: number };
@@ -17,7 +18,7 @@ const LineChart = ({ chartData, range }: LineChartProps) => {
         colors={[theme.palette.blue]}
         animate={true}
         curve="cardinal"
-        margin={{ top: 30, right: 25, bottom: 25, left: 65 }}
+        margin={{ top: 30, right: 25, bottom: 25, left: 55 }}
         xScale={{ type: "point" }}
         yScale={{
           type: "linear",
@@ -37,7 +38,7 @@ const LineChart = ({ chartData, range }: LineChartProps) => {
         }}
         axisLeft={{
           tickSize: 0,
-          tickPadding: 30,
+          tickPadding: 13,
           tickValues: 6,
           legendOffset: -55,
           legendPosition: "middle",
@@ -45,7 +46,7 @@ const LineChart = ({ chartData, range }: LineChartProps) => {
         }}
         gridYValues={4}
         theme={{
-          text: { fill: theme.palette.white, fontSize: "12px" },
+          text: { fill: theme.palette.white, fontSize: pxToVw(12) },
           grid: {
             line: {
               stroke: theme.palette.gray200,

@@ -11,7 +11,6 @@ export const StockDetailContainer = styled.div`
 
 export const BaseInfoLayout = styled.div`
   width: 100%;
-  height: 100%;
   padding: 20px 10px;
   display: flex;
   flex-direction: column;

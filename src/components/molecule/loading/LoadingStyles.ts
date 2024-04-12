@@ -1,7 +1,10 @@
 import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
-export const LoadingContainer = styled.div<{ $isLoading: boolean }>`
+export const LoadingContainer = styled.div<{
+  $isLoading: boolean;
+  $bgColor?: string;
+}>`
   position: absolute;
   top: 28%;
   left: 0;
@@ -13,7 +16,8 @@ export const LoadingContainer = styled.div<{ $isLoading: boolean }>`
   z-index: 4;
   pointer-events: ${({ $isLoading }) => !$isLoading && "none"};
   will-change: transform opacity;
-  background-color: ${theme.palette.darkBlack};
+  background-color: ${({ $bgColor, theme }) =>
+    $bgColor || theme.palette.darkBlack};
   ${({ theme, $isLoading }) =>
     theme.animation.fadeIn({
       name: $isLoading ? "show" : "hide",
@@ -29,9 +33,5 @@ export const LoadingContainer = styled.div<{ $isLoading: boolean }>`
     fill: ${theme.palette.white};
     width: 48px;
     height: 48px;
-  }
-
-  @media screen and (max-width: ${theme.deviceSize.mobile}) {
-    background-color: ${theme.palette.black};
   }
 `;

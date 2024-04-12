@@ -1,4 +1,3 @@
-import { StockChartContainer } from "./StockChartStyle";
 import Loading from "@/components/molecule/loading/Loading";
 import { useGetStockDetail } from "@/hooks/useGetStockDetail";
 import { SlideRight } from "../stockList/stockListBody/StockListBodyStyles";
@@ -12,9 +11,10 @@ import * as Svg from "@/components/atoms/icon/index";
 interface StockChartProps {
   detailStock?: StockDataTypes;
   currentDate: Date;
+  bgColor?: string;
 }
 
-const StockChart = ({ detailStock, currentDate }: StockChartProps) => {
+const StockChart = ({ detailStock, currentDate, bgColor }: StockChartProps) => {
   const { data: getStockDetail, isFetching } = useGetStockDetail({
     code: detailStock?.srtnCd || "",
     standardData: currentDate,
@@ -37,7 +37,7 @@ const StockChart = ({ detailStock, currentDate }: StockChartProps) => {
 
   return (
     <>
-      <Loading isLoading={isFetching} />
+      <Loading isLoading={isFetching} bgColor={bgColor} />
       <SlideRight $isLoading={isFetching}>
         <CheckCondition falseCondition={!detailStock?.itmsNm || false}>
           <BeforeFetch content="주식을 선택해주세요." svg={<Svg.StockIcon />} />

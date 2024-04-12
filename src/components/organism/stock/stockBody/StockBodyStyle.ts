@@ -10,7 +10,7 @@ export const StockBodyContainer = styled.div`
   border-radius: 8px;
 
   @media screen and (max-width: ${theme.deviceSize.desktop}) {
-    grid-template-columns: 1fr 180px 230px;
+    grid-template-columns: 1fr 200px 230px;
   }
 
   @media screen and (max-width: ${theme.deviceSize.tablet}) {

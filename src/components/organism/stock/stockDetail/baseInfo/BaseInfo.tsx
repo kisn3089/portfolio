@@ -16,7 +16,6 @@ const BaseInfo = ({ detailStock }: BaseInfoProps) => {
   if (!detailStock) return;
   const { basDt, clpr, fltRt, hipr, itmsNm, lopr, mkp, mrktCtg, srtnCd, vs } =
     detailStock;
-  console.log("detailStock: ", detailStock);
 
   const baseInfoData = [
     { title: "기준 일자: ", content: formatToLabel(basDt).convertDot },

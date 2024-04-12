@@ -41,7 +41,6 @@ const StockChart = ({ detailStock, currentDate }: StockChartProps) => {
       <SlideRight $isLoading={isFetching}>
         <CheckCondition falseCondition={!detailStock?.itmsNm || false}>
           <BeforeFetch content="주식을 선택해주세요." svg={<Svg.StockIcon />} />
-          {/* <h1>최근 1주일 주식가격</h1> */}
           <CheckCondition falseCondition={!stockData[1]}>
             <NoData content="제공되는 데이터가 없습니다." />
             <LineChart chartData={chartData} range={{ min: min, max: max }} />

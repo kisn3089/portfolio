@@ -24,4 +24,8 @@ export const StyleInput = styled.input<{ $width?: string; $height?: string }>`
     font-family: ${theme.fontFamily.ko};
     padding: 0 6px;
   }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    width: 100%;
+  }
 `;

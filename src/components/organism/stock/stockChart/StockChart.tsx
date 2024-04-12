@@ -21,7 +21,7 @@ const StockChart = ({ detailStock, currentDate }: StockChartProps) => {
     enabled: !!detailStock?.srtnCd,
   });
 
-  console.log("getStockDetail: ", getStockDetail, isFetching);
+  // console.log("getStockDetail: ", getStockDetail, isFetching);
   const stockData =
     getStockDetail
       ?.map((chartItem) => ({
@@ -36,7 +36,7 @@ const StockChart = ({ detailStock, currentDate }: StockChartProps) => {
   const chartData = [{ id: "stock", data: stockData }];
 
   return (
-    <StockChartContainer>
+    <>
       <Loading isLoading={isFetching} />
       <SlideRight $isLoading={isFetching}>
         <CheckCondition falseCondition={!detailStock?.itmsNm || false}>
@@ -47,7 +47,7 @@ const StockChart = ({ detailStock, currentDate }: StockChartProps) => {
           </CheckCondition>
         </CheckCondition>
       </SlideRight>
-    </StockChartContainer>
+    </>
   );
 };
 

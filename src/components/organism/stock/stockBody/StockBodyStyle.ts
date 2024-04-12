@@ -2,6 +2,7 @@ import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const StockBodyContainer = styled.div`
+  position: relative;
   width: 100%;
   height: 700px;
   display: grid;

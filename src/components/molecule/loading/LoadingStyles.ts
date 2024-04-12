@@ -30,4 +30,8 @@ export const LoadingContainer = styled.div<{ $isLoading: boolean }>`
     width: 48px;
     height: 48px;
   }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    background-color: ${theme.palette.black};
+  }
 `;

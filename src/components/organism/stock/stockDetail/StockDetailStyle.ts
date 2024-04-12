@@ -8,3 +8,11 @@ export const StockDetailContainer = styled.div`
     display: none;
   }
 `;
+
+export const BaseInfoLayout = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+`;

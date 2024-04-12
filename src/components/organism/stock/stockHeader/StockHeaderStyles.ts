@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const StockSection = styled.section`
   width: 100%;
   height: calc(100vh - 100px);
-  min-height: 800px;
+  min-height: 900px;
   padding: 0 60px 60px 60px;
   display: flex;
   justify-content: center;

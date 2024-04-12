@@ -1,8 +1,11 @@
 import { StockDataTypes } from "@/types/stockData.type";
-import { StockDetailContainer } from "./StockDetailStyle";
-import ReadyGroup from "@/components/molecule/hasReady/readyGroup/ReadyGroup";
+import { BaseInfoLayout, StockDetailContainer } from "./StockDetailStyle";
+import CheckCondition from "@/lib/util/CheckCondition";
+import BeforeFetch from "@/components/molecule/beforeFetch/BeforeFetch";
+import * as Svg from "@/components/atoms/icon/index";
+import BaseInfo from "./baseInfo/BaseInfo";
 
-interface StockDetailProps {
+export interface StockDetailProps {
   detailStock?: StockDataTypes;
 }
 
@@ -11,7 +14,15 @@ const StockDetail = ({ detailStock }: StockDetailProps) => {
 
   return (
     <StockDetailContainer>
-      <ReadyGroup />
+      {/* <CheckCondition falseCondition={!detailStock}>
+        <BeforeFetch
+          content="주식 및 배당 정보입니다."
+          svg={<Svg.StockList />}
+        /> */}
+      <BaseInfoLayout>
+        <BaseInfo detailStock={detailStock} />
+      </BaseInfoLayout>
+      {/* </CheckCondition> */}
     </StockDetailContainer>
   );
 };

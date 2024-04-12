@@ -13,6 +13,7 @@ export const ModalLayout = styled.div<{ $showModal: boolean }>`
   pointer-events: ${({ $showModal }) => !$showModal && "none"};
   background-color: ${theme.palette.black};
   will-change: transform opacity;
+  display: none;
 
   ${({ theme, $showModal }) =>
     theme.animation.fadeIn({
@@ -62,10 +63,10 @@ export const Center = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 50px);
   background-color: ${theme.palette.black};
   border-radius: 0 0 8px 8px;
-  outline: 1px solid ${theme.palette.gray50};
+  /* outline: 1px solid ${theme.palette.gray50}; */
 `;
 
 export const ModalHeader = styled.div`

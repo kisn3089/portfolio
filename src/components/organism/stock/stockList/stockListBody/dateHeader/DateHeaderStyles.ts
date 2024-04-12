@@ -31,6 +31,10 @@ export const StandardDateContainer = styled.div<{ $hasValue: boolean }>`
   svg:hover {
     opacity: 0.4;
   }
+
+  @media screen and (max-width: ${theme.deviceSize.desktop}) {
+    padding: 0 12px;
+  }
 `;
 
 export const StandardDate = styled.span`

@@ -1,3 +1,4 @@
+import { transUnit } from "@/lib/util/transUnit";
 import {
   PriceInfo,
   SlideRight,
@@ -30,7 +31,7 @@ const StockBody = ({
 
             <PriceInfo $flag={Number(stock.fltRt) > 0 ? "up" : "down"}>
               <span>{Number(stock.fltRt)}%</span>
-              <span>{Number(stock.clpr).toLocaleString("ko-KR")}</span>
+              <span>{transUnit(stock.clpr)}</span>
             </PriceInfo>
           </StockItem>
         ))}

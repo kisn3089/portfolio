@@ -6,3 +6,5 @@ export { ReactComponent as Lock } from "../../../assets/icons/lock.svg";
 export { ReactComponent as ArrowRight } from "../../../assets/icons/arrow_right.svg";
 export { ReactComponent as ArrowLeft } from "../../../assets/icons/arrow_left.svg";
 export { ReactComponent as StockIcon } from "../../../assets/icons/stock.svg";
+export { ReactComponent as StockList } from "../../../assets/icons/stock_list.svg";
+export { ReactComponent as StockGift } from "../../../assets/icons/stock_gift.svg";

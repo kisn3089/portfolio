@@ -7,6 +7,7 @@ import { StockDataTypes } from "@/types/stockData.type";
 import CheckCondition from "@/lib/util/CheckCondition";
 import NoData from "@/components/molecule/noData/NoData";
 import BeforeFetch from "@/components/molecule/beforeFetch/BeforeFetch";
+import * as Svg from "@/components/atoms/icon/index";
 
 interface StockChartProps {
   detailStock?: StockDataTypes;
@@ -39,7 +40,7 @@ const StockChart = ({ detailStock, currentDate }: StockChartProps) => {
       <Loading isLoading={isFetching} />
       <SlideRight $isLoading={isFetching}>
         <CheckCondition falseCondition={!detailStock?.itmsNm || false}>
-          <BeforeFetch content="주식을 선택해주세요." />
+          <BeforeFetch content="주식을 선택해주세요." svg={<Svg.StockIcon />} />
           {/* <h1>최근 1주일 주식가격</h1> */}
           <CheckCondition falseCondition={!stockData[1]}>
             <NoData content="제공되는 데이터가 없습니다." />

@@ -20,7 +20,8 @@ const StockListFooter = ({
       <PagingButton
         id="+"
         onClick={footerClick}
-        disabled={(dataLength || 0) < 10}>
+        disabled={(dataLength || 0) < 10}
+      >
         NEXT
       </PagingButton>
     </FooterLayout>

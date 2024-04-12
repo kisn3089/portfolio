@@ -1,42 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import enSemiBold from "../assets/fonts/en/Nunito-SemiBold.ttf";
-import enRegular from "../assets/fonts/en/Nunito-Regular.ttf";
-import enBold from "../assets/fonts/en/Nunito-Bold.ttf";
-import koRegular from "../assets/fonts/ko/NanumSquareRoundR.ttf";
-import koBold from "../assets/fonts/ko/NanumSquareRoundB.ttf";
-import Loading from "../assets/fonts/en/Agbalumo-Regular.ttf";
 
 export const GlobalStyle = createGlobalStyle`
-    @font-face {
-      font-family: "Agbalumo";
-      src: local("Agbalumo-Regular"), url(${Loading}), format("ttf");
-      font-weight: 700;
-    }
-    @font-face {
-      font-family: "Nunito";
-      src: local("Nunito-SemiBold"), url(${enSemiBold}), format("ttf");
-      font-weight: 700;
-    }
-    @font-face {
-      font-family: "Nunito";
-      src: local("Nunito-Regular"), url(${enRegular}), format("ttf");
-      font-weight: 400;
-    }
-    @font-face {
-      font-family: "Nunito";
-      src: local("Nunito-Bold"), url(${enBold}), format("ttf");
-      font-weight: 900;
-    }
-    @font-face {
-      font-family: "NanumSquareRound";
-      src: local("NanumSquareRound-Regular"), url(${koRegular}), format("ttf");
-      font-weight: 400;
-    }
-    @font-face {
-      font-family: "NanumSquareRound";
-      src: local("NanumSquareRound-Bold"), url(${koBold}), format("ttf");
-      font-weight: 700;
-    }
 
     * {
         box-sizing: border-box;

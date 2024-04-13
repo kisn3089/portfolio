@@ -10,16 +10,16 @@ import { StockDetailProps } from "../StockDetail";
 
 const DetailInfo = ({
   detailStock,
-  allocationData,
-  allocationFetching,
-}: StockDetailProps) => {
+}: // allocationData,
+// allocationFetching,
+StockDetailProps) => {
   return (
     <Column>
       <BaseInfoLayout>
         <BaseInfo
           detailStock={detailStock}
-          allocationData={allocationData}
-          allocationFetching={allocationFetching}
+          // allocationData={allocationData}
+          // allocationFetching={allocationFetching}
         />
       </BaseInfoLayout>
       <AllocationLayout>

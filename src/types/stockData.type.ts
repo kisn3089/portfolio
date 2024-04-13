@@ -31,6 +31,20 @@ export interface StockDataTypes {
   vs: string;
 }
 
+export interface AllocationTypes {
+  // 기준 일자
+  basDt: string;
+  // 법인 등록 번호
+  crno: string;
+  // 주식 발행 회사 이름
+  stckIssuCmpyNm: string;
+  // 유가 증권 종목 종류
+  scrsItmsKcdNm: string;
+  // 액면가
+  stckParPrc: string;
+  //
+}
+
 export const defaultData = [
   {
     id: "stock",

@@ -17,6 +17,8 @@ import { theme } from "@/styles/theme";
 interface ModalProps {
   showModal: boolean;
   detailStock?: StockDataTypes;
+  getStockDetail?: StockDataTypes[];
+  isFetching: boolean;
   currentDate: Date;
   closeModal: (e: React.MouseEvent | React.TouchEvent) => void;
 }
@@ -24,6 +26,8 @@ interface ModalProps {
 const Modal = ({
   showModal,
   detailStock,
+  getStockDetail,
+  isFetching,
   currentDate,
   closeModal,
 }: ModalProps) => {
@@ -35,6 +39,8 @@ const Modal = ({
       <Center>
         <ChartContainer>
           <StockChart
+            getStockDetail={getStockDetail}
+            isFetching={isFetching}
             detailStock={detailStock}
             currentDate={currentDate}
             bgColor={theme.palette.black}

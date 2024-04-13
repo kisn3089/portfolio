@@ -9,17 +9,25 @@ import BeforeFetch from "@/components/molecule/beforeFetch/BeforeFetch";
 import * as Svg from "@/components/atoms/icon/index";
 
 interface StockChartProps {
+  getStockDetail?: StockDataTypes[];
   detailStock?: StockDataTypes;
+  isFetching: boolean;
   currentDate: Date;
   bgColor?: string;
 }
 
-const StockChart = ({ detailStock, currentDate, bgColor }: StockChartProps) => {
-  const { data: getStockDetail, isFetching } = useGetStockDetail({
-    code: detailStock?.srtnCd || "",
-    standardData: currentDate,
-    enabled: !!detailStock?.srtnCd,
-  });
+const StockChart = ({
+  getStockDetail,
+  detailStock,
+  isFetching,
+  currentDate,
+  bgColor,
+}: StockChartProps) => {
+  // const { data: getStockDetail, isFetching } = useGetStockDetail({
+  //   code: detailStock?.srtnCd || "",
+  //   standardData: currentDate,
+  //   enabled: !!detailStock?.srtnCd,
+  // });
 
   // console.log("getStockDetail: ", getStockDetail, isFetching);
   const stockData =

@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import React, { useState } from "react";
 
 const useSearch = () => {
@@ -15,6 +16,10 @@ const useSearch = () => {
     if (!searchValue || e.nativeEvent.isComposing) return;
     if (e.key === "Enter") {
       callback(searchValue);
+
+      if (window.innerWidth <= parseInt(theme.deviceSize.mobile)) {
+        (document.activeElement as HTMLElement).blur();
+      }
     }
   };
 

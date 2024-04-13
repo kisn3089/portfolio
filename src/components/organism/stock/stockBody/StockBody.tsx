@@ -5,11 +5,6 @@ import StockChart from "../stockChart/StockChart";
 import { useStockDetail } from "@/hooks/useStockDetail";
 import Modal from "@/components/molecule/modal/Modal";
 import { StockChartContainer } from "../stockChart/StockChartStyle";
-import { getStockAllocation } from "@/lib/api/getStockAllocation";
-import { useQueries } from "@tanstack/react-query";
-import { FETCHSTOCKALLOCATION, FETCHSTOCKDETAIL } from "@/lib/util/constanse";
-import { getStockDetail } from "@/lib/api/getStockDetail";
-import { allocationDate } from "@/lib/util/adjustDate";
 import { useGetDetail } from "@/hooks/useGetDetail";
 
 interface StockBodyProps extends Omit<StockListProps, "fetchDetail"> {}
@@ -24,10 +19,11 @@ const StockBody = ({
 }: StockBodyProps) => {
   const { detailStock, showModal, fetchDetail, closeModal } = useStockDetail();
 
-  const { chartFetching, allocationFetching, chartData, allocationData } =
-    useGetDetail({ currentDate: currentDate, detailStock: detailStock });
-  // console.log("tt1: ", chartFetching, chartData);
-  // console.log("tt2: ", allocationFetching, allocationData);
+  // const { chartFetching, allocationFetching, chartData, allocationData } =
+  const { chartFetching, chartData } = useGetDetail({
+    currentDate: currentDate,
+    detailStock: detailStock,
+  });
 
   return (
     <StockBodyContainer>
@@ -40,8 +36,8 @@ const StockBody = ({
       </StockChartContainer>
       <StockDetail
         detailStock={detailStock}
-        allocationData={allocationData}
-        allocationFetching={allocationFetching}
+        // allocationData={allocationData}
+        // allocationFetching={allocationFetching}
       />
       <StockList
         currentDate={currentDate}
@@ -56,8 +52,8 @@ const StockBody = ({
         showModal={showModal}
         getStockDetail={chartData}
         isFetching={chartFetching}
-        allocationFetching={allocationFetching}
-        allocationData={allocationData}
+        // allocationFetching={allocationFetching}
+        // allocationData={allocationData}
         detailStock={detailStock}
         closeModal={closeModal}
       />

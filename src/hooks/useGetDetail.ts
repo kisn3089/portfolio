@@ -23,17 +23,18 @@ export const useGetDetail = ({
         enabled: !!detailStock?.srtnCd,
       },
       // 배당
-      {
-        queryKey: [FETCHSTOCKALLOCATION, detailStock?.itmsNm, allocationDate()],
-        queryFn: () =>
-          getStockAllocation(detailStock?.itmsNm || "", allocationDate()),
-        enabled: !!detailStock?.itmsNm,
-      },
+      // {
+      //   queryKey: [FETCHSTOCKALLOCATION, detailStock?.itmsNm, allocationDate()],
+      //   queryFn: () =>
+      //     getStockAllocation(detailStock?.itmsNm || "", allocationDate()),
+      //   enabled: !!detailStock?.itmsNm,
+      // },
     ],
   });
 
   const { isFetching: chartFetching, data: chartData } = fetchsDetail[0];
-  const { isFetching: allocationFetching, data: allocationData } =
-    fetchsDetail[1];
-  return { chartFetching, allocationFetching, chartData, allocationData };
+  // const { isFetching: allocationFetching, data: allocationData } =
+  //   fetchsDetail[1];
+  // return { chartFetching, allocationFetching, chartData, allocationData };
+  return { chartFetching, chartData };
 };

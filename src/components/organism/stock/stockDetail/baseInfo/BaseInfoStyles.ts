@@ -26,7 +26,7 @@ export const BaseInfoContainer = styled.div`
   background-color: ${theme.palette.gray};
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 2px;
   padding: 16px;
   border-radius: 8px;
 `;
@@ -38,11 +38,14 @@ export const BaseInfoTitle = styled.span`
   color: ${theme.palette.gray200};
 `;
 
-export const BaseInfoContent = styled.span`
+export const BaseInfoContent = styled.span<{ $flag?: string }>`
   font-size: ${theme.fontSize.small};
   font-weight: ${theme.fontWeight.regular};
   font-family: ${theme.fontFamily.ko};
-  color: ${theme.palette.gray100};
-  letter-spacing: 1px;
+  color: ${({ $flag }) => $flag};
   vertical-align: middle;
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    font-size: ${theme.fontSize.mini};
+  }
 `;

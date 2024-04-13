@@ -1,5 +1,4 @@
 import Loading from "@/components/molecule/loading/Loading";
-import { useGetStockDetail } from "@/hooks/useGetStockDetail";
 import { SlideRight } from "../stockList/stockListBody/StockListBodyStyles";
 import LineChart from "@/components/molecule/lineChart/LineChart";
 import { StockDataTypes } from "@/types/stockData.type";
@@ -12,7 +11,6 @@ interface StockChartProps {
   getStockDetail?: StockDataTypes[];
   detailStock?: StockDataTypes;
   isFetching: boolean;
-  currentDate: Date;
   bgColor?: string;
 }
 
@@ -20,16 +18,8 @@ const StockChart = ({
   getStockDetail,
   detailStock,
   isFetching,
-  currentDate,
   bgColor,
 }: StockChartProps) => {
-  // const { data: getStockDetail, isFetching } = useGetStockDetail({
-  //   code: detailStock?.srtnCd || "",
-  //   standardData: currentDate,
-  //   enabled: !!detailStock?.srtnCd,
-  // });
-
-  // console.log("getStockDetail: ", getStockDetail, isFetching);
   const stockData =
     getStockDetail
       ?.map((chartItem) => ({

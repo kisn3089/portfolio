@@ -112,3 +112,10 @@ export const formatToLabel = (date: string | number) => {
     convertDot: `${yy}.${mm}.${dd}`,
   };
 };
+
+export const allocationDate = () => {
+  const newDate = adjustDate({ standardDate: new Date() }).dateFormat;
+  const day = newDate.getDate() + 1;
+  const resultDate = new Date(newDate.setDate(day));
+  return resultDate;
+};

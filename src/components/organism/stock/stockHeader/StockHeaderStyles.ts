@@ -56,7 +56,8 @@ export const SearchContainer = styled.div`
       })}
   }
   .close {
-    right: 5%;
+    right: 4%;
+    top: 25%;
   }
 
   .search {

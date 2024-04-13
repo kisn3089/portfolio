@@ -23,3 +23,12 @@ export const ReadyInfo = styled.span`
   font-size: ${theme.fontSize.small};
   font-family: ${theme.fontFamily.ko};
 `;
+
+export const ReadyCenter = styled.div`
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+`;

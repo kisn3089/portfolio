@@ -9,16 +9,16 @@ const projectList = [
     img: "/assets/img/model.webp",
   },
   {
+    title: "Parallel API & Data Visualization",
+    tag: "useQurey • Api • Chart",
+    link: "/project/stock",
+    img: "/assets/img/pj_stock.webp",
+  },
+  {
     title: "Video Convert & Player",
     tag: "Video • FFMPEG • Convert • WASM",
     link: "/project/video",
     img: "/assets/img/pj_video.webp",
-  },
-  {
-    title: "Parallel API & Data Visualization",
-    tag: "useQurey • Api • Chart",
-    link: "/project/stock",
-    img: "/assets/img/human.jpg",
   },
 ];
 // 비디오, threejs, api & dashboard

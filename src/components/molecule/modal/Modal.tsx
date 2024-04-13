@@ -18,8 +18,8 @@ interface ModalProps {
   showModal: boolean;
   detailStock?: StockDataTypes;
   getStockDetail?: StockDataTypes[];
-  allocationData: AllocationTypes;
-  allocationFetching: boolean;
+  // allocationData: AllocationTypes;
+  // allocationFetching: boolean;
   isFetching: boolean;
   closeModal: (e: React.MouseEvent | React.TouchEvent) => void;
 }
@@ -28,8 +28,8 @@ const Modal = ({
   showModal,
   detailStock,
   getStockDetail,
-  allocationFetching,
-  allocationData,
+  // allocationFetching,
+  // allocationData,
   isFetching,
   closeModal,
 }: ModalProps) => {
@@ -54,8 +54,8 @@ const Modal = ({
           />
           <DetailInfo
             detailStock={detailStock}
-            allocationData={allocationData}
-            allocationFetching={allocationFetching}
+            // allocationData={allocationData}
+            // allocationFetching={allocationFetching}
           />
         </CheckCondition>
       </Center>

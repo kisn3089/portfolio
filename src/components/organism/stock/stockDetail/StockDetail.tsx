@@ -7,15 +7,15 @@ import DetailInfo from "./detailInfo/DetailInfo";
 
 export interface StockDetailProps {
   detailStock?: StockDataTypes;
-  allocationData?: AllocationTypes;
-  allocationFetching: boolean;
+  // allocationData?: AllocationTypes;
+  // allocationFetching: boolean;
 }
 
 const StockDetail = ({
   detailStock,
-  allocationData,
-  allocationFetching,
-}: StockDetailProps) => {
+}: // allocationData,
+// allocationFetching,
+StockDetailProps) => {
   return (
     <StockDetailContainer>
       <CheckCondition falseCondition={!detailStock}>
@@ -25,8 +25,8 @@ const StockDetail = ({
         />
         <DetailInfo
           detailStock={detailStock}
-          allocationData={allocationData}
-          allocationFetching={allocationFetching}
+          // allocationData={allocationData}
+          // allocationFetching={allocationFetching}
         />
       </CheckCondition>
     </StockDetailContainer>

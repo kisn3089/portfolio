@@ -6,7 +6,7 @@ const ReadyGroup = () => {
   return (
     <HasReady>
       <Svg.Lock />
-      <ReadyInfo>서비스 준비중입니다.</ReadyInfo>
+      <ReadyInfo>6월달에 오픈 예정입니다.</ReadyInfo>
     </HasReady>
   );
 };

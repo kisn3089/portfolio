@@ -2,11 +2,13 @@ import { useFrame } from "@react-three/fiber";
 import React, { useRef } from "react";
 import { easing } from "maath";
 import { Group } from "three";
+import { theme } from "@/styles/theme";
 
 const CameraLookAt = ({ children }: { children: React.ReactNode }) => {
   const ref = useRef<Group>(null);
   let zByDeviceSize = 8;
-  if (window.innerWidth <= 576) zByDeviceSize = 11;
+  if (window.innerWidth <= parseInt(theme.deviceSize.mobile))
+    zByDeviceSize = 11;
 
   useFrame((state, delta) => {
     if (ref.current) {

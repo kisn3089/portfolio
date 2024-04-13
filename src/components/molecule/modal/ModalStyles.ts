@@ -66,7 +66,6 @@ export const Center = styled.div`
   height: calc(100% - 50px);
   background-color: ${theme.palette.black};
   border-radius: 0 0 8px 8px;
-  /* outline: 1px solid ${theme.palette.gray50}; */
 `;
 
 export const ModalHeader = styled.div`

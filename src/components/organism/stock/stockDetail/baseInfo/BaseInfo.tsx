@@ -9,6 +9,7 @@ import {
 import { StockDetailProps } from "../StockDetail";
 import { transUnit } from "@/lib/util/transUnit";
 import { formatToLabel } from "@/lib/util/adjustDate";
+import { theme } from "@/styles/theme";
 
 interface BaseInfoProps extends StockDetailProps {}
 
@@ -18,15 +19,27 @@ const BaseInfo = ({ detailStock }: BaseInfoProps) => {
     detailStock;
 
   const baseInfoData = [
-    { title: "기준 일자: ", content: formatToLabel(basDt).convertDot },
-    { title: "종가: ", content: transUnit(clpr) },
-    { title: "등락률: ", content: `${Number(fltRt)}%` },
-    { title: "대비: ", content: transUnit(vs) },
-    { title: "고가: ", content: transUnit(hipr) },
-    { title: "저가: ", content: transUnit(lopr) },
-    { title: "시가: ", content: transUnit(mkp) },
-    { title: "종목 코드: ", content: srtnCd },
-    { title: "시장 구분: ", content: mrktCtg },
+    {
+      title: "기준 일자: ",
+      content: formatToLabel(basDt).convertDot,
+      flag: theme.palette.gray100,
+    },
+    { title: "종가: ", content: transUnit(clpr), flag: theme.palette.gray100 },
+    {
+      title: "등락률: ",
+      content: `${Number(fltRt)}%`,
+      flag: Number(fltRt) > 0 ? theme.palette.red : theme.palette.blue,
+    },
+    {
+      title: "대비: ",
+      content: transUnit(vs),
+      flag: Number(vs) > 0 ? theme.palette.red : theme.palette.blue,
+    },
+    { title: "고가: ", content: transUnit(hipr), flag: theme.palette.red },
+    { title: "저가: ", content: transUnit(lopr), flag: theme.palette.blue },
+    { title: "시가: ", content: transUnit(mkp), flag: theme.palette.gray100 },
+    { title: "종목 코드: ", content: srtnCd, flag: theme.palette.gray100 },
+    { title: "시장 구분: ", content: mrktCtg, flag: theme.palette.gray100 },
   ];
 
   return (
@@ -36,7 +49,9 @@ const BaseInfo = ({ detailStock }: BaseInfoProps) => {
         {baseInfoData.map((items, i) => (
           <BaseInfoTitle key={i}>
             {items.title}
-            <BaseInfoContent>{items.content}</BaseInfoContent>
+            <BaseInfoContent $flag={items.flag}>
+              {items.content}
+            </BaseInfoContent>
           </BaseInfoTitle>
         ))}
       </BaseInfoContainer>

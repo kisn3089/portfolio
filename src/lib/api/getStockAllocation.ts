@@ -7,8 +7,6 @@ export const getStockAllocation = async (
   standardData: Date
 ) => {
   if (stockName === "") return;
-  console.log("stockName: ", stockName);
-  console.log("standardData: ", standardData);
 
   const response = await axiosRequest.get(DIVISION_BASE_URL, {
     params: {
@@ -17,10 +15,10 @@ export const getStockAllocation = async (
       pageNo: 1,
       resultType: "json",
       basDt: adjustDate({ standardDate: standardData }).originOnlyNumber,
-      stckIssuCmpyNm: "SK증권",
+      stckIssuCmpyNm: stockName,
     },
   });
-  console.log("response: ", response);
+  // console.log("response: ", response);
 
   return response.data.response.body.items.item;
 };

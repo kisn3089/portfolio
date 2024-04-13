@@ -3,6 +3,7 @@ import { STOCKLIST_BASE_URL } from "../util/constanse";
 import { axiosRequest } from "../util/coreAxios";
 
 export const getStockDetail = async (code: string, standardData: Date) => {
+  if (code === "") return;
   const response = await axiosRequest.get(STOCKLIST_BASE_URL, {
     params: {
       serviceKey: import.meta.env.VITE_SERVICE_KEY,

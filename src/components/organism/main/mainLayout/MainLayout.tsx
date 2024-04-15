@@ -7,21 +7,20 @@ import CameraMouse from "@/components/molecule/canvasCore/cameraMouse/CameraMous
 import CameraLookAt from "@/components/molecule/canvasCore/cameraLookAt/CameraLookAt";
 import PlaneModel from "../../three/modeling/planeModel/PlaneModel";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import { KernelSize } from "postprocessing";
 import { Float } from "@react-three/drei";
 
 const fadingElement = [
   {
-    originImage: "/assets/img/human.jpg",
-    replaceImage: "/assets/img/surf.webp",
+    originImage: "/assets/img/arc.webp",
+    replaceImage: "/assets/img/tower.webp",
     effectImage: "/assets/img/effect_draft.jpg",
     positionX: "2",
     positionY: "2",
     rotationY: "-0.2",
   },
   {
-    originImage: "/assets/img/space.webp",
-    replaceImage: "/assets/img/flower.webp",
+    originImage: "/assets/img/suit.webp",
+    replaceImage: "/assets/img/cafe.webp",
     effectImage: "/assets/img/effect_diamond.jpg",
     positionX: "-2",
     positionY: "2",
@@ -38,27 +37,21 @@ const MainLayout = () => {
         orbitProps={{ enableZoom: false }}
         bgColor={theme.palette.darkBlack}>
         <CameraLookAt>
-          {fadingElement.map((ele, i) => (
+          {fadingElement.map((fading, i) => (
             <Float floatIntensity={0.3} speed={0.8} key={i}>
               <FadingModel
-                originImage={ele.originImage}
-                replaceImage={ele.replaceImage}
-                effectImage={ele.effectImage}
-                positionX={ele.positionX}
-                positionY={ele.positionY}
-                rotationY={ele.rotationY}
+                originImage={fading.originImage}
+                replaceImage={fading.replaceImage}
+                effectImage={fading.effectImage}
+                positionX={fading.positionX}
+                positionY={fading.positionY}
+                rotationY={fading.rotationY}
               />
             </Float>
           ))}
           <EffectComposer multisampling={8}>
             <Bloom
               kernelSize={5}
-              luminanceThreshold={0.4}
-              luminanceSmoothing={0.3}
-              intensity={0.8}
-            />
-            <Bloom
-              kernelSize={KernelSize.HUGE}
               luminanceThreshold={0.4}
               luminanceSmoothing={0.3}
               intensity={0.8}

@@ -48,6 +48,9 @@ const LineChart = ({ chartData, range }: LineChartProps) => {
             },
           },
         }}
+        tooltip={(item) =>
+          Number(item.point.data.yFormatted).toLocaleString("ko-KR")
+        }
         enableGridX={false}
         enableArea={true}
         areaBaselineValue={10}
@@ -65,9 +68,10 @@ const LineChart = ({ chartData, range }: LineChartProps) => {
         fill={[{ match: { id: "stock" }, id: "gradientC" }]}
         pointSize={6}
         pointColor={theme.palette.white}
-        enablePointLabel
         pointLabel={(point) => Number(point.y).toLocaleString("ko-KR")}
         pointLabelYOffset={-20}
+        useMesh
+        // enablePointLabel -> 가격
       />
     </ChartLayout>
   );

@@ -67,7 +67,6 @@ export const LoaderSpace = styled.span`
   color: #222;
   white-space: nowrap;
   font-weight: ${({ theme }) => theme.fontWeight.extra};
-  font-family: ${({ theme }) => theme.fontFamily.loading};
 
   @media screen and (max-width: ${theme.deviceSize.tablet}) {
     font-size: 40px;

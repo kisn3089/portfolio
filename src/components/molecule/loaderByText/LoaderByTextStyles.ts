@@ -13,6 +13,7 @@ export const LoaderContainer = styled.div`
       duration: "1s",
       transtion: theme.ts.moreFast,
       beginTransform: "translate3d(0, -20%, 0)",
+      opacity: 0,
     })}
 `;
 
@@ -25,7 +26,6 @@ export const Loader = styled.span`
   transition: 0.8s ease-in-out;
   font-size: 60px;
   font-weight: ${({ theme }) => theme.fontWeight.extra};
-  font-family: ${({ theme }) => theme.fontFamily.loading};
   width: 0;
   /* color 투명하게 하고 background-image로 설정한 색을 text color로 변경하는 핵심 로직 */
   color: transparent;

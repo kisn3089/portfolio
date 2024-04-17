@@ -10,7 +10,9 @@ const LoaderByText = ({ progressRef, content }: ILoaderByText) => {
   return (
     <LoaderContainer>
       <LoaderSpace>
-        <Loader ref={progressRef}>{content}</Loader>
+        <Loader ref={progressRef} className="loading">
+          {content}
+        </Loader>
         {content}
       </LoaderSpace>
     </LoaderContainer>

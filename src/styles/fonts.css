@@ -34,3 +34,7 @@
     url("../assets//fonts//ko//NanumSquareRoundB.ttf"), format("ttf");
   font-weight: 700;
 }
+
+.loading {
+  font-family: "Agbalumo";
+}

@@ -64,7 +64,7 @@ export const LoaderSpace = styled.span`
   position: relative;
   font-size: 60px;
   width: fit-content;
-  color: #222;
+  color: ${theme.palette.black100};
   white-space: nowrap;
   font-weight: ${({ theme }) => theme.fontWeight.extra};
 

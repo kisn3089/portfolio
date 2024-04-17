@@ -32,6 +32,7 @@ const palette = {
   white: "#fff",
   darkBlack: "#111",
   black: "#191919",
+  black100: "#222",
   gray: "#292929",
   gray50: "#595959",
   gray100: "#ddd",

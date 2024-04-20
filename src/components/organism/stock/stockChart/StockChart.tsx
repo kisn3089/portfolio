@@ -28,9 +28,6 @@ const StockChart = ({
       }))
       .reverse() || [];
 
-  console.log("getStockDetail: ", getStockDetail);
-  console.log("stockData: ", stockData);
-
   const onlyValue = stockData.map((item) => Number(item.y));
   const min = Math.min(...onlyValue);
   const max = Math.max(...onlyValue);

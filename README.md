@@ -8,7 +8,7 @@
 2024.04.20
 최근 업데이트 내용
 - gcTime 0으로 설정하여 차트 데이터 불러올때 이전 캐시 데이터로 렌더링 되어 비정상적인 차트를 그리는 현상 수정
-- .env 파일 삭제
+- git remote에 .env 파일 삭제
 - 배당 API 데이터가 부정확하여 임시적으로 미호출
 ```
 
@@ -45,7 +45,7 @@ yarn && yarn dev
 
 ## HomePage
 
-<img src=public/assets/img/readmeInfo/homepage.png width=500px />
+<img src=public/assets/img/readmeInfo/homepage.png width=700px />
 
 ```
 three.js를 활용하여 호버 및 터치(클릭)시 설정해놓은 패턴을 기반으로 이미지 대체되는 효과를 구현
@@ -61,11 +61,11 @@ three.js를 활용하여 호버 및 터치(클릭)시 설정해놓은 패턴을 
 
 ## ProjectPage
 
-<img src=public/assets/img/readmeInfo/pj.png width=500px />
+<img src=public/assets/img/readmeInfo/pj.png width=700px />
 
 > 반응형
 
-<img src=public/assets/img/readmeInfo/pj_rs.png width=400px />
+<img src=public/assets/img/readmeInfo/pj_rs.png height=700px />
 
 ```
 호버에 반응하는 프로젝트 리스트 페이지
@@ -88,13 +88,13 @@ three.js를 활용하여 호버 및 터치(클릭)시 설정해놓은 패턴을 
 - [자체적으로 빛나는](https://github.com/kisn3089/portpolio/blob/main/src/components/organism/main/mainLayout/MainLayout.tsx#L53) 효과 구현
 - 스크롤 확대 최소, 최대값 제한
 
-![alt shpere](pj_three_sphere.png)
-![alt apple](pj_three_apple.png)
+<img src=public/assets/img/readmeInfo/pj_three_sphere.png width=700px />
+<img src=public/assets/img/readmeInfo/pj_three_apple.png width=700px />
 
 > 반응형
 
-<img src=public/assets/img/readmeInfo/pj_shpere_rs.png width=400px />
-<img src=public/assets/img/readmeInfo/pj_apple_rs.png width=400px />
+<img src=public/assets/img/readmeInfo/pj_shpere_rs.png height=600px />
+<img src=public/assets/img/readmeInfo/pj_apple_rs.png height=600px />
 
 ### Project_Stock
 
@@ -110,13 +110,13 @@ three.js를 활용하여 호버 및 터치(클릭)시 설정해놓은 패턴을 
 - react-query를 이용해 [병렬](https://github.com/kisn3089/portpolio/blob/main/src/hooks/useGetDetail.ts#L17) api 호출
 - [에러 처리](https://github.com/kisn3089/portpolio/blob/main/src/components/molecule/showError/ShowError.tsx) Core 함수 생성하여 재사용
 
-![alt stock](pj_stock.webp)
+<img src=public/assets/img/readmeInfo/pj_stock.webp width=700px />
 
 > 반응형
 
-![alt stocklist_response](pj_stocklist_response.png)
-![alt stockresult_response](pj_stocklist_response1.png)
-![alt stockchart_response](pj_stockchart_response.png)
+<img src=public/assets/img/readmeInfo/pj_stocklist_response.png height=600px />
+<img src=public/assets/img/readmeInfo/pj_stocklist_response1.png height=600px />
+<img src=public/assets/img/readmeInfo/pj_stockchart_response.png height=600px />
 
 ### Project_VideoPlayer
 
@@ -124,7 +124,7 @@ three.js를 활용하여 호버 및 터치(클릭)시 설정해놓은 패턴을 
 Video Upload시 확장자가 mp4가 아닐경우 ffmpeg wasm을 이용해 mp4로 변환하여 Player에 재생
 ```
 
-![alt player](player.png)
+<img src=public/assets/img/readmeInfo/player.png width=700px />
 
 세부 기능
 
@@ -133,3 +133,25 @@ Video Upload시 확장자가 mp4가 아닐경우 ffmpeg wasm을 이용해 mp4로
 - <<, >> 버튼을 통해 재생 시간을 이전 마크, 다음 마크 위치로 이동
 - 풀사이즈 버튼 아래 마크 지우는 버튼으로 마크 제거
 - 변환한 파일 mp4로 다운로드 기능
+
+---
+
+### 3D License
+
+- Sphere (animation)
+
+```
+ex) qweeq
+```
+
+- Apple Vision Pro
+
+```
+ex) qweeq
+```
+
+- Apple Watch
+
+```
+ex) qweeq
+```

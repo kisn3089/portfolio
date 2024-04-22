@@ -26,10 +26,6 @@ const useSearch = () => {
   const closeClick = () => {
     setSearchValue("");
   };
-<<<<<<< HEAD
-
-=======
->>>>>>> 171c23ae18db803980609b6f682f26486e09bf29
   return { searchValue, changeSearch, searchEnter, closeClick };
 };
 

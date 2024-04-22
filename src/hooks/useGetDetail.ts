@@ -21,6 +21,10 @@ export const useGetDetail = ({
         queryKey: [FETCHSTOCKDETAIL, detailStock?.srtnCd, currentDate],
         queryFn: () => getStockDetail(detailStock?.srtnCd || "", currentDate),
         enabled: !!detailStock?.srtnCd,
+<<<<<<< HEAD
+=======
+        gcTime: 0,
+>>>>>>> 171c23ae18db803980609b6f682f26486e09bf29
       },
       // 배당
       // {

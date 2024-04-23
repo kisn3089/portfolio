@@ -26,7 +26,6 @@ const useSearch = () => {
   const closeClick = () => {
     setSearchValue("");
   };
-
   return { searchValue, changeSearch, searchEnter, closeClick };
 };
 

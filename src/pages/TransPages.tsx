@@ -11,6 +11,7 @@ const TransPages = () => {
           <Route path="/" element={<Page.MainPage />} />
           <Route path="me" element={<Page.AboutMePage />} />
           <Route path="project" element={<Page.ProjectPage />} />
+          <Route path="project/image" element={<Page.ImagePage />} />
           <Route path="project/three" element={<Page.ThreePage />} />
           <Route path="project/video" element={<Page.VideoPage />} />
           <Route path="project/stock" element={<Page.StockPage />} />

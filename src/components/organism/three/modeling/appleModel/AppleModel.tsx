@@ -9,7 +9,6 @@ import { ModelProps } from "../sphereModel/SphereModel";
 
 const AppleModel = ({ isLoaded }: ModelProps) => {
   const { canvasColor, changeColor } = useModel();
-  console.log("apple: ", isLoaded);
 
   return (
     <ColLayout>

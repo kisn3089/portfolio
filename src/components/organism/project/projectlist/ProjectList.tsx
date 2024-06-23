@@ -8,6 +8,12 @@ const projectList = [
     link: "/project/three",
     img: "/assets/img/model.webp",
   },
+  // {
+  //   title: "WebGPU & Three.js",
+  //   tag: "Canvas • Drei&Fiber • Animation",
+  //   link: "/project/three",
+  //   img: "/assets/img/model.webp",
+  // },
   {
     title: "Parallel API & Data Visualization",
     tag: "useQurey • Api • Chart",

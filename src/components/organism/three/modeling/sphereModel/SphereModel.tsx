@@ -5,11 +5,17 @@ import ActionButton from "../../actionButton/ActionButton";
 import { SPHERE } from "@/lib/util/constanse";
 import { sphereProps } from "@/lib/util/model/orbitOption";
 import { actionTypes } from "@/lib/util/model/actionTypes";
-import useModel from "@/hooks/useModel";
 import PostProsessing from "@/components/molecule/canvasCore/postProsessing/PostProsessing";
+import useModel from "@/hooks/useModel";
 
-const SphereModel = () => {
-  const { currentAction, isLoaded, loadedCallback, changeAction } = useModel();
+export interface ModelProps {
+  isLoaded: boolean;
+  loadedCallback?: () => void;
+}
+
+const SphereModel = ({ isLoaded, loadedCallback }: ModelProps) => {
+  const { currentAction, changeAction } = useModel();
+  console.log("sphere: ", isLoaded);
 
   return (
     <SphereLayout>

@@ -3,17 +3,17 @@ import ProjectItems from "../projectItems/ProjectItems";
 
 const projectList = [
   {
+    title: "Image Processing",
+    tag: "Canvas • Imgae • Editing • Processing",
+    link: "/project/image",
+    img: "/assets/img/model.webp",
+  },
+  {
     title: "WebGPU & Three.js",
     tag: "Canvas • Drei&Fiber • Animation",
     link: "/project/three",
     img: "/assets/img/model.webp",
   },
-  // {
-  //   title: "WebGPU & Three.js",
-  //   tag: "Canvas • Drei&Fiber • Animation",
-  //   link: "/project/three",
-  //   img: "/assets/img/model.webp",
-  // },
   {
     title: "Parallel API & Data Visualization",
     tag: "useQurey • Api • Chart",

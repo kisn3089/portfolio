@@ -15,7 +15,6 @@ export interface ModelProps {
 
 const SphereModel = ({ isLoaded, loadedCallback }: ModelProps) => {
   const { currentAction, changeAction } = useModel();
-  console.log("sphere: ", isLoaded);
 
   return (
     <SphereLayout>

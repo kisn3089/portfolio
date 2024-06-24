@@ -2,7 +2,8 @@ export const imageProcessing = (image: HTMLImageElement) => {
   const canvas = getCanvasFromImage(image);
   const dest_canvas = cloneCanvas(canvas);
 
-  document.body.appendChild(dest_canvas);
+  return dest_canvas;
+  // document.body.appendChild(dest_canvas);
 };
 
 const cloneCanvas = (src_canvas: HTMLCanvasElement) => {

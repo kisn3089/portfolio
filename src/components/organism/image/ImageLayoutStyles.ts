@@ -17,7 +17,7 @@ export const ImageLayout = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* flex-direction: column; */
+  flex-direction: column;
   gap: 40px;
 `;
 
@@ -34,7 +34,8 @@ export const BorderCenter = styled.div`
 
 export const UploadLayout = styled.div`
   width: 100%;
-  height: 500px;
+  max-width: 800px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,14 +104,20 @@ export const SampleLayout = styled.div`
   width: 100%;
   height: 500px;
   display: flex;
+  justify-content: center;
   gap: 20px;
-  /* border: ${({ theme }) => `1px solid ${theme.palette.gray}`};
-  border-radius: 8px; */
+  /* border: ${({ theme }) => `1px solid ${theme.palette.gray}`}; */
+  /* border-radius: 24px; */
+  padding: 0 10px;
 
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
+    border-radius: 24px;
+  }
+
+  canvas {
     border-radius: 24px;
   }
 `;
@@ -125,4 +132,14 @@ export const LabelImage = styled.label`
   position: absolute;
   cursor: pointer;
   z-index: 29;
+`;
+
+export const ImageWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  border: ${({ theme }) => `1px solid ${theme.palette.gray}`};
 `;

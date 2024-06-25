@@ -1,3 +1,4 @@
+import { TFitType } from "@/hooks/useImage";
 import styled, { keyframes } from "styled-components";
 
 const rotate = keyframes`
@@ -106,23 +107,6 @@ export const SampleLayout = styled.div`
   display: flex;
   justify-content: center;
   gap: 20px;
-  /* border: ${({ theme }) => `1px solid ${theme.palette.gray}`}; */
-  /* border-radius: 24px; */
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 24px;
-  }
-
-  /* canvas {
-    border-radius: 24px;
-  } */
-`;
-
-export const GrayscaleImage = styled.img`
-  /* filter: grayscale(1); */
 `;
 
 export const LabelImage = styled.label`
@@ -139,6 +123,20 @@ export const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 24px;
+`;
+
+export const TempLayout = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: #444;
+`;
+
+export const EditImage = styled.img<{ $type: TFitType }>`
+  width: 100%;
+  height: ${({ $type }) => ($type === "cover" ? "500px" : "auto")};
+  max-width: 750px;
+  object-fit: ${({ $type }) => $type};
   border-radius: 24px;
   border: ${({ theme }) => `1px solid ${theme.palette.gray}`};
 `;

@@ -1,7 +1,6 @@
 import { useImage } from "@/hooks/useImage";
 import {
   BorderCenter,
-  EditImage,
   ImageLayout,
   ImageWrapper,
   InsideContent,
@@ -14,11 +13,10 @@ import {
 } from "./ImageLayoutStyles";
 import * as Svg from "@/components/atoms/icon/index";
 
-const ImageSection = () => {
+export const ImageSection = () => {
   const { image, getImage, onChangeType } = useImage();
 
   // 변환된 이미지를 contain, cover 둘 다 볼 수 있게 radio 버튼 추가 (default: cover)
-
   return (
     <ImageLayout>
       <UploadLayout>
@@ -39,17 +37,12 @@ const ImageSection = () => {
       </UploadLayout>
       <SampleLayout>
         <ImageWrapper>
-          <EditImage
-            src="/assets/img/opera.webp"
-            alt="image_color_custom"
-            $type={image.fitType}
-          />
+          <Image src="/assets/img/opera.webp" alt="image_color_custom" />
         </ImageWrapper>
         <ImageWrapper>
-          <EditImage
+          <img
             src={image.image || "/assets/img/opera.webp"}
             alt="image_color_custom"
-            $type={image.fitType}
           />
         </ImageWrapper>
       </SampleLayout>
@@ -74,5 +67,3 @@ const ImageSection = () => {
     </ImageLayout>
   );
 };
-
-export default ImageSection;

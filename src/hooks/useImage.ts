@@ -1,13 +1,15 @@
 import { imageProcessing } from "@/lib/util/imageProcessing";
 import { useState } from "react";
 
+export type TFitType = "cover" | "contain";
+
 type TImage = {
   image: string;
-  canvasEl: HTMLCanvasElement | null;
+  fitType: TFitType;
 };
 
 export const useImage = () => {
-  const [image, setImage] = useState<TImage>({ image: "", canvasEl: null });
+  const [image, setImage] = useState<TImage>({ image: "", fitType: "cover" });
 
   const getImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
@@ -18,8 +20,7 @@ export const useImage = () => {
       imageEl.src = url;
       imageEl.onload = () => {
         const result = imageProcessing(imageEl);
-        const imageData = result.toDataURL("/image/png");
-        setImage({ image: imageData, canvasEl: result });
+        setImage((prev) => ({ ...prev, image: result }));
       };
     } else {
       // 이미지 타입이 아닐 경우
@@ -28,5 +29,11 @@ export const useImage = () => {
     }
   };
 
-  return { image, getImage };
+  const onChangeType = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    console.log(e.target.value);
+    setImage((prev) => ({ ...prev, fitType: value as TFitType }));
+  };
+
+  return { image, getImage, onChangeType };
 };

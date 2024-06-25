@@ -1,29 +1,19 @@
-import { urlToImage } from "@/lib/util/imageProcessing";
-import { TImage } from "@/types/image.type";
+import { filesToUrl, urlToImage } from "@/lib/util/imageProcessing";
 import { useEffect, useState } from "react";
 
-const defaultImage: TImage = {
-  // origin: "/assets/img/pano.webp",
-  origin: "/assets/img/opera.webp",
-  custom: "",
-};
-
 export const useImage = () => {
-  const [image, setImage] = useState<TImage>(defaultImage);
+  const [imageSrc, setImageSrc] = useState("");
+  const [isDragEnter, setIsDragEnter] = useState(false);
 
   useEffect(() => {
-    urlToImage(image.origin, (result) =>
-      setImage((prev) => ({ ...prev, custom: result }))
-    );
+    urlToImage("/assets/img/opera.webp", (result) => setImageSrc(result));
   }, []);
 
   const getImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
     if (files && files[0] && files[0].type.includes("image")) {
-      const url = URL.createObjectURL(files[0]);
-      urlToImage(url, (result) =>
-        setImage((prev) => ({ ...prev, custom: result }))
-      );
+      const url = filesToUrl(files);
+      urlToImage(url, (result) => setImageSrc(result));
     } else {
       // 이미지 타입이 아닐 경우
       alert("이미지 타입이 아닙니다");
@@ -33,8 +23,38 @@ export const useImage = () => {
 
   const onChangeType = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    setImage((prev) => ({ ...prev, fitType: value }));
   };
 
-  return { image, getImage, onChangeType };
+  const onDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragEnter(true);
+  };
+
+  const onDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragEnter(false);
+  };
+
+  const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const { files } = e.dataTransfer;
+    if (files) {
+      const url = filesToUrl(files);
+      urlToImage(url, (result) => setImageSrc(result));
+      setIsDragEnter(false);
+    }
+  };
+
+  return {
+    imageSrc,
+    isDragEnter,
+    getImage,
+    onChangeType,
+    onDragOver,
+    onDragLeave,
+    onDrop,
+  };
 };

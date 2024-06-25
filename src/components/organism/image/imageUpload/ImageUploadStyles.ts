@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 const rotate = keyframes`
     0% {
@@ -20,18 +20,18 @@ export const UploadLayout = styled.div`
   flex-direction: column;
 `;
 
-export const BorderCenter = styled.div`
+export const BorderCenter = styled.div<{ $isDragEnter: boolean }>`
   position: absolute;
-  width: 260px;
-  height: 260px;
+  width: ${({ $isDragEnter }) => ($isDragEnter ? "240px" : "260px")};
+  height: ${({ $isDragEnter }) => ($isDragEnter ? "240px" : "260px")};
   border-radius: 100%;
   transition: ${({ theme }) => `0.4s ${theme.ts.smooth}`};
   border: ${({ theme }) => `5px dotted ${theme.palette.white}`};
   animation: ${rotate} 4s linear infinite;
-  opacity: 0;
+  opacity: ${({ $isDragEnter }) => ($isDragEnter ? "1" : "0")};
 `;
 
-export const UploadContainer = styled.div`
+export const UploadContainer = styled.div<{ $isDragEnter: boolean }>`
   position: relative;
   width: 100%;
   height: 100%;
@@ -40,6 +40,18 @@ export const UploadContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: ${({ theme, $isDragEnter }) =>
+    $isDragEnter && `0 0 16px 5px ${theme.palette.gray200}`};
+
+  /* ${({ $isDragEnter }) =>
+    $isDragEnter &&
+    css`
+      ${BorderCenter} {
+        opacity: 1;
+        width: 240px;
+        height: 240px;
+      }
+    `} */
 
   input {
     display: none;

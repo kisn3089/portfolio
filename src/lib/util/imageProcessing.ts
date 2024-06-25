@@ -1,3 +1,6 @@
+export const filesToUrl = (files: FileList) => URL.createObjectURL(files[0]);
+
+// export const urlToImage = (url: string, callback: (result: string) => void) => {
 export const urlToImage = (url: string, callback: (result: string) => void) => {
   const imageEl = new Image();
   imageEl.src = url;

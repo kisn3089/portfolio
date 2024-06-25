@@ -108,7 +108,6 @@ export const SampleLayout = styled.div`
   gap: 20px;
   /* border: ${({ theme }) => `1px solid ${theme.palette.gray}`}; */
   /* border-radius: 24px; */
-  padding: 0 10px;
 
   img {
     width: 100%;
@@ -117,13 +116,13 @@ export const SampleLayout = styled.div`
     border-radius: 24px;
   }
 
-  canvas {
+  /* canvas {
     border-radius: 24px;
-  }
+  } */
 `;
 
 export const GrayscaleImage = styled.img`
-  filter: grayscale(1);
+  /* filter: grayscale(1); */
 `;
 
 export const LabelImage = styled.label`

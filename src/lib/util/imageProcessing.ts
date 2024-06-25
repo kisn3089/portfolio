@@ -42,6 +42,12 @@ const cloneCanvas = (src_canvas: HTMLCanvasElement) => {
     dest_canvas.height
   ) as ImageData;
 
+  const process = (x: number, cofficient: number, gray: number) => {
+    return x * cofficient + gray * (1 - cofficient);
+  };
+
+  const COEFF = 0.2;
+
   for (let y = 0; y < src_canvas.height; y++) {
     for (let x = 0; x < src_canvas.width; x++) {
       const offset = getOffset(x, y, src_canvas.width);
@@ -54,6 +60,10 @@ const cloneCanvas = (src_canvas: HTMLCanvasElement) => {
       dest_image_data.data[offset + 1] = grayscale;
       dest_image_data.data[offset + 2] = grayscale;
       dest_image_data.data[offset + 3] = src_image_data.data[offset + 3];
+      // dest_image_data.data[offset] = process(r, COEFF, grayscale);
+      // dest_image_data.data[offset + 1] = process(r, COEFF, grayscale);
+      // dest_image_data.data[offset + 2] = process(r, COEFF, grayscale);
+      // dest_image_data.data[offset + 3] = src_image_data.data[offset + 3];
     }
   }
 

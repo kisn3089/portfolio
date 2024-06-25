@@ -3,13 +3,16 @@ import { useState } from "react";
 
 export type TFitType = "cover" | "contain";
 
-type TImage = {
-  image: string;
+export type TImage = {
+  src: string;
   fitType: TFitType;
 };
 
 export const useImage = () => {
-  const [image, setImage] = useState<TImage>({ image: "", fitType: "cover" });
+  const [image, setImage] = useState<TImage>({
+    src: "/assets/img/opera.webp",
+    fitType: "cover",
+  });
 
   const getImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
@@ -20,7 +23,7 @@ export const useImage = () => {
       imageEl.src = url;
       imageEl.onload = () => {
         const result = imageProcessing(imageEl);
-        setImage((prev) => ({ ...prev, image: result }));
+        setImage((prev) => ({ ...prev, src: result }));
       };
     } else {
       // 이미지 타입이 아닐 경우

@@ -1,13 +1,13 @@
 import { useImage } from "@/hooks/useImage";
 import {
   BorderCenter,
-  ImageLayout,
+  SectionLayout,
   ImageWrapper,
   InsideContent,
   InsideUpload,
-  LabelImage,
-  SampleLayout,
-  TempLayout,
+  LabelUpload,
+  CompareLayout,
+  DashboardLayout,
   UploadContainer,
   UploadLayout,
 } from "./ImageLayoutStyles";
@@ -18,11 +18,11 @@ export const ImageSection = () => {
 
   // 변환된 이미지를 contain, cover 둘 다 볼 수 있게 radio 버튼 추가 (default: cover)
   return (
-    <ImageLayout>
+    <SectionLayout>
       <UploadLayout>
         <UploadContainer>
           <BorderCenter />
-          <LabelImage htmlFor="image" />
+          <LabelUpload htmlFor="image" />
           <input
             type="file"
             id="image"
@@ -35,7 +35,7 @@ export const ImageSection = () => {
           </InsideUpload>
         </UploadContainer>
       </UploadLayout>
-      <SampleLayout>
+      <CompareLayout>
         <ImageWrapper>
           <Image src="/assets/img/opera.webp" alt="image_color_custom" />
         </ImageWrapper>
@@ -45,8 +45,8 @@ export const ImageSection = () => {
             alt="image_color_custom"
           />
         </ImageWrapper>
-      </SampleLayout>
-      <TempLayout>
+      </CompareLayout>
+      <DashboardLayout>
         <label htmlFor="cover">Cover</label>
         <input
           type="radio"
@@ -63,7 +63,7 @@ export const ImageSection = () => {
           checked={image.fitType === "contain"}
           onChange={onChangeType}
         />
-      </TempLayout>
-    </ImageLayout>
+      </DashboardLayout>
+    </SectionLayout>
   );
 };

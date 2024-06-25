@@ -1,77 +1,18 @@
 import { useImage } from "@/hooks/useImage";
-import {
-  BorderCenter,
-  EditImage,
-  ImageLayout,
-  ImageWrapper,
-  InsideContent,
-  InsideUpload,
-  LabelImage,
-  SampleLayout,
-  TempLayout,
-  UploadContainer,
-  UploadLayout,
-} from "./ImageLayoutStyles";
-import * as Svg from "@/components/atoms/icon/index";
+import { SectionLayout } from "./ImageLayoutStyles";
+import ImageUpload from "./imageUpload/ImageUpload";
+import CompareImage from "./compareImage/CompareImage";
+import ViewMode from "./viewMode/ViewMode";
 
 const ImageSection = () => {
   const { image, getImage, onChangeType } = useImage();
 
-  // 변환된 이미지를 contain, cover 둘 다 볼 수 있게 radio 버튼 추가 (default: cover)
-
   return (
-    <ImageLayout>
-      <UploadLayout>
-        <UploadContainer>
-          <BorderCenter />
-          <LabelImage htmlFor="image" />
-          <input
-            type="file"
-            id="image"
-            accept=".jpg, .png, .ico, .webp"
-            onChange={getImage}
-          />
-          <InsideUpload>
-            <Svg.UploadImage />
-            <InsideContent>Drag Down or Click</InsideContent>
-          </InsideUpload>
-        </UploadContainer>
-      </UploadLayout>
-      <SampleLayout>
-        <ImageWrapper>
-          <EditImage
-            src="/assets/img/opera.webp"
-            alt="image_color_custom"
-            $type={image.fitType}
-          />
-        </ImageWrapper>
-        <ImageWrapper>
-          <EditImage
-            src={image.image || "/assets/img/opera.webp"}
-            alt="image_color_custom"
-            $type={image.fitType}
-          />
-        </ImageWrapper>
-      </SampleLayout>
-      <TempLayout>
-        <label htmlFor="cover">Cover</label>
-        <input
-          type="radio"
-          id="cover"
-          value={"cover"}
-          checked={image.fitType === "cover"}
-          onChange={onChangeType}
-        />
-        <label htmlFor="contain">contain</label>
-        <input
-          type="radio"
-          id="contain"
-          value={"contain"}
-          checked={image.fitType === "contain"}
-          onChange={onChangeType}
-        />
-      </TempLayout>
-    </ImageLayout>
+    <SectionLayout>
+      <ImageUpload getImage={getImage} />
+      <CompareImage image={image} />
+      <ViewMode fitType={image.fitType} onChangeType={onChangeType} />
+    </SectionLayout>
   );
 };
 

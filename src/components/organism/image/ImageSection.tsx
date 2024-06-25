@@ -12,20 +12,10 @@ import {
   UploadLayout,
 } from "./ImageLayoutStyles";
 import * as Svg from "@/components/atoms/icon/index";
-import { useEffect } from "react";
 
 const ImageSection = () => {
-  const { image, canvasRef, getImage } = useImage();
-
-  useEffect(() => {
-    if (image.canvasEl && canvasRef.current) {
-      canvasRef.current.appendChild(image.canvasEl);
-    }
-
-    // return () => {
-    //   canvasRef.current?.removeChild(image.canvasEl as Node);
-    // };
-  }, [image.canvasEl]);
+  const { image, getImage } = useImage();
+  // 변환된 이미지를 contain, cover 둘 다 볼 수 있게 radio 버튼 추가 (default: cover)
 
   return (
     <ImageLayout>
@@ -53,14 +43,10 @@ const ImageSection = () => {
           />
         </ImageWrapper>
         <ImageWrapper>
-          {!image.canvasEl ? (
-            <GrayscaleImage
-              src="/assets/img/opera.webp"
-              alt="image_color_custom"
-            />
-          ) : (
-            <div ref={canvasRef} />
-          )}
+          <img
+            src={image.image || "/assets/img/opera.webp"}
+            alt="image_color_custom"
+          />
         </ImageWrapper>
       </SampleLayout>
     </ImageLayout>

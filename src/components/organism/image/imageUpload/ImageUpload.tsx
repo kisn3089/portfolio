@@ -9,14 +9,15 @@ import {
 import * as Svg from "@/components/atoms/icon/index";
 
 interface ImageUploadProps {
+  isDragEnter: boolean;
   getImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ImageUpload = ({ getImage }: ImageUploadProps) => {
+const ImageUpload = ({ isDragEnter, getImage }: ImageUploadProps) => {
   return (
     <UploadLayout>
-      <UploadContainer>
-        <BorderCenter />
+      <UploadContainer $isDragEnter={isDragEnter}>
+        <BorderCenter $isDragEnter={isDragEnter} />
         <LabelUpload htmlFor="image" />
         <input
           type="file"

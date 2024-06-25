@@ -1,15 +1,13 @@
 import { EditingImage, ImageWrapper } from "./EditImageStyles";
-import { TFitType } from "@/hooks/useImage";
 
 interface EditImageProps {
   src: string;
-  fitType: TFitType;
 }
 
-const EditImage = ({ src, fitType }: EditImageProps) => {
+const EditImage = ({ src }: EditImageProps) => {
   return (
     <ImageWrapper>
-      <EditingImage src={src} alt="image_edit_custom" $type={fitType} />
+      {src && <EditingImage src={src} alt="image_edit_custom" />}
     </ImageWrapper>
   );
 };

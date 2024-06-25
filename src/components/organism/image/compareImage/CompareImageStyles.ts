@@ -1,4 +1,3 @@
-import { TFitType } from "@/hooks/useImage";
 import styled from "styled-components";
 
 export const CompareLayout = styled.div`

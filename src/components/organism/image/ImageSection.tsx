@@ -2,7 +2,7 @@ import { useImage } from "@/hooks/useImage";
 import { SectionLayout } from "./ImageLayoutStyles";
 import ImageUpload from "./imageUpload/ImageUpload";
 import CompareImage from "./compareImage/CompareImage";
-import ViewMode from "./viewMode/ViewMode";
+import Dashboard from "./dashboard/Dashboard";
 
 const ImageSection = () => {
   const { image, getImage, onChangeType } = useImage();
@@ -11,7 +11,7 @@ const ImageSection = () => {
     <SectionLayout>
       <ImageUpload getImage={getImage} />
       <CompareImage image={image} />
-      <ViewMode fitType={image.fitType} onChangeType={onChangeType} />
+      <Dashboard onChangeType={onChangeType} />
     </SectionLayout>
   );
 };

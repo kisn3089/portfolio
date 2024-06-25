@@ -1,4 +1,13 @@
-export const imageProcessing = (image: HTMLImageElement) => {
+export const urlToImage = (url: string, callback: (result: string) => void) => {
+  const imageEl = new Image();
+  imageEl.src = url;
+  imageEl.onload = () => {
+    const result = imageProcessing(imageEl);
+    callback(result);
+  };
+};
+
+const imageProcessing = (image: HTMLImageElement) => {
   const canvas = getCanvasFromImage(image);
   const dest_canvas = cloneCanvas(canvas);
   const imageData = dest_canvas.toDataURL("/image/png");

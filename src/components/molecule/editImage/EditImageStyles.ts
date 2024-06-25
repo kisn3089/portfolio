@@ -1,4 +1,3 @@
-import { TFitType } from "@/hooks/useImage";
 import styled from "styled-components";
 
 export const ImageWrapper = styled.div`
@@ -10,11 +9,19 @@ export const ImageWrapper = styled.div`
   border-radius: 24px;
 `;
 
-export const EditingImage = styled.img<{ $type: TFitType }>`
-  width: 100%;
-  height: ${({ $type }) => ($type === "cover" ? "500px" : "auto")};
-  max-width: 750px;
-  object-fit: ${({ $type }) => $type};
+export const EditingImage = styled.img`
+  max-width: 900px;
+  height: 500px;
+  max-height: 500px;
+  object-fit: cover;
   border-radius: 24px;
   border: ${({ theme }) => `1px solid ${theme.palette.gray}`};
+  ${({ theme }) =>
+    theme.animation.fadeIn({
+      name: "scaleUp",
+      duration: "0.8s",
+      transtion: theme.ts.smooth,
+      beginTransform: "scale(0.7)",
+      endTransform: "scale(1)",
+    })}
 `;

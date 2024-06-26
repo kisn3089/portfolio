@@ -1,4 +1,3 @@
-import { filesToUrl, urlToImage } from "@/lib/util/imageProcessing";
 import { useState } from "react";
 
 export const useDrag = (callback: (files: FileList) => void) => {
@@ -19,13 +18,10 @@ export const useDrag = (callback: (files: FileList) => void) => {
   const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
+
     const { files } = e.dataTransfer;
     if (files) {
-      console.log("callback");
-
       callback(files);
-      // const url = filesToUrl(files);
-      // urlToImage(url, (result) => setImageSrc(result));
       setIsDragEnter(false);
     }
   };

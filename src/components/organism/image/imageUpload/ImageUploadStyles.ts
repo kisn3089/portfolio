@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const rotate = keyframes`
     0% {
@@ -42,16 +42,6 @@ export const UploadContainer = styled.div<{ $isDragEnter: boolean }>`
   align-items: center;
   box-shadow: ${({ theme, $isDragEnter }) =>
     $isDragEnter && `0 0 16px 5px ${theme.palette.gray200}`};
-
-  /* ${({ $isDragEnter }) =>
-    $isDragEnter &&
-    css`
-      ${BorderCenter} {
-        opacity: 1;
-        width: 240px;
-        height: 240px;
-      }
-    `} */
 
   input {
     display: none;
@@ -106,5 +96,5 @@ export const LabelUpload = styled.label`
   height: 100%;
   position: absolute;
   cursor: pointer;
-  z-index: 29;
+  z-index: 8;
 `;

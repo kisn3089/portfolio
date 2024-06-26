@@ -5,11 +5,18 @@ import CompareImage from "./compareImage/CompareImage";
 import Dashboard from "./dashboard/Dashboard";
 import { useDrag } from "@/hooks/useDrag";
 
-const ImageSection = () => {
-  const { imageSrc, measureRef, getImage, ChangeMeasureValue, dropCallback } =
-    useImage();
-  const { isDragEnter, onDragOver, onDragLeave, onDrop } =
-    useDrag(dropCallback);
+export const ImageSection = () => {
+  const {
+    imageSrc,
+    isDragEnter,
+    measureRef,
+    getImage,
+    ChangeMeasureValue,
+    // onDragOver,
+    // onDragLeave,
+    // onDrop,
+  } = useImage();
+  const { onDragOver, onDragLeave, onDrop } = useDrag();
 
   return (
     <SectionLayout
@@ -23,5 +30,3 @@ const ImageSection = () => {
     </SectionLayout>
   );
 };
-
-export default ImageSection;

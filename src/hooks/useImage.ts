@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 export const useImage = () => {
   const [imageSrc, setImageSrc] = useState("");
-  const measureRef = useRef<HTMLInputElement>(null);
+  const confRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     urlToImage("/assets/img/opera.webp", (result) => setImageSrc(result));
@@ -23,14 +23,14 @@ export const useImage = () => {
 
   const onChangeConf = (e: React.MouseEvent<HTMLInputElement>) => {
     const { id } = e.currentTarget;
-    if (measureRef.current) {
-      if (id === "up" && +measureRef.current.value < 3) {
-        measureRef.current.value = String(
-          (+measureRef.current.value + 0.1).toFixed(1)
+    if (confRef.current) {
+      if (id === "up" && +confRef.current.value < 3) {
+        confRef.current.value = String(
+          (+confRef.current.value + 0.1).toFixed(1)
         );
-      } else if (id === "down" && +measureRef.current.value > 0) {
-        measureRef.current.value = String(
-          (+measureRef.current.value - 0.1).toFixed(1)
+      } else if (id === "down" && +confRef.current.value > 0) {
+        confRef.current.value = String(
+          (+confRef.current.value - 0.1).toFixed(1)
         );
       }
     }
@@ -43,7 +43,7 @@ export const useImage = () => {
 
   return {
     imageSrc,
-    measureRef,
+    confRef,
     getImage,
     onChangeConf,
     dropCallback,

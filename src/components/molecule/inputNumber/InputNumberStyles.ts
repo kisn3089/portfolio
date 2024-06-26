@@ -5,7 +5,7 @@ export const InputLayout = styled.div`
   width: 100px;
   border: ${({ theme }) => `1px solid ${theme.palette.gray}`};
   border-radius: 8px;
-  padding: 14px 0 14px 12px;
+  padding: 12px 0 12px 12px;
 `;
 
 export const RGBInput = styled.input`

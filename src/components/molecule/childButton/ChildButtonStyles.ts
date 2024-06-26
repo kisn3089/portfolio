@@ -36,4 +36,5 @@ export const ChildButtonContainer = styled.div<{ $disabled: boolean }>`
 export const StandText = styled.span`
   position: relative;
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+  text-transform: uppercase;
 `;

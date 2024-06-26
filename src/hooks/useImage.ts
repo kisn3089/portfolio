@@ -21,10 +21,10 @@ export const useImage = () => {
     }
   };
 
-  const ChangeMeasureValue = (e: React.MouseEvent<HTMLInputElement>) => {
+  const onChangeConf = (e: React.MouseEvent<HTMLInputElement>) => {
     const { id } = e.currentTarget;
     if (measureRef.current) {
-      if (id === "up" && +measureRef.current.value < 2) {
+      if (id === "up" && +measureRef.current.value < 3) {
         measureRef.current.value = String(
           (+measureRef.current.value + 0.1).toFixed(1)
         );
@@ -45,7 +45,7 @@ export const useImage = () => {
     imageSrc,
     measureRef,
     getImage,
-    ChangeMeasureValue,
+    onChangeConf,
     dropCallback,
   };
 };

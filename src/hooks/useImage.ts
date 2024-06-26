@@ -41,11 +41,23 @@ export const useImage = () => {
     urlToImage(url, (result) => setImageSrc(result));
   };
 
+  const onCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Create
+    console.log("Create!");
+  };
+
+  const onDownload = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Download
+    console.log("Download!");
+  };
+
   return {
     imageSrc,
     confRef,
     getImage,
     onChangeConf,
     dropCallback,
+    onCreate,
+    onDownload,
   };
 };

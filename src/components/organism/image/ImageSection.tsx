@@ -6,8 +6,15 @@ import Dashboard from "./dashboard/Dashboard";
 import { useDrag } from "@/hooks/useDrag";
 
 const ImageSection = () => {
-  const { imageSrc, confRef, getImage, onChangeConf, dropCallback } =
-    useImage();
+  const {
+    imageSrc,
+    confRef,
+    getImage,
+    onChangeConf,
+    dropCallback,
+    onCreate,
+    onDownload,
+  } = useImage();
   const { isDragEnter, onDragOver, onDragLeave, onDrop } =
     useDrag(dropCallback);
 
@@ -18,7 +25,12 @@ const ImageSection = () => {
       onDrop={onDrop}>
       <ImageUpload getImage={getImage} isDragEnter={isDragEnter} />
       <CompareImage imageSrc={imageSrc} />
-      <Dashboard ref={confRef} onChangeConf={onChangeConf} />
+      <Dashboard
+        ref={confRef}
+        onChangeConf={onChangeConf}
+        onCreate={onCreate}
+        onDownload={onDownload}
+      />
     </SectionLayout>
   );
 };

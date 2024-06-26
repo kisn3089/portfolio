@@ -19,8 +19,8 @@ export const ChildButtonContainer = styled.div<{ $disabled: boolean }>`
   white-space: nowrap;
   user-select: none;
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
-  height: 100%;
-  padding: 16px 60px;
+  height: 52px;
+  padding: 0 60px;
   background-color: ${({ theme, $disabled }) =>
     $disabled ? theme.palette.disabledBackground : theme.palette.white};
   color: ${({ theme, $disabled }) =>
@@ -36,6 +36,10 @@ export const ChildButtonContainer = styled.div<{ $disabled: boolean }>`
 
 export const StandText = styled.span`
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0 4px;
+  font-size: ${({ theme }) => theme.fontSize.mini};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   text-transform: uppercase;
 `;

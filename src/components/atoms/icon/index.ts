@@ -9,3 +9,4 @@ export { ReactComponent as StockIcon } from "../../../assets/icons/stock.svg";
 export { ReactComponent as StockList } from "../../../assets/icons/stock_list.svg";
 export { ReactComponent as StockGift } from "../../../assets/icons/stock_gift.svg";
 export { ReactComponent as UploadImage } from "../../../assets/icons/upload_image.svg";
+export { ReactComponent as Download } from "../../../assets/icons/download.svg";

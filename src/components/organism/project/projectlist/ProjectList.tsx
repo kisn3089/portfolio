@@ -27,7 +27,7 @@ const projectList = [
     img: "/assets/img/pj_video.webp",
   },
 ];
-// 비디오, threejs, api & dashboard
+
 const ProjectList = () => {
   return (
     <Center>

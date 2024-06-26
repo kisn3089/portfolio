@@ -12,5 +12,6 @@ export const DashboardLayout = styled.div`
 export const Row = styled.div`
   height: 100%;
   display: flex;
+  align-items: center;
   gap: 0 12px;
 `;

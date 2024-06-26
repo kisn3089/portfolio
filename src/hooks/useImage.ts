@@ -1,9 +1,9 @@
 import { filesToUrl, urlToImage } from "@/lib/util/imageProcessing";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const useImage = () => {
   const [imageSrc, setImageSrc] = useState("");
-  const [isDragEnter, setIsDragEnter] = useState(false);
+  const measureRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     urlToImage("/assets/img/opera.webp", (result) => setImageSrc(result));
@@ -21,40 +21,31 @@ export const useImage = () => {
     }
   };
 
-  const onChangeType = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-  };
-
-  const onDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragEnter(true);
-  };
-
-  const onDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragEnter(false);
-  };
-
-  const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const { files } = e.dataTransfer;
-    if (files) {
-      const url = filesToUrl(files);
-      urlToImage(url, (result) => setImageSrc(result));
-      setIsDragEnter(false);
+  const ChangeMeasureValue = (e: React.MouseEvent<HTMLInputElement>) => {
+    const { id } = e.currentTarget;
+    if (measureRef.current) {
+      if (id === "up" && +measureRef.current.value < 2) {
+        measureRef.current.value = String(
+          (+measureRef.current.value + 0.1).toFixed(1)
+        );
+      } else if (id === "down" && +measureRef.current.value > 0) {
+        measureRef.current.value = String(
+          (+measureRef.current.value - 0.1).toFixed(1)
+        );
+      }
     }
+  };
+
+  const dropCallback = (files: FileList) => {
+    const url = filesToUrl(files);
+    urlToImage(url, (result) => setImageSrc(result));
   };
 
   return {
     imageSrc,
-    isDragEnter,
+    measureRef,
     getImage,
-    onChangeType,
-    onDragOver,
-    onDragLeave,
-    onDrop,
+    ChangeMeasureValue,
+    dropCallback,
   };
 };

@@ -7,7 +7,6 @@ export const useImage = () => {
     createSrc: "",
     originSrc: "/assets/img/opera.webp",
   });
-  const [loading, setLoading] = useState(false);
   const confRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -60,19 +59,13 @@ export const useImage = () => {
       );
   };
 
-  const onCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
-    // Create
+  const onCreate = () => {
     if (confRef.current) {
       urlToImage(imageSrc.originSrc, confRef.current.value, (result) =>
         setImageSrc((prev) => ({ ...prev, createSrc: result }))
       );
       console.log("Create!");
     }
-  };
-
-  const onDownload = (e: React.MouseEvent<HTMLButtonElement>) => {
-    // Download
-    console.log("Download!");
   };
 
   return {
@@ -82,6 +75,5 @@ export const useImage = () => {
     onChangeConf,
     dropCallback,
     onCreate,
-    onDownload,
   };
 };

@@ -8,19 +8,24 @@ interface DashboardProps {
   createSrc: string;
   onCreate: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onChangeConf: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const Dashboard = forwardRef<HTMLInputElement, DashboardProps>(
-  ({ createSrc, onChangeConf, onCreate }, ref) => {
+  ({ createSrc, onChangeConf, onCreate, onKeyDown }, ref) => {
     return (
       <DashboardLayout>
         <Row>
-          <InputNumber ref={ref} onChangeConf={onChangeConf} />
+          <InputNumber
+            ref={ref}
+            onChangeConf={onChangeConf}
+            onKeyDown={onKeyDown}
+          />
           <WrapperButton type="button" onClick={onCreate}>
             <ChildButton content={"create"} isDisabled={false} />
           </WrapperButton>
         </Row>
-        <a href={createSrc} download="create_image">
+        <a href={createSrc} download="create_image" id="download">
           <WrapperButton type="button">
             <ChildButton
               content={"download"}

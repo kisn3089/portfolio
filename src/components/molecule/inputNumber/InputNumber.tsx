@@ -9,13 +9,19 @@ import * as Svg from "@/components/atoms/icon/index";
 
 interface InputNumberProps {
   onChangeConf: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
-  ({ onChangeConf }, ref) => {
+  ({ onChangeConf, onKeyDown }, ref) => {
     return (
       <InputLayout>
-        <RGBInput ref={ref} type="number" defaultValue={0} />
+        <RGBInput
+          ref={ref}
+          type="number"
+          defaultValue={0}
+          onKeyDown={onKeyDown}
+        />
         <ArrowContainer>
           <Center id="up" onClick={onChangeConf}>
             <Svg.ArrowLeft className="up" />

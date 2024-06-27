@@ -11,6 +11,11 @@ export type TRef = {
   confRef: React.RefObject<HTMLInputElement>;
 };
 
+export type TRef = {
+  testRef: React.RefObject<HTMLInputElement>;
+  confRef: React.RefObject<HTMLInputElement>;
+};
+
 const ImageSection = () => {
   const {
     imageSrc,

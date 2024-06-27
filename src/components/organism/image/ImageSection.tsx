@@ -5,6 +5,11 @@ import CreateImage from "./createImage/CreateImage";
 import Dashboard from "./dashboard/Dashboard";
 import { useDrag } from "@/hooks/useDrag";
 
+export type TRef = {
+  testRef: React.RefObject<HTMLInputElement>;
+  confRef: React.RefObject<HTMLInputElement>;
+};
+
 const ImageSection = () => {
   const {
     imageSrc,

@@ -19,6 +19,9 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
         <RGBInput
           ref={ref}
           type="number"
+          step={0.1}
+          min={0}
+          max={3}
           defaultValue={0}
           onKeyDown={onKeyDown}
         />

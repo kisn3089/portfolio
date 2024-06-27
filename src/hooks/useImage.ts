@@ -3,11 +3,11 @@ import { ImageSrcType } from "@/types/imageSrc.type";
 import { useEffect, useRef, useState } from "react";
 
 export const useImage = () => {
+  const confRef = useRef<HTMLInputElement>(null);
   const [imageSrc, setImageSrc] = useState<ImageSrcType>({
     createSrc: "",
     originSrc: "/assets/img/opera.webp",
   });
-  const confRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (confRef.current?.value) {
@@ -43,10 +43,12 @@ export const useImage = () => {
         confRef.current.value = String(
           (+confRef.current.value + 0.1).toFixed(1)
         );
+        confRef.current.focus();
       } else if (id === "down" && +confRef.current.value > 0) {
         confRef.current.value = String(
           (+confRef.current.value - 0.1).toFixed(1)
         );
+        confRef.current.focus();
       }
     }
   };

@@ -91,17 +91,6 @@ export const useImage = () => {
     }
   };
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === "Enter") onCreate();
-    if (
-      (e.code === "Enter" && e.metaKey) ||
-      (e.code === "Enter" && e.ctrlKey)
-    ) {
-      const downEl = document.getElementById("download");
-      downEl?.click();
-    }
-  };
-
   return {
     imageSrc,
     confRef,

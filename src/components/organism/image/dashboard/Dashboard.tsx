@@ -5,13 +5,13 @@ import InputNumber from "@/components/molecule/inputNumber/InputNumber";
 import * as Svg from "@/components/atoms/icon/index";
 
 interface DashboardProps {
+  createSrc: string;
   onCreate: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onChangeConf: (e: React.MouseEvent<HTMLInputElement>) => void;
-  onDownload: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Dashboard = forwardRef<HTMLInputElement, DashboardProps>(
-  ({ onChangeConf, onCreate, onDownload }, ref) => {
+  ({ createSrc, onChangeConf, onCreate }, ref) => {
     return (
       <DashboardLayout>
         <Row>
@@ -20,13 +20,15 @@ const Dashboard = forwardRef<HTMLInputElement, DashboardProps>(
             <ChildButton content={"create"} isDisabled={false} />
           </WrapperButton>
         </Row>
-        <WrapperButton type="button" onClick={onDownload}>
-          <ChildButton
-            content={"download"}
-            icon={<Svg.Download />}
-            isDisabled={false}
-          />
-        </WrapperButton>
+        <a href={createSrc} download="create_image">
+          <WrapperButton type="button">
+            <ChildButton
+              content={"download"}
+              icon={<Svg.Download />}
+              isDisabled={false}
+            />
+          </WrapperButton>
+        </a>
       </DashboardLayout>
     );
   }

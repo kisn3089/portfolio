@@ -1,7 +1,7 @@
 import { useImage } from "@/hooks/useImage";
 import { SectionLayout } from "./ImageLayoutStyles";
 import ImageUpload from "./imageUpload/ImageUpload";
-import CompareImage from "./compareImage/CompareImage";
+import CreateImage from "./createImage/CreateImage";
 import Dashboard from "./dashboard/Dashboard";
 import { useDrag } from "@/hooks/useDrag";
 
@@ -22,9 +22,10 @@ const ImageSection = () => {
     <SectionLayout
       onDragLeave={onDragLeave}
       onDragOver={onDragOver}
-      onDrop={onDrop}>
+      onDrop={onDrop}
+    >
       <ImageUpload getImage={getImage} isDragEnter={isDragEnter} />
-      <CompareImage imageSrc={imageSrc} />
+      <CreateImage imageSrc={imageSrc} />
       <Dashboard
         ref={confRef}
         onChangeConf={onChangeConf}

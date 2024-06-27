@@ -1,25 +1,26 @@
 export const filesToUrl = (files: FileList) => URL.createObjectURL(files[0]);
 
-// export const urlToImage = (url: string, callback: (result: string) => void) => {
-export const urlToImage = (url: string, callback: (result: string) => void) => {
+export const urlToImage = (
+  url: string,
+  conf: number | string,
+  callback: (result: string) => void
+) => {
   const imageEl = new Image();
   imageEl.src = url;
   imageEl.onload = () => {
-    const result = imageProcessing(imageEl);
+    const result = imageProcessing(imageEl, +conf);
     callback(result);
   };
 };
 
-const imageProcessing = (image: HTMLImageElement) => {
+const imageProcessing = (image: HTMLImageElement, conf: number) => {
   const canvas = getCanvasFromImage(image);
-  const dest_canvas = cloneCanvas(canvas);
-  const imageData = dest_canvas.toDataURL("/image/png");
+  const imageData = cloneCanvas(canvas, conf);
 
   return imageData;
-  // document.body.appendChild(dest_canvas);
 };
 
-const cloneCanvas = (src_canvas: HTMLCanvasElement) => {
+const cloneCanvas = (src_canvas: HTMLCanvasElement, conf: number) => {
   const src_ctx = src_canvas.getContext("2d");
   const src_image_data = src_ctx?.getImageData(
     0,
@@ -46,7 +47,7 @@ const cloneCanvas = (src_canvas: HTMLCanvasElement) => {
     return x * cofficient + gray * (1 - cofficient);
   };
 
-  const COEFF = 0;
+  const COEFF = conf;
 
   for (let y = 0; y < src_canvas.height; y++) {
     for (let x = 0; x < src_canvas.width; x++) {
@@ -64,7 +65,9 @@ const cloneCanvas = (src_canvas: HTMLCanvasElement) => {
   }
 
   dest_ctx?.putImageData(dest_image_data, 0, 0);
-  return dest_canvas;
+  const imageData = dest_canvas.toDataURL("image/webp", 1);
+  dest_ctx?.clearRect(0, 0, dest_canvas.width, dest_canvas.height);
+  return imageData;
 };
 
 const getOffset = (x: number, y: number, w: number) => {

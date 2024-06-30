@@ -25,7 +25,6 @@ const ProjectItems = ({ title, tag, img, link }: IProjectItems) => {
           <ItemsImg src={img} alt={img} />
         </ItemsImgContainer>
         <ItemsTag>{tag}</ItemsTag>
-
         <ItemsTitle>
           <Svg.Arrow />
           {title}

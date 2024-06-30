@@ -16,7 +16,7 @@ const projectList = [
   },
   {
     title: "Parallel API & Data Visualization",
-    tag: "useQurey • Api • Chart",
+    tag: "useQurey • API • Chart",
     link: "/project/stock",
     img: "/assets/img/pj_stock.webp",
   },

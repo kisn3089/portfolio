@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 
 export const useImage = () => {
   const confRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState("none");
   const [imageSrc, setImageSrc] = useState<ImageSrcType>({
     createSrc: "",
-    originSrc: "/assets/img/opera.webp",
+    originSrc: "/assets/img/sample_image.webp",
   });
 
   useEffect(() => {
@@ -17,8 +18,14 @@ export const useImage = () => {
     }
   }, []);
 
-  const getImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = e.target;
+  const getImage = (
+    e?: React.ChangeEvent<HTMLInputElement>,
+    file?: FileList | null
+  ) => {
+    setIsLoading(imageSrc.createSrc);
+    let files: FileList | null = null;
+    if (e?.target) files = e?.target.files;
+    if (file) files = file;
     if (
       confRef.current &&
       files &&
@@ -54,18 +61,15 @@ export const useImage = () => {
   };
 
   const dropCallback = (files: FileList) => {
-    const url = filesToUrl(files);
-    if (confRef.current)
-      urlToImage(url, confRef.current.value, (result) =>
-        setImageSrc({ createSrc: result, originSrc: url })
-      );
+    getImage(undefined, files);
   };
 
   const onCreate = () => {
+    setIsLoading(imageSrc.createSrc);
     if (confRef.current) {
-      urlToImage(imageSrc.originSrc, confRef.current.value, (result) =>
-        setImageSrc((prev) => ({ ...prev, createSrc: result }))
-      );
+      urlToImage(imageSrc.originSrc, confRef.current.value, (result) => {
+        setImageSrc((prev) => ({ ...prev, createSrc: result }));
+      });
       console.log("Create!");
     }
   };
@@ -84,6 +88,7 @@ export const useImage = () => {
   return {
     imageSrc,
     confRef,
+    isLoading,
     getImage,
     onChangeConf,
     dropCallback,

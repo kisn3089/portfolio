@@ -14,6 +14,7 @@ const ImageSection = () => {
   const {
     imageSrc,
     confRef,
+    isLoading,
     getImage,
     onChangeConf,
     dropCallback,
@@ -33,6 +34,7 @@ const ImageSection = () => {
       <Dashboard
         ref={confRef}
         createSrc={imageSrc.createSrc}
+        isLoading={isLoading}
         onChangeConf={onChangeConf}
         onCreate={onCreate}
         onKeyDown={onKeyDown}

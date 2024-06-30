@@ -14,6 +14,8 @@ export const urlToImage = (
 };
 
 const imageProcessing = (image: HTMLImageElement, conf: number) => {
+  if (conf > 3) conf = 3;
+  if (conf < 0) conf = 0;
   const canvas = getCanvasFromImage(image);
   const imageData = cloneCanvas(canvas, conf);
 

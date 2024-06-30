@@ -9,12 +9,14 @@ export const ImageWrapper = styled.div`
   border-radius: 24px;
 `;
 
-export const EditingImage = styled.img`
+export const EditingImage = styled.img<{ $isLoading: boolean }>`
   max-width: 1500px;
   height: 500px;
   object-fit: contain;
   border-radius: 24px;
   border: ${({ theme }) => `1px solid ${theme.palette.gray}`};
+  transform: ${({ $isLoading }) => ($isLoading ? "scale(0.8)" : "scale(1)")};
+  transition: ${({ theme }) => `0.4s ${theme.ts.smooth}`};
   ${({ theme }) =>
     theme.animation.fadeIn({
       name: "scaleUp",

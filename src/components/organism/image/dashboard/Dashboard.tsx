@@ -6,16 +6,13 @@ import * as Svg from "@/components/atoms/icon/index";
 
 interface DashboardProps {
   createSrc: string;
-  isLoading: string;
   onCreate: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onChangeConf: (e: React.MouseEvent<HTMLInputElement>) => void;
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const Dashboard = forwardRef<HTMLInputElement, DashboardProps>(
-  ({ createSrc, isLoading, onChangeConf, onCreate, onKeyDown }, ref) => {
-    const loading = createSrc === isLoading;
-
+  ({ createSrc, onChangeConf, onCreate, onKeyDown }, ref) => {
     return (
       <DashboardLayout>
         <Row>
@@ -25,11 +22,7 @@ const Dashboard = forwardRef<HTMLInputElement, DashboardProps>(
             onKeyDown={onKeyDown}
           />
           <WrapperButton type="button" onClick={onCreate}>
-            <ChildButton
-              content={loading ? "" : "create"}
-              icon={loading ? <Svg.Spinner /> : null}
-              isDisabled={loading ? true : false}
-            />
+            <ChildButton content={"create"} isDisabled={false} />
           </WrapperButton>
         </Row>
         <a href={createSrc} download="create_image" id="download">

@@ -2,12 +2,19 @@ import { EditingImage, ImageWrapper } from "./EditImageStyles";
 
 interface EditImageProps {
   src: string;
+  isLoading: string;
 }
 
-const EditImage = ({ src }: EditImageProps) => {
+const EditImage = ({ src, isLoading }: EditImageProps) => {
   return (
     <ImageWrapper>
-      {src && <EditingImage src={src} alt="image_edit_custom" />}
+      {src && (
+        <EditingImage
+          src={src}
+          alt="image_edit_custom"
+          $isLoading={isLoading === src}
+        />
+      )}
     </ImageWrapper>
   );
 };

@@ -1,28 +1,28 @@
 export const filesToUrl = (files: FileList) => URL.createObjectURL(files[0]);
 
-export const urlToImage = (
+export const urlToImage = async (
   url: string,
   conf: number | string,
   callback: (result: string) => void
 ) => {
   const imageEl = new Image();
   imageEl.src = url;
-  imageEl.onload = () => {
-    const result = imageProcessing(imageEl, +conf);
+  imageEl.onload = async () => {
+    const result = await imageProcessing(imageEl, +conf);
     callback(result);
   };
 };
 
-const imageProcessing = (image: HTMLImageElement, conf: number) => {
+const imageProcessing = async (image: HTMLImageElement, conf: number) => {
   if (conf > 3) conf = 3;
   if (conf < 0) conf = 0;
   const canvas = getCanvasFromImage(image);
-  const imageData = cloneCanvas(canvas, conf);
+  const imageData = await cloneCanvas(canvas, conf);
 
   return imageData;
 };
 
-const cloneCanvas = (src_canvas: HTMLCanvasElement, conf: number) => {
+const cloneCanvas = async (src_canvas: HTMLCanvasElement, conf: number) => {
   const src_ctx = src_canvas.getContext("2d");
   const src_image_data = src_ctx?.getImageData(
     0,

@@ -41,6 +41,7 @@ export const useImage = () => {
       } else {
         // 이미지 타입이 아닐 경우
         alert("이미지 타입이 아닙니다");
+        setIsLoading("none");
         return;
       }
     }, 300);

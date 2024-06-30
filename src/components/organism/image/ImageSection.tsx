@@ -4,6 +4,7 @@ import ImageUpload from "./imageUpload/ImageUpload";
 import CreateImage from "./createImage/CreateImage";
 import Dashboard from "./dashboard/Dashboard";
 import { useDrag } from "@/hooks/useDrag";
+import { useStorage } from "@/hooks/useStorage";
 
 export type TRef = {
   testRef: React.RefObject<HTMLInputElement>;
@@ -23,6 +24,8 @@ const ImageSection = () => {
   } = useImage();
   const { isDragEnter, onDragOver, onDragLeave, onDrop } =
     useDrag(dropCallback);
+  // const { isFirst, onSetStorage, onDeleteStorage } = useStorage("image");
+  // console.log("isFirst: ", isFirst);
 
   return (
     <SectionLayout
@@ -41,6 +44,8 @@ const ImageSection = () => {
         onCreate={onCreate}
         onKeyDown={onKeyDown}
       />
+      {/* <button onClick={() => onSetStorage("image")}>SetStorage</button>
+      <button onClick={() => onDeleteStorage("image")}>SetStorage</button> */}
     </SectionLayout>
   );
 };

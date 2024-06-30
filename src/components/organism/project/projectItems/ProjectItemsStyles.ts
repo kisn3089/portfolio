@@ -10,6 +10,7 @@ export const ItemsImgContainer = styled.div`
   overflow: hidden;
   height: 400px;
   background-color: ${({ theme }) => theme.palette.darkBlack};
+  border: ${({ theme }) => `1px solid ${theme.palette.gray}`};
 
   @media screen and (max-width: ${theme.deviceSize.desktop}) {
     max-height: 620px;
@@ -30,8 +31,6 @@ export const ItemsImg = styled.img`
   transition: ${({ theme }) => `0.3s ${theme.ts.moreFast}`};
   object-fit: cover;
   will-change: transform;
-  /* border-radius: 12px;
-  border: ${({ theme }) => `1px solid ${theme.palette.gray}`}; */
 `;
 
 export const ItemsTag = styled.span`

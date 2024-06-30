@@ -3,9 +3,12 @@ import styled from "styled-components";
 export const InputLayout = styled.div`
   position: relative;
   width: 100px;
+  height: 55px;
+  display: flex;
+  align-items: center;
   border: ${({ theme }) => `1px solid ${theme.palette.gray}`};
   border-radius: 8px;
-  padding: 12px 0 12px 12px;
+  padding: 0px 12px;
 `;
 
 export const RGBInput = styled.input`

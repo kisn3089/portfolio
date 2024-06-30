@@ -39,7 +39,7 @@ export const ChildButtonContainer = styled.div<{ $disabled: boolean }>`
   }
 
   @media screen and (max-width: ${theme.deviceSize.mobile}) {
-    padding: 0 30px;
+    padding: 0 12px;
   }
 `;
 
@@ -51,4 +51,8 @@ export const StandText = styled.span`
   font-size: ${({ theme }) => theme.fontSize.mini};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   text-transform: uppercase;
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    font-size: ${({ theme }) => theme.fontSize.extraMini};
+  }
 `;

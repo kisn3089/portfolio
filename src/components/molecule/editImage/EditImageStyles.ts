@@ -11,7 +11,7 @@ export const ImageWrapper = styled.div`
 
 export const EditingImage = styled.img<{ $isLoading: boolean }>`
   max-width: 1500px;
-  height: 500px;
+  height: 100%;
   object-fit: contain;
   border-radius: 24px;
   border: ${({ theme }) => `1px solid ${theme.palette.gray}`};

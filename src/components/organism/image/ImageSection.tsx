@@ -35,7 +35,6 @@ const ImageSection = () => {
       <Dashboard
         ref={confRef}
         createSrc={imageSrc.createSrc}
-        isLoading={isLoading}
         onChangeConf={onChangeConf}
         onCreate={onCreate}
         onKeyDown={onKeyDown}

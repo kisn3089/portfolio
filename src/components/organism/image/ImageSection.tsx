@@ -14,7 +14,7 @@ const ImageSection = () => {
   const {
     imageSrc,
     confRef,
-    isLoading,
+    currentSrc,
     getImage,
     onChangeConf,
     dropCallback,
@@ -30,7 +30,10 @@ const ImageSection = () => {
       onDragOver={onDragOver}
       onDrop={onDrop}>
       <ImageUpload getImage={getImage} isDragEnter={isDragEnter} />
-      <CreateImage imageSrc={imageSrc} isLoading={isLoading} />
+      <CreateImage
+        src={imageSrc.createSrc}
+        isLoading={currentSrc === imageSrc.createSrc}
+      />
       <Dashboard
         ref={confRef}
         createSrc={imageSrc.createSrc}

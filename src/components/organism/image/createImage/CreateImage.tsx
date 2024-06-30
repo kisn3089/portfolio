@@ -1,17 +1,16 @@
-import { ImageSrcType } from "@/types/imageSrc.type";
 import { CreateImageLayout } from "./CreateImageStyles";
 import EditImage from "@/components/molecule/editImage/EditImage";
 
 const CreateImage = ({
-  imageSrc,
+  src,
   isLoading,
 }: {
-  imageSrc: ImageSrcType;
-  isLoading: string;
+  src: string;
+  isLoading: boolean;
 }) => {
   return (
     <CreateImageLayout>
-      <EditImage src={imageSrc.createSrc} isLoading={isLoading} />
+      <EditImage src={src} isLoading={isLoading} />
     </CreateImageLayout>
   );
 };

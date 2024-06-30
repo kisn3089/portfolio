@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const DashboardLayout = styled.div`
@@ -7,6 +8,10 @@ export const DashboardLayout = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    gap: 0 8px;
+  }
 
   svg {
     width: 28px;
@@ -19,6 +24,10 @@ export const Row = styled.div`
   display: flex;
   align-items: center;
   gap: 0 12px;
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    gap: 0 8px;
+  }
 `;
 
 export const WrapperButton = styled.button`

@@ -30,11 +30,10 @@ const ImageSection = () => {
       onDragOver={onDragOver}
       onDrop={onDrop}>
       <ImageUpload getImage={getImage} isDragEnter={isDragEnter} />
-      <CreateImage imageSrc={imageSrc} />
+      <CreateImage imageSrc={imageSrc} isLoading={isLoading} />
       <Dashboard
         ref={confRef}
         createSrc={imageSrc.createSrc}
-        isLoading={isLoading}
         onChangeConf={onChangeConf}
         onCreate={onCreate}
         onKeyDown={onKeyDown}

@@ -26,21 +26,24 @@ export const useImage = () => {
     let files: FileList | null = null;
     if (e?.target) files = e?.target.files;
     if (file) files = file;
-    if (
-      confRef.current &&
-      files &&
-      files[0] &&
-      files[0].type.includes("image")
-    ) {
-      const url = filesToUrl(files);
-      urlToImage(url, confRef.current.value, (result) =>
-        setImageSrc({ createSrc: result, originSrc: url })
-      );
-    } else {
-      // 이미지 타입이 아닐 경우
-      alert("이미지 타입이 아닙니다");
-      return;
-    }
+    setTimeout(() => {
+      if (
+        confRef.current &&
+        files &&
+        files[0] &&
+        files[0].type.includes("image")
+      ) {
+        const url = filesToUrl(files);
+
+        urlToImage(url, confRef.current.value, (result) =>
+          setImageSrc({ createSrc: result, originSrc: url })
+        );
+      } else {
+        // 이미지 타입이 아닐 경우
+        alert("이미지 타입이 아닙니다");
+        return;
+      }
+    }, 300);
   };
 
   const onChangeConf = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -66,12 +69,14 @@ export const useImage = () => {
 
   const onCreate = () => {
     setIsLoading(imageSrc.createSrc);
-    if (confRef.current) {
-      urlToImage(imageSrc.originSrc, confRef.current.value, (result) => {
-        setImageSrc((prev) => ({ ...prev, createSrc: result }));
-      });
-      console.log("Create!");
-    }
+    setTimeout(() => {
+      if (confRef.current) {
+        urlToImage(imageSrc.originSrc, confRef.current.value, (result) => {
+          setImageSrc((prev) => ({ ...prev, createSrc: result }));
+        });
+        console.log("Create!");
+      }
+    }, 300);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

@@ -17,6 +17,7 @@ export const EditingImage = styled.img<{ $isLoading: boolean }>`
   border: ${({ theme }) => `1px solid ${theme.palette.gray}`};
   transform: ${({ $isLoading }) => ($isLoading ? "scale(0.8)" : "scale(1)")};
   transition: ${({ theme }) => `0.4s ${theme.ts.smooth}`};
+  filter: ${({ $isLoading }) => ($isLoading ? "blur(3px)" : "none")};
   ${({ theme }) =>
     theme.animation.fadeIn({
       name: "scaleUp",

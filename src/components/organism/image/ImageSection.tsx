@@ -6,16 +6,6 @@ import Dashboard from "./dashboard/Dashboard";
 import { useDrag } from "@/hooks/useDrag";
 // import { useStorage } from "@/hooks/useStorage";
 
-export type TRef = {
-  testRef: React.RefObject<HTMLInputElement>;
-  confRef: React.RefObject<HTMLInputElement>;
-};
-
-export type TRef = {
-  testRef: React.RefObject<HTMLInputElement>;
-  confRef: React.RefObject<HTMLInputElement>;
-};
-
 const ImageSection = () => {
   const {
     imageSrc,
@@ -45,6 +35,7 @@ const ImageSection = () => {
       <Dashboard
         ref={confRef}
         createSrc={imageSrc.createSrc}
+        isLoading={isLoading}
         onChangeConf={onChangeConf}
         onCreate={onCreate}
         onKeyDown={onKeyDown}

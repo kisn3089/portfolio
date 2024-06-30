@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 export const useImage = () => {
   const confRef = useRef<HTMLInputElement>(null);
-  const [isLoading, setIsLoading] = useState("none");
+  const [currentSrc, setIsLoading] = useState("none");
   const [imageSrc, setImageSrc] = useState<ImageSrcType>({
     createSrc: "",
     originSrc: "/assets/img/sample_image.webp",
@@ -93,7 +93,7 @@ export const useImage = () => {
   return {
     imageSrc,
     confRef,
-    isLoading,
+    currentSrc,
     getImage,
     onChangeConf,
     dropCallback,

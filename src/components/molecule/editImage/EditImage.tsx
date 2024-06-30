@@ -2,7 +2,7 @@ import { EditingImage, ImageWrapper } from "./EditImageStyles";
 
 interface EditImageProps {
   src: string;
-  isLoading: string;
+  isLoading: boolean;
 }
 
 const EditImage = ({ src, isLoading }: EditImageProps) => {
@@ -12,7 +12,7 @@ const EditImage = ({ src, isLoading }: EditImageProps) => {
         <EditingImage
           src={src}
           alt="image_edit_custom"
-          $isLoading={isLoading === src}
+          $isLoading={isLoading}
         />
       )}
     </ImageWrapper>

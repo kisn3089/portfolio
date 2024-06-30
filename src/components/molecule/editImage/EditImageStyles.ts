@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const ImageWrapper = styled.div`
@@ -23,4 +24,9 @@ export const EditingImage = styled.img`
       endTransform: "scale(1)",
       opacity: 0,
     })}
+
+  @media screen and (max-width: ${theme.deviceSize.tablet}) {
+    width: 100%;
+    object-fit: cover;
+  }
 `;

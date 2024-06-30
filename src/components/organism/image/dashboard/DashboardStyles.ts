@@ -9,7 +9,6 @@ export const DashboardLayout = styled.div`
   align-items: center;
 
   svg {
-    /* fill: ${({ theme }) => theme.palette.black}; */
     width: 28px;
     height: 28px;
   }

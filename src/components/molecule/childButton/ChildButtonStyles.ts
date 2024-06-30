@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const HvLine = styled.div`
@@ -31,6 +32,14 @@ export const ChildButtonContainer = styled.div<{ $disabled: boolean }>`
     ${HvLine} {
       width: ${({ $disabled }) => !$disabled && "100%"};
     }
+  }
+
+  @media screen and (max-width: ${theme.deviceSize.tablet}) {
+    padding: 0 40px;
+  }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    padding: 0 30px;
   }
 `;
 

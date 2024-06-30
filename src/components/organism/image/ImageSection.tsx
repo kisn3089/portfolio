@@ -4,7 +4,7 @@ import ImageUpload from "./imageUpload/ImageUpload";
 import CreateImage from "./createImage/CreateImage";
 import Dashboard from "./dashboard/Dashboard";
 import { useDrag } from "@/hooks/useDrag";
-import { useStorage } from "@/hooks/useStorage";
+// import { useStorage } from "@/hooks/useStorage";
 
 export type TRef = {
   testRef: React.RefObject<HTMLInputElement>;

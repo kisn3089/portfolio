@@ -4,15 +4,15 @@ import ProjectItems from "../projectItems/ProjectItems";
 const projectList = [
   {
     title: "Image Processing",
-    tag: "Canvas • Imgae • Editing • Processing",
+    tag: "Filter • Imgae • Editing • Processing",
     link: "/project/image",
-    img: "/assets/img/model.webp",
+    img: "/assets/img/pj_image.png",
   },
   {
     title: "WebGPU & Three.js",
     tag: "Canvas • Drei&Fiber • Animation",
     link: "/project/three",
-    img: "/assets/img/model.webp",
+    img: "/assets/img/pj_model.webp",
   },
   {
     title: "Parallel API & Data Visualization",

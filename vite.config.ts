@@ -13,18 +13,18 @@ export default defineConfig({
       "Cross-Origin-Embedder-Policy": "require-corp",
       "Cross-Origin-Opener-Policy": "same-origin",
     },
-    // proxy: {
-    //   "/api": {
-    //     target:
-    //       "https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService",
-    //     changeOrigin: true,
-    //     rewrite: (path) => path.replace(/^\/api/, ""),
-    //   },
-    //   "/stock": {
-    //     target: "http://apis.data.go.kr/1160100/service/GetStocDiviInfoService",
-    //     changeOrigin: true,
-    //     rewrite: (path) => path.replace(/^\/stock/, ""),
-    //   },
-    // },
+  },
+  build: {
+    outDir: "build",
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          if (id.indexOf("node_modules") !== -1) {
+            const module = id.split("node_modules/").pop()?.split("/")[0];
+            return `vendor-${module}`;
+          }
+        },
+      },
+    },
   },
 });

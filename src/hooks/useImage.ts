@@ -69,6 +69,8 @@ export const useImage = () => {
   };
 
   const onCreate = () => {
+    console.log("qwe");
+
     setIsLoading(imageSrc.createSrc);
     setTimeout(() => {
       if (thresholdRef.current) {
@@ -81,14 +83,13 @@ export const useImage = () => {
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === "Enter") onCreate();
     if (
       (e.code === "Enter" && e.metaKey) ||
       (e.code === "Enter" && e.ctrlKey)
     ) {
       const downEl = document.getElementById("download");
       downEl?.click();
-    }
+    } else if (e.code === "Enter") onCreate();
   };
 
   return {

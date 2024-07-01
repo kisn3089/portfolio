@@ -17,7 +17,7 @@ const ModelCore = ({
   currentAction,
 }: ModelProps) => {
   const modelRef = useRef<Group>(null);
-  const model = useGLTF(`/model/${source}/scene.gltf`);
+  const model = useGLTF(`/model/${source}/${source}.glb`);
 
   const { actions, names } = useAnimations(model.animations, modelRef);
 

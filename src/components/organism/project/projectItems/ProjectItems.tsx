@@ -15,15 +15,16 @@ interface IProjectItems {
   link: string;
 }
 
+const scrollTop = () => window.scrollTo({ top: 0 });
+
 const ProjectItems = ({ title, tag, img, link }: IProjectItems) => {
   return (
-    <Link to={link}>
+    <Link to={link} onClick={scrollTop}>
       <ItemsContainer>
         <ItemsImgContainer>
           <ItemsImg src={img} alt={img} />
         </ItemsImgContainer>
         <ItemsTag>{tag}</ItemsTag>
-
         <ItemsTitle>
           <Svg.Arrow />
           {title}

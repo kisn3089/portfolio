@@ -4,13 +4,16 @@ import React, { useState } from "react";
 
 const useModel = () => {
   const [currentAction, setCurrentAction] = useState(4);
-  const [isLoaded, setLoaded] = useState(true);
+  const [isLoaded, setLoaded] = useState(false);
   const [canvasColor, setCanvasColor] = useState({
     vision: theme.palette.white,
     watch: theme.palette.white,
   });
 
-  const loadedCallback = () => console.log("loaded!"); // setLoaded(true);
+  const loadedCallback = () => {
+    setLoaded(true);
+    console.log("loaded!");
+  };
 
   const changeColor = (e: React.MouseEvent<HTMLButtonElement>) => {
     const { id: type } = e.currentTarget;

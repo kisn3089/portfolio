@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const HvLine = styled.div`
@@ -19,7 +20,8 @@ export const ChildButtonContainer = styled.div<{ $disabled: boolean }>`
   white-space: nowrap;
   user-select: none;
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
-  padding: 16px 60px;
+  height: 52px;
+  padding: 0 60px;
   background-color: ${({ theme, $disabled }) =>
     $disabled ? theme.palette.disabledBackground : theme.palette.white};
   color: ${({ theme, $disabled }) =>
@@ -31,9 +33,26 @@ export const ChildButtonContainer = styled.div<{ $disabled: boolean }>`
       width: ${({ $disabled }) => !$disabled && "100%"};
     }
   }
+
+  @media screen and (max-width: ${theme.deviceSize.tablet}) {
+    padding: 0 40px;
+  }
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    padding: 0 12px;
+  }
 `;
 
 export const StandText = styled.span`
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0 4px;
+  font-size: ${({ theme }) => theme.fontSize.mini};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+  text-transform: uppercase;
+
+  @media screen and (max-width: ${theme.deviceSize.mobile}) {
+    font-size: ${({ theme }) => theme.fontSize.extraMini};
+  }
 `;

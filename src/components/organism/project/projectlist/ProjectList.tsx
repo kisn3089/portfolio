@@ -3,14 +3,20 @@ import ProjectItems from "../projectItems/ProjectItems";
 
 const projectList = [
   {
+    title: "Image Processing",
+    tag: "Filter • Imgae • Editing • Processing",
+    link: "/project/image",
+    img: "/assets/img/pj_image.png",
+  },
+  {
     title: "WebGPU & Three.js",
     tag: "Canvas • Drei&Fiber • Animation",
     link: "/project/three",
-    img: "/assets/img/model.webp",
+    img: "/assets/img/pj_model.webp",
   },
   {
     title: "Parallel API & Data Visualization",
-    tag: "useQurey • Api • Chart",
+    tag: "useQurey • API • Chart",
     link: "/project/stock",
     img: "/assets/img/pj_stock.webp",
   },
@@ -21,7 +27,7 @@ const projectList = [
     img: "/assets/img/pj_video.webp",
   },
 ];
-// 비디오, threejs, api & dashboard
+
 const ProjectList = () => {
   return (
     <Center>

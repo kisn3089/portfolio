@@ -5,11 +5,11 @@
 ### update
 
 ```
-2024.04.20
+2024.07.1
 최근 업데이트 내용
-- gcTime 0으로 설정하여 차트 데이터 불러올때 이전 캐시 데이터로 렌더링 되어 비정상적인 차트를 그리는 현상 수정
-- git remote에 .env 파일 삭제
-- 배당 API 데이터가 부정확하여 임시적으로 미호출
+- image processing 프로젝트 추가
+- three.js 프로젝트 첫 3D model 로드된 후 나머지 2개 model 로드되도록 수정하여 렌더링 속도 3배 개선
+- three.js model draco 압축 방식 이용하여 용량 최적화 gltf -> glb
 ```
 
 Deployment: https://stems-iota.vercel.app/
@@ -73,20 +73,44 @@ three.js를 활용하여 호버 및 터치(클릭)시 설정해놓은 패턴을 
 
 ---
 
+### Image_Processing
+
+```
+instagram color filter 기능으로 흑백 및 색 보정한 image 파일을 webp 확장자로 다운할 수 있게 구현한 프로젝트
+```
+
+#### 세부 기능
+
+- image 파일을 drag를 통한 업로드 방식 구현
+- threshold 값으로 image의 색을 변경 / default: 0
+- create 버튼 클릭시 현재의 threshold 값으로 image 색보정
+- threshold 입력시 Enter 버튼으로 create 기능, metaKey or ctrlKey + Enter로 image 다운로드 기능 구현
+
+#### 트러블 슈팅
+
+- 색보정 로직이 CPU를 독점 사용하여 create 버튼 클릭시 클릭이 되었는지에 대한 인터렉션이 없었던 문제를
+  로직을 비동기로 변경, 부드러운 애니메이션 동작을 위해 setTimeout 300ms를 주어 해결
+
 ### Project_three.js
 
 ```
 3D 모델을 로드하여 모델이 가지고 있는 애니메이션을 선택하여 동작하는 모습을 볼 수 있게 구현한 프로젝트
 ```
 
-세부 기능
+#### 세부 기능
 
+- draco 압축 방식을 사용하여 크기 최적화
+- 첫 model 로드 후 나머지 model 로드하여 렌더링 속도 개선
 - color 클릭 시 배경색 변경
 - useFrame으로 회전하는 애니메이션 구현
 - 그림자 효과 구현
 - [떠다니는](https://github.com/kisn3089/portpolio/blob/main/src/components/organism/main/mainLayout/MainLayout.tsx#L41C14-L41C19) 효과 구현
 - [자체적으로 빛나는](https://github.com/kisn3089/portpolio/blob/main/src/components/organism/main/mainLayout/MainLayout.tsx#L53) 효과 구현
 - 스크롤 확대 최소, 최대값 제한
+
+#### 트러블 슈팅
+
+- model 3개를 한번에 로드하여 GPU부하로 인해 로드가 지연되는 현상을 먼저 1개의 model을 로드시킨 후 나머지 작은 용량의 model을 로드하여 해결
 
 <img src=public/assets/img/readmeInfo/pj_three_sphere.png width=700px />
 <img src=public/assets/img/readmeInfo/pj_three_apple.png width=700px />
@@ -102,7 +126,7 @@ three.js를 활용하여 호버 및 터치(클릭)시 설정해놓은 패턴을 
 공공 API를 활용해 주식을 검색하고 관련 정보 및 최근 1주일 데이터를 받아 차트를 이용한 데이터 시각화 프로젝트
 ```
 
-세부 기능
+#### 세부 기능
 
 - Enter 키로 주식 검색
 - 공공 API에서 제공해주는 가장 최근 날짜를 계산하여 초기 설정
@@ -126,7 +150,7 @@ Video Upload시 확장자가 mp4가 아닐경우 ffmpeg wasm을 이용해 mp4로
 
 <img src=public/assets/img/readmeInfo/player.png width=700px />
 
-세부 기능
+#### 세부 기능
 
 - 음소거 아래 마커 버튼으로 현재 플레이 시간을 마크, 마크가 2개 일시 section play 버튼 활성화되어 구간재생 기능
 - f(풀사이즈), 재생, 정지(space) 등 기본적인 단축키 기능 제공
@@ -139,6 +163,7 @@ Video Upload시 확장자가 mp4가 아닐경우 ffmpeg wasm을 이용해 mp4로
 ## 추후 업데이트 예정
 
 ```
+- 프로젝트별로 최초 1회 설명하는 UI 구현
 - ABOUTME 페이지
   - 게이지바와 원형 게이지를 이용해 나의 강점 부분과 약점 부분을 시각화
 - En 버전 추가

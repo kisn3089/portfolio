@@ -2,27 +2,33 @@ export const filesToUrl = (files: FileList) => URL.createObjectURL(files[0]);
 
 export const urlToImage = async (
   url: string,
-  conf: number | string,
+  thresholdRef: number | string,
   callback: (result: string) => void
 ) => {
   const imageEl = new Image();
   imageEl.src = url;
   imageEl.onload = async () => {
-    const result = await imageProcessing(imageEl, +conf);
+    const result = await imageProcessing(imageEl, +thresholdRef);
     callback(result);
   };
 };
 
-const imageProcessing = async (image: HTMLImageElement, conf: number) => {
-  if (conf > 3) conf = 3;
-  if (conf < 0) conf = 0;
+const imageProcessing = async (
+  image: HTMLImageElement,
+  thresholdRef: number
+) => {
+  if (thresholdRef > 3) thresholdRef = 3;
+  if (thresholdRef < 0) thresholdRef = 0;
   const canvas = getCanvasFromImage(image);
-  const imageData = await cloneCanvas(canvas, conf);
+  const imageData = await cloneCanvas(canvas, thresholdRef);
 
   return imageData;
 };
 
-const cloneCanvas = async (src_canvas: HTMLCanvasElement, conf: number) => {
+const cloneCanvas = async (
+  src_canvas: HTMLCanvasElement,
+  thresholdRef: number
+) => {
   const src_ctx = src_canvas.getContext("2d");
   const src_image_data = src_ctx?.getImageData(
     0,
@@ -49,7 +55,7 @@ const cloneCanvas = async (src_canvas: HTMLCanvasElement, conf: number) => {
     return x * cofficient + gray * (1 - cofficient);
   };
 
-  const COEFF = conf;
+  const COEFF = thresholdRef;
 
   for (let y = 0; y < src_canvas.height; y++) {
     for (let x = 0; x < src_canvas.width; x++) {

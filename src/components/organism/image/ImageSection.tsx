@@ -9,7 +9,7 @@ import { useDrag } from "@/hooks/useDrag";
 const ImageSection = () => {
   const {
     imageSrc,
-    confRef,
+    thresholdRef,
     currentSrc,
     getImage,
     onChangeConf,
@@ -26,14 +26,15 @@ const ImageSection = () => {
     <SectionLayout
       onDragLeave={onDragLeave}
       onDragOver={onDragOver}
-      onDrop={onDrop}>
+      onDrop={onDrop}
+    >
       <ImageUpload getImage={getImage} isDragEnter={isDragEnter} />
       <CreateImage
         src={imageSrc.createSrc}
         isLoading={currentSrc === imageSrc.createSrc}
       />
       <Dashboard
-        ref={confRef}
+        ref={thresholdRef}
         createSrc={imageSrc.createSrc}
         onChangeConf={onChangeConf}
         onCreate={onCreate}

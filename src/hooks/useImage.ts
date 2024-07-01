@@ -3,7 +3,7 @@ import { ImageSrcType } from "@/types/imageSrc.type";
 import { useEffect, useRef, useState } from "react";
 
 export const useImage = () => {
-  const confRef = useRef<HTMLInputElement>(null);
+  const thresholdRef = useRef<HTMLInputElement>(null);
   const [currentSrc, setIsLoading] = useState("none");
   const [imageSrc, setImageSrc] = useState<ImageSrcType>({
     createSrc: "",
@@ -11,8 +11,8 @@ export const useImage = () => {
   });
 
   useEffect(() => {
-    if (confRef.current?.value) {
-      urlToImage(imageSrc.originSrc, confRef.current.value, (result) =>
+    if (thresholdRef.current?.value) {
+      urlToImage(imageSrc.originSrc, thresholdRef.current.value, (result) =>
         setImageSrc((prev) => ({ ...prev, createSrc: result }))
       );
     }
@@ -28,14 +28,14 @@ export const useImage = () => {
     if (file) files = file;
     setTimeout(() => {
       if (
-        confRef.current &&
+        thresholdRef.current &&
         files &&
         files[0] &&
         files[0].type.includes("image")
       ) {
         const url = filesToUrl(files);
 
-        urlToImage(url, confRef.current.value, (result) =>
+        urlToImage(url, thresholdRef.current.value, (result) =>
           setImageSrc({ createSrc: result, originSrc: url })
         );
       } else {
@@ -49,17 +49,17 @@ export const useImage = () => {
 
   const onChangeConf = (e: React.MouseEvent<HTMLInputElement>) => {
     const { id } = e.currentTarget;
-    if (confRef.current) {
-      if (id === "up" && +confRef.current.value < 3) {
-        confRef.current.value = String(
-          (+confRef.current.value + 0.1).toFixed(1)
+    if (thresholdRef.current) {
+      if (id === "up" && +thresholdRef.current.value < 3) {
+        thresholdRef.current.value = String(
+          (+thresholdRef.current.value + 0.1).toFixed(1)
         );
-        confRef.current.focus();
-      } else if (id === "down" && +confRef.current.value > 0) {
-        confRef.current.value = String(
-          (+confRef.current.value - 0.1).toFixed(1)
+        thresholdRef.current.focus();
+      } else if (id === "down" && +thresholdRef.current.value > 0) {
+        thresholdRef.current.value = String(
+          (+thresholdRef.current.value - 0.1).toFixed(1)
         );
-        confRef.current.focus();
+        thresholdRef.current.focus();
       }
     }
   };
@@ -71,8 +71,8 @@ export const useImage = () => {
   const onCreate = () => {
     setIsLoading(imageSrc.createSrc);
     setTimeout(() => {
-      if (confRef.current) {
-        urlToImage(imageSrc.originSrc, confRef.current.value, (result) => {
+      if (thresholdRef.current) {
+        urlToImage(imageSrc.originSrc, thresholdRef.current.value, (result) => {
           setImageSrc((prev) => ({ ...prev, createSrc: result }));
         });
         console.log("Create!");
@@ -93,7 +93,7 @@ export const useImage = () => {
 
   return {
     imageSrc,
-    confRef,
+    thresholdRef,
     currentSrc,
     getImage,
     onChangeConf,

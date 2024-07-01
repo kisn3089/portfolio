@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { HTMLAttributes, forwardRef } from "react";
 import {
   ArrowContainer,
   Center,
@@ -7,16 +7,17 @@ import {
 } from "./InputNumberStyles";
 import * as Svg from "@/components/atoms/icon/index";
 
-interface InputNumberProps {
+interface InputNumberProps extends HTMLAttributes<HTMLInputElement> {
   onChangeConf: (e: React.MouseEvent<HTMLInputElement>) => void;
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
-  ({ onChangeConf, onKeyDown }, ref) => {
+  ({ id, onChangeConf, onKeyDown }, ref) => {
     return (
       <InputLayout>
         <RGBInput
+          id={id}
           ref={ref}
           type="number"
           step={0.1}

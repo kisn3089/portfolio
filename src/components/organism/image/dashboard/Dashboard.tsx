@@ -30,8 +30,9 @@ const Dashboard = forwardRef<HTMLInputElement, DashboardProps>(
           </WrapperButton>
         </a>
         <Row>
-          <Threshold>Threshold</Threshold>
+          <Threshold htmlFor="threshold">Threshold</Threshold>
           <InputNumber
+            id="threshold"
             ref={ref}
             onChangeConf={onChangeConf}
             onKeyDown={onKeyDown}

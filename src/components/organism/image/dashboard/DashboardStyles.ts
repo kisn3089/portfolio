@@ -36,8 +36,9 @@ export const WrapperButton = styled.button`
   background-color: transparent;
 `;
 
-export const Threshold = styled.span`
+export const Threshold = styled.label`
   font-size: ${({ theme }) => theme.fontSize.small};
+  cursor: pointer;
 
   @media screen and (max-width: ${theme.deviceSize.tablet}) {
     font-size: ${({ theme }) => theme.fontSize.mini};

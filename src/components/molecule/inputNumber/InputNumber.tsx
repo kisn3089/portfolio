@@ -2,7 +2,11 @@ import { HTMLAttributes, forwardRef } from "react";
 import {
   ArrowContainer,
   Center,
+  InfoContent,
+  InfoLayout,
   InputLayout,
+  Line,
+  OnceInfoInput,
   RGBInput,
 } from "./InputNumberStyles";
 import * as Svg from "@/components/atoms/icon/index";
@@ -34,6 +38,16 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
             <Svg.ArrowLeft className="down" />
           </Center>
         </ArrowContainer>
+        <OnceInfoInput>
+          <Line />
+          <InfoLayout>
+            <InfoContent>Enter: CREATE</InfoContent>
+            <InfoContent>⌘ (cmd) + Enter: </InfoContent>
+            <InfoContent>
+              ctrl + Enter로 이미지 저장할 수 있습니다.{" "}
+            </InfoContent>
+          </InfoLayout>
+        </OnceInfoInput>
       </InputLayout>
     );
   }

@@ -3,7 +3,6 @@ import { useState } from "react";
 
 export const useStorage = (key: StorageKeyType) => {
   const storage = localStorage.getItem(key);
-  console.log("storage: ", storage);
 
   const [isFirst, setIsFirst] = useState(Boolean(storage));
 

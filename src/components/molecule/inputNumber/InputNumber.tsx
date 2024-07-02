@@ -6,6 +6,7 @@ import {
   RGBInput,
 } from "./InputNumberStyles";
 import * as Svg from "@/components/atoms/icon/index";
+import OnceInputNumber from "./onceInputNumber/OnceInputNumber";
 
 interface InputNumberProps extends HTMLAttributes<HTMLInputElement> {
   onChangeConf: (e: React.MouseEvent<HTMLInputElement>) => void;
@@ -34,6 +35,7 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
             <Svg.ArrowLeft className="down" />
           </Center>
         </ArrowContainer>
+        <OnceInputNumber />
       </InputLayout>
     );
   }

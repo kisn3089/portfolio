@@ -2,9 +2,10 @@ import { StorageKeyType } from "@/types/storageKey.type";
 import { useState } from "react";
 
 export const useStorage = (key: StorageKeyType) => {
-  const storage = localStorage.getItem("image");
+  const storage = localStorage.getItem(key);
+  console.log("storage: ", storage);
 
-  const [isFirst, setIsFirst] = useState(storage === key);
+  const [isFirst, setIsFirst] = useState(Boolean(storage));
 
   const onSetStorage = (key: StorageKeyType) => {
     localStorage.setItem(key, "true");

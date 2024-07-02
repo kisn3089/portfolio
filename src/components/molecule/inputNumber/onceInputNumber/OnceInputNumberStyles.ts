@@ -21,18 +21,18 @@ export const Line = styled.div`
 
 export const InfoLayout = styled.div`
   position: absolute;
-  top: -180%;
+  top: -220%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   width: 300px;
-  height: 160px;
+  height: 180px;
   border: ${({ theme }) => `1px solid ${theme.palette.blue100}`};
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  padding: 16px;
+  padding: 32px 0 14px 0;
   z-index: 8;
   backdrop-filter: blur(10px);
   box-shadow: ${({ theme }) => `0 0 10px 2px ${theme.palette.blue}`};
@@ -40,7 +40,6 @@ export const InfoLayout = styled.div`
 
 export const InfoContent = styled.span`
   font-size: ${({ theme }) => theme.fontSize.mini};
-  font-family: ${({ theme }) => theme.fontFamily.ko};
 `;
 
 export const ClearButton = styled.button`

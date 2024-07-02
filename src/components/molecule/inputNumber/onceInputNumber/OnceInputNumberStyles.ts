@@ -21,9 +21,8 @@ export const Line = styled.div`
 
 export const InfoLayout = styled.div`
   position: absolute;
-  top: -400%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
+  top: -750%;
+  left: -100%;
   width: 300px;
   height: 360px;
   border: ${({ theme }) => `1px solid ${theme.palette.blue100}`};
@@ -35,6 +34,14 @@ export const InfoLayout = styled.div`
   z-index: 8;
   backdrop-filter: blur(10px);
   box-shadow: ${({ theme }) => `0 0 10px 2px ${theme.palette.blue}`};
+  ${({ theme }) =>
+    theme.animation.fadeIn({
+      name: "once_question",
+      duration: "1s",
+      transtion: theme.ts.moreFast,
+      opacity: 0,
+      beginTransform: "translateY(10%)",
+    })}
 `;
 
 export const ThresholdInfoWrapper = styled.div`
@@ -44,6 +51,17 @@ export const ThresholdInfoWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 12px;
+  opacity: 0;
+  ${({ theme }) =>
+    theme.animation.fadeIn({
+      name: "once_threshold",
+      duration: "1.2s",
+      transtion: theme.ts.moreFast,
+      opacity: 0,
+      beginTransform: "translateY(20%)",
+      delay: "0.4s",
+      direction: "forwards",
+    })}
 `;
 
 export const CenterLine = styled.div`
@@ -59,6 +77,17 @@ export const ShortcutWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 12px;
+  opacity: 0;
+  ${({ theme }) =>
+    theme.animation.fadeIn({
+      name: "once_shortcut",
+      duration: "1.2s",
+      transtion: theme.ts.moreFast,
+      opacity: 0,
+      beginTransform: "translateY(20%)",
+      delay: "0.8s",
+      direction: "forwards",
+    })}
 `;
 
 export const InfoContent = styled.span`

@@ -23,8 +23,7 @@ const ImageSection = () => {
     <SectionLayout
       onDragLeave={onDragLeave}
       onDragOver={onDragOver}
-      onDrop={onDrop}
-    >
+      onDrop={onDrop}>
       <ImageUpload getImage={getImage} isDragEnter={isDragEnter} />
       <CreateImage
         src={imageSrc.createSrc}

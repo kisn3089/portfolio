@@ -6,7 +6,7 @@ import {
   RGBInput,
 } from "./InputNumberStyles";
 import * as Svg from "@/components/atoms/icon/index";
-import OnceInputNumber from "./onceInputNumber/OnceInputNumber";
+import OnceInputNumber from "../onceInfo/onceInputNumber/OnceInputNumber";
 
 interface InputNumberProps extends HTMLAttributes<HTMLInputElement> {
   onChangeConf: (e: React.MouseEvent<HTMLInputElement>) => void;

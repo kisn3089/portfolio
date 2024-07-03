@@ -85,7 +85,7 @@ export const ShortcutWrapper = styled.div`
       transtion: theme.ts.moreFast,
       opacity: 0,
       beginTransform: "translateY(20%)",
-      delay: "0.8s",
+      delay: "0.6s",
       direction: "forwards",
     })}
 `;

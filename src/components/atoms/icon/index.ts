@@ -10,3 +10,8 @@ export { ReactComponent as StockList } from "../../../assets/icons/stock_list.sv
 export { ReactComponent as StockGift } from "../../../assets/icons/stock_gift.svg";
 export { ReactComponent as UploadImage } from "../../../assets/icons/upload_image.svg";
 export { ReactComponent as Download } from "../../../assets/icons/download.svg";
+export { ReactComponent as Next } from "../../../assets/icons/next.svg";
+export { ReactComponent as Prev } from "../../../assets/icons/prev.svg";
+export { ReactComponent as Marker } from "../../../assets/icons/marker.svg";
+export { ReactComponent as RemoveMarker } from "../../../assets/icons/removeMarker.svg";
+export { ReactComponent as Information } from "../../../assets/icons/information.svg";

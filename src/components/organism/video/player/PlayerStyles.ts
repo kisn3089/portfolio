@@ -10,6 +10,7 @@ export const VideoContainer = styled.div`
 `;
 
 export const VideoSize = styled.div`
+  position: relative;
   width: 90%;
   height: 50%;
 

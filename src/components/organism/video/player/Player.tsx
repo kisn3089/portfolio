@@ -7,7 +7,7 @@ import {
   PlayerButton,
 } from "./PlayerStyles";
 import ChildButton from "@/components/molecule/childButton/ChildButton";
-
+import OncePlayer from "@/components/molecule/onceInfo/oncePlayer/OncePlayer";
 interface TPlayer {
   url: string;
   videoRef: React.RefObject<HTMLDivElement>;
@@ -25,6 +25,7 @@ export const Player = ({
     <Container>
       <Size data-vjs-player>
         <VideoPlayer ref={videoRef} />
+        <OncePlayer />
       </Size>
       <Group>
         <PlayerButton onClick={sectionPlay} disabled={!isAllMarker}>

@@ -1,3 +1,4 @@
+import { QuestionInfo } from "../questionInfo/QuestionInfo";
 import {
   CenterLine,
   ClearButton,
@@ -11,8 +12,17 @@ import {
 import { useStorage } from "@/hooks/useStorage";
 
 const OnceInputNumber = () => {
-  const { isFirst, onSetStorage, onDeleteStorage } = useStorage("image");
-  if (isFirst) return <></>;
+  const STORAGE_KEY = "image";
+  const { isFirst, onSetStorage, onDeleteStorage } = useStorage(STORAGE_KEY);
+  if (isFirst)
+    return (
+      <QuestionInfo
+        storageKey={STORAGE_KEY}
+        style={["-1680%", "-516%"]}
+        onDeleteStorage={onDeleteStorage}
+      />
+    );
+
   return (
     <OnceInfoInput>
       <Line />
@@ -27,8 +37,9 @@ const OnceInputNumber = () => {
         <ShortcutWrapper>
           <InfoContent>Enter: Create Image</InfoContent>
           <InfoContent>⌘ + Enter: Image Download</InfoContent>
-          <InfoContent>Ctrl + Enter: Image Download</InfoContent>
-          <ClearButton onClick={() => onSetStorage("image")}>check</ClearButton>
+          <ClearButton onClick={() => onSetStorage(STORAGE_KEY)}>
+            check
+          </ClearButton>
         </ShortcutWrapper>
       </InfoLayout>
     </OnceInfoInput>

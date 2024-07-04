@@ -21,10 +21,10 @@ export const Line = styled.div`
 
 export const InfoLayout = styled.div`
   position: absolute;
-  top: -750%;
+  top: -640%;
   left: -100%;
   width: 300px;
-  height: 360px;
+  height: 300px;
   border: ${({ theme }) => `1px solid ${theme.palette.blue100}`};
   border-radius: 8px;
   display: flex;
@@ -55,7 +55,7 @@ export const ThresholdInfoWrapper = styled.div`
   ${({ theme }) =>
     theme.animation.fadeIn({
       name: "once_threshold",
-      duration: "1.2s",
+      duration: "1s",
       transtion: theme.ts.moreFast,
       opacity: 0,
       beginTransform: "translateY(20%)",
@@ -76,12 +76,12 @@ export const ShortcutWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   opacity: 0;
   ${({ theme }) =>
     theme.animation.fadeIn({
       name: "once_shortcut",
-      duration: "1.2s",
+      duration: "1s",
       transtion: theme.ts.moreFast,
       opacity: 0,
       beginTransform: "translateY(20%)",

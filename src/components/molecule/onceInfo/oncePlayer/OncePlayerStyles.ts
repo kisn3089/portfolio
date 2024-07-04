@@ -19,7 +19,7 @@ export const OnceInfoLayout = styled.div`
   ${({ theme }) =>
     theme.animation.fadeIn({
       name: "once_shortcut",
-      duration: "1.2s",
+      duration: "0.6s",
       transtion: theme.ts.moreFast,
       opacity: 0,
       beginTransform: "translateY(20%)",
@@ -34,17 +34,5 @@ export const OnceContent = styled.span`
   font-size: ${({ theme }) => theme.fontSize.mini};
   &.ko {
     font-family: ${({ theme }) => theme.fontFamily.ko};
-  }
-`;
-
-export const QuestionLayout = styled.div`
-  position: absolute;
-  top: -50px;
-  left: 0;
-  svg {
-    width: 32px;
-    height: 32px;
-    stroke: ${({ theme }) => theme.palette.gray100};
-    cursor: pointer;
   }
 `;

@@ -1,20 +1,20 @@
 import { useStorage } from "@/hooks/useStorage";
 import { ClearButton } from "../onceInputNumber/OnceInputNumberStyles";
-import {
-  OnceContent,
-  OnceInfoLayout,
-  QuestionLayout,
-} from "./OncePlayerStyles";
+import { OnceContent, OnceInfoLayout } from "./OncePlayerStyles";
 import * as Svg from "@/components/atoms/icon/index";
+import { QuestionInfo } from "../questionInfo/QuestionInfo";
 
 const OncePlayer = () => {
-  const { isFirst, onSetStorage, onDeleteStorage } = useStorage("video");
+  const STORAGE_KEY = "video";
+  const { isFirst, onSetStorage, onDeleteStorage } = useStorage(STORAGE_KEY);
   if (isFirst)
     return (
-      <QuestionLayout>
-        <Svg.Information />{" "}
-      </QuestionLayout>
+      <QuestionInfo
+        storageKey={STORAGE_KEY}
+        onDeleteStorage={onDeleteStorage}
+      />
     );
+
   return (
     <OnceInfoLayout>
       <OnceContent className="ko">
@@ -30,7 +30,7 @@ const OncePlayer = () => {
         <Svg.Next />
         {"이전, 다음 구간으로 재생을 이동합니다."}
       </OnceContent>
-      <ClearButton onClick={() => onSetStorage("video")}>check</ClearButton>
+      <ClearButton onClick={() => onSetStorage(STORAGE_KEY)}>check</ClearButton>
     </OnceInfoLayout>
   );
 };

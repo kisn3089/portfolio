@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
 export const OnceInfoLayout = styled.div`
-  position: absolute;
-  top: 28%;
-  left: 28%;
   width: 380px;
   height: 220px;
   border: ${({ theme }) => `1px solid ${theme.palette.blue100}`};
@@ -18,7 +15,7 @@ export const OnceInfoLayout = styled.div`
   opacity: 0;
   ${({ theme }) =>
     theme.animation.fadeIn({
-      name: "once_shortcut",
+      name: "once_video",
       duration: "0.6s",
       transtion: theme.ts.moreFast,
       opacity: 0,

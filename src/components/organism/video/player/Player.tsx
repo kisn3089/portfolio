@@ -5,6 +5,7 @@ import {
   VideoContainer as Container,
   Group,
   PlayerButton,
+  Center,
 } from "./PlayerStyles";
 import ChildButton from "@/components/molecule/childButton/ChildButton";
 import OncePlayer from "@/components/molecule/onceInfo/oncePlayer/OncePlayer";
@@ -25,7 +26,9 @@ export const Player = ({
     <Container>
       <Size data-vjs-player>
         <VideoPlayer ref={videoRef} />
-        <OncePlayer />
+        <Center>
+          <OncePlayer />
+        </Center>
       </Size>
       <Group>
         <PlayerButton onClick={sectionPlay} disabled={!isAllMarker}>

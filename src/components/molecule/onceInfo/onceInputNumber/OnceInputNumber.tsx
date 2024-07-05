@@ -18,7 +18,7 @@ const OnceInputNumber = () => {
     return (
       <QuestionInfo
         storageKey={STORAGE_KEY}
-        style={["-1680%", "-516%"]}
+        style={["-66%", "64%"]}
         onDeleteStorage={onDeleteStorage}
       />
     );

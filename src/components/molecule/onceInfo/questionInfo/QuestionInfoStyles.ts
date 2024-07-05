@@ -7,7 +7,7 @@ export const QuestionLayout = styled.div<{ $top?: string; $left?: string }>`
   opacity: 0;
   ${({ theme }) =>
     theme.animation.fadeIn({
-      name: "once_shortcut",
+      name: "question",
       duration: "0.6s",
       transtion: theme.ts.moreFast,
       opacity: 0,

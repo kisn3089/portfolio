@@ -8,6 +8,15 @@ export const OnceInfoInput = styled.div`
   height: 100%;
   border: ${({ theme }) => `1px solid ${theme.palette.blue100}`};
   border-radius: 8px;
+  opacity: 0;
+  ${({ theme }) =>
+    theme.animation.fadeIn({
+      name: "once_border",
+      duration: "0.6s",
+      transtion: theme.ts.moreFast,
+      opacity: 0,
+      direction: "forwards",
+    })};
 `;
 
 export const Line = styled.div`

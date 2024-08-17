@@ -1,14 +1,9 @@
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import { GlobalStyle } from "./styles/GlobalStyle.tsx";
-import { ThemeProvider } from "styled-components";
-import { theme } from "./styles/theme.ts";
+import RootLayout from "./styles/RootLayout.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
-  </>
+  <RootLayout>
+    <App />
+  </RootLayout>
 );

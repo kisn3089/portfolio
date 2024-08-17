@@ -6,18 +6,21 @@ import {
   ActiveButtonContainer,
 } from "./ActiveButtonStyles";
 
+type ActiveButtonProps = {
+  content: string[];
+  isActive: boolean;
+  width?: string;
+  activeClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
 const ActiveButton = ({
   content,
   isActive,
   width,
   activeClick,
-}: {
-  content: string[];
-  isActive: boolean;
-  width?: string;
-  activeClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}) => {
+}: ActiveButtonProps) => {
   const [current, after] = content;
+
   return (
     <ActiveButtonContainer
       $width={width}

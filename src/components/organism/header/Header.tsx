@@ -3,21 +3,19 @@ import { DivideHeader, HeaderContainer, Logo } from "./HeaderStyles";
 import ActiveMenu from "./activeMenu/ActiveMenu";
 import ActiveButton from "../../molecule/activeButton/ActiveButton";
 import { useCloseOut } from "@/hooks/useCloseOut";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const Header = () => {
-  const outSideRef = useRef<HTMLDivElement>(null);
   const [isActive, setIsActive] = useState(false);
-
   const toggleActive = () => setIsActive((prev) => !prev);
-  useCloseOut(outSideRef, toggleActive);
+  const outRef = useCloseOut(toggleActive, isActive === true);
 
   return (
     <HeaderContainer>
       <Link to="/">
         <Logo>STEMS</Logo>
       </Link>
-      <DivideHeader ref={outSideRef}>
+      <DivideHeader ref={outRef}>
         <ActiveButton
           content={["MENU", "CLOSE"]}
           isActive={isActive}

@@ -6,21 +6,26 @@ import ImagePage from "./pages/ImagePage";
 import ThreePage from "./pages/ThreePage";
 import VideoPage from "./pages/VideoPage";
 import StockPage from "./pages/StockPage";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 function App() {
   const location = useLocation();
 
   return (
-    <Routes location={location}>
-      <Route path="/" element={<MainPage />} />
-      <Route path="me" element={<AboutMePage />} />
-      <Route path="project" element={<ProjectPage />} />
-      <Route path="project/image" element={<ImagePage />} />
-      <Route path="project/three" element={<ThreePage />} />
-      <Route path="project/video" element={<VideoPage />} />
-      <Route path="project/stock" element={<StockPage />} />
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
+    <TransitionGroup>
+      <CSSTransition key={location.pathname} classNames="fade" timeout={1000}>
+        <Routes location={location}>
+          <Route path="/" element={<MainPage />} />
+          <Route path="me" element={<AboutMePage />} />
+          <Route path="project" element={<ProjectPage />} />
+          <Route path="project/image" element={<ImagePage />} />
+          <Route path="project/three" element={<ThreePage />} />
+          <Route path="project/video" element={<VideoPage />} />
+          <Route path="project/stock" element={<StockPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </CSSTransition>
+    </TransitionGroup>
   );
 }
 export default App;

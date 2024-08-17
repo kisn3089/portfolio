@@ -22,8 +22,7 @@ const ActiveButton = ({
     <ActiveButtonContainer
       $width={width}
       $isActive={isActive}
-      onClick={activeClick}
-    >
+      onClick={activeClick}>
       <Content $isActive={isActive}>
         <span>{current}</span>
         <span>{after}</span>

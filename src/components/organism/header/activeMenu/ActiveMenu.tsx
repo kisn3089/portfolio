@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import { ActiveMenuContainer, MenuItemContainer } from "./ActiveMenuStyles";
 import ActiveButton from "@/components/molecule/activeButton/ActiveButton";
-import { useNavigate } from "react-router-dom";
 
 const menuItems = [
   { content: ["HOME", "HOME"], url: "/" },
@@ -8,19 +8,25 @@ const menuItems = [
   { content: ["PROJECT", "PROJECT"], url: "/project" },
 ];
 
-const ActiveMenu = ({ isActive }: { isActive: boolean }) => {
-  const navigate = useNavigate();
+type ActiveMenuProps = {
+  isActive: boolean;
+  activeClick: () => void;
+};
+
+const ActiveMenu = ({ isActive, activeClick }: ActiveMenuProps) => {
   return (
     <ActiveMenuContainer $isActive={isActive}>
       {menuItems.map((item, i) => (
-        <MenuItemContainer key={i}>
-          <ActiveButton
-            content={item.content}
-            width="90%"
-            isActive={false}
-            activeClick={() => navigate(item.url)}
-          />
-        </MenuItemContainer>
+        <Link key={i} to={item.url}>
+          <MenuItemContainer>
+            <ActiveButton
+              content={item.content}
+              width="90%"
+              isActive={false}
+              activeClick={activeClick}
+            />
+          </MenuItemContainer>
+        </Link>
       ))}
     </ActiveMenuContainer>
   );

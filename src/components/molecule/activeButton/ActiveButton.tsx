@@ -9,7 +9,7 @@ import {
 type ActiveButtonProps = {
   content: string[];
   isActive: boolean;
-  width?: string;
+  width?: boolean;
   activeClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
@@ -23,12 +23,11 @@ const ActiveButton = ({
 
   return (
     <ActiveButtonContainer
-      $width={width}
-      $isActive={isActive}
+      className={`${(width && "width") || (isActive && "isActive")}`}
       onClick={activeClick}>
-      <Content $isActive={isActive}>
-        <span>{current}</span>
-        <span>{after}</span>
+      <Content className={isActive ? "isActive" : ""}>
+        <span className={`default`}>{current}</span>
+        <span className={`active`}>{after}</span>
       </Content>
       <ArrowRight>
         <Dot />

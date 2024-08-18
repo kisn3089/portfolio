@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ActiveMenuContainer = styled.div<{ $isActive: boolean }>`
+export const ActiveMenuContainer = styled.div`
   position: absolute;
   width: 260px;
   height: 260px;
@@ -14,10 +14,15 @@ export const ActiveMenuContainer = styled.div<{ $isActive: boolean }>`
   transition: 0.4s cubic-bezier(0.63, 0.33, 0.17, 0.91);
   background-color: ${({ theme }) => theme.palette.black};
   color: ${({ theme }) => theme.palette.white};
-  opacity: ${({ $isActive }) => ($isActive ? "1" : "0")};
-  transform: ${({ $isActive }) =>
-    $isActive ? "translate3d(-38%, 10%, 0)" : "translate3d(-12%, 32%, 0)"};
-  pointer-events: ${({ $isActive }) => ($isActive ? "auto" : "none")};
+  opacity: 0;
+  transform: translate3d(-12%, 32%, 0);
+  pointer-events: none;
+
+  &.isActive {
+    opacity: 1;
+    transform: translate3d(-38%, 10%, 0);
+    pointer-events: auto;
+  }
 `;
 
 export const MenuItemContainer = styled.div`

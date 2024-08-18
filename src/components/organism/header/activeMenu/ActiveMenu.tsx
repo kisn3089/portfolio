@@ -14,16 +14,17 @@ type ActiveMenuProps = {
 };
 
 const ActiveMenu = ({ isActive, activeClick }: ActiveMenuProps) => {
+  // const ActiveMenu = () => {
   return (
-    <ActiveMenuContainer $isActive={isActive}>
+    <ActiveMenuContainer className={isActive ? "isActive" : ""}>
       {menuItems.map((item, i) => (
         <Link key={i} to={item.url}>
           <MenuItemContainer>
             <ActiveButton
               content={item.content}
-              width="90%"
               isActive={false}
               activeClick={activeClick}
+              width
             />
           </MenuItemContainer>
         </Link>

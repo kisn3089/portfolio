@@ -1,7 +1,10 @@
 import { useEffect, useRef } from "react";
 
-export const useCloseOut = (callback: () => void, checkCondition?: boolean) => {
-  const outSideRef = useRef<HTMLDivElement>(null);
+export const useCloseOut = <T extends HTMLElement>(
+  callback: () => void,
+  checkCondition?: boolean
+) => {
+  const outSideRef = useRef<T>(null);
 
   useEffect(() => {
     const closeOut = (e: MouseEvent) => {

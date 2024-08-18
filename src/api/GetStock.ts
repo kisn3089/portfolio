@@ -47,7 +47,6 @@ export const GetStockChart = ({
 }: GetStockDetailProps) =>
   useQuery({
     queryKey: [FETCHSTOCKDETAIL, stockCode, currentDate],
-    // queryFn: () => getStockDetail(stockCode, currentDate),
     queryFn: () =>
       axiosRequest.get(STOCKLIST_BASE_URL, {
         params: {

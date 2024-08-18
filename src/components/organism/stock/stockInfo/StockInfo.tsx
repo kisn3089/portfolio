@@ -61,8 +61,6 @@ const StockInfo = () => {
     setDetailId,
   };
 
-  console.log("fetchStockList: ", fetchStockList);
-
   return (
     <Layout>
       <StockListContext.Provider value={listContextValue}>

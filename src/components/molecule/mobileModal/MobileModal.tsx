@@ -21,8 +21,6 @@ const MobileModal = () => {
     ? fetchStockList.find((stock) => stock.srtnCd === detailId)
     : undefined;
 
-  console.log("mobile: ", detailId);
-
   return (
     <LayoutMobileModal $showModal={showModal}>
       <HeaderModal>

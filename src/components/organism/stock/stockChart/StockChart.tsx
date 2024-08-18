@@ -20,8 +20,6 @@ const StockChart = ({ bgColor }: StockChartProps) => {
     currentDate,
   });
 
-  console.log("charInfo: ", charInfo);
-
   const stockData =
     charInfo
       ?.map((chartItem) => ({
@@ -30,13 +28,10 @@ const StockChart = ({ bgColor }: StockChartProps) => {
       }))
       .reverse() || [];
 
-  console.log("stockData: ", stockData);
-
   const onlyValue = stockData.map((item) => Number(item.y));
   const min = Math.min(...onlyValue);
   const max = Math.max(...onlyValue);
   const chartData = [{ id: "stock", data: stockData }];
-  console.log("chartData: ", chartData);
 
   return (
     <>

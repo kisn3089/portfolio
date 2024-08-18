@@ -5,9 +5,13 @@ import {
   Notice,
 } from "./DetailInfoStyles";
 import BaseInfo from "../baseInfo/BaseInfo";
-import { StockDetailProps } from "../StockDetail";
+import { StockDataTypes } from "@/types/stockData.type";
 
-const DetailInfo = ({ detailStock }: StockDetailProps) => {
+export type DetailInfoProps = {
+  detailStock: StockDataTypes;
+};
+
+const DetailInfo = ({ detailStock }: DetailInfoProps) => {
   return (
     <Column>
       <BaseInfoLayout>

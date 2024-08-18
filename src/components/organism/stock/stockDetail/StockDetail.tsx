@@ -10,7 +10,7 @@ const StockDetail = () => {
   const { listStockList, detailId } = useContext(StockListContext);
   const detailStock = Array.isArray(listStockList)
     ? listStockList.find((stock) => stock.srtnCd === detailId)
-    : null;
+    : undefined;
   console.log("detailStock: ", detailStock);
 
   return (
@@ -20,7 +20,7 @@ const StockDetail = () => {
           content="주식 및 배당 정보입니다."
           svg={<Svg.StockList />}
         />
-        <DetailInfo detailStock={detailStock} />
+        {detailStock && <DetailInfo detailStock={detailStock} />}
       </CheckCondition>
     </StockDetailContainer>
   );

@@ -39,7 +39,7 @@ export const GetStockList = ({
         },
       }),
     enabled: !!search,
-    select: (data): StockDataTypes[] => data.data,
+    select: (data) => data.data.response.body,
   });
 
 export const GetStockChart = ({

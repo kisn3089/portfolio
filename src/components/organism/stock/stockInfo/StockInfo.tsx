@@ -14,6 +14,7 @@ type StockListContextType = {
   listStockList: StockDataTypes[];
   currentDate: Date;
   isLoading: boolean;
+  totalCount: number;
   detailId: string | null;
   isFetched: boolean;
   clickChangeDate: <T extends Element>(e: React.MouseEvent<T>) => void;
@@ -24,6 +25,7 @@ export const StockListContext = createContext<StockListContextType>({
   listStockList: [],
   currentDate: new Date(),
   isLoading: false,
+  totalCount: 0,
   isFetched: false,
   detailId: null,
   clickChangeDate: () => {},
@@ -49,7 +51,8 @@ const StockInfo = () => {
   });
 
   const listContextValue = {
-    listStockList: listStockList || [],
+    listStockList: listStockList.item || [],
+    totalCount: listStockList.totalCount,
     currentDate,
     isLoading,
     isFetched,

@@ -11,7 +11,8 @@ import { useContext } from "react";
 import { StockListContext } from "../stockInfo/StockInfo";
 
 const StockList = () => {
-  const { listStockList, isLoading, isFetched } = useContext(StockListContext);
+  const { listStockList, totalCount, isLoading, isFetched } =
+    useContext(StockListContext);
 
   return (
     <Layout>
@@ -24,7 +25,7 @@ const StockList = () => {
           <StockListBody />
         </CheckCondition>
       </CheckCondition>
-      <StockListFooter dataLength={listStockList?.length} />
+      <StockListFooter dataLength={totalCount} />
     </Layout>
   );
 };

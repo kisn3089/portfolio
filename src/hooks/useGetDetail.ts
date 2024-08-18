@@ -1,7 +1,5 @@
-import { getStockAllocation } from "@/lib/api/getStockAllocation";
 import { getStockDetail } from "@/lib/api/getStockDetail";
-import { allocationDate } from "@/lib/util/adjustDate";
-import { FETCHSTOCKALLOCATION, FETCHSTOCKDETAIL } from "@/lib/util/constanse";
+import { FETCHSTOCKDETAIL } from "@/lib/util/constanse";
 import { StockDataTypes } from "@/types/stockData.type";
 import { useQueries } from "@tanstack/react-query";
 
@@ -10,6 +8,7 @@ interface useGetDetailProps {
   currentDate: Date;
 }
 
+/* Remove */
 export const useGetDetail = ({
   detailStock,
   currentDate,

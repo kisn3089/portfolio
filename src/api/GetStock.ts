@@ -49,5 +49,6 @@ export const GetStockChart = ({
   useQuery({
     queryKey: [FETCHSTOCKDETAIL, stockCode, currentDate],
     queryFn: () => getStockDetail(stockCode, currentDate),
-    enabled: false,
+    enabled: !!stockCode,
+    select: (data): StockDataTypes[] => data.data,
   });

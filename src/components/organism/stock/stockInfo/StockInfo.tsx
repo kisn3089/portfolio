@@ -2,43 +2,74 @@ import { Layout } from "./StockInfoStyle";
 import StockList from "../stockList/StockList";
 import StockDetail from "../stockDetail/StockDetail";
 import StockChart from "../stockChart/StockChart";
-import { useStockDetail } from "@/hooks/useStockDetail";
 import { StockChartContainer } from "../stockChart/StockChartStyle";
-import { useGetDetail } from "@/hooks/useGetDetail";
 import MobileModal from "@/components/molecule/mobileModal/MobileModal";
 import { useSearchParams } from "react-router-dom";
-import { Suspense } from "react";
+import { createContext, useState } from "react";
+import { StockDataTypes } from "@/types/stockData.type";
+import useDate from "@/hooks/useDate";
+import { GetStockList } from "@/api/GetStock";
+
+type StockListContextType = {
+  listStockList: StockDataTypes[];
+  currentDate: Date;
+  isLoading: boolean;
+  detailId: string | null;
+  isFetched: boolean;
+  clickChangeDate: <T extends Element>(e: React.MouseEvent<T>) => void;
+  setDetailId: React.Dispatch<React.SetStateAction<string | null>>;
+};
+
+export const StockListContext = createContext<StockListContextType>({
+  listStockList: [],
+  currentDate: new Date(),
+  isLoading: false,
+  isFetched: false,
+  detailId: null,
+  clickChangeDate: () => {},
+  setDetailId: () => {},
+});
 
 const StockInfo = () => {
+  const [detailId, setDetailId] = useState<string | null>(null);
   const [query] = useSearchParams();
-  console.log(query.get("search"));
-  console.log(query.get("page"));
+  const { currentDate, clickChangeDate } = useDate();
 
-  // const { detailStock, showModal, fetchDetail, closeModal } = useStockDetail();
+  const search = query.get("search") || "";
+  const page = +(query.get("page") || 1);
 
-  // const { chartFetching, chartData } = useGetDetail({
-  //   currentDate: currentDate,
-  //   detailStock: detailStock,
-  // });
+  const {
+    data: listStockList,
+    isLoading,
+    isFetched,
+  } = GetStockList({
+    currentDate,
+    search,
+    page,
+  });
+
+  const listContextValue = {
+    listStockList: listStockList || [],
+    currentDate,
+    isLoading,
+    isFetched,
+    detailId,
+    clickChangeDate,
+    setDetailId,
+  };
+
+  console.log("listStockList: ", listStockList);
 
   return (
     <Layout>
-      {/* <StockChartContainer>
-        <StockChart
-          getStockDetail={chartData}
-          isFetching={chartFetching}
-          detailStock={detailStock}
-        />
-      </StockChartContainer>
-      <StockDetail detailStock={detailStock} /> */}
-      <StockList />
-      {/* <MobileModal
-        showModal={showModal}
-        getStockDetail={chartData}
-        isFetching={chartFetching}
-        detailStock={detailStock}
-        closeModal={closeModal}
-      /> */}
+      <StockListContext.Provider value={listContextValue}>
+        <StockChartContainer>
+          <StockChart />
+        </StockChartContainer>
+        <StockDetail />
+        <StockList />
+      </StockListContext.Provider>
+      <MobileModal />
     </Layout>
   );
 };

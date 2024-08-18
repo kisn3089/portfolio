@@ -7,7 +7,6 @@ import ThreePage from "./pages/ThreePage";
 import VideoPage from "./pages/VideoPage";
 import StockPage from "./pages/StockPage";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import StockInfo from "./components/organism/stock/stockInfo/StockInfo";
 
 function App() {
   const location = useLocation();
@@ -22,9 +21,7 @@ function App() {
           <Route path="project/image" element={<ImagePage />} />
           <Route path="project/three" element={<ThreePage />} />
           <Route path="project/video" element={<VideoPage />} />
-          <Route path="project/stock" element={<StockPage />}>
-            <Route path=":query" element={<StockInfo />} />
-          </Route>
+          <Route path="project/stock/:query" element={<StockPage />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

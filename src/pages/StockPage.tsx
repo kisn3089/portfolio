@@ -1,12 +1,12 @@
 import StockHeader from "@/components/organism/stock/stockHeader/StockHeader";
 import { StockSection } from "@/components/organism/stock/stockHeader/StockHeaderStyles";
-import { Outlet } from "react-router-dom";
+import StockInfo from "@/components/organism/stock/stockInfo/StockInfo";
 
 const StockPage = () => {
   return (
     <StockSection>
       <StockHeader />
-      <Outlet />
+      <StockInfo />
     </StockSection>
   );
 };

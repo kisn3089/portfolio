@@ -1,15 +1,18 @@
-import { AllocationTypes, StockDataTypes } from "@/types/stockData.type";
 import { StockDetailContainer } from "./StockDetailStyle";
 import CheckCondition from "@/lib/util/CheckCondition";
 import BeforeFetch from "@/components/molecule/beforeFetch/BeforeFetch";
 import * as Svg from "@/components/atoms/icon/index";
 import DetailInfo from "./detailInfo/DetailInfo";
+import { useContext } from "react";
+import { StockListContext } from "../stockInfo/StockInfo";
 
-export interface StockDetailProps {
-  detailStock?: StockDataTypes;
-}
+const StockDetail = () => {
+  const { listStockList, detailId } = useContext(StockListContext);
+  const detailStock = Array.isArray(listStockList)
+    ? listStockList.find((stock) => stock.srtnCd === detailId)
+    : null;
+  console.log("detailStock: ", detailStock);
 
-const StockDetail = ({ detailStock }: StockDetailProps) => {
   return (
     <StockDetailContainer>
       <CheckCondition falseCondition={!detailStock}>

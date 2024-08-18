@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { StandardDate, StandardDateContainer } from "./DateHeaderStyles";
 import * as Svg from "@/components/atoms/icon/index";
 import { adjustDate, convertDay } from "@/lib/util/adjustDate";
-import { StockListContext } from "../../StockList";
+import { StockListContext } from "../../../stockInfo/StockInfo";
 
 const DateHeader = () => {
   const { listStockList, currentDate, clickChangeDate } =

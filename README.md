@@ -5,11 +5,13 @@
 ### update
 
 ```
-2024.07.1
+2024.08.18
 최근 업데이트 내용
-- image processing 프로젝트 추가
-- three.js 프로젝트 첫 3D model 로드된 후 나머지 2개 model 로드되도록 수정하여 렌더링 속도 3배 개선
-- three.js model draco 압축 방식 이용하여 용량 최적화 gltf -> glb
+주식 project 리펙토링
+- 주식 검색을 상태로 관리하는 것에서 useSearchParams 활용하여 url 기반으로 호출하는 것으로 구조 변경
+- 주식 검색 관련 데이터 useContext로 prosp 드릴링 최소화
+- 기존에 useHook에서 API 호출하는 것에서 src/api 경로 일반 함수로 변경
+- 이해하기 힘든 변수명 직관적으로 수정
 ```
 
 Deployment: https://stems-iota.vercel.app/
@@ -128,6 +130,7 @@ instagram color filter 기능으로 흑백 및 색 보정한 image 파일을 web
 
 #### 세부 기능
 
+- url query에 기반한 주식 검색 시스템
 - Enter 키로 주식 검색
 - 공공 API에서 제공해주는 가장 최근 날짜를 계산하여 초기 설정
 - 날짜 변경시 주식장이 열리지 않는 주말은 제외하도록 [알고리즘 개발](https://github.com/kisn3089/portpolio/blob/main/src/lib/util/adjustDate.ts#L53)

@@ -1,3 +1,4 @@
+import OnceInputNumber from "../onceInfo/onceInputNumber/OnceInputNumber";
 import { EditingImage, ImageWrapper } from "./EditImageStyles";
 
 interface EditImageProps {
@@ -15,6 +16,7 @@ const EditImage = ({ src, isLoading }: EditImageProps) => {
           $isLoading={isLoading}
         />
       )}
+      <OnceInputNumber />
     </ImageWrapper>
   );
 };

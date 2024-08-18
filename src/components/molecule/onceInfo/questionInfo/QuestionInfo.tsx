@@ -15,7 +15,7 @@ export const QuestionInfo = ({
 }: QuestionInfoProps) => {
   const [x, y] = style;
   return (
-    <QuestionLayout $top={x} $left={y}>
+    <QuestionLayout $bottom={x} $left={y}>
       <Svg.Information onClick={() => onDeleteStorage(storageKey)} />
     </QuestionLayout>
   );

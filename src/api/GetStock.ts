@@ -93,3 +93,25 @@ export const GetStockChart = ({
 //   // return { chartFetching, allocationFetching, chartData, allocationData };
 //   return { chartFetching, chartData };
 // };
+
+/* 배당 정보 조회 ( 공공API에 없는 배당 정보가 많아 비활성화 ) */
+// export const getStockAllocation = async (
+//   stockName: string,
+//   standardData: Date
+// ) => {
+//   if (stockName === "") return;
+
+//   const response = await axiosRequest.get(DIVISION_BASE_URL, {
+//     params: {
+//       serviceKey: import.meta.env.VITE_SERVICE_KEY,
+//       numOfRows: 1,
+//       pageNo: 1,
+//       resultType: "json",
+//       basDt: adjustDate({ standardDate: standardData }).originOnlyNumber,
+//       stckIssuCmpyNm: stockName,
+//     },
+//   });
+//   // console.log("response: ", response);
+
+//   return response.data.response.body.items.item;
+// };

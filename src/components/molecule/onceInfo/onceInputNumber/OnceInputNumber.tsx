@@ -4,8 +4,6 @@ import {
   ClearButton,
   InfoContent,
   InfoLayout,
-  Line,
-  OnceInfoInput,
   ShortcutWrapper,
   ThresholdInfoWrapper,
 } from "./OnceInputNumberStyles";
@@ -18,31 +16,28 @@ const OnceInputNumber = () => {
     return (
       <QuestionInfo
         storageKey={STORAGE_KEY}
-        style={["-66%", "64%"]}
+        style={["2%", "2%"]}
         onDeleteStorage={onDeleteStorage}
       />
     );
 
   return (
-    <OnceInfoInput>
-      <Line />
-      <InfoLayout>
-        <ThresholdInfoWrapper>
-          <InfoContent>Threshold [default]: 0</InfoContent>
-          <InfoContent className="ko">
-            값이 낮을수록 흑백에 가까워집니다.
-          </InfoContent>
-        </ThresholdInfoWrapper>
-        <CenterLine />
-        <ShortcutWrapper>
-          <InfoContent>Enter: Create Image</InfoContent>
-          <InfoContent>⌘ + Enter: Image Download</InfoContent>
-          <ClearButton onClick={() => onSetStorage(STORAGE_KEY)}>
-            check
-          </ClearButton>
-        </ShortcutWrapper>
-      </InfoLayout>
-    </OnceInfoInput>
+    <InfoLayout>
+      <ThresholdInfoWrapper>
+        <InfoContent>Threshold [default]: 0</InfoContent>
+        <InfoContent className="ko">
+          값이 낮을수록 흑백에 가까워집니다.
+        </InfoContent>
+      </ThresholdInfoWrapper>
+      <CenterLine />
+      <ShortcutWrapper>
+        <InfoContent>Enter: Create Image</InfoContent>
+        <InfoContent>⌘ + Enter: Image Download</InfoContent>
+        <ClearButton onClick={() => onSetStorage(STORAGE_KEY)}>
+          check
+        </ClearButton>
+      </ShortcutWrapper>
+    </InfoLayout>
   );
 };
 

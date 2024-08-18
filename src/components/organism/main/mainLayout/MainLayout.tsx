@@ -1,4 +1,3 @@
-import React from "react";
 import { MainLayoutStyle } from "./MainLayoutStyles";
 import CanvasCore from "@/components/molecule/canvasCore/CanvasCore";
 import FadingModel from "../../three/fadingModel/FadingModel";

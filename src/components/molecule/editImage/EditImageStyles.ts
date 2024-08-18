@@ -2,6 +2,7 @@ import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const ImageWrapper = styled.div`
+  position: relative;
   height: 100%;
   display: flex;
   justify-content: center;

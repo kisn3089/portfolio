@@ -1,39 +1,12 @@
 import styled from "styled-components";
 
-export const OnceInfoInput = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: ${({ theme }) => `1px solid ${theme.palette.blue100}`};
-  border-radius: 8px;
-  opacity: 0;
-  ${({ theme }) =>
-    theme.animation.fadeIn({
-      name: "once_border",
-      duration: "0.6s",
-      transtion: theme.ts.moreFast,
-      opacity: 0,
-      direction: "forwards",
-    })};
-`;
-
-export const Line = styled.div`
-  position: absolute;
-  top: -50%;
-  left: 50%;
-  width: 2px;
-  height: 50%;
-  background-color: ${({ theme }) => theme.palette.blue100};
-`;
-
 export const InfoLayout = styled.div`
   position: absolute;
-  top: -640%;
-  left: -100%;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
   width: 300px;
-  height: 300px;
+  height: 340px;
   border: ${({ theme }) => `1px solid ${theme.palette.blue100}`};
   border-radius: 8px;
   display: flex;
@@ -43,14 +16,16 @@ export const InfoLayout = styled.div`
   z-index: 8;
   backdrop-filter: blur(10px);
   box-shadow: ${({ theme }) => `0 0 10px 2px ${theme.palette.blue}`};
+  opacity: 0;
   ${({ theme }) =>
     theme.animation.fadeIn({
-      name: "once_question",
-      duration: "1s",
+      name: "once_border",
+      duration: "0.6s",
       transtion: theme.ts.moreFast,
+      endTransform: `translate3d(-50%, -50%, 0)`,
       opacity: 0,
-      beginTransform: "translateY(10%)",
-    })}
+      direction: "forwards",
+    })};
 `;
 
 export const ThresholdInfoWrapper = styled.div`
@@ -68,7 +43,6 @@ export const ThresholdInfoWrapper = styled.div`
       transtion: theme.ts.moreFast,
       opacity: 0,
       beginTransform: "translateY(20%)",
-      delay: "0.4s",
       direction: "forwards",
     })}
 `;

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const QuestionLayout = styled.div<{ $top?: string; $left?: string }>`
+export const QuestionLayout = styled.div<{ $bottom?: string; $left?: string }>`
   position: absolute;
-  top: ${({ $top }) => $top};
+  bottom: ${({ $bottom }) => $bottom};
   left: ${({ $left }) => $left};
   opacity: 0;
   ${({ theme }) =>

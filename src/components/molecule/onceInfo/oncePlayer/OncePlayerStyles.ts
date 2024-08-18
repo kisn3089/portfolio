@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const OnceInfoLayout = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* transform: translate3d(-50%, -50%, 0); */
   width: 380px;
   height: 220px;
   border: ${({ theme }) => `1px solid ${theme.palette.blue100}`};
@@ -19,7 +23,8 @@ export const OnceInfoLayout = styled.div`
       duration: "0.6s",
       transtion: theme.ts.moreFast,
       opacity: 0,
-      beginTransform: "translateY(20%)",
+      beginTransform: "translate3d(-50%, 20%, 0)",
+      endTransform: "translate3d(-50%, -50%, 0)",
       direction: "forwards",
     })};
 `;

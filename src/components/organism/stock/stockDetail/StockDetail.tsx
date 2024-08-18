@@ -12,8 +12,6 @@ const StockDetail = () => {
     ? fetchStockList.find((stock) => stock.srtnCd === detailId)
     : undefined;
 
-  console.log("detailStock: ", detailStock);
-
   return (
     <StockDetailContainer>
       <CheckCondition falseCondition={!detailStock}>

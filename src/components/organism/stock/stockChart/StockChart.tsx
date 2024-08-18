@@ -1,10 +1,10 @@
 import Loading from "@/components/molecule/loading/Loading";
-import { SlideRight } from "../stockList/stockListBody/StockListBodyStyles";
-import LineChart from "@/components/molecule/lineChart/LineChart";
-import CheckCondition from "@/lib/util/CheckCondition";
-import NoData from "@/components/molecule/noData/NoData";
-import BeforeFetch from "@/components/molecule/beforeFetch/BeforeFetch";
-import * as Svg from "@/components/atoms/icon/index";
+// import { SlideRight } from "../stockList/stockListBody/StockListBodyStyles";
+// import LineChart from "@/components/molecule/lineChart/LineChart";
+// import CheckCondition from "@/lib/util/CheckCondition";
+// import NoData from "@/components/molecule/noData/NoData";
+// import BeforeFetch from "@/components/molecule/beforeFetch/BeforeFetch";
+// import * as Svg from "@/components/atoms/icon/index";
 import { useContext } from "react";
 import { StockListContext } from "../stockInfo/StockInfo";
 import { GetStockChart } from "@/api/GetStock";
@@ -22,23 +22,23 @@ const StockChart = ({ bgColor }: StockChartProps) => {
 
   console.log("charInfo: ", charInfo);
 
-  const stockData =
-    charInfo
-      ?.map((chartItem) => ({
-        x: chartItem.basDt,
-        y: chartItem.clpr,
-      }))
-      .reverse() || [];
+  // const stockData =
+  //   charInfo
+  //     ?.map((chartItem) => ({
+  //       x: chartItem.basDt,
+  //       y: chartItem.clpr,
+  //     }))
+  //     .reverse() || [];
 
-  const onlyValue = stockData.map((item) => Number(item.y));
-  const min = Math.min(...onlyValue);
-  const max = Math.max(...onlyValue);
-  const chartData = [{ id: "stock", data: stockData }];
+  // const onlyValue = stockData.map((item) => Number(item.y));
+  // const min = Math.min(...onlyValue);
+  // const max = Math.max(...onlyValue);
+  // const chartData = [{ id: "stock", data: stockData }];
 
   return (
     <>
       <Loading isLoading={isLoading} bgColor={bgColor} />
-      <SlideRight $isLoading={isLoading}>
+      {/* <SlideRight $isLoading={isLoading}>
         <CheckCondition falseCondition={!detailId}>
           <BeforeFetch content="주식을 선택해주세요." svg={<Svg.StockIcon />} />
           <CheckCondition falseCondition={!!charInfo}>
@@ -46,7 +46,7 @@ const StockChart = ({ bgColor }: StockChartProps) => {
             <LineChart chartData={chartData} range={{ min: min, max: max }} />
           </CheckCondition>
         </CheckCondition>
-      </SlideRight>
+      </SlideRight> */}
     </>
   );
 };

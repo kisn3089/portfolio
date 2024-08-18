@@ -51,7 +51,7 @@ const StockInfo = () => {
   });
 
   const listContextValue = {
-    fetchStockList: fetchStockList?.item || [],
+    fetchStockList: fetchStockList?.items.item || [],
     totalCount: fetchStockList?.totalCount || 0,
     currentDate,
     isLoading,

@@ -11,12 +11,8 @@ import { useContext } from "react";
 import { StockListContext } from "../stockInfo/StockInfo";
 
 const StockList = () => {
-  const {
-    fetchStockList: listStockList,
-    totalCount,
-    isLoading,
-    isFetched,
-  } = useContext(StockListContext);
+  const { fetchStockList, totalCount, isLoading, isFetched } =
+    useContext(StockListContext);
 
   return (
     <Layout>
@@ -24,7 +20,7 @@ const StockList = () => {
       <DateHeader />
       <CheckCondition falseCondition={!isFetched}>
         <BeforeFetch content="주식을 검색해보세요." svg={<Svg.StockList />} />
-        <CheckCondition falseCondition={!!listStockList}>
+        <CheckCondition falseCondition={fetchStockList.length === 0}>
           <NoData content="제공된 데이터가 없습니다." />
           <StockListBody />
         </CheckCondition>

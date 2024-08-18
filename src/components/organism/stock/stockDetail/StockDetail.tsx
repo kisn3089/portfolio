@@ -7,11 +7,11 @@ import { useContext } from "react";
 import { StockListContext } from "../stockInfo/StockInfo";
 
 const StockDetail = () => {
-  const { fetchStockList: listStockList, detailId } =
-    useContext(StockListContext);
-  const detailStock = Array.isArray(listStockList)
-    ? listStockList.find((stock) => stock.srtnCd === detailId)
+  const { fetchStockList, detailId } = useContext(StockListContext);
+  const detailStock = Array.isArray(fetchStockList)
+    ? fetchStockList.find((stock) => stock.srtnCd === detailId)
     : undefined;
+
   console.log("detailStock: ", detailStock);
 
   return (

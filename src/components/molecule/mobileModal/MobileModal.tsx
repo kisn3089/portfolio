@@ -15,7 +15,8 @@ import { StockListContext } from "@/components/organism/stock/stockInfo/StockInf
 
 const MobileModal = () => {
   const [showModal, setShowModal] = useState(false);
-  const { listStockList, detailId } = useContext(StockListContext);
+  const { fetchStockList: listStockList, detailId } =
+    useContext(StockListContext);
   const detailStock = Array.isArray(listStockList)
     ? listStockList.find((stock) => stock.srtnCd === detailId)
     : undefined;

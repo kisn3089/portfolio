@@ -10,8 +10,11 @@ import { useContext } from "react";
 import { StockListContext } from "../../stockInfo/StockInfo";
 
 const StockBody = () => {
-  const { isLoading, listStockList, setDetailId } =
-    useContext(StockListContext);
+  const {
+    isLoading,
+    fetchStockList: listStockList,
+    setDetailId,
+  } = useContext(StockListContext);
 
   return (
     <>

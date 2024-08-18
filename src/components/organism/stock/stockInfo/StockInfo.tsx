@@ -11,7 +11,7 @@ import useDate from "@/hooks/useDate";
 import { GetStockList } from "@/api/GetStock";
 
 type StockListContextType = {
-  listStockList: StockDataTypes[];
+  fetchStockList: StockDataTypes[];
   currentDate: Date;
   isLoading: boolean;
   totalCount: number;
@@ -22,7 +22,7 @@ type StockListContextType = {
 };
 
 export const StockListContext = createContext<StockListContextType>({
-  listStockList: [],
+  fetchStockList: [],
   currentDate: new Date(),
   isLoading: false,
   totalCount: 0,
@@ -41,7 +41,7 @@ const StockInfo = () => {
   const page = +(query.get("page") || 1);
 
   const {
-    data: listStockList,
+    data: fetchStockList,
     isLoading,
     isFetched,
   } = GetStockList({
@@ -51,8 +51,8 @@ const StockInfo = () => {
   });
 
   const listContextValue = {
-    listStockList: listStockList.item || [],
-    totalCount: listStockList.totalCount,
+    fetchStockList: fetchStockList?.item || [],
+    totalCount: fetchStockList?.totalCount || 0,
     currentDate,
     isLoading,
     isFetched,
@@ -61,7 +61,7 @@ const StockInfo = () => {
     setDetailId,
   };
 
-  console.log("listStockList: ", listStockList);
+  console.log("fetchStockList: ", fetchStockList);
 
   return (
     <Layout>

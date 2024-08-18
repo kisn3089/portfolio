@@ -11,8 +11,12 @@ import { useContext } from "react";
 import { StockListContext } from "../stockInfo/StockInfo";
 
 const StockList = () => {
-  const { listStockList, totalCount, isLoading, isFetched } =
-    useContext(StockListContext);
+  const {
+    fetchStockList: listStockList,
+    totalCount,
+    isLoading,
+    isFetched,
+  } = useContext(StockListContext);
 
   return (
     <Layout>

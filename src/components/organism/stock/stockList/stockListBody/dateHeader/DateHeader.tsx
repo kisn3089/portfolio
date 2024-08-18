@@ -5,8 +5,11 @@ import { adjustDate, convertDay } from "@/lib/util/adjustDate";
 import { StockListContext } from "../../../stockInfo/StockInfo";
 
 const DateHeader = () => {
-  const { listStockList, currentDate, clickChangeDate } =
-    useContext(StockListContext);
+  const {
+    fetchStockList: listStockList,
+    currentDate,
+    clickChangeDate,
+  } = useContext(StockListContext);
 
   return (
     <StandardDateContainer $hasValue={!listStockList}>

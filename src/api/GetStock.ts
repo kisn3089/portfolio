@@ -60,7 +60,7 @@ export const GetStockChart = ({
         },
       }),
     enabled: !!stockCode,
-    select: (data) => data.data,
+    select: (data) => data.data.response.body.items.item,
   });
 
 /* Remove */

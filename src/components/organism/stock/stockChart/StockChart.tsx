@@ -30,10 +30,13 @@ const StockChart = ({ bgColor }: StockChartProps) => {
       }))
       .reverse() || [];
 
+  console.log("stockData: ", stockData);
+
   const onlyValue = stockData.map((item) => Number(item.y));
   const min = Math.min(...onlyValue);
   const max = Math.max(...onlyValue);
   const chartData = [{ id: "stock", data: stockData }];
+  console.log("chartData: ", chartData);
 
   return (
     <>
@@ -41,7 +44,7 @@ const StockChart = ({ bgColor }: StockChartProps) => {
       <SlideRight $isLoading={isLoading}>
         <CheckCondition falseCondition={!detailId}>
           <BeforeFetch content="주식을 선택해주세요." svg={<Svg.StockIcon />} />
-          <CheckCondition falseCondition={!!charInfo}>
+          <CheckCondition falseCondition={stockData.length === 0}>
             <NoData content="제공되는 데이터가 없습니다." />
             <LineChart chartData={chartData} range={{ min: min, max: max }} />
           </CheckCondition>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const FooterLayout = styled.div`
   width: 100%;
-  height: 54px;
+  height: 48px;
   display: flex;
   flex-direction: row;
   gap: 0 10px;

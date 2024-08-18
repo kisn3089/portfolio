@@ -14,8 +14,6 @@ const StockList = () => {
   const { fetchStockList, totalCount, isLoading, isFetched } =
     useContext(StockListContext);
 
-  console.log("totalCount: ", totalCount);
-
   return (
     <Layout>
       <Loading isLoading={isLoading} />

@@ -5,6 +5,7 @@ import {
   STOCKLIST_BASE_URL,
 } from "@/lib/util/constanse";
 import { axiosRequest } from "@/lib/util/coreAxios";
+import { StockDataTypes } from "@/types/stockData.type";
 import { useQuery } from "@tanstack/react-query";
 
 type GetStockListProps = {
@@ -60,7 +61,7 @@ export const GetStockChart = ({
         },
       }),
     enabled: !!stockCode,
-    select: (data) => data.data.response.body.items.item,
+    select: (data): StockDataTypes[] => data.data.response.body.items.item,
   });
 
 /* Remove */

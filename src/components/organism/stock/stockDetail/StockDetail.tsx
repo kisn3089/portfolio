@@ -7,15 +7,9 @@ import DetailInfo from "./detailInfo/DetailInfo";
 
 export interface StockDetailProps {
   detailStock?: StockDataTypes;
-  // allocationData?: AllocationTypes;
-  // allocationFetching: boolean;
 }
 
-const StockDetail = ({
-  detailStock,
-}: // allocationData,
-// allocationFetching,
-StockDetailProps) => {
+const StockDetail = ({ detailStock }: StockDetailProps) => {
   return (
     <StockDetailContainer>
       <CheckCondition falseCondition={!detailStock}>
@@ -23,11 +17,7 @@ StockDetailProps) => {
           content="주식 및 배당 정보입니다."
           svg={<Svg.StockList />}
         />
-        <DetailInfo
-          detailStock={detailStock}
-          // allocationData={allocationData}
-          // allocationFetching={allocationFetching}
-        />
+        <DetailInfo detailStock={detailStock} />
       </CheckCondition>
     </StockDetailContainer>
   );

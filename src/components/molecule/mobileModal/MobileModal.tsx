@@ -2,12 +2,11 @@ import React from "react";
 import {
   Center,
   ChartContainer,
-  ModalHeader,
-  ModalLayout,
-} from "./ModalStyles";
+  HeaderModal,
+  LayoutMobileModal,
+} from "./MobileModalStyles";
 import CheckCondition from "@/lib/util/CheckCondition";
 import BeforeFetch from "../beforeFetch/BeforeFetch";
-import BaseInfo from "@/components/organism/stock/stockDetail/baseInfo/BaseInfo";
 import { AllocationTypes, StockDataTypes } from "@/types/stockData.type";
 import * as Svg from "@/components/atoms/icon/index";
 import StockChart from "@/components/organism/stock/stockChart/StockChart";
@@ -18,26 +17,22 @@ interface ModalProps {
   showModal: boolean;
   detailStock?: StockDataTypes;
   getStockDetail?: StockDataTypes[];
-  // allocationData: AllocationTypes;
-  // allocationFetching: boolean;
   isFetching: boolean;
   closeModal: (e: React.MouseEvent | React.TouchEvent) => void;
 }
 
-const Modal = ({
+const MobileModal = ({
   showModal,
   detailStock,
   getStockDetail,
-  // allocationFetching,
-  // allocationData,
   isFetching,
   closeModal,
 }: ModalProps) => {
   return (
-    <ModalLayout $showModal={showModal}>
-      <ModalHeader>
+    <LayoutMobileModal $showModal={showModal}>
+      <HeaderModal>
         <Svg.Close onClick={closeModal} />
-      </ModalHeader>
+      </HeaderModal>
       <Center>
         <ChartContainer>
           <StockChart
@@ -52,15 +47,11 @@ const Modal = ({
             content="주식 및 배당 정보입니다."
             svg={<Svg.StockList />}
           />
-          <DetailInfo
-            detailStock={detailStock}
-            // allocationData={allocationData}
-            // allocationFetching={allocationFetching}
-          />
+          <DetailInfo detailStock={detailStock} />
         </CheckCondition>
       </Center>
-    </ModalLayout>
+    </LayoutMobileModal>
   );
 };
 
-export default Modal;
+export default MobileModal;

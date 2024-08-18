@@ -1,7 +1,7 @@
 import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
-export const ModalLayout = styled.div<{ $showModal: boolean }>`
+export const LayoutMobileModal = styled.div<{ $showModal: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -68,7 +68,7 @@ export const Center = styled.div`
   border-radius: 0 0 8px 8px;
 `;
 
-export const ModalHeader = styled.div`
+export const HeaderModal = styled.div`
   width: 100%;
   height: 50px;
   display: flex;

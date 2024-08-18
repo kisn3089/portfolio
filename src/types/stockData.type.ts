@@ -45,7 +45,7 @@ export interface AllocationTypes {
   //
 }
 
-export const defaultData = [
+export const mockChartData = [
   {
     id: "stock",
     data: [

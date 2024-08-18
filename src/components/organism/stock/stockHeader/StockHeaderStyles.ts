@@ -58,10 +58,14 @@ export const SearchContainer = styled.div`
   .close {
     right: 4%;
     top: 25%;
+    width: 32px;
+    height: 32px;
   }
 
   .search {
     right: 6%;
+    width: 26px;
+    height: 26px;
   }
 
   @media screen and (max-width: ${theme.deviceSize.mobile}) {

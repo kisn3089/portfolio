@@ -7,7 +7,7 @@ const useDate = () => {
     adjustDate({ standardDate: new Date() }).dateFormat
   );
 
-  const clickChangeDate = (e: React.MouseEvent) => {
+  const clickChangeDate = <T extends Element>(e: React.MouseEvent<T>) => {
     const { id } = e.currentTarget;
     // 현재 일자 + 왼쪽 화살표 클리기 -1, 오른쪽 화살표시 +1 (+1 | -1)일
     const currentDay = currentDate.getDate() + calcById(id);

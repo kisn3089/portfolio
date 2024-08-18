@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const ArrowRight = styled.div`
   position: absolute;
@@ -20,7 +20,7 @@ export const Dot = styled.div`
   background-color: ${({ theme }) => theme.palette.white};
 `;
 
-export const Content = styled.div<{ $isActive: boolean }>`
+export const Content = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
@@ -34,26 +34,31 @@ export const Content = styled.div<{ $isActive: boolean }>`
     user-select: none;
   }
 
-  /* active일때 position 첫번째 요소 static, 두번째 요소 absolute로 변경 (transform도 같이) */
-  :nth-child(1) {
-    position: ${({ $isActive }) => ($isActive ? "absolute" : "static")};
-    transform: ${({ $isActive }) =>
-      $isActive ? "translate3d(0, 100%, 0)" : "translate3d(0, 0, 0)"};
-    pointer-events: ${({ $isActive }) => ($isActive ? "none" : "default")};
+  &.isActive {
+    span {
+      color: ${({ theme }) => theme.palette.black};
+    }
+
+    .default {
+      position: absolute;
+      transform: translate3d(0, 100%, 0);
+      pointer-events: none;
+    }
+    .active {
+      position: static;
+      transform: translate3d(0, 0, 0);
+      pointer-events: default;
+    }
   }
 
-  :nth-child(2) {
-    position: ${({ $isActive }) => ($isActive ? "static" : "absolute")};
-    transform: ${({ $isActive }) =>
-      $isActive ? "translate3d(0, 0, 0)" : "translate3d(0, -100%, 0)"};
-    pointer-events: ${({ $isActive }) => ($isActive ? "default" : "none")};
+  .active {
+    position: absolute;
+    transform: translate3d(0, -100%, 0);
+    pointer-events: none;
   }
 `;
 
-export const ActiveButtonContainer = styled.button<{
-  $width?: string;
-  $isActive: boolean;
-}>`
+export const ActiveButtonContainer = styled.button`
   position: relative;
   display: flex;
   justify-content: center;
@@ -63,27 +68,25 @@ export const ActiveButtonContainer = styled.button<{
   border: none;
   overflow: hidden;
   transition: ${({ theme }) => `0.4s ${theme.ts.moreFast}`};
-  width: ${({ $width }) => $width || "160px"};
-  background-color: ${({ theme, $isActive }) =>
-    $isActive ? theme.palette.white : theme.palette.gray};
-  padding: ${({ $isActive }) => ($isActive ? "0 30px 0 0" : "0")};
+  width: 160px;
+  background-color: ${({ theme }) => theme.palette.gray};
 
-  ${({ $isActive }) => {
-    if ($isActive) {
-      return css`
-        ${Content} {
-          color: ${({ theme }) => theme.palette.black};
-        }
-        ${Dot} {
-          background-color: ${({ theme }) => theme.palette.black};
-        }
+  &.width {
+    width: 90%;
+  }
 
-        ${ArrowRight} {
-          left: 74%;
-        }
-      `;
+  &.isActive {
+    background-color: ${({ theme }) => theme.palette.white};
+    padding: 0 30px 0 0;
+
+    ${Dot} {
+      background-color: ${({ theme }) => theme.palette.black};
     }
-  }}
+
+    ${ArrowRight} {
+      left: 74%;
+    }
+  }
 
   &:hover {
     padding-right: 30px;

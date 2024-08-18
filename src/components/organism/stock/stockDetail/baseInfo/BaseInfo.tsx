@@ -6,12 +6,12 @@ import {
   BaseInfoTitle,
   StockName,
 } from "./BaseInfoStyles";
-import { StockDetailProps } from "../StockDetail";
 import { transUnit } from "@/lib/util/transUnit";
 import { formatToLabel } from "@/lib/util/adjustDate";
 import { theme } from "@/styles/theme";
+import { DetailInfoProps } from "../detailInfo/DetailInfo";
 
-interface BaseInfoProps extends StockDetailProps {}
+interface BaseInfoProps extends DetailInfoProps {}
 
 const BaseInfo = ({ detailStock }: BaseInfoProps) => {
   if (!detailStock) return;

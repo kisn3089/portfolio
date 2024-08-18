@@ -6,24 +6,21 @@ import {
   StockItem,
   StockItemInfo,
 } from "./StockListBodyStyles";
-import { StockDataTypes } from "@/types/stockData.type";
+import { useContext } from "react";
+import { StockListContext } from "../../stockInfo/StockInfo";
 
-export interface StockBodyProps {
-  isLoading: boolean;
-  getStockList?: StockDataTypes[];
-  fetchDetail: (stock: StockDataTypes) => void;
-}
+const StockBody = () => {
+  const {
+    isLoading,
+    fetchStockList: listStockList,
+    setDetailId,
+  } = useContext(StockListContext);
 
-const StockBody = ({
-  isLoading,
-  getStockList,
-  fetchDetail,
-}: StockBodyProps) => {
   return (
     <>
       <SlideRight $isLoading={isLoading}>
-        {getStockList?.map((stock, i) => (
-          <StockItem key={i} onClick={() => fetchDetail(stock)}>
+        {listStockList?.map((stock, i) => (
+          <StockItem key={i} onClick={() => setDetailId(stock.srtnCd)}>
             <StockItemInfo>
               <span>{stock.itmsNm}</span>
               <StockCode>{stock.srtnCd}</StockCode>

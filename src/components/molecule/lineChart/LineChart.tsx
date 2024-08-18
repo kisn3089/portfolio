@@ -3,7 +3,7 @@ import { ChartLayout } from "./LineChartStyles";
 import { ResponsiveLine } from "@nivo/line";
 import { theme } from "@/styles/theme";
 import { formatToLabel } from "@/lib/util/adjustDate";
-import { defaultData } from "@/types/stockData.type";
+import { mockChartData } from "@/types/stockData.type";
 interface LineChartProps {
   chartData: { id: string; data: { x: string; y: string }[] }[];
   range: { min: number; max: number };
@@ -13,7 +13,7 @@ const LineChart = ({ chartData, range }: LineChartProps) => {
   return (
     <ChartLayout>
       <ResponsiveLine
-        data={chartData || defaultData}
+        data={chartData || mockChartData}
         colors={[theme.palette.blue]}
         animate={true}
         curve="cardinal"

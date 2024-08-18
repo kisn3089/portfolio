@@ -2,11 +2,8 @@ import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
 export const FooterLayout = styled.div`
-  position: absolute;
   width: 100%;
-  height: 40px;
-  left: 0;
-  bottom: 2%;
+  height: 48px;
   display: flex;
   flex-direction: row;
   gap: 0 10px;

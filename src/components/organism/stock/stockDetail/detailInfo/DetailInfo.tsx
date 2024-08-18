@@ -1,4 +1,3 @@
-import React from "react";
 import {
   AllocationLayout,
   BaseInfoLayout,
@@ -6,21 +5,17 @@ import {
   Notice,
 } from "./DetailInfoStyles";
 import BaseInfo from "../baseInfo/BaseInfo";
-import { StockDetailProps } from "../StockDetail";
+import { StockDataTypes } from "@/types/stockData.type";
 
-const DetailInfo = ({
-  detailStock,
-}: // allocationData,
-// allocationFetching,
-StockDetailProps) => {
+export type DetailInfoProps = {
+  detailStock: StockDataTypes;
+};
+
+const DetailInfo = ({ detailStock }: DetailInfoProps) => {
   return (
     <Column>
       <BaseInfoLayout>
-        <BaseInfo
-          detailStock={detailStock}
-          // allocationData={allocationData}
-          // allocationFetching={allocationFetching}
-        />
+        <BaseInfo detailStock={detailStock} />
       </BaseInfoLayout>
       <AllocationLayout>
         <Notice>배당 정보가 정확하지 않습니다.</Notice>

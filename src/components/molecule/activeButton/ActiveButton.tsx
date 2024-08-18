@@ -6,27 +6,28 @@ import {
   ActiveButtonContainer,
 } from "./ActiveButtonStyles";
 
+type ActiveButtonProps = {
+  content: string[];
+  isActive: boolean;
+  width?: boolean;
+  activeClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
 const ActiveButton = ({
   content,
   isActive,
   width,
   activeClick,
-}: {
-  content: string[];
-  isActive: boolean;
-  width?: string;
-  activeClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}) => {
+}: ActiveButtonProps) => {
   const [current, after] = content;
+
   return (
     <ActiveButtonContainer
-      $width={width}
-      $isActive={isActive}
-      onClick={activeClick}
-    >
-      <Content $isActive={isActive}>
-        <span>{current}</span>
-        <span>{after}</span>
+      className={`${(width && "width") || (isActive && "isActive")}`}
+      onClick={activeClick}>
+      <Content className={isActive ? "isActive" : ""}>
+        <span className={`default`}>{current}</span>
+        <span className={`active`}>{after}</span>
       </Content>
       <ArrowRight>
         <Dot />

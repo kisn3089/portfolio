@@ -1,22 +1,18 @@
-import React from "react";
+import { useContext } from "react";
 import { StandardDate, StandardDateContainer } from "./DateHeaderStyles";
 import * as Svg from "@/components/atoms/icon/index";
 import { adjustDate, convertDay } from "@/lib/util/adjustDate";
-import { StockDataTypes } from "@/types/stockData.type";
+import { StockListContext } from "../../../stockInfo/StockInfo";
 
-interface DateHeaderProps {
-  currentDate: Date;
-  getStockList?: StockDataTypes[];
-  clickChangeDate: (e: React.MouseEvent) => void;
-}
+const DateHeader = () => {
+  const {
+    fetchStockList: listStockList,
+    currentDate,
+    clickChangeDate,
+  } = useContext(StockListContext);
 
-const DateHeader = ({
-  currentDate,
-  getStockList,
-  clickChangeDate,
-}: DateHeaderProps) => {
   return (
-    <StandardDateContainer $hasValue={!getStockList}>
+    <StandardDateContainer $hasValue={!listStockList}>
       <Svg.ArrowLeft id="-" onClick={clickChangeDate} />
       <StandardDate>
         {`${adjustDate({ standardDate: currentDate }).originDot} ${

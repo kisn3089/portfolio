@@ -5,13 +5,10 @@
 ### update
 
 ```
-2024.08.18
-최근 업데이트 내용
-주식 project 리펙토링
-- 주식 검색을 상태로 관리하는 것에서 useSearchParams 활용하여 url 기반으로 호출하는 것으로 구조 변경
-- 주식 검색 관련 데이터 useContext로 prosp 드릴링 최소화
-- 기존에 useHook에서 API 호출하는 것에서 src/api 경로 일반 함수로 변경
-- 이해하기 힘든 변수명 직관적으로 수정
+2024.08.30
+What's New
+- Carousel & Restful 새로운 프로젝트 추가
+- GitAction 추가하여 빌드 및 버전 관리 자동화
 ```
 
 Deployment: https://stems-iota.vercel.app/
@@ -74,6 +71,16 @@ three.js를 활용하여 호버 및 터치(클릭)시 설정해놓은 패턴을 
 ```
 
 ---
+
+### Carousel & RestFul API Handling
+
+[Github](https://github.com/kisn3089/mobile_cars_deal)
+
+```
+useQuery를 사용하여 로딩, 실패, 성공을 구현하였고 쉽게 테스트할 수 있게 왼쪽 영역에 컨트롤러를 구현.
+또한 Carousel를 구현하여 클릭 이벤트와 드래그 이벤트로 사용자와 인터렉티브한 UX를 구현
+자세한 내용은 해당 git ReadMe를 참고해주세요!
+```
 
 ### Image_Processing
 
@@ -166,10 +173,9 @@ Video Upload시 확장자가 mp4가 아닐경우 ffmpeg wasm을 이용해 mp4로
 ## 추후 업데이트 예정
 
 ```
-- 프로젝트별로 최초 1회 설명하는 UI 구현
 - ABOUTME 페이지
   - 게이지바와 원형 게이지를 이용해 나의 강점 부분과 약점 부분을 시각화
 - En 버전 추가
   - 최초 브라우저의 언어에 따라 한글, 영어로 설정 & 헤더에 언어 변경할 수 있는 Select 버튼 추가
-- 얼굴 인식 기능 추가 ( 현재로는 Media pipe 라이브러리 사용 예정 )
+- 얼굴 인식 기능 추가
 ```

@@ -15,6 +15,7 @@ const ImageSection = () => {
     dropCallback,
     onCreate,
     onKeyDown,
+    downImage,
   } = useImage();
   const { isDragEnter, onDragOver, onDragLeave, onDrop } =
     useDrag(dropCallback);
@@ -31,10 +32,10 @@ const ImageSection = () => {
       />
       <Dashboard
         ref={thresholdRef}
-        createSrc={imageSrc.createSrc}
         onChangeConf={onChangeConf}
         onCreate={onCreate}
         onKeyDown={onKeyDown}
+        downImage={downImage}
       />
     </SectionLayout>
   );

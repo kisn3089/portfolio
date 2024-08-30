@@ -78,8 +78,7 @@ jobs:
         run: |
           year=$(date +'%y')
           month=$(date +'%m')
-          day=$(date +%d)
-          minor="${year}${month}${day}"
+          minor="${year}${month}"
           IFS='.' read -r -a parts <<< ${{steps.get_latest_tag.outputs.latest_tag}}
           major="${parts[0]}"
           latest_minor="${parts[1]}"

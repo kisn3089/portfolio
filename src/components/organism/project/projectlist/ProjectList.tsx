@@ -3,10 +3,16 @@ import ProjectItems from "../projectItems/ProjectItems";
 
 const projectList = [
   {
+    title: "Carousel & RestFul Handling",
+    tag: "useQuery • Search • Filter • Axios",
+    link: "https://mobile-cars-deal.vercel.app/list/query",
+    img: "/assets/img/pj_restful.webp",
+  },
+  {
     title: "Image Processing",
-    tag: "Filter • Imgae • Editing • Processing",
+    tag: "Imgae Filter • Editing • Processing",
     link: "/project/image",
-    img: "/assets/img/pj_image.png",
+    img: "/assets/img/pj_image.webp",
   },
   {
     title: "WebGPU & Three.js",

@@ -3,6 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": "Stems",
+  "keywords": [
+    "API",
+    "three.js",
+    "image",
+    "filter",
+    "useQuery",
+    "ffmpeg"
+  ],
+  "homepage": "https://github.com/kisn3089/portpolio",
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",

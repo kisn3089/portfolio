@@ -36,7 +36,7 @@ jobs:
         id: get_latest_tag
         # 가져온 tags들 중 가장 최근 하나를 latest_tag 변수에 저장
         run: |
-          latest_tag=$(git describe --tags --abbrev=0 --always)
+          latest_tag=$(git describe --tags --abbrev=0)
           echo "latest_tag=$latest_tag" >> $GITHUB_OUTPUT
           echo "LATEST_TAG: $latest_tag"
 

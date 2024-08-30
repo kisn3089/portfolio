@@ -69,15 +69,15 @@ export const useImage = () => {
   };
 
   const onCreate = () => {
-    console.log("qwe");
-
     setIsLoading(imageSrc.createSrc);
     setTimeout(() => {
       if (thresholdRef.current) {
         urlToImage(imageSrc.originSrc, thresholdRef.current.value, (result) => {
           setImageSrc((prev) => ({ ...prev, createSrc: result }));
+          if (imageSrc.createSrc === result) {
+            setIsLoading("none");
+          }
         });
-        console.log("Create!");
       }
     }, 300);
   };
@@ -87,9 +87,16 @@ export const useImage = () => {
       (e.code === "Enter" && e.metaKey) ||
       (e.code === "Enter" && e.ctrlKey)
     ) {
-      const downEl = document.getElementById("download");
-      downEl?.click();
+      downImage();
     } else if (e.code === "Enter") onCreate();
+  };
+
+  const downImage = () => {
+    const aTag = document.createElement("a");
+
+    aTag.href = imageSrc.createSrc || imageSrc.originSrc;
+    aTag.download = "create_image";
+    aTag.click();
   };
 
   return {
@@ -101,5 +108,6 @@ export const useImage = () => {
     dropCallback,
     onCreate,
     onKeyDown,
+    downImage,
   };
 };

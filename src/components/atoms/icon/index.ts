@@ -1,0 +1,17 @@
+export { ReactComponent as Arrow } from "../../../assets/icons/arrow-up.svg";
+export { ReactComponent as Close } from "../../../assets/icons/close.svg";
+export { ReactComponent as Search } from "../../../assets/icons/search.svg";
+export { ReactComponent as Spinner } from "../../../assets/icons/spinner.svg";
+export { ReactComponent as Lock } from "../../../assets/icons/lock.svg";
+export { ReactComponent as ArrowRight } from "../../../assets/icons/arrow_right.svg";
+export { ReactComponent as ArrowLeft } from "../../../assets/icons/arrow_left.svg";
+export { ReactComponent as StockIcon } from "../../../assets/icons/stock.svg";
+export { ReactComponent as StockList } from "../../../assets/icons/stock_list.svg";
+export { ReactComponent as StockGift } from "../../../assets/icons/stock_gift.svg";
+export { ReactComponent as UploadImage } from "../../../assets/icons/upload_image.svg";
+export { ReactComponent as Download } from "../../../assets/icons/download.svg";
+export { ReactComponent as Next } from "../../../assets/icons/next.svg";
+export { ReactComponent as Prev } from "../../../assets/icons/prev.svg";
+export { ReactComponent as Marker } from "../../../assets/icons/marker.svg";
+export { ReactComponent as RemoveMarker } from "../../../assets/icons/removeMarker.svg";
+export { ReactComponent as Information } from "../../../assets/icons/information.svg";

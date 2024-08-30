@@ -3,6 +3,7 @@
 
 // 일요일이면 수요일 데이터를 가져오기 위한 튜닝
 // 0 -> 일요일
+
 export const adjusting: Record<number, number> = {
   0: 3,
   1: 4,

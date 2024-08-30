@@ -8,116 +8,86 @@ on:
 
 # 실행문
 jobs:
-  # npm install && npm run build
-  Build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Source Code.
-        uses: actions/checkout@v3
-      # cache 로직
-      - name: Cache node modules
-        id: npm-cache
-        uses: actions/cache@v3
-        with:
-          path: "**/node_modules"
-          key: ${{runner.os}}-build-${{hashFiles('**/yarn-lock')}} # yarn 이라면 yarn.lock
-          restore-keys: |
-            ${{runner.os}}-build-
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Build
-        run: yarn run build
-
-      - name: Commit build files
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "build and commit"
-          git push origin main
-
   # origin으로부터 tags 조회
   Get_Tags:
     needs: Build
     runs-on: ubuntu-latest
     steps:
       - name: Fetch all tags
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Fetch Tags
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        - name: Fetch Tags
         run: git fetch --tags
-
-  # tag 생성
-  Create_Tag:
-    needs: Get_Tags
-    runs-on: ubuntu-latest
-    outputs:
-      newTag: ${{steps.create_new_tag.outputs.new_tag}}
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Get Latest Tag
-        id: get_latest_tag
-        # 가져온 tags들 중 가장 최근 하나를 latest_tag 변수에 저장
-        run: |
-          latest_tag=$(git describe --tags --abbrev=0)
-          echo "latest_tag=$latest_tag" >> $GITHUB_OUTPUT
-          echo "LATEST_TAG: $latest_tag"
-
-      - name: Create New Tag
-        id: create_new_tag
-        # latest_tag의 버전과 현재 추가할 tag 버전을 비교하여 새로운 tag 추가
-        # commit에 major update 문구가 포함 되어있을 시 major+1.minor.00으로 업데이트
-        run: |
-          year=$(date +'%y')
-          month=$(date +'%m')
-          minor="${year}${month}"
-          IFS='.' read -r -a parts <<< ${{steps.get_latest_tag.outputs.latest_tag}}
-          major="${parts[0]}"
-          latest_minor="${parts[1]}"
-          latest_patch="${parts[2]}"
-          echo "parts: ${parts[*]}"
-
-          if [[ "${{github.event.head_commit.message}}" == *"major update"* ]]; then
-            new_major=$((10#$major + 1))
-            new_patch="00"
-          else
-            if [ "$latest_minor" != "$minor" ]; then
-              new_patch="00"
-            else
-              new_patch=$(printf "%02d" $((10#$latest_patch + 1)))
-            fi
-            new_major=$major
-          fi
-
-          new_tag="$new_major.$minor.$new_patch"
-          echo "New Tag: $new_tag" 
-          echo "new_tag=$new_tag" >> $GITHUB_OUTPUT
-          git tag $new_tag
-          git push origin $new_tag
-
-  create_release:
-    needs: Create_Tag
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      # 생성한 tag로 release 업데이트
-      - name: Create Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ needs.create_tag.outputs.newTag }}
-          release_name: ${{ needs.create_tag.outputs.newTag }}
+        
+        # tag 생성
+        Create_Tag:
+          needs: Get_Tags
+          runs-on: ubuntu-latest
+          outputs:
+            newTag: ${{steps.create_new_tag.outputs.new_tag}}
+            
+            steps:
+              - name: Checkout repository
+              uses: actions/checkout@v3
+              with:
+                fetch-depth: 0
+                - name: Get Latest Tag
+                id: get_latest_tag
+                # 가져온 tags들 중 가장 최근 하나를 latest_tag 변수에 저장
+                run: |
+                latest_tag=$(git describe --tags --abbrev=0)
+                echo "latest_tag=$latest_tag" >> $GITHUB_OUTPUT
+                echo "LATEST_TAG: $latest_tag"
+                
+                - name: Create New Tag
+                id: create_new_tag
+                # latest_tag의 버전과 현재 추가할 tag 버전을 비교하여 새로운 tag 추가
+                # commit에 major update 문구가 포함 되어있을 시 major+1.minor.00으로 업데이트
+                run: |
+                year=$(date +'%y')
+                month=$(date +'%m')
+                minor="${year}${month}"
+                IFS='.' read -r -a parts <<< ${{steps.get_latest_tag.outputs.latest_tag}}
+                major="${parts[0]}"
+                latest_minor="${parts[1]}"
+                latest_patch="${parts[2]}"
+                echo "parts: ${parts[*]}"
+                
+                if [[ "${{github.event.head_commit.message}}" == *"major update"* ]]; then
+                new_major=$((10#$major + 1))
+                new_patch="00"
+                else
+                if [ "$latest_minor" != "$minor" ]; then
+                new_patch="00"
+                else
+                new_patch=$(printf "%02d" $((10#$latest_patch + 1)))
+                fi
+                new_major=$major
+                fi
+                
+                new_tag="$new_major.$minor.$new_patch"
+                echo "New Tag: $new_tag" 
+                echo "new_tag=$new_tag" >> $GITHUB_OUTPUT
+                git tag $new_tag
+                git push origin $new_tag
+                
+                create_release:
+                  needs: Create_Tag
+                  runs-on: ubuntu-latest
+                  
+                  steps:
+                    - name: Checkout repository
+                    uses: actions/checkout@v3
+                    with:
+                      fetch-depth: 0
+                      
+                      # 생성한 tag로 release 업데이트
+                      - name: Create Release
+                      uses: actions/create-release@v1
+                      env:
+                        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                        with:
+                          tag_name: ${{ needs.create_tag.outputs.newTag }}
+                          release_name: ${{ needs.create_tag.outputs.newTag }}
+                          

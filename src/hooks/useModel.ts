@@ -12,7 +12,6 @@ const useModel = () => {
 
   const loadedCallback = () => {
     setLoaded(true);
-    console.log("loaded!");
   };
 
   const changeColor = (e: React.MouseEvent<HTMLButtonElement>) => {

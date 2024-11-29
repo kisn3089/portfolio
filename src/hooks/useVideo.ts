@@ -83,7 +83,7 @@ export const useVideo = () => {
       if (!playerRef.current) {
         videoElement.classList.add("vjs-big-play-centered");
         if (videoRef.current) videoRef.current.appendChild(videoElement);
-        videoRef.current?.setAttribute("playsInline", "true");
+        // videoRef.current?.setAttribute("playsInline", "true");
 
         const player = videojs(videoElement, videoOptions);
         playerRef.current = player;
@@ -107,12 +107,14 @@ export const useVideo = () => {
           markerStyle: markerCustomStyle,
         });
 
-        // player.on("loadeddata", () => {
-        //   console.log("loadeddata!!");
-        // });
-
+        player.on("loadeddata", () => {
+          console.log("loadeddata!!");
+        });
         videoElement.focus();
+        console.log("after focus: ", player);
       } else {
+        console.log("else");
+
         const player = playerRef.current;
         player.autoplay(videoOptions.autoplay);
         player.src(videoOptions.sources);
@@ -143,6 +145,7 @@ export const useVideo = () => {
     try {
       setConvertStep({ step: "wait", msg: "" });
       await ffmpeg.load();
+
       // mxf 확장자로 한정x
       // ffmpeg.FS("writeFile", `transmp4.mxf`, await fetchFile(files));
       ffmpeg.FS("writeFile", `transmp4.${videoType}`, await fetchFile(files));
@@ -153,14 +156,17 @@ export const useVideo = () => {
         "libx264",
         "-preset",
         "ultrafast",
-        "-qp",
-        "0",
+        // "-qp",
+        // "0",
         "transmp4.mp4"
       );
       const data = ffmpeg.FS("readFile", "transmp4.mp4");
+
       const url = URL.createObjectURL(
-        new Blob([data.buffer], { type: "video/mp4" })
+        new Blob([data], { type: "video/mp4" })
+        // new Blob([data.buffer], { type: "video/mp4" })
       );
+
       setConvertStep({ step: "ok", msg: "" });
       setVideoInfo({ file: url, type: "video/mp4" });
     } catch (err) {

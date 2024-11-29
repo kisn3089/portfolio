@@ -107,14 +107,12 @@ export const useVideo = () => {
           markerStyle: markerCustomStyle,
         });
 
-        player.on("loadeddata", () => {
-          console.log("loadeddata!!");
-        });
-        videoElement.focus();
-        console.log("after focus: ", player);
-      } else {
-        console.log("else");
+        // player.on("loadeddata", () => {
+        //   console.log("loadeddata!!");
+        // });
 
+        videoElement.focus();
+      } else {
         const player = playerRef.current;
         player.autoplay(videoOptions.autoplay);
         player.src(videoOptions.sources);

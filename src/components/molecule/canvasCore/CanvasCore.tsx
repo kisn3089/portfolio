@@ -12,7 +12,6 @@ interface CanvasCoreProps {
   orbitProps?: { [index: string]: number | boolean };
   bgColor?: string;
   hasRadius?: boolean;
-  loadedCallback?: () => void;
 }
 
 const CanvasCore = ({
@@ -22,7 +21,6 @@ const CanvasCore = ({
   cameraPosition = [0, 3, 7],
   bgColor = theme.palette.black,
   hasRadius,
-  loadedCallback,
 }: CanvasCoreProps) => {
   const [cameraX, cameraY, cameraZ] = cameraPosition;
 
@@ -39,12 +37,7 @@ const CanvasCore = ({
         <color attach="background" args={[bgColor]} />
         <DirectionLight />
         <PointLight />
-        <Suspense
-          fallback={
-            !noLoading && (
-              <ModelLoading bgColor={bgColor} loadedCallback={loadedCallback} />
-            )
-          }>
+        <Suspense fallback={!noLoading && <ModelLoading bgColor={bgColor} />}>
           {children}
         </Suspense>
         <OrbitControls {...orbitProps} />

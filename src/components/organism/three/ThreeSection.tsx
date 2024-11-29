@@ -4,11 +4,12 @@ import AppleModel from "./modeling/appleModel/AppleModel";
 import useModel from "@/hooks/useModel";
 
 const ThreeSection = () => {
-  const { isLoaded, loadedCallback } = useModel();
+  // const { isLoaded, loadedCallback } = useModel();
+
   return (
     <ThreeLayout>
-      <SphereModel isLoaded={isLoaded} loadedCallback={loadedCallback} />
-      <AppleModel isLoaded={isLoaded} />
+      {/* <SphereModel /> */}
+      <AppleModel />
     </ThreeLayout>
   );
 };

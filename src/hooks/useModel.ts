@@ -11,6 +11,8 @@ const useModel = () => {
   });
 
   const loadedCallback = () => {
+    console.log("callback");
+
     setLoaded(true);
   };
 

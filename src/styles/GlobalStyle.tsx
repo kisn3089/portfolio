@@ -9,6 +9,8 @@ export const GlobalStyle = createGlobalStyle`
 
     html {
       overflow-x: hidden;
+      scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
     }
 
     body {
@@ -18,6 +20,8 @@ export const GlobalStyle = createGlobalStyle`
         color: ${({ theme }) => theme.palette.white};
         vertical-align: bottom;
         overflow-x: hidden;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
 
         button {
           border: none;
@@ -44,7 +48,7 @@ export const GlobalStyle = createGlobalStyle`
         .fade-enter-active {
           opacity: 1;
           transform: translateY(0);
-          transition: 0.6s cubic-bezier(.58,.34,.19,.86) 0.4s;
+          transition: 0.5s cubic-bezier(.58,.34,.19,.86) 0.4s;
         }
       
         .fade-exit {
@@ -56,8 +60,8 @@ export const GlobalStyle = createGlobalStyle`
       
         .fade-exit-active {
           opacity: 0;
-          transform: translateY(20%);
-          transition: 0.4s cubic-bezier(.63,.33,.17,.91);
+          transform: translateY(5%);
+          transition: 0.2s cubic-bezier(.63,.33,.17,.91);
         }
     }
 `;

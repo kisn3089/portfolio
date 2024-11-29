@@ -20,8 +20,6 @@ export const GlobalStyle = createGlobalStyle`
         color: ${({ theme }) => theme.palette.white};
         vertical-align: bottom;
         overflow-x: hidden;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none;
 
         button {
           border: none;
@@ -48,7 +46,7 @@ export const GlobalStyle = createGlobalStyle`
         .fade-enter-active {
           opacity: 1;
           transform: translateY(0);
-          transition: 0.5s cubic-bezier(.58,.34,.19,.86) 0.4s;
+          transition: 0.4s cubic-bezier(.58,.34,.19,.86) 0.4s;
         }
       
         .fade-exit {

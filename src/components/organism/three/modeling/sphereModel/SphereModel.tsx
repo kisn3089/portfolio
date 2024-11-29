@@ -17,13 +17,11 @@ const SphereModel = () => {
         <ModelCore source={SPHERE} currentAction={currentAction} hasAnimation />
         <PostProsessing />
       </CanvasCore>
-      {/* {isLoaded && ( */}
       <ActionButton
         actionTypes={actionTypes}
         currentAction={currentAction}
         changeAction={changeAction}
       />
-      {/* )} */}
     </SphereLayout>
   );
 };

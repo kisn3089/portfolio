@@ -42,7 +42,7 @@ const FadingModel = ({
       // Hover Event
       onPointerOver={() => setHover(true)}
       onPointerOut={() => setHover(false)}>
-      {/*  @ts-ignore */}
+      {/* @ts-ignore */}
       <roundedPlaneGeometry args={[3, 4.5]} />
       {/*  @ts-ignore */}
       <imageFadeMaterial

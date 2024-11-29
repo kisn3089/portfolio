@@ -8,6 +8,31 @@ on:
 
 # 실행문
 jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code.
+        uses: actions/checkout@v3
+      # cache 로직
+      - name: Cache node modules
+        id: npm-cache
+        uses: actions/cache@v3
+        with:
+          path: "**/node_modules"
+          key: ${{runner.os}}-build-${{hashFiles('**/yarn-lock')}} # yarn 이라면 yarn.lock
+          restore-keys: |
+            ${{runner.os}}-build-
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile # 해쉬된 yarn 파일을 읽어 변경점 있으면 자동으로 yarn 실행
+      - name: Build
+        run: yarn run build
+      - name: Commit build files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "build and commit"
+          git push origin main
   # origin으로부터 tags 조회
   Get_Tags:
     runs-on: ubuntu-latest

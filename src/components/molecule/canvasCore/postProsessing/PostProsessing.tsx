@@ -1,5 +1,5 @@
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import { KernelSize } from "postprocessing";
+// import { KernelSize } from "postprocessing";
 
 const PostProsessing = () => {
   return (

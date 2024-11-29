@@ -4,7 +4,10 @@ import ActiveButton from "@/components/molecule/activeButton/ActiveButton";
 
 const menuItems = [
   { content: ["HOME", "HOME"], url: "/" },
-  { content: ["ABOUT ME", "ABOUT ME"], url: "/me" },
+  {
+    content: ["ABOUT ME", "ABOUT ME"],
+    url: "external",
+  },
   { content: ["PROJECT", "PROJECT"], url: "/project" },
 ];
 
@@ -13,12 +16,23 @@ type ActiveMenuProps = {
   activeClick: () => void;
 };
 
+const externalOpen = (url: string) =>
+  url === "external" &&
+  window.open(
+    "https://halved-crepe-e7c.notion.site/08f937f7f1f04efe811e51282f33b884?pvs=74"
+  );
+
+const blockExternal = (url: string) =>
+  url === "external" ? window.location.pathname : url;
+
 const ActiveMenu = ({ isActive, activeClick }: ActiveMenuProps) => {
-  // const ActiveMenu = () => {
   return (
-    <ActiveMenuContainer className={isActive ? "isActive" : ""}>
-      {menuItems.map((item, i) => (
-        <Link key={i} to={item.url}>
+    <ActiveMenuContainer className={`${isActive && "isActive"}`}>
+      {[...menuItems].map((item, i) => (
+        <Link
+          key={i}
+          to={blockExternal(item.url)}
+          onClick={() => externalOpen(item.url)}>
           <MenuItemContainer>
             <ActiveButton
               content={item.content}

@@ -4,15 +4,10 @@ import { colorTypes } from "@/lib/util/model/modelColorTypes";
 
 interface ModelLoadingProps {
   bgColor: string;
-  loadedCallback?: () => void;
 }
 
-const ModelLoading = ({
-  bgColor,
-  loadedCallback = () => {},
-}: ModelLoadingProps) => {
+const ModelLoading = ({ bgColor }: ModelLoadingProps) => {
   const { progress } = useProgress();
-  if (progress === 100) loadedCallback();
 
   return (
     <Html center>

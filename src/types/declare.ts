@@ -12,5 +12,8 @@ declare module "@react-three/fiber" {
       effectFactor?: number;
       ref: RefObject<typeof ImageFadeMaterial>;
     };
+    meshSineMaterial: THREE.MeshBasicMaterialParameters & {
+      time?: { value: number };
+    };
   }
 }

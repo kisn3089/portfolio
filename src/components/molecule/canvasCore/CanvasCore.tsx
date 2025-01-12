@@ -27,6 +27,7 @@ const CanvasCore = ({
   return (
     <CanvasCoreContainer $hasRadius={hasRadius}>
       <Canvas
+        performance={{ min: 0.5 }}
         shadows
         camera={{
           position: [cameraX, cameraY, cameraZ],

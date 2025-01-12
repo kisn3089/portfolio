@@ -58,7 +58,8 @@ const MainLayout = () => {
           </EffectComposer>
           <PlaneModel />
         </CameraLookAt>
-        <fog attach="fog" args={[theme.palette.darkBlack, 2, 12]} />
+        <fog attach="fog" args={[theme.palette.white, 4, 12]} />
+        {/* <fog attach="fog" args={[theme.palette.darkBlack, 2, 12]} /> */}
         <CameraMouse />
       </CanvasCore>
     </MainLayoutStyle>

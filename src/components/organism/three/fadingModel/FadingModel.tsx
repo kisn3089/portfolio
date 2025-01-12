@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import { useTexture } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
@@ -45,7 +44,6 @@ const FadingModel = ({
       onPointerOver={() => setHover(true)}
       onPointerOut={() => setHover(false)}>
       {/* <RoundedBox /> */}
-      {/* <planeGeometry args={[3, 4.5]} /> */}
       <mesh geometry={roundedGeometry}>
         <imageFadeMaterial
           ref={ref}
@@ -61,6 +59,4 @@ const FadingModel = ({
 
 export default FadingModel;
 
-extend({
-  ImageFadeMaterial,
-});
+extend({ ImageFadeMaterial });

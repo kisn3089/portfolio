@@ -58,7 +58,7 @@ const MainLayout = () => {
         // bgColor={theme.palette.darkBlack}
       >
         <fog attach="fog" args={["#ffe538", 9, 13]} />
-        <ScrollControls pages={4} infinite>
+        <ScrollControls pages={2} infinite>
           <Rig rotation={[0, 0, 0.15]}>
             <Carousel />
           </Rig>
@@ -131,7 +131,7 @@ const Carousel = () => {
       {projectList.map((project, i) => (
         <Card
           key={project.img}
-          url={project.img}
+          url={project.landing_img}
           to={project.link}
           position={[
             Math.sin((i / count) * Math.PI * 2) * radius,

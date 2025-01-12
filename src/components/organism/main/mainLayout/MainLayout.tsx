@@ -14,6 +14,7 @@ import {
   Image,
   useTexture,
   Environment,
+  Html,
 } from "@react-three/drei";
 import { extend, ThreeEvent, useFrame } from "@react-three/fiber";
 import { PropsWithChildren, useEffect, useRef, useState } from "react";
@@ -25,6 +26,7 @@ import React from "react";
 import { projectList } from "@/store/ProjectList";
 import { TEnler } from "@/types/three.type";
 import { BentPlaneGeometry } from "@/utils/materials/BentPlaneGeometry";
+import { Link, useNavigate } from "react-router-dom";
 
 // const fadingElement = [
 //   {
@@ -130,6 +132,7 @@ const Carousel = () => {
         <Card
           key={project.img}
           url={project.img}
+          to={project.link}
           position={[
             Math.sin((i / count) * Math.PI * 2) * radius,
             0,
@@ -142,14 +145,27 @@ const Carousel = () => {
   );
 };
 
-type CardProps = { url: string; position: TEnler; rotation: TEnler };
-const Card = ({ url, position, rotation }: CardProps) => {
+type CardProps = {
+  url: string;
+  position: TEnler;
+  rotation: TEnler;
+  to: string;
+};
+const Card = ({ url, position, rotation, to }: CardProps) => {
   const cardRef = useRef<Mesh>(null);
   const [hover, setHover] = useState(false);
+  const navigator = useNavigate();
+
   const pointerOver = (e: ThreeEvent<PointerEvent>) => (
     e.stopPropagation(), setHover(true)
   );
   const pointerOut = () => setHover(false);
+
+  const clickToMove = (e: ThreeEvent<MouseEvent>) => {
+    e.stopPropagation();
+    if (to.includes("http")) window.open(to);
+    else navigator(to);
+  };
 
   useFrame((_, delta) => {
     if (cardRef.current) {
@@ -173,17 +189,20 @@ const Card = ({ url, position, rotation }: CardProps) => {
   });
 
   return (
-    <Image
-      ref={cardRef}
-      url={url}
-      transparent
-      side={THREE.DoubleSide}
-      onPointerOver={pointerOver}
-      onPointerOut={pointerOut}
-      rotation={rotation}
-      position={position}>
-      <bentPlaneGeometry args={[0.1, 1, 1, 20, 20]} />
-    </Image>
+    <>
+      <Image
+        ref={cardRef}
+        url={url}
+        transparent
+        side={THREE.DoubleSide}
+        onClick={clickToMove}
+        onPointerOver={pointerOver}
+        onPointerOut={pointerOut}
+        rotation={rotation}
+        position={position}>
+        <bentPlaneGeometry args={[0.1, 1, 1, 20, 20]} />
+      </Image>
+    </>
   );
 };
 

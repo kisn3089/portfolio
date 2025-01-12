@@ -1,3 +1,4 @@
+import * as THREE from "three";
 import { useTexture } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
@@ -32,6 +33,7 @@ const FadingModel = ({
     if (ref.current)
       easing.damp(ref.current, "dispFactor", hovered ? 1 : 0, 0.2, delta);
   });
+  const roundedGeometry = new geometry.RoundedPlaneGeometry(3, 4.5);
 
   return (
     <mesh
@@ -42,15 +44,17 @@ const FadingModel = ({
       // Hover Event
       onPointerOver={() => setHover(true)}
       onPointerOut={() => setHover(false)}>
-      {/* @ts-ignore */}
-      <roundedPlaneGeometry args={[3, 4.5]} />
-      <imageFadeMaterial
-        ref={ref}
-        origin={origin}
-        replace={replace}
-        effect={effect}
-        toneMapped={false}
-      />
+      {/* <RoundedBox /> */}
+      {/* <planeGeometry args={[3, 4.5]} /> */}
+      <mesh geometry={roundedGeometry}>
+        <imageFadeMaterial
+          ref={ref}
+          origin={origin}
+          replace={replace}
+          effect={effect}
+          toneMapped={false}
+        />
+      </mesh>
     </mesh>
   );
 };
@@ -59,5 +63,4 @@ export default FadingModel;
 
 extend({
   ImageFadeMaterial,
-  RoundedPlaneGeometry: geometry.RoundedPlaneGeometry,
 });

@@ -156,10 +156,16 @@ const Card = ({ url, position, rotation, to }: CardProps) => {
   const [hover, setHover] = useState(false);
   const navigator = useNavigate();
 
-  const pointerOver = (e: ThreeEvent<PointerEvent>) => (
-    e.stopPropagation(), setHover(true)
-  );
-  const pointerOut = () => setHover(false);
+  const pointerOver = (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation();
+    setHover(true);
+    document.body.style.cursor = "pointer";
+  };
+  const pointerOut = (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation();
+    setHover(false);
+    document.body.style.cursor = "default";
+  };
 
   const clickToMove = (e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation();
@@ -189,20 +195,18 @@ const Card = ({ url, position, rotation, to }: CardProps) => {
   });
 
   return (
-    <>
-      <Image
-        ref={cardRef}
-        url={url}
-        transparent
-        side={THREE.DoubleSide}
-        onClick={clickToMove}
-        onPointerOver={pointerOver}
-        onPointerOut={pointerOut}
-        rotation={rotation}
-        position={position}>
-        <bentPlaneGeometry args={[0.1, 1, 1, 20, 20]} />
-      </Image>
-    </>
+    <Image
+      ref={cardRef}
+      url={url}
+      transparent
+      side={THREE.DoubleSide}
+      onClick={clickToMove}
+      onPointerOver={pointerOver}
+      onPointerOut={pointerOut}
+      rotation={rotation}
+      position={position}>
+      <bentPlaneGeometry args={[0.1, 1, 1, 20, 20]} />
+    </Image>
   );
 };
 

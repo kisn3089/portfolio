@@ -27,12 +27,7 @@ const CanvasCore = ({
 }: CanvasCoreProps) => {
   return (
     <CanvasCoreContainer $hasRadius={hasRadius}>
-      <Canvas
-        performance={{ min: 0.5 }}
-        shadows
-        camera={{
-          ...camera,
-        }}>
+      <Canvas performance={{ min: 0.5 }} shadows camera={{ ...camera }}>
         <color attach="background" args={[bgColor]} />
         <DirectionLight />
         <PointLight />

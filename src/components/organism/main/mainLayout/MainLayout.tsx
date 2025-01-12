@@ -24,6 +24,7 @@ import ProjectList from "../../project/projectlist/ProjectList";
 import React from "react";
 import { projectList } from "@/store/ProjectList";
 import { TEnler } from "@/types/three.type";
+import { BentPlaneGeometry } from "@/utils/materials/BentPlaneGeometry";
 
 // const fadingElement = [
 //   {
@@ -180,8 +181,9 @@ const Card = ({ url, position, rotation }: CardProps) => {
       onPointerOver={pointerOver}
       onPointerOut={pointerOut}
       rotation={rotation}
-      position={position}
-    />
+      position={position}>
+      <bentPlaneGeometry args={[0.1, 1, 1, 20, 20]} />
+    </Image>
   );
 };
 
@@ -213,4 +215,4 @@ const Banner = () => {
   );
 };
 
-extend({ MeshSineMaterial });
+extend({ MeshSineMaterial, BentPlaneGeometry });

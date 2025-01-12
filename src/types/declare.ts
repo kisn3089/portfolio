@@ -15,5 +15,6 @@ declare module "@react-three/fiber" {
     meshSineMaterial: THREE.MeshBasicMaterialParameters & {
       time?: { value: number };
     };
+    bentPlaneGeometry: { args: number[] };
   }
 }

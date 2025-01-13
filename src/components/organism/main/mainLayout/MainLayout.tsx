@@ -1,11 +1,6 @@
 import * as THREE from "three";
 import { MainLayoutStyle } from "./MainLayoutStyles";
 import CanvasCore from "@/components/molecule/canvasCore/CanvasCore";
-import FadingModel from "../../three/fadingModel/FadingModel";
-import { theme } from "@/styles/theme";
-import CameraMouse from "@/components/molecule/canvasCore/cameraMouse/CameraMouse";
-import CameraLookAt from "@/components/molecule/canvasCore/cameraLookAt/CameraLookAt";
-import PlaneModel from "../../three/modeling/planeModel/PlaneModel";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import {
   Float,
@@ -13,42 +8,17 @@ import {
   useScroll,
   Image,
   useTexture,
-  Environment,
-  Html,
   Stars,
-  Text3D,
-  useMatcapTexture,
 } from "@react-three/drei";
-import { extend, ThreeEvent, useFrame, useThree } from "@react-three/fiber";
-import { PropsWithChildren, useEffect, useMemo, useRef, useState } from "react";
+import { extend, ThreeEvent, useFrame } from "@react-three/fiber";
+import { PropsWithChildren, useRef, useState } from "react";
 import { Group, Mesh } from "three";
 import { easing } from "maath";
 import { MeshSineMaterial } from "@/utils/materials/BannerMaterial";
-import ProjectList from "../../project/projectlist/ProjectList";
-import React from "react";
 import { projectList } from "@/store/ProjectList";
 import { TEnler } from "@/types/three.type";
 import { BentPlaneGeometry } from "@/utils/materials/BentPlaneGeometry";
-import { Link, useNavigate } from "react-router-dom";
-
-// const fadingElement = [
-//   {
-//     originImage: "/assets/img/arc.webp",
-//     replaceImage: "/assets/img/tower.webp",
-//     effectImage: "/assets/img/effect_draft.jpg",
-//     positionX: "2",
-//     positionY: "2",
-//     rotationY: "-0.2",
-//   },
-//   {
-//     originImage: "/assets/img/suit.webp",
-//     replaceImage: "/assets/img/cafe.webp",
-//     effectImage: "/assets/img/effect_diamond.jpg",
-//     positionX: "-2",
-//     positionY: "2",
-//     rotationY: "0.2",
-//   },
-// ];
+import { useNavigate } from "react-router-dom";
 
 const MainLayout = () => {
   return (
@@ -57,49 +27,26 @@ const MainLayout = () => {
         noLoading
         camera={{ position: [0, 0, 100], fov: 15 }}
         unuseOrbit
-        // bgColor={theme.palette.darkBlack}>
-        bgColor={"#0e0e0e"}>
+        bgColor={"#0a0a0a"}>
         <fog attach="fog" args={["#ffe538", 9, 13]} />
-        <Stars
-          radius={100}
-          depth={0}
-          count={5000}
-          factor={4}
-          saturation={0}
-          fade
-        />
+        <Stars radius={90} depth={0} count={5000} factor={4} fade />
         <ScrollControls pages={2} infinite>
           <Rig rotation={[0, 0, 0.15]}>
             <Carousel />
           </Rig>
-          <Banner />
+          <Float floatIntensity={0.3} speed={0.8}>
+            <Banner />
+          </Float>
         </ScrollControls>
-        {/* <CameraLookAt> */}
-        {/* {fadingElement.map((fading, i) => (
-            <Float floatIntensity={0.3} speed={0.8} key={i}>
-            <FadingModel
-              originImage={fading.originImage}
-              replaceImage={fading.replaceImage}
-              effectImage={fading.effectImage}
-              positionX={fading.positionX}
-              positionY={fading.positionY}
-              rotationY={fading.rotationY}
-            />
-            </Float>
-          ))} */}
-        {/* <EffectComposer multisampling={8}>
-            <Bloom
-              kernelSize={5}
-              luminanceThreshold={0.4}
-              luminanceSmoothing={0.3}
-              intensity={0.8}
-            />
-          </EffectComposer> */}
-        {/* <PlaneModel /> */}
-        {/* </CameraLookAt> */}
-        {/* <fog attach="fog" args={[theme.palette.white, 4, 12]} /> */}
-        {/* <fog attach="fog" args={[theme.palette.darkBlack, 2, 12]} /> */}
-        {/* <CameraMouse /> */}
+        <EffectComposer multisampling={8}>
+          <Bloom
+            kernelSize={1}
+            luminanceThreshold={0.6}
+            luminanceSmoothing={1}
+            intensity={0.4}
+            height={300}
+          />
+        </EffectComposer>
       </CanvasCore>
     </MainLayoutStyle>
   );

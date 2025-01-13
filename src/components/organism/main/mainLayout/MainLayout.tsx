@@ -15,9 +15,12 @@ import {
   useTexture,
   Environment,
   Html,
+  Stars,
+  Text3D,
+  useMatcapTexture,
 } from "@react-three/drei";
-import { extend, ThreeEvent, useFrame } from "@react-three/fiber";
-import { PropsWithChildren, useEffect, useRef, useState } from "react";
+import { extend, ThreeEvent, useFrame, useThree } from "@react-three/fiber";
+import { PropsWithChildren, useEffect, useMemo, useRef, useState } from "react";
 import { Group, Mesh } from "three";
 import { easing } from "maath";
 import { MeshSineMaterial } from "@/utils/materials/BannerMaterial";
@@ -54,10 +57,17 @@ const MainLayout = () => {
         noLoading
         camera={{ position: [0, 0, 100], fov: 15 }}
         unuseOrbit
-        // orbitProps={{ enableZoom: false }}
-        // bgColor={theme.palette.darkBlack}
-      >
+        // bgColor={theme.palette.darkBlack}>
+        bgColor={"#0e0e0e"}>
         <fog attach="fog" args={["#ffe538", 9, 13]} />
+        <Stars
+          radius={100}
+          depth={0}
+          count={5000}
+          factor={4}
+          saturation={0}
+          fade
+        />
         <ScrollControls pages={2} infinite>
           <Rig rotation={[0, 0, 0.15]}>
             <Carousel />

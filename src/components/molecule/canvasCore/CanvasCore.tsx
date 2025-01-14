@@ -4,43 +4,37 @@ import { Canvas } from "@react-three/fiber";
 import { ContactShadows, OrbitControls, Preload } from "@react-three/drei";
 import { theme } from "@/styles/theme";
 import ModelLoading from "@/components/organism/three/modelLoading/ModelLoading";
+import { CameraType } from "@/types/three.type";
 
 interface CanvasCoreProps {
   children: React.ReactNode;
   noLoading?: boolean;
-  cameraPosition?: number[];
+  camera?: CameraType;
   orbitProps?: { [index: string]: number | boolean };
   bgColor?: string;
   hasRadius?: boolean;
+  unuseOrbit?: boolean;
 }
 
 const CanvasCore = ({
   children,
   orbitProps,
   noLoading,
-  cameraPosition = [0, 3, 7],
+  camera = { position: [0, 3, 7], near: 1, far: 1000, fov: 75 },
   bgColor = theme.palette.black,
   hasRadius,
+  unuseOrbit = false,
 }: CanvasCoreProps) => {
-  const [cameraX, cameraY, cameraZ] = cameraPosition;
-
   return (
     <CanvasCoreContainer $hasRadius={hasRadius}>
-      <Canvas
-        shadows
-        camera={{
-          position: [cameraX, cameraY, cameraZ],
-          fov: 75,
-          far: 1000,
-          near: 1,
-        }}>
+      <Canvas performance={{ min: 0.2 }} shadows camera={{ ...camera }}>
         <color attach="background" args={[bgColor]} />
         <DirectionLight />
         <PointLight />
         <Suspense fallback={!noLoading && <ModelLoading bgColor={bgColor} />}>
           {children}
         </Suspense>
-        <OrbitControls {...orbitProps} />
+        {!unuseOrbit && <OrbitControls {...orbitProps} />}
         <ContactShadows position-y={-3} scale={10} opacity={0.3} blur={0.4} />
         <Preload all />
       </Canvas>

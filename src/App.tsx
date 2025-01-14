@@ -13,19 +13,19 @@ function App() {
 
   return (
     <TransitionGroup>
-      {/* <CSSTransition key={location.pathname} classNames="fade" timeout={1000}> */}
-      <Routes location={location}>
-        <Route path="/" element={<MainPage />} />
-        {/* <Route path="me" element={<AboutMePage />} /> */}
-        <Route path="project" element={<ProjectPage />} />
-        <Route path="project/image" element={<ImagePage />} />
-        <Route path="project/three" element={<ThreePage />} />
-        <Route path="project/video" element={<VideoPage />} />
-        <Route path="project/stock/:query" element={<StockPage />} />
+      <CSSTransition key={location.pathname} classNames="fade" timeout={1000}>
+        <Routes location={location}>
+          <Route path="/" element={<MainPage />} />
+          {/* <Route path="me" element={<AboutMePage />} /> */}
+          <Route path="project" element={<ProjectPage />} />
+          <Route path="project/image" element={<ImagePage />} />
+          <Route path="project/three" element={<ThreePage />} />
+          <Route path="project/video" element={<VideoPage />} />
+          <Route path="project/stock/:query" element={<StockPage />} />
 
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-      {/* </CSSTransition> */}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </CSSTransition>
     </TransitionGroup>
   );
 }

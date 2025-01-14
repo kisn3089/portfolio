@@ -5,10 +5,9 @@
 ### update
 
 ```
-2024.08.30
+2025.01.14
 What's New
-- Carousel & Restful 새로운 프로젝트 추가
-- GitAction 추가하여 빌드 및 버전 관리 자동화
+- landing Page 리뉴얼 [메인 페이지]
 ```
 
 Deployment: https://stems-iota.vercel.app/
@@ -52,9 +51,7 @@ three.js를 활용하여 호버 및 터치(클릭)시 설정해놓은 패턴을 
 
 세부 기능
 
-- [Float](https://github.com/kisn3089/portpolio/blob/main/src/components/organism/main/mainLayout/MainLayout.tsx#L41C14-L41C19): 떠있는 효과
 - [Bloom](https://github.com/kisn3089/portpolio/blob/main/src/components/organism/main/mainLayout/MainLayout.tsx#L53): 자체적으로 빛나는 효과
-- Reflection Plane
 - [마우스 및 터치](https://github.com/kisn3089/portpolio/blob/main/src/components/molecule/canvasCore/cameraMouse/CameraMouse.tsx)에 따라 카메라 위치 변경
 - [진입 애니메이션](https://github.com/kisn3089/portpolio/blob/main/src/components/molecule/canvasCore/cameraLookAt/CameraLookAt.tsx): camera-z, opacity
 

@@ -50,7 +50,7 @@ export const useImage = () => {
     });
   };
 
-  const onChangeConf = (e: React.MouseEvent<HTMLInputElement>) => {
+  const onChangeConf = (e: React.MouseEvent<HTMLDivElement>) => {
     const { id } = e.currentTarget;
     if (thresholdRef.current) {
       if (id === "up" && +thresholdRef.current.value < 3) {
@@ -67,6 +67,15 @@ export const useImage = () => {
         ).toFixed(1);
         thresholdRef.current.focus();
       }
+    }
+  };
+
+  const onChangeConfByInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (thresholdRef.current) {
+      thresholdRef.current.value = Math.min(
+        Math.max(+e.target.value, 0),
+        3
+      ).toString();
     }
   };
 
@@ -106,6 +115,7 @@ export const useImage = () => {
     currentSrc,
     getImage,
     onChangeConf,
+    onChangeConfByInput,
     dropCallback,
     onCreate,
     onKeyDown,

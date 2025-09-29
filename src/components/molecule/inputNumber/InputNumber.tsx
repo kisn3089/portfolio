@@ -8,12 +8,13 @@ import {
 import * as Svg from "@/components/atoms/icon/index";
 
 interface InputNumberProps extends HTMLAttributes<HTMLInputElement> {
-  onChangeConf: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onChangeConf: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onChangeConfByInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
-  ({ id, onChangeConf, onKeyDown }, ref) => {
+  ({ id, onChangeConf, onChangeConfByInput, onKeyDown }, ref) => {
     return (
       <InputLayout>
         <RGBInput
@@ -23,6 +24,7 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
           step={0.1}
           min={0}
           max={3}
+          onChange={onChangeConfByInput}
           defaultValue={1}
           onKeyDown={onKeyDown}
         />

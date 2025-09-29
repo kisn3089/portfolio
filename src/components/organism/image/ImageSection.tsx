@@ -12,6 +12,7 @@ const ImageSection = () => {
     currentSrc,
     getImage,
     onChangeConf,
+    onChangeConfByInput,
     dropCallback,
     onCreate,
     onKeyDown,
@@ -33,6 +34,7 @@ const ImageSection = () => {
       <Dashboard
         ref={thresholdRef}
         onChangeConf={onChangeConf}
+        onChangeConfByInput={onChangeConfByInput}
         onCreate={onCreate}
         onKeyDown={onKeyDown}
         downImage={downImage}

@@ -16,9 +16,6 @@ self.onmessage = async function (e) {
 };
 
 function processImageData(imageData, thresholdRef, width, height) {
-  if (thresholdRef > 3) thresholdRef = 3;
-  if (thresholdRef < 0) thresholdRef = 0;
-
   const processedData = new Uint8ClampedArray(imageData);
 
   const process = (x, coefficient, gray) => {

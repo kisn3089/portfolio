@@ -2,6 +2,7 @@ import { urlToImage } from "@/lib/util/imageProcessing";
 import { ImageSrcType } from "@/types/imageSrc.type";
 import { useEffect, useRef, useState } from "react";
 
+const imageValidationSchema = ["jpg", "png", "ico", "webp"];
 export const useImage = () => {
   const thresholdRef = useRef<HTMLInputElement>(null);
   const [currentSrc, setIsLoading] = useState("none");
@@ -21,10 +22,13 @@ export const useImage = () => {
   const validImageFile = (files: FileList | null): files is FileList => {
     if (!files) return false;
 
-    return files && files[0] && files[0].type.includes("image");
+    const isValid = imageValidationSchema.some((ext) =>
+      files[0].type.includes(ext)
+    );
+    return isValid && files && files[0] && files[0].type.includes("image");
   };
 
-  const getImage = async (
+  const getImage = (
     e?: React.ChangeEvent<HTMLInputElement>,
     file?: FileList | null
   ) => {
@@ -35,7 +39,9 @@ export const useImage = () => {
 
     if (!validImageFile(files) || !thresholdRef.current) {
       setIsLoading("none");
-      throw new Error(".jpg, .png, .ico, .webp 파일만 업로드 가능합니다.");
+      const errorMessage = ".jpg, .png, .ico, .webp 파일만 업로드 가능합니다.";
+      alert(errorMessage);
+      throw new Error(errorMessage);
     }
 
     const url = URL.createObjectURL(files[0]);

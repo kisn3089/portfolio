@@ -5,6 +5,11 @@
 ```
 2025.09.29
 What's New
+[프로젝트 추가]
+Web Accessibility 모달 폼
+- 프로젝트 리스트 및 랜딩 페이지에 추가
+- 프로젝트 링크 클릭 이동 시 외부 링크일 경우 a 태그 새탭으로 열리도록 구현
+- molcules, organisms 단수 형태 -> 복수 형태로 폴더명 변경
 [이미지 프로세싱 프로젝트]
 - worker 사용으로 브라우저 스레드를 이용. (메인 스레드 non-blocking)
 - 업로드 가능한 확장자를 명확하게 검증하고 사용자에게 오류를 노출히도록 변경
@@ -76,6 +81,20 @@ three.js를 활용하여 호버 및 터치(클릭)시 설정해놓은 패턴을 
 ```
 
 ---
+
+### Web Accessibility & Modal Form
+
+[Github](https://github.com/kisn3089/toss-accessibility-code-challenge)
+
+```
+웹 접근성을 연구하는 WAI 기관에서 제시한 WCAG 표준 스펙 2.1 AA 수준을 준수하고 있습니다.
+```
+
+<img src=public/assets/img/pj_accessibility.webp height=500px />
+
+- 탭 이동이 폼 모달 내부에서 순환되도록 구현.
+- 스크린리더가 포커싱 이동마다 미리 정의한 label을 읽고, input 검증에 실패할 때 실패한 이유를 읽어주도록 구현.
+- `await openModal(<ModalForm />)` 형태로 폼 모달 내부에서 제출되기까지 기다리도록 구현.
 
 ### Carousel & RestFul API Handling
 

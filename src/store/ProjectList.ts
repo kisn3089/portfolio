@@ -1,5 +1,12 @@
 export const projectList = [
   {
+    title: "Web Accessibility & Modal",
+    tag: "ScreenReader • Nested Modal • WCAG",
+    link: "https://toss-accessibility-code-challenge-v.vercel.app",
+    img: "/assets/img/pj_accessibility.webp",
+    landing_img: "/assets/img/pj_landing/ld_pj_accessibility.webp",
+  },
+  {
     title: "Carousel & RestFul Handling",
     tag: "useQuery • Search • Filter • Axios",
     link: "https://mobile-cars-deal.vercel.app/list/query",

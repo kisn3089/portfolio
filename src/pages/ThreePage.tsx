@@ -1,4 +1,4 @@
-import ThreeSection from "@/components/organism/three/ThreeSection";
+import ThreeSection from "@/components/organisms/three/ThreeSection";
 
 const ThreePage = () => {
   return <ThreeSection></ThreeSection>;

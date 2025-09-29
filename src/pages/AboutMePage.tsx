@@ -1,5 +1,5 @@
-import { ReadyCenter } from "@/components/molecule/hasReady/HasReadyStyles";
-import ReadyGroup from "@/components/molecule/hasReady/readyGroup/ReadyGroup";
+import { ReadyCenter } from "@/components/molecules/hasReady/HasReadyStyles";
+import ReadyGroup from "@/components/molecules/hasReady/readyGroup/ReadyGroup";
 
 const AboutMePage = () => {
   return (

@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 import { UploadInput } from "./LabelInputStyles";
-import ChildButton from "../../molecule/childButton/ChildButton";
+import ChildButton from "../../molecules/childButton/ChildButton";
 
 const LabelInput = ({
   content,

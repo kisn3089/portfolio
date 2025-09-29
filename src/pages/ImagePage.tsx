@@ -1,4 +1,4 @@
-import ImageSection from "@/components/organism/image/ImageSection";
+import ImageSection from "@/components/organisms/image/ImageSection";
 
 const ImagePage = () => {
   return <ImageSection />;

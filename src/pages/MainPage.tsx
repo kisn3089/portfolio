@@ -1,4 +1,4 @@
-import MainLayout from "@/components/organism/main/mainLayout/MainLayout";
+import MainLayout from "@/components/organisms/main/mainLayout/MainLayout";
 
 const MainPage = () => {
   return <MainLayout />;

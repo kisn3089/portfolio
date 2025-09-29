@@ -1,5 +1,5 @@
-import { Player } from "@/components/organism/video/player/Player";
-import Upload from "@/components/organism/video/upload/Upload";
+import { Player } from "@/components/organisms/video/player/Player";
+import Upload from "@/components/organisms/video/upload/Upload";
 import { useVideo } from "@/hooks/useVideo";
 import CheckCondition from "@/lib/util/CheckCondition";
 

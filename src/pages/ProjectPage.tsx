@@ -1,4 +1,4 @@
-import ProjectList from "@/components/organism/project/projectlist/ProjectList";
+import ProjectList from "@/components/organisms/project/projectlist/ProjectList";
 
 const ProjectPage = () => {
   return <ProjectList />;

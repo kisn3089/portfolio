@@ -5,8 +5,8 @@ import {
   ItemsTag,
   ItemsTitle,
 } from "./ProjectItemsStyles";
-import { Link } from "react-router-dom";
 import * as Svg from "@/components/atoms/icon/index";
+import { ALink } from "@/components/molecule/alink/ALink";
 
 interface IProjectItems {
   title: string;
@@ -19,7 +19,7 @@ const scrollTop = () => window.scrollTo({ top: 0 });
 
 const ProjectItems = ({ title, tag, img, link }: IProjectItems) => {
   return (
-    <Link to={link} onClick={scrollTop}>
+    <ALink to={link} onClick={scrollTop}>
       <ItemsContainer>
         <ItemsImgContainer>
           <ItemsImg src={img} alt={img} />
@@ -30,7 +30,7 @@ const ProjectItems = ({ title, tag, img, link }: IProjectItems) => {
           {title}
         </ItemsTitle>
       </ItemsContainer>
-    </Link>
+    </ALink>
   );
 };
 

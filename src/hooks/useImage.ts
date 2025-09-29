@@ -1,7 +1,8 @@
-import { filesToUrl, urlToImage } from "@/lib/util/imageProcessing";
+import { urlToImage } from "@/lib/util/imageProcessing";
 import { ImageSrcType } from "@/types/imageSrc.type";
 import { useEffect, useRef, useState } from "react";
 
+const imageValidationSchema = ["jpg", "png", "ico", "webp"];
 export const useImage = () => {
   const thresholdRef = useRef<HTMLInputElement>(null);
   const [currentSrc, setIsLoading] = useState("none");
@@ -18,49 +19,63 @@ export const useImage = () => {
     }
   }, []);
 
+  const validImageFile = (files: FileList | null): files is FileList => {
+    if (!files) return false;
+
+    const isValid = imageValidationSchema.some((ext) =>
+      files[0].type.includes(ext)
+    );
+    return isValid && files && files[0] && files[0].type.includes("image");
+  };
+
   const getImage = (
     e?: React.ChangeEvent<HTMLInputElement>,
     file?: FileList | null
   ) => {
     setIsLoading(imageSrc.createSrc);
     let files: FileList | null = null;
-    if (e?.target) files = e?.target.files;
+    if (e?.target) files = e.target.files;
     if (file) files = file;
-    setTimeout(() => {
-      if (
-        thresholdRef.current &&
-        files &&
-        files[0] &&
-        files[0].type.includes("image")
-      ) {
-        const url = filesToUrl(files);
 
-        urlToImage(url, thresholdRef.current.value, (result) =>
-          setImageSrc({ createSrc: result, originSrc: url })
-        );
-      } else {
-        // 이미지 타입이 아닐 경우
-        alert("이미지 타입이 아닙니다");
-        setIsLoading("none");
-        return;
-      }
-    }, 300);
+    if (!validImageFile(files) || !thresholdRef.current) {
+      setIsLoading("none");
+      const errorMessage = ".jpg, .png, .ico, .webp 파일만 업로드 가능합니다.";
+      alert(errorMessage);
+      throw new Error(errorMessage);
+    }
+
+    const url = URL.createObjectURL(files[0]);
+    urlToImage(url, thresholdRef.current.value, (result) => {
+      setImageSrc({ createSrc: result, originSrc: url });
+    });
   };
 
-  const onChangeConf = (e: React.MouseEvent<HTMLInputElement>) => {
+  const onChangeConf = (e: React.MouseEvent<HTMLDivElement>) => {
     const { id } = e.currentTarget;
     if (thresholdRef.current) {
       if (id === "up" && +thresholdRef.current.value < 3) {
-        thresholdRef.current.value = String(
-          (+thresholdRef.current.value + 0.1).toFixed(1)
-        );
+        thresholdRef.current.value = Math.min(
+          +thresholdRef.current.value + 0.1,
+          3
+        ).toFixed(1);
+
         thresholdRef.current.focus();
       } else if (id === "down" && +thresholdRef.current.value > 0) {
-        thresholdRef.current.value = String(
-          (+thresholdRef.current.value - 0.1).toFixed(1)
-        );
+        thresholdRef.current.value = Math.max(
+          +thresholdRef.current.value - 0.1,
+          0
+        ).toFixed(1);
         thresholdRef.current.focus();
       }
+    }
+  };
+
+  const onChangeConfByInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (thresholdRef.current) {
+      thresholdRef.current.value = Math.min(
+        Math.max(+e.target.value, 0),
+        3
+      ).toString();
     }
   };
 
@@ -70,16 +85,11 @@ export const useImage = () => {
 
   const onCreate = () => {
     setIsLoading(imageSrc.createSrc);
-    setTimeout(() => {
-      if (thresholdRef.current) {
-        urlToImage(imageSrc.originSrc, thresholdRef.current.value, (result) => {
-          setImageSrc((prev) => ({ ...prev, createSrc: result }));
-          if (imageSrc.createSrc === result) {
-            setIsLoading("none");
-          }
-        });
-      }
-    }, 300);
+    if (thresholdRef.current) {
+      urlToImage(imageSrc.originSrc, thresholdRef.current.value, (result) => {
+        setImageSrc((prev) => ({ ...prev, createSrc: result }));
+      });
+    }
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -105,6 +115,7 @@ export const useImage = () => {
     currentSrc,
     getImage,
     onChangeConf,
+    onChangeConfByInput,
     dropCallback,
     onCreate,
     onKeyDown,

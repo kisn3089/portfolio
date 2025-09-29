@@ -11,13 +11,17 @@ import * as Svg from "@/components/atoms/icon/index";
 
 interface DashboardProps {
   onCreate: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onChangeConf: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onChangeConf: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onChangeConfByInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   downImage: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Dashboard = forwardRef<HTMLInputElement, DashboardProps>(
-  ({ onChangeConf, onCreate, onKeyDown, downImage }, ref) => {
+  (
+    { onChangeConf, onChangeConfByInput, onCreate, onKeyDown, downImage },
+    ref
+  ) => {
     return (
       <DashboardLayout>
         <WrapperButton type="button" onClick={downImage}>
@@ -33,6 +37,7 @@ const Dashboard = forwardRef<HTMLInputElement, DashboardProps>(
             id="threshold"
             ref={ref}
             onChangeConf={onChangeConf}
+            onChangeConfByInput={onChangeConfByInput}
             onKeyDown={onKeyDown}
           />
           <WrapperButton type="button" onClick={onCreate}>

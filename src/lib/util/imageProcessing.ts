@@ -1,5 +1,3 @@
-export const filesToUrl = (files: FileList) => URL.createObjectURL(files[0]);
-
 export const urlToImage = async (
   url: string,
   thresholdRef: number | string,
@@ -16,70 +14,50 @@ export const urlToImage = async (
 const imageProcessing = async (
   image: HTMLImageElement,
   thresholdRef: number
-) => {
-  if (thresholdRef > 3) thresholdRef = 3;
-  if (thresholdRef < 0) thresholdRef = 0;
+): Promise<string> => {
   const canvas = getCanvasFromImage(image);
-  const imageData = await cloneCanvas(canvas, thresholdRef);
-
+  const imageData = await processImageWithWorker(canvas, thresholdRef);
   return imageData;
 };
 
-const cloneCanvas = async (
+const processImageWithWorker = async (
   src_canvas: HTMLCanvasElement,
   thresholdRef: number
-) => {
-  const src_ctx = src_canvas.getContext("2d");
-  const src_image_data = src_ctx?.getImageData(
-    0,
-    0,
-    src_canvas.width,
-    src_canvas.height
-  ) as ImageData;
+): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const src_ctx = src_canvas.getContext("2d");
+    if (!src_ctx) return reject(new Error("Failed to get canvas context"));
 
-  const dest_canvas = document.createElement("canvas");
-  dest_canvas.width = src_canvas.width;
-  dest_canvas.height = src_canvas.height;
+    const src_image_data = src_ctx.getImageData(
+      0,
+      0,
+      src_canvas.width,
+      src_canvas.height
+    );
 
-  const dest_ctx = dest_canvas.getContext("2d");
-  dest_ctx?.drawImage(src_canvas, 0, 0);
+    const workerUrl = new URL("/imageWorker.js", import.meta.url);
+    const worker = new Worker(workerUrl);
 
-  const dest_image_data = dest_ctx?.getImageData(
-    0,
-    0,
-    dest_canvas.width,
-    dest_canvas.height
-  ) as ImageData;
+    worker.onmessage = (e) => {
+      const { image, error } = e.data;
+      worker.terminate();
+      if (error) return reject(new Error(error));
 
-  const process = (x: number, cofficient: number, gray: number) => {
-    return x * cofficient + gray * (1 - cofficient);
-  };
+      resolve(image);
+    };
 
-  const COEFF = thresholdRef;
+    worker.onerror = (error) => {
+      worker.terminate();
+      reject(error);
+    };
 
-  for (let y = 0; y < src_canvas.height; y++) {
-    for (let x = 0; x < src_canvas.width; x++) {
-      const offset = getOffset(x, y, src_canvas.width);
-      const r = src_image_data.data[offset];
-      const g = src_image_data.data[offset + 1];
-      const b = src_image_data.data[offset + 2];
-      const grayscale = (r + g + b) / 3;
-
-      dest_image_data.data[offset] = process(r, COEFF, grayscale);
-      dest_image_data.data[offset + 1] = process(g, COEFF, grayscale);
-      dest_image_data.data[offset + 2] = process(b, COEFF, grayscale);
-      dest_image_data.data[offset + 3] = src_image_data.data[offset + 3];
-    }
-  }
-
-  dest_ctx?.putImageData(dest_image_data, 0, 0);
-  const imageData = dest_canvas.toDataURL("image/webp", 1);
-  dest_ctx?.clearRect(0, 0, dest_canvas.width, dest_canvas.height);
-  return imageData;
-};
-
-const getOffset = (x: number, y: number, w: number) => {
-  return (y * w + x) * 4;
+    worker.postMessage({
+      imageData: src_image_data.data,
+      thresholdRef,
+      width: src_image_data.width,
+      height: src_image_data.height,
+    });
+  });
 };
 
 const getCanvasFromImage = (image: HTMLImageElement) => {

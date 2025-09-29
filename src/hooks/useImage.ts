@@ -1,4 +1,4 @@
-import { filesToUrl, urlToImage } from "@/lib/util/imageProcessing";
+import { urlToImage } from "@/lib/util/imageProcessing";
 import { ImageSrcType } from "@/types/imageSrc.type";
 import { useEffect, useRef, useState } from "react";
 
@@ -18,47 +18,47 @@ export const useImage = () => {
     }
   }, []);
 
-  const getImage = (
+  const validImageFile = (files: FileList | null): files is FileList => {
+    if (!files) return false;
+
+    return files && files[0] && files[0].type.includes("image");
+  };
+
+  const getImage = async (
     e?: React.ChangeEvent<HTMLInputElement>,
     file?: FileList | null
   ) => {
     setIsLoading(imageSrc.createSrc);
     let files: FileList | null = null;
-    if (e?.target) files = e?.target.files;
+    if (e?.target) files = e.target.files;
     if (file) files = file;
-    setTimeout(() => {
-      if (
-        thresholdRef.current &&
-        files &&
-        files[0] &&
-        files[0].type.includes("image")
-      ) {
-        const url = filesToUrl(files);
 
-        urlToImage(url, thresholdRef.current.value, (result) =>
-          setImageSrc({ createSrc: result, originSrc: url })
-        );
-      } else {
-        // 이미지 타입이 아닐 경우
-        alert("이미지 타입이 아닙니다");
-        setIsLoading("none");
-        return;
-      }
-    }, 300);
+    if (!validImageFile(files) || !thresholdRef.current) {
+      setIsLoading("none");
+      throw new Error(".jpg, .png, .ico, .webp 파일만 업로드 가능합니다.");
+    }
+
+    const url = URL.createObjectURL(files[0]);
+    urlToImage(url, thresholdRef.current.value, (result) => {
+      setImageSrc({ createSrc: result, originSrc: url });
+    });
   };
 
   const onChangeConf = (e: React.MouseEvent<HTMLInputElement>) => {
     const { id } = e.currentTarget;
     if (thresholdRef.current) {
       if (id === "up" && +thresholdRef.current.value < 3) {
-        thresholdRef.current.value = String(
-          (+thresholdRef.current.value + 0.1).toFixed(1)
-        );
+        thresholdRef.current.value = Math.min(
+          +thresholdRef.current.value + 0.1,
+          3
+        ).toFixed(1);
+
         thresholdRef.current.focus();
       } else if (id === "down" && +thresholdRef.current.value > 0) {
-        thresholdRef.current.value = String(
-          (+thresholdRef.current.value - 0.1).toFixed(1)
-        );
+        thresholdRef.current.value = Math.max(
+          +thresholdRef.current.value - 0.1,
+          0
+        ).toFixed(1);
         thresholdRef.current.focus();
       }
     }
@@ -70,16 +70,11 @@ export const useImage = () => {
 
   const onCreate = () => {
     setIsLoading(imageSrc.createSrc);
-    setTimeout(() => {
-      if (thresholdRef.current) {
-        urlToImage(imageSrc.originSrc, thresholdRef.current.value, (result) => {
-          setImageSrc((prev) => ({ ...prev, createSrc: result }));
-          if (imageSrc.createSrc === result) {
-            setIsLoading("none");
-          }
-        });
-      }
-    }, 300);
+    if (thresholdRef.current) {
+      urlToImage(imageSrc.originSrc, thresholdRef.current.value, (result) => {
+        setImageSrc((prev) => ({ ...prev, createSrc: result }));
+      });
+    }
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

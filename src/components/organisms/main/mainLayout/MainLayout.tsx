@@ -1,10 +1,10 @@
-import { MainLayoutStyle } from "./MainLayoutStyles";
-import CanvasCore from "@/components/molecules/canvasCore/CanvasCore";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import { Float, ScrollControls, Stars } from "@react-three/drei";
-import { EffectScroll } from "@/components/molecules/three/effectScroll/EffectScroll";
-import Carousel from "@/components/molecules/three/carousel/Carousel";
-import { Banner } from "@/components/molecules/three/banner/Banner";
+import { MainLayoutStyle } from "./MainLayoutStyles"
+import CanvasCore from "@/components/molecules/canvasCore/CanvasCore"
+import { Bloom, EffectComposer } from "@react-three/postprocessing"
+import { Float, ScrollControls, Stars } from "@react-three/drei"
+import { EffectScroll } from "@/components/molecules/three/effectScroll/EffectScroll"
+import Carousel from "@/components/molecules/three/carousel/Carousel"
+import { Banner } from "@/components/molecules/three/banner/Banner"
 
 const MainLayout = () => {
   return (
@@ -16,7 +16,7 @@ const MainLayout = () => {
         bgColor={"#0a0a0a"}>
         <fog attach="fog" args={["#ffe538", 9, 13]} />
         <Stars radius={90} depth={0} count={5000} factor={4} fade />
-        <ScrollControls pages={2} infinite>
+        <ScrollControls pages={3} infinite>
           <EffectScroll rotation={[0, 0, 0.15]}>
             <Carousel />
           </EffectScroll>
@@ -35,7 +35,7 @@ const MainLayout = () => {
         </EffectComposer>
       </CanvasCore>
     </MainLayoutStyle>
-  );
-};
+  )
+}
 
-export default MainLayout;
+export default MainLayout

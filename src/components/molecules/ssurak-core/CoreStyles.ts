@@ -59,7 +59,6 @@ export const CoreNoteText = styled.dd<{ $highlight?: boolean }>`
   font-family: ${({ theme }) => theme.fontFamily.ko};
   font-size: ${({ theme }) => theme.fontSize.mini};
   line-height: 1.65;
-  text-wrap: pretty;
   color: ${({ theme, $highlight }) =>
     $highlight ? theme.palette.gray100 : theme.palette.gray200};
 `

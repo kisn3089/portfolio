@@ -1,36 +1,42 @@
 @font-face {
   font-family: "Agbalumo";
-  src: local("Agbalumo-Regular"),
+  src:
+    local("Agbalumo-Regular"),
     url("../assets//fonts//en//Agbalumo-Regular.ttf"), format("ttf");
   font-weight: 700;
 }
 @font-face {
   font-family: "Nunito";
-  src: local("Nunito-SemiBold"),
-    url("../assets//fonts//en//Nunito-SemiBold.ttf"), format("ttf");
+  src:
+    local("Nunito-SemiBold"), url("../assets//fonts//en//Nunito-SemiBold.ttf"),
+    format("ttf");
   font-weight: 700;
 }
 @font-face {
   font-family: "Nunito";
-  src: local("Nunito-Regular"), url("../assets//fonts//en//Nunito-Regular.ttf"),
+  src:
+    local("Nunito-Regular"), url("../assets//fonts//en//Nunito-Regular.ttf"),
     format("ttf");
   font-weight: 400;
 }
 @font-face {
   font-family: "Nunito";
-  src: local("Nunito-Bold"), url("../assets//fonts//en//Nunito-Bold.ttf"),
+  src:
+    local("Nunito-Bold"), url("../assets//fonts//en//Nunito-Bold.ttf"),
     format("ttf");
   font-weight: 900;
 }
 @font-face {
   font-family: "NanumSquareRound";
-  src: local("NanumSquareRound-Regular"),
+  src:
+    local("NanumSquareRound-Regular"),
     url("../assets//fonts//ko//NanumSquareRoundR.ttf"), format("ttf");
   font-weight: 400;
 }
 @font-face {
   font-family: "NanumSquareRound";
-  src: local("NanumSquareRound-Bold"),
+  src:
+    local("NanumSquareRound-Bold"),
     url("../assets//fonts//ko//NanumSquareRoundB.ttf"), format("ttf");
   font-weight: 700;
 }

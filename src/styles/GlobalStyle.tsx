@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -62,4 +62,4 @@ export const GlobalStyle = createGlobalStyle`
           transition: 0.2s cubic-bezier(.63,.33,.17,.91);
         }
     }
-`;
+`

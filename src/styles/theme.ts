@@ -1,15 +1,15 @@
-import { BaseAniType } from "@/types/animation.type";
-import { DefaultTheme, RuleSet, css } from "styled-components";
+import { BaseAniType } from "@/types/animation.type"
+import { DefaultTheme, RuleSet, css } from "styled-components"
 
-export type PaletteTypes = typeof palette;
-export type FontSizeTypes = typeof fontSize;
-export type FontFamilyTypes = typeof fontFamily;
-export type FontWeightTypes = typeof fontWeight;
-export type TransitionTypes = typeof ts;
-export type DeviceSizeTypes = typeof deviceSize;
+export type PaletteTypes = typeof palette
+export type FontSizeTypes = typeof fontSize
+export type FontFamilyTypes = typeof fontFamily
+export type FontWeightTypes = typeof fontWeight
+export type TransitionTypes = typeof ts
+export type DeviceSizeTypes = typeof deviceSize
 export type AnimationTypes = {
-  fadeIn: (props: BaseAniType) => RuleSet<object>;
-};
+  fadeIn: (props: BaseAniType) => RuleSet<object>
+}
 
 const fontSize = {
   smallest: "10px",
@@ -20,13 +20,13 @@ const fontSize = {
   medium: "20px",
   large: "30px",
   extra: "36px",
-};
+}
 
 const deviceSize = {
   desktop: "1200px",
   tablet: "768px",
   mobile: "576px",
-};
+}
 
 const palette = {
   white: "#fff",
@@ -43,24 +43,24 @@ const palette = {
   blue: "#2686d3",
   blue100: "#0080da",
   red: "#cf5b5d",
-};
+}
 
 const fontFamily = {
   en: "Nunito",
   ko: "NanumSquareRound",
   loading: "Agbalumo",
-};
+}
 
 const fontWeight = {
   regular: 400,
   bold: 700,
   extra: 900,
-};
+}
 
 const ts = {
   moreFast: "cubic-bezier(0.63, 0.33, 0.17, 0.91)",
   smooth: "cubic-bezier(0.4, 0, 0.1, 1)",
-};
+}
 
 export const animation = {
   fadeIn: ({
@@ -91,7 +91,7 @@ export const animation = {
     animation: ${"fade" + name} ${duration} ${transtion} ${delay} ${count}
       ${direction};
   `,
-};
+}
 
 export const theme: DefaultTheme = {
   fontSize,
@@ -101,4 +101,4 @@ export const theme: DefaultTheme = {
   ts,
   animation,
   deviceSize,
-};
+}

@@ -19,7 +19,7 @@ export const Banner = () => {
 
   return (
     <mesh ref={bannerRef} position={[0, -0.2, 0]}>
-      <cylinderGeometry args={[1.6, 1.6, 0.14, 128, 16, true]} />
+      <cylinderGeometry args={[1.3, 1.3, 0.14, 128, 16, true]} />
       <meshSineMaterial
         map={texture}
         map-anisotropy={16}

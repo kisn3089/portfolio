@@ -4,7 +4,7 @@ import { ProjectItem } from "../projectItem/ProjectItem"
 const Carousel = () => {
   const count = PROJECTS.length
   // const radius = 1.4;
-  const radius = 1.3
+  const radius = 1.1
   return (
     <group>
       {PROJECTS.map((project, i) => (

@@ -1,12 +1,12 @@
-import { Center, ProjectListContainer } from "./ProjectListStyles";
-import ProjectItems from "../projectItems/ProjectItems";
-import { projectList } from "@/store/ProjectList";
+import { Center, ProjectListContainer } from "./ProjectListStyles"
+import ProjectItems from "../projectItems/ProjectItems"
+import { PROJECTS } from "@/store/ProjectList"
 
 const ProjectList = () => {
   return (
     <Center>
       <ProjectListContainer>
-        {projectList.map((item, i) => (
+        {PROJECTS.map((item, i) => (
           <ProjectItems
             title={item.title}
             tag={item.tag}
@@ -17,7 +17,7 @@ const ProjectList = () => {
         ))}
       </ProjectListContainer>
     </Center>
-  );
-};
+  )
+}
 
-export default ProjectList;
+export default ProjectList

@@ -1,4 +1,11 @@
-export const projectList = [
+export const PROJECTS = [
+  {
+    title: "QR Table Order System",
+    tag: "OpenAI • Next.js • Socket.IO • MySQL • Redis",
+    link: "/project/ssurak",
+    img: "/assets/img/pj_ssurak.webp",
+    landing_img: "/assets/img/pj_landing/ld_pj_ssurak.webp",
+  },
   {
     title: "Web Accessibility & Modal",
     tag: "ScreenReader • Nested Modal • WCAG",
@@ -27,13 +34,13 @@ export const projectList = [
     img: "/assets/img/pj_model.webp",
     landing_img: "/assets/img/pj_landing/ld_pj_three.png",
   },
-  {
-    title: "Parallel API & Data Visualization",
-    tag: "useQurey • API • Chart",
-    link: "/project/stock/query",
-    img: "/assets/img/pj_stock.webp",
-    landing_img: "/assets/img/pj_landing/ld_pj_stock.png",
-  },
+  // {
+  //   title: "Parallel API & Data Visualization",
+  //   tag: "useQurey • API • Chart",
+  //   link: "/project/stock/query",
+  //   img: "/assets/img/pj_stock.webp",
+  //   landing_img: "/assets/img/pj_landing/ld_pj_stock.png",
+  // },
   {
     title: "Video Convert & Player",
     tag: "Video • FFMPEG • Convert • WASM",
@@ -41,15 +48,4 @@ export const projectList = [
     img: "/assets/img/pj_video.webp",
     landing_img: "/assets/img/pj_landing/ld_pj_video.png",
   },
-];
-
-export const selfPrList = [
-  {
-    img: "",
-    link: "",
-  },
-  {
-    img: "",
-    link: "",
-  },
-];
+]

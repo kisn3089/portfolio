@@ -3,6 +3,17 @@
 ### update
 
 ```
+2026.08.18
+What's New
+[프로젝트 추가]
+ssurak - QR Table Order System
+- 프로젝트 리스트 맨 앞에 추가 및 상세 페이지(/project/ssurak) 신규 구현
+- 상세 페이지 카피/이미지 데이터를 src/store/SsurakDetail.ts로 분리하여 컴포넌트와 콘텐츠 분리
+- 이미지와 mp4를 같은 데이터 구조(mediaRows)로 다루고 확장자에 따라 img / video 렌더 분기
+- 데모 계정 클립보드 복사 버튼 구현 (복사 성공 아이콘 2s 후 원복, unmount 시 타이머 clear)
+```
+
+```
 2025.09.29
 What's New
 [프로젝트 추가]
@@ -15,11 +26,6 @@ Web Accessibility 모달 폼
 - 업로드 가능한 확장자를 명확하게 검증하고 사용자에게 오류를 노출히도록 변경
 - threshold 값 키보드 이벤트 입력 시 0~3 범위로 보장
 ```
-
-### AS-IS | TO-BE
-
-<img alt="asis" src=public/assets/img/readmeInfo/update/pj_image_update_asis.gif width=500px />
-<img alt="tobe" src=public/assets/img/readmeInfo/update/pj_image_update_tobe.gif width=500px />
 
 ---
 
@@ -81,6 +87,59 @@ three.js를 활용하여 호버 및 터치(클릭)시 설정해놓은 패턴을 
 ```
 
 ---
+
+### ssurak | QR Table Order System
+
+[상세 페이지](https://stems-iota.vercel.app/project/ssurak) · [Console](https://console.ssurak.com) · [Frontend](https://github.com/kisn3089/ssurak-frontend) · [Backend](https://github.com/kisn3089/ssurak-backend) · [Infra](https://github.com/kisn3089/ssurak-infra)
+
+```
+태블릿도, 키오스크도 두지 않습니다.
+QR 하나로 손님 휴대폰이 그대로 주문 단말이 되는 오프라인 매장용 테이블 오더 서비스.
+```
+
+<img alt="ssurak console" src=public/assets/img/ssurak/table-board.webp width=700px />
+
+#### 핵심 구현
+
+**01. 사진 한 장에서 메뉴 초안까지**
+
+- 업로드 이미지를 리사이즈 · `webp` 변환 후 S3 업로드
+- OpenAI Responses API의 `Structured Output`으로 이름 · 가격 · 설명 · 카테고리만 추출
+- 추출 결과는 Redis에 12시간 TTL 초안으로 보관, 매핑 실패 항목은 별도 캐시에 남겨 다시 열었을 때 이어서 편집
+- 추출 횟수를 계정별로 제한하여 API 비용을 예측 가능하게 유지
+
+<img alt="menu extraction" src=public/assets/img/ssurak/menu-extraction.webp width=700px />
+
+**02. 손님 폰과 점주 콘솔을 같은 상태로**
+
+- 장바구니 · 주문 변경을 도메인 이벤트로 만들어 WSS 게이트웨이로 전달
+- 손님은 테이블 세션으로, 콘솔은 JWT로 각각 테이블 룸 / 어드민 룸을 구독하여 룸 단위 브로드캐스트
+- 서버 인스턴스가 늘어나도 Redis 어댑터의 `pub/sub`으로 모든 인스턴스에 이벤트 전달
+- 연결 상태를 UI에 그대로 노출하여 끊김을 숨기지 않도록 구현
+
+**03. 로그인 없는 장바구니**
+
+- 테이블 세션 토큰을 키로 Redis에 장바구니를 보관하여 회원가입 없이도 새로고침 · 재접속 후 장바구니 유지
+- 같은 메뉴라도 옵션 조합이 다르면 별개 항목으로 처리
+- 주문 확정은 Prisma 트랜잭션으로 MySQL에 기록하여 항목 · 금액 정합성 보장
+
+#### 런타임 구조
+
+```
+오더 앱과 콘솔 앱은 REST로 자원에 접근하고, 상태 변화는 도메인 이벤트를 통해 WSS 게이트웨이로 흐릅니다.
+메뉴 초안 · 장바구니처럼 수명이 짧은 데이터는 Redis, 확정된 주문과 메뉴는 MySQL에 둡니다.
+```
+
+<img alt="ssurak runtime architecture" src=public/assets/img/ssurak/architecture-runtime.webp width=700px />
+
+#### 포트폴리오 상세 페이지 구현
+
+- `project/ssurak` 라우트 추가 → [SsurakPage](https://github.com/kisn3089/portfolio/blob/main/src/pages/SsurakPage.tsx)가 `BackLink → SsurakHeader → Why → Core → Architecture → DemoGuide` 순으로 구성
+- 카피 · 이미지 데이터를 [SsurakDetail.ts](https://github.com/kisn3089/portfolio/blob/main/src/store/SsurakDetail.ts)로 분리하여 기존 `ProjectList.ts` 패턴과 동일하게 콘텐츠와 컴포넌트를 분리
+- `mediaRows` 한 벌로 이미지와 영상을 함께 다루고, `.mp4` 확장자면 `autoPlay · loop · muted · playsInline` video로 렌더 분기
+- 데모 계정 복사는 `navigator.clipboard.writeText` 사용, 복사 아이콘을 2s 후 원복하며 재클릭 시 타이머 리셋 · unmount 시 `clearTimeout`
+- 외부 링크는 [ALink](https://github.com/kisn3089/portfolio/blob/main/src/components/molecules/aLink/ALink.tsx)로 `a` 새 탭, 내부 경로는 `Link`로 분기
+- 색 · 타이포 · 브레이크포인트는 새 토큰 없이 기존 `theme`(`palette` / `fontSize` / `deviceSize` / `ts.moreFast`) 값만 사용
 
 ### Web Accessibility & Modal Form
 

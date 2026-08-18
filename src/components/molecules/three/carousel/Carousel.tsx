@@ -1,13 +1,13 @@
-import { projectList } from "@/store/ProjectList";
-import { ProjectItem } from "../projectItem/ProjectItem";
+import { PROJECTS } from "@/store/ProjectList"
+import { ProjectItem } from "../projectItem/ProjectItem"
 
 const Carousel = () => {
-  const count = projectList.length;
+  const count = PROJECTS.length
   // const radius = 1.4;
-  const radius = 1.1;
+  const radius = 1.1
   return (
     <group>
-      {projectList.map((project, i) => (
+      {PROJECTS.map((project, i) => (
         <ProjectItem
           key={project.img}
           url={project.landing_img}
@@ -21,7 +21,7 @@ const Carousel = () => {
         />
       ))}
     </group>
-  );
-};
+  )
+}
 
-export default Carousel;
+export default Carousel

@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { HeaderContainer, Logo } from "./HeaderStyles";
-import Menu from "./menu/Menu";
+import { Link } from "react-router-dom"
+import { HeaderContainer, Logo } from "./HeaderStyles"
+import Menu from "./menu/Menu"
 
 const Header = () => {
   return (
@@ -10,7 +10,7 @@ const Header = () => {
       </Link>
       <Menu />
     </HeaderContainer>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
